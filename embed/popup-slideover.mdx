@@ -1,0 +1,68 @@
+---
+title: "Popup / Slideover"
+description: "Display inline code and code blocks"
+icon: "arrow-pointer"
+---
+
+### Edit Head Tag
+
+Add one of the following scripts to your webpage's `head` tag, depending on how you'd like the form to appear.
+
+<AccordionGroup>
+  <Accordion title="Popup">
+    ```HTML
+    <script
+        src="https://cdn.jsdelivr.net/gh/trysurface/scripts@latest/surface_embed_v1.js"
+        type="application/javascript"
+    > </script>
+
+    <script>
+    window.onload = function() {
+            const surface_src = "<form url here>"
+            const surface_embed_type = "popup"
+            const target_element_class = "surface-form-button"
+            const c = new SurfaceEmbed(surface_src, surface_embed_type, target_element_class)
+
+            c.embedSurfaceForm();
+    }
+    </script>
+    ```
+
+  </Accordion>
+{" "}
+
+<Accordion title="Slideover">
+    ```HTML
+    <script
+        src="https://cdn.jsdelivr.net/gh/trysurface/scripts@latest/surface_embed_v1.js"
+        type="application/javascript"
+    > </script>
+
+    <script>
+    window.onload = function() {
+            const surface_src = "<form url here>"
+            const surface_embed_type = "slideover"
+            const target_element_class = "surface-form-button"
+            const c = new SurfaceEmbed(surface_src, surface_embed_type, target_element_class)
+
+            c.embedSurfaceForm();
+    }
+    </script>
+    ```
+
+</Accordion>
+</AccordionGroup>
+
+Note the only difference between the two is the value of `surface_embed_type`
+
+Replace the `<form url here>` with the url to your surface form found by clicking the share button on the surface platform.
+
+### Choose trigger buttons
+
+The next step is to choose which buttons you'd like to trigger the form.
+
+This is done by simply adding the class name `surface-form-button` to the elements which should be able to make the form appear.
+
+```HTML
+<button class="... surface-form-button"> </button>
+```

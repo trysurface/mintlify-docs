@@ -1,0 +1,40 @@
+---
+title: "Inline Embed"
+description: "Embed your form inline with the rest of your page by adding scripts to your head tag and class names to the div elements where you want to embed your script"
+icon: "code"
+---
+
+### Edit Head Tag
+
+Add the following script to your webpage's `head` tag.
+
+```HTML
+<script
+  src="https://cdn.jsdelivr.net/gh/trysurface/scripts@latest/surface_embed_v1.js"
+  type="application/javascript"
+></script>
+
+<script>
+  window.onload = function() {
+		const surface_src = "<form url here>"
+		const surface_embed_type = "inline"
+		const target_element_class = "surface-form-target"
+		const c = new SurfaceEmbed(surface_src, surface_embed_type, target_element_class)
+
+		c.embedSurfaceForm();
+  }
+</script>
+
+```
+
+Replace the `<form url here>` with the url to your surface form found by clicking the share button on the surface platform.
+
+### Edit Div Tags
+
+Surface needs to know where on the page you'd like to embed the form.
+
+Add the class name `surface-form-target` to the div tags where you want the forms to be embedded. By default the form will take the entire height and width of the `div`.
+
+```HTML
+<div class="... surface-form-target"> </div>
+```
