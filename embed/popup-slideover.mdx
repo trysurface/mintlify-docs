@@ -74,3 +74,34 @@ This is done by simply adding the class name `surface-form-button` to the elemen
 ```HTML
 <button class="... surface-form-button"> </button>
 ```
+
+### Control Popup Size
+
+In the case you are using the `popup` animation appearance, you can control the size of the popup that appears on your webpage. See the following snippet
+
+```HTML
+<!-- Start of Surface Form snippet -->
+
+<script
+    src="https://cdn.jsdelivr.net/gh/trysurface/scripts@latest/surface_embed_v1.js"
+    type="application/javascript"
+> </script>
+
+<script>
+window.onload = function() {
+        const surface_src = "<form url here>"
+        const surface_embed_type = "popup"
+        const target_element_class = "surface-form-button"
+        const c = new SurfaceEmbed(surface_src, surface_embed_type, target_element_class)
+
+        c.popupSize = "medium" // This value can be "medium" or "large"
+        c.embedSurfaceForm();
+}
+</script>
+
+<!-- End of Surface Form snippet -->
+```
+
+You can set the the `popupSize` variable on the `SurfaceEmbed` instance to control the size of the popup. Current accepted values are `medium` and `large`
+
+
