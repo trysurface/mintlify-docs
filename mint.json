@@ -40,6 +40,13 @@
     {
       "group": "Embed",
       "pages": ["embed/inline", "embed/popup-slideover"]
+    },
+    {
+      "group": "Integrations",
+      "pages": [
+        "integrations/zapier",
+        "integrations/gtm"
+      ]
     }
   ],
   "footerSocials": {}
