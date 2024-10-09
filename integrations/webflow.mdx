@@ -5,40 +5,118 @@ icon: "code"
 ---
 
 ### 1. Create a new form
+
 Create a new form using our no code [form builder](https://app.withsurface.com) and copy the form sharing link. For this tutorial suppose its https://app.withsurface.com/s/cm1b711u80001l803477zv0n4
+
 <Accordion title="Click to expand">
   <img className="block" src="/images/webflow/form.png" alt="Hero Light" />
 </Accordion>
 
-### 2. Changes in Webflow.
-Navigate to the webflow designer screen and update the ID of the button that should open the form to `surface-form-button`
-<Accordion title="Click to expand">
-  <img className="block" src="/images/webflow/webflow-design.png" alt="Hero Light" />
-</Accordion>
+### 2. Embedding Form in Webflow.
 
-### 3. Now Let's add JavaScript
-There are two different source URLs to choose from depending on how you would like your Surface Form to appear on your site
+There are 2 ways to embed the Surface Form, you may choose one according to your preference.
 
-1. If you want your form to be a popup which appears in the center of the screen and appears/disappears with a fading animation, use the following script source url
-```javascript
-https://cdn.jsdelivr.net/gh/trysurface/scripts@main/surface_embed_script.js
-```
-2. If you want your form to take up the entire screen and appear as a slide in, use the following script source url
-```javascript
-https://cdn.jsdelivr.net/gh/trysurface/scripts@main/surface_embed_slide_fullscreen.js
-```
-After deciding which javascript source URL you'd like to use, Navigate to `https://webflow.com/dashboard/sites/<your_webflow_site_here>/code` and insert the following code in the `Head code` section.
-```javascript
-<script src="<SCRIPT_SOURCE>"type="application/javascript"></script> // replace <SCRIPT_SOURCE> with any cdn url from above. 
+<Tabs>
+    <Tab title="Inline Embed">
+        For Inline Embedding, go to your webflow design studio and select section where you need your form to be.
+        After Selecting the section, you should see `Style` tab on your right panel.
+        <img className="block" src="/images/webflow/webflow-design-studio.png" alt="webflow" />
+        Now add `surface-form-target` in Style Selector, That should look something like this:
+        <img className="block" src="/images/webflow/webflow-design-studio-inline.png" alt="webflow" />
+    </Tab>
+    <Tab title="Popover/Slideover">
+        To configure the Popover/Slideover, navigate to your Webflow Design Studio and select the button that triggers the form.
+        After Selecting the button, you should see `Style` tab on your right panel.
+        <img className="block" src="/images/webflow/webflow-design-studio.png" alt="webflow" />
+        Now add `surface-form-button` in Style Selector, That should look something like this:
+        <img className="block" src="/images/webflow/webflow-design-studio-popslide.png" alt="webflow" />
+    </Tab>
 
-<script>
-window.onload = function() {
-  src='https://app.withsurface.com/s/cm1b711u80001l803477zv0n4'; // replace this with your surface form link
-  buttonElementClass = 'surface-form-button'; // (optional) replace this value with your own button class
-  embedSurfaceForm();
-}
-</script>
-```
+</Tabs>
+
+### 3. Adding JavaScript to webflow
+
+Go to `https://webflow.com/dashboard/sites/<your_webflow_site_here>/custom-code` and paste the following code into the Head code section. For example, if your Webflow site is `meers-site.design.webflow.com`, the URL to insert the code would be `https://webflow.com/dashboard/sites/meers-site/custom-code`.
+
+<Tabs>
+    <Tab title="Inline Embed">
+        ```HTML
+        <!-- Start of Surface Form snippet -->
+
+        <script
+        src="https://cdn.jsdelivr.net/gh/trysurface/scripts@latest/surface_embed_v1.js"
+        type="application/javascript"
+        ></script>
+
+        <script>
+        window.onload = function() {
+            const surface_src = "<form url here>" // replace this with your Surface Form URL. 
+            const surface_embed_type = "inline"
+            const target_element_class = "surface-form-target"
+            const c = new SurfaceEmbed(surface_src, surface_embed_type, target_element_class)
+
+            c.embedSurfaceForm();
+        }
+        </script>
+
+        <!-- End of Surface Form snippet -->
+
+        ```
+    </Tab>
+    <Tab title="Popover/Slideover">
+        <Accordion title="Popover">
+            ```HTML
+            <!-- Start of Surface Form snippet -->
+
+            <script
+                src="https://cdn.jsdelivr.net/gh/trysurface/scripts@latest/surface_embed_v1.js"
+                type="application/javascript"
+            > </script>
+
+            <script>
+            window.onload = function() {
+                const surface_src = "<form url here>" // replace this with your Surface Form URL. 
+                const surface_embed_type = "popup"
+                const target_element_class = "surface-form-button"
+                const c = new SurfaceEmbed(surface_src, surface_embed_type, target_element_class)
+
+                c.embedSurfaceForm();
+            }
+            </script>
+
+            <!-- End of Surface Form snippet -->
+
+            ```
+            You can check this [guide](../embed/popup-slideover#control-popup-size) for detailed explaination about Popover Embedding.
+        </Accordion>
+        <Accordion title="Slideover">
+            ```HTML
+            <!-- Start of Surface Form snippet -->
+
+            <script
+                src="https://cdn.jsdelivr.net/gh/trysurface/scripts@latest/surface_embed_v1.js"
+                type="application/javascript"
+            > </script>
+
+            <script>
+            window.onload = function() {
+                const surface_src = "<form url here>" // replace this with your Surface Form URL. 
+                const surface_embed_type = "slideover"
+                const target_element_class = "surface-form-button"
+                const c = new SurfaceEmbed(surface_src, surface_embed_type, target_element_class)
+
+                c.embedSurfaceForm();
+            }
+            </script>
+
+            <!-- End of Surface Form snippet -->
+
+            ```
+        </Accordion>
+    </Tab>
+
+</Tabs>
 
 ### 4. Submit all Changes
+
 Congratulations on integrating Surface Form with Webflow!
