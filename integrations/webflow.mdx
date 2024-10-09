@@ -1,0 +1,43 @@
+---
+title: "Webflow"
+description: "Integrate Surface Forms with Webflow"
+icon: "code"
+---
+
+### 1. Create a new form
+Create a new form using our no code form builder here and copy the form sharing link. For this tutorial suppose its https://app.withsurface.com/s/cm1b711u80001l803477zv0n4
+<Accordion title="Click to expand">
+  <img className="block" src="/images/webflow/form.png" alt="Hero Light" />
+</Accordion>
+
+### 2. Navigate to the webflow designer screen and update the ID of the button that should open the form to `surface-form-button`
+<Accordion title="Click to expand">
+  <img className="block" src="/images/webflow/webflow-design.png" alt="Hero Light" />
+</Accordion>
+
+### 3. Now Let's add JavaScript
+There are two different source URLs to choose from depending on how you would like your Surface Form to appear on your site
+
+1. If you want your form to be a popup which appears in the center of the screen and appears/disappears with a fading animation, use the following script source url
+```javascript
+https://cdn.jsdelivr.net/gh/trysurface/scripts@main/surface_embed_script.js
+```
+2. If you want your form to take up the entire screen and appear as a slide in, use the following script source url
+```javascript
+https://cdn.jsdelivr.net/gh/trysurface/scripts@main/surface_embed_slide_fullscreen.js
+```
+After deciding which javascript source URL you'd like to use, Navigate to `https://webflow.com/dashboard/sites/<your_webflow_site_here>/code` and insert the following code in the `Head code` section.
+```javascript
+<script src="<SCRIPT_SOURCE>"type="application/javascript"></script> // replace <SCRIPT_SOURCE> with any cdn url from above. 
+
+<script>
+window.onload = function() {
+  src='https://app.withsurface.com/s/cm1b711u80001l803477zv0n4'; // replace this with your surface form link
+  buttonElementClass = 'surface-form-button'; // (optional) replace this value with your own button class
+  embedSurfaceForm();
+}
+</script>
+```
+
+### 4. Submit all Changes
+Congratulations on integrating Surface Form with Webflow!

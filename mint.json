@@ -45,7 +45,8 @@
       "group": "Integrations",
       "pages": [
         "integrations/zapier",
-        "integrations/gtm"
+        "integrations/gtm",
+        "integrations/webflow"
       ]
     }
   ],
