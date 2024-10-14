@@ -2,6 +2,7 @@
   "$schema": "https://mintlify.com/schema.json",
   "name": "Docs",
   "logo": {
+    "href": "https://www.withsurface.com",
     "dark": "/images/surface-logo.png",
     "light": "/images/surface-logo.png"
   },
@@ -15,11 +16,31 @@
       "to": "#3D63E6"
     }
   },
+  "metadata": {
+    "og:image": "https://blog.withsurface.com/api/og?title=Docs",
+    "twitter:image": "https://blog.withsurface.com/api/og?title=Docs",
+    "twitter:title": "Documentation - Surface Labs",
+    "og:title": "Documentation - Surface Labs",
+    "twitter:description": "Surface Labs Documentation"
+  },
   "modeToggle": {
     "default": "light",
     "isHidden": true
   },
-  "topbarLinks": [],
+  "topbarLinks": [
+    {
+      "name": "Blogs",
+      "url": "https://blog.withsurface.com"
+    },
+    {
+      "name": "Testimonials",
+      "url": "https://blog.withsurface.com/customers"
+    },
+    {
+      "name": "Contact Us",
+      "url": "mailto:founders@withsurface.com"
+    }
+  ],
   "topbarCtaButton": {
     "name": "Dashboard",
     "url": "https://app.withsurface.com"
@@ -30,25 +51,50 @@
       "name": "Showcase",
       "icon": "newspaper",
       "url": "https://www.withsurface.com/showcase"
+    },
+    {
+      "name": "Blogs",
+      "icon": "blog",
+      "url": "https://blog.withsurface.com"
     }
   ],
   "navigation": [
     {
       "group": "Get Started",
-      "pages": ["introduction"]
-    },
-    {
-      "group": "Embed",
-      "pages": ["embed/inline", "embed/popup-slideover"]
-    },
-    {
-      "group": "Integrations",
       "pages": [
-        "integrations/zapier",
-        "integrations/gtm",
-        "integrations/webflow"
+        "introduction"
+      ]
+    },
+    {
+      "group": "Surface Forms",
+      "pages": [
+        {
+          "group": "Quick Start",
+          "pages": [
+            "surface-forms/quick-start/create-first-form"
+          ]
+        },
+        {
+          "group": "Embedding",
+          "pages": [
+            "surface-forms/embed/inline",
+            "surface-forms/embed/popup-slideover"
+          ]
+        },
+        {
+          "group": "Integrations",
+          "pages": [
+            "surface-forms/integrations/zapier",
+            "surface-forms/integrations/gtm",
+            "surface-forms/integrations/webflow"
+          ]
+        }
       ]
     }
   ],
-  "footerSocials": {}
+  "footerSocials": {
+    "website": "https://www.withsurface.com",
+    "linkedin": "https://www.linkedin.com/company/surface-labs",
+    "twitter": "https://x.com/surfacelabs_ai"
+  }
 }

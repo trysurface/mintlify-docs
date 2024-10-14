@@ -1,9 +1,16 @@
 ---
 title: "Webflow"
 description: "Integrate Surface Forms with Webflow"
-icon: "code"
+icon: "webflow"
+og:title: "Integrate Surface Form with Webflow"
+twitter:title: "Integrate Surface Form with Webflow"
+og:description: "Integrate Surface Forms with Webflow"
+twitter:description: "Integrate Surface Forms with Webflow"
+og:image: "https://blog.withsurface.com/api/og?title=Webflow%20Integration"
+twitter:image: "https://blog.withsurface.com/api/og?title=Webflow%20Integration"
 ---
 
+<Tip>This feature requires paid tier of webflow!</Tip>
 ### 1. Create a new form
 
 Create a new form using our no code [form builder](https://app.withsurface.com) and copy the form sharing link. For this tutorial suppose its https://app.withsurface.com/s/cm1b711u80001l803477zv0n4
@@ -34,9 +41,9 @@ There are 2 ways to embed the Surface Form, you may choose one according to your
 
 </Tabs>
 
-### 3. Adding JavaScript to webflow
+### 3. Adding JavaScript code
 
-Go to `https://webflow.com/dashboard/sites/<your_webflow_site_here>/custom-code` and paste the following code into the Head code section. For example, if your Webflow site is `meers-site.design.webflow.com`, the URL to insert the code would be `https://webflow.com/dashboard/sites/meers-site/custom-code`.
+Go to [dashboard](https://webflow.com/dashboard) and add the following custom code into the Head code section.
 
 <Tabs>
     <Tab title="Inline Embed">
@@ -50,7 +57,7 @@ Go to `https://webflow.com/dashboard/sites/<your_webflow_site_here>/custom-code`
 
         <script>
         window.onload = function() {
-            const surface_src = "<form url here>" // replace this with your Surface Form URL. 
+            const surface_src = "<form url here>" // replace this with your Surface Form URL.
             const surface_embed_type = "inline"
             const target_element_class = "surface-form-target"
             const c = new SurfaceEmbed(surface_src, surface_embed_type, target_element_class)
@@ -75,7 +82,7 @@ Go to `https://webflow.com/dashboard/sites/<your_webflow_site_here>/custom-code`
 
             <script>
             window.onload = function() {
-                const surface_src = "<form url here>" // replace this with your Surface Form URL. 
+                const surface_src = "<form url here>" // replace this with your Surface Form URL.
                 const surface_embed_type = "popup"
                 const target_element_class = "surface-form-button"
                 const c = new SurfaceEmbed(surface_src, surface_embed_type, target_element_class)
@@ -100,7 +107,7 @@ Go to `https://webflow.com/dashboard/sites/<your_webflow_site_here>/custom-code`
 
             <script>
             window.onload = function() {
-                const surface_src = "<form url here>" // replace this with your Surface Form URL. 
+                const surface_src = "<form url here>" // replace this with your Surface Form URL.
                 const surface_embed_type = "slideover"
                 const target_element_class = "surface-form-button"
                 const c = new SurfaceEmbed(surface_src, surface_embed_type, target_element_class)
