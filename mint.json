@@ -86,6 +86,7 @@
           "pages": [
             "surface-forms/integrations/framer",
             "surface-forms/integrations/gtm",
+            "surface-forms/integrations/nextjs",
             "surface-forms/integrations/webflow",
             "surface-forms/integrations/zapier"
           ]
