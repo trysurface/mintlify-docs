@@ -84,9 +84,11 @@
         {
           "group": "Integrations",
           "pages": [
-            "surface-forms/integrations/zapier",
+            "surface-forms/integrations/framer",
             "surface-forms/integrations/gtm",
-            "surface-forms/integrations/webflow"
+            "surface-forms/integrations/nextjs",
+            "surface-forms/integrations/webflow",
+            "surface-forms/integrations/zapier"
           ]
         }
       ]
