@@ -43,68 +43,71 @@ npx create-next-app@latest nextjs-surface-form
 
    - Go to your Next.js project and create a new file `surfaceForm-script.tsx` and add the following code:
 
-   ```jsx
-   /* eslint-disable @typescript-eslint/no-explicit-any */
-   "use client";
-   import Script from "next/script";
-   import { useEffect, useState } from "react";
+   ```tsx
+    /* eslint-disable @typescript-eslint/no-explicit-any */
+    "use client";
+    import Script from "next/script";
+    import { useEffect, useState } from "react";
 
-   declare global {
-   interface Window {
-       SurfaceEmbed: any;
-   }
-   }
+    declare global {
+    interface Window {
+        SurfaceEmbed: any;
+        showSurfaceForm: any;
+    }
+    }
 
-   export type SurfaceEmbedType = {
-   formUrl: string;
-   popupSize?: "small" | "medium" | "large";
-   type: "inline" | "popup";
-   children?: React.ReactNode;
-   };
+    export type SurfaceEmbedType = {
+    formUrl: string;
+    popupSize?: "small" | "medium" | "large";
+    children?: React.ReactNode;
+    };
 
-   export function SurfaceFormScript() {
-   return (
-       <Script
-       src="https://cdn.jsdelivr.net/gh/trysurface/scripts@latest/surface_embed_v1.js"
-       type="application/javascript"
-       strategy="afterInteractive"
-       onLoad={() => {
-           // @ts-expect-error - SurfaceEmbed is available on the global window object
-           window.SurfaceEmbed = SurfaceEmbed;
-       }}
-       />
-   );
-   }
+    export function SurfaceFormScript() {
+    return (
+        <Script
+        src="https://cdn.jsdelivr.net/gh/trysurface/scripts@latest/surface_embed_v1.js"
+        type="application/javascript"
+        strategy="afterInteractive"
+        onLoad={() => {
+            // @ts-expect-error - SurfaceEmbed is available on the global window object
+            window.SurfaceEmbed = SurfaceEmbed;
+        }}
+        />
+    );
+    }
 
-   export default function ShowSurfaceForm({
-   formUrl,
-   type,
-   popupSize
-   }: SurfaceEmbedType) {
-   const [isFormInitialized, setIsFormInitialized] = useState(false);
-   useEffect(() => {
-       if (!isFormInitialized) {
-
-       const SurfaceConstructor = new window.SurfaceEmbed(
-           formUrl,
-           type,
-           type === "popup" ? "surface-form-button" : "surface-form-target"
-       );
-       if (popupSize) {
-           SurfaceConstructor.popupSize = popupSize;
-       }
-       SurfaceConstructor.embedSurfaceForm();
-       setIsFormInitialized(true);
-       }
-   }, [formUrl, isFormInitialized, popupSize]);
-   return null;
-   }
+    export default function ShowSurfaceForm({
+    formUrl,
+    popupSize
+    }: SurfaceEmbedType) {
+    const [isFormInitialized, setIsFormInitialized] = useState(false);
+    useEffect(() => {
+        if (!isFormInitialized) {
+        
+        const SurfaceConstructor = new window.SurfaceEmbed(
+            formUrl,
+            "popup",
+            "surface-form-button"
+        );
+        if (popupSize) {
+            SurfaceConstructor.popupSize = popupSize;
+        }
+        SurfaceConstructor.embedSurfaceForm();
+        window.showSurfaceForm = () => {
+            SurfaceConstructor.showSurfaceForm();
+        }
+        setIsFormInitialized(true);
+        }
+    }, [formUrl, isFormInitialized, popupSize]);
+    return null;
+    }   
    ```
+   This script extends a function `window?.showSurfaceForm()` which can be used to open the form programmatically.
 
    - <b>For App Router</b> Now let's add the `SurfaceFormScript()` component to the
      `app/layout.tsx` file:
 
-   ```TSX
+   ```tsx
    export default function RootLayout({
    children,
    }: Readonly<{
@@ -116,7 +119,14 @@ npx create-next-app@latest nextjs-surface-form
        <SurfaceFormScript /> {/* Import the SurfaceFormScript component and add here */}
 
        <body>
+
+            <ShowSurfaceForm
+                formUrl="your_form_url"
+                popupSize="medium" {/* small, medium or large */}
+            />
+
            {children}
+
        </body>
        </html>
    );
@@ -133,8 +143,8 @@ npx create-next-app@latest nextjs-surface-form
     export default function MyApp({ Component, pageProps }) {
         return (
             <>
-            <Component {...pageProps} />
-            <SurfaceFormScript /> {/* Import the SurfaceFormScript component and add here */}
+                <Component {...pageProps} />
+                <SurfaceFormScript /> {/* Import the SurfaceFormScript component and add here */}
             </>
         )
     }
@@ -159,22 +169,29 @@ npx create-next-app@latest nextjs-surface-form
     - In the same file where you want to show the form, import `<ShowSurfaceForm />` component and add the following code:
 
     ```TSX
-    import ShowSurfaceForm  from "../surfaceForm-script";
-
     export default function Home() {
         return (
             <div>
-                <ShowSurfaceForm
-                    formUrl="https://app.withsurface.com/s/cm1b711u80001l803477zv0n4"
-                    type="" {/* popup or inline */}
-                    popupSize="" {/* small, medium or large */}
-                />
-
                 <button className="surface-form-button or surface-form-target">Open Form</button>
             </div>
         );
     }
     ```
+
+    <b>Or</b>
+
+    - If you want to open the form programmatically, you can use the following code:
+
+    ```TSX
+    export default function Home() {
+        return (
+            <div>
+                <button onClick(() => window?.showSurfaceForm())>Open Form</button>
+            </div>
+        );
+    }
+    ```
+
 
 ### 4. All done!
 
