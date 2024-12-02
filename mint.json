@@ -30,11 +30,11 @@
   "topbarLinks": [
     {
       "name": "Blogs",
-      "url": "https://blog.withsurface.com"
+      "url": "https://withsurface.com/blog"
     },
     {
       "name": "Testimonials",
-      "url": "https://blog.withsurface.com/customers"
+      "url": "https://withsurface.com/customers"
     },
     {
       "name": "Contact Us",
@@ -55,7 +55,7 @@
     {
       "name": "Blogs",
       "icon": "blog",
-      "url": "https://blog.withsurface.com"
+      "url": "https://withsurface.com/blog"
     }
   ],
   "navigation": [
@@ -77,6 +77,7 @@
         {
           "group": "Embedding",
           "pages": [
+            "surface-forms/embed/surface-tag",
             "surface-forms/embed/inline",
             "surface-forms/embed/popup-slideover"
           ]
@@ -95,6 +96,9 @@
       ]
     }
   ],
+  "integrations": {
+    "intercom": "gnu10kz2"
+  },
   "footerSocials": {
     "website": "https://www.withsurface.com",
     "linkedin": "https://www.linkedin.com/company/surface-labs",
