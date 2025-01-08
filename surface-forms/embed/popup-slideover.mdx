@@ -100,4 +100,24 @@ window.onload = function() {
 
 You can set the the `popupSize` variable on the `SurfaceEmbed` instance to control the size of the popup. Current accepted values are `medium` and `large`
 
+### Trigger Popup with external input
 
+If you want to trigger the popup with an external input, follow the following steps:
+
+1. Add the `surface-form-id` id to the `<form>` element.
+2. Add the following scripts to your head tag:
+
+```JSX
+
+<script fetchpriority="high" 
+        src="https://cdn.jsdelivr.net/gh/trysurface/scripts@latest/surface_embed_script_v4.js" 
+        type="application/javascript">
+</script>
+<script type="module">
+        window.onload=function(){let e=new URL(window.location.href),r="ENTER_YOUR_SURFACE_FORM_URL_HERE",n=`${r}?url=${encodeURIComponent(e)}`;src=n,formID="surface-form-id";var t=document.getElementById(formID);embedSurfaceForm(),t.addEventListener("submit",function(o){o.preventDefault();var m=t.elements[0].value;e.searchParams.append("email",m);var a=`${r}?url=${encodeURIComponent(e.toString())}`;document.getElementById("surface-iframe").src=a,showSurfaceForm()})};
+</script> 
+
+<!-- replace ENTER_YOUR_SURFACE_FORM_URL_HERE with your surface form url -->
+
+```
+3. Done! Now you can trigger the popup with an external input.
