@@ -45,11 +45,23 @@
     "name": "Dashboard",
     "url": "https://app.withsurface.com"
   },
-  "tabs": [],
+  "primaryTab": {
+    "name": "Docs"
+  },
+  "tabs": [
+    {
+      "name": "Walkthrough",
+      "url": "walkthrough"
+    },
+    {
+      "name": "Developers",
+      "url": "developers"
+    }
+  ],
   "navigation": [
     {
       "group": "Overview",
-      "pages": ["introduction", "surface-labs/about", "surface-labs/changelog"]
+      "pages": ["introduction", "onboarding", "surface-labs/changelog"]
     },
     {
       "group": "Getting Started",
@@ -62,19 +74,6 @@
     {
       "group": "Features",
       "pages": [
-        {
-          "group": "Forms",
-          "pages": [
-            {
-              "group": "Embedding the form on your site",
-              "pages": [
-                "surface-forms/embed/inline",
-                "surface-forms/embed/popup-slideover",
-                "surface-forms/embed/email-trigger"
-              ]
-            }
-          ]
-        },
         {
           "group": "Leads",
           "pages": [
@@ -109,14 +108,38 @@
       ]
     },
     {
-      "group": "Integrations Guides",
+      "group": "Surface Forms",
       "pages": [
-        "surface-forms/integrations/framer",
-        "surface-forms/integrations/gtm",
-        "surface-forms/integrations/nextjs",
-        "surface-forms/integrations/reactjs",
-        "surface-forms/integrations/webflow",
-        "surface-forms/integrations/zapier"
+        "developers/overview",
+        {
+          "group": "Embedding",
+          "pages": [
+            "developers/surface-forms/inline",
+            "developers/surface-forms/popup-slideover",
+            "developers/surface-forms/email-trigger"
+          ]
+        },
+        {
+          "group": "Integrations",
+          "pages": [
+            "developers/integrations/framer",
+            "developers/integrations/gtm",
+            "developers/integrations/nextjs",
+            "developers/integrations/reactjs",
+            "developers/integrations/webflow",
+            "developers/integrations/zapier"
+          ]
+        }
+      ]
+    },
+    {
+      "group": "Walkthrough",
+      "pages": [
+        "walkthrough/overview",
+        {
+          "group": "Forms",
+          "pages": ["walkthrough/forms/send-data-to-airtable"]
+        }
       ]
     }
   ],

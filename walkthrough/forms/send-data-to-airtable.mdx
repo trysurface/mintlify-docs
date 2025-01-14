@@ -1,0 +1,102 @@
+---
+title: "Send Data to Airtable"
+description: "Learn how to send Surface Form submissions to Airtable using webhooks"
+---
+
+This guide will walk you through connecting your Surface Form submissions to Airtable using webhooks. You'll be able to automatically create new records in your Airtable base whenever someone submits your form.
+
+## Prerequisites
+
+Before you begin, make sure you have:
+- A Surface Forms account with a form created
+- An Airtable account and base set up
+- Admin access to both platforms
+
+## Step 1: Create Your Form and Airtable Project
+
+1. In Surface Forms, create your form if you haven't already
+2. In Airtable, create a new base or use an existing one
+3. Set up your table with columns that match the data you want to receive from your form
+
+<Note>
+Make sure your Airtable column names are clearly defined, as you'll need to reference them later in the webhook payload.
+</Note>
+
+## Step 2: Set Up Airtable Automation
+
+1. In your Airtable base, click on the **Automations** tab
+2. Click **Create Automation**
+3. Select **When webhook received** as your trigger
+4. Add a second action step by clicking the **+** button
+5. Choose **Create Record** as your action
+6. Configure the Create Record action:
+   - Select your target table
+   - Map the incoming webhook fields to your table columns
+7. Save the automation and copy the webhook URL
+
+<img src="/images/walkthroughs/airtable/1.png" alt="Airtable webhook URL" />
+
+<Tip>
+You can also use the [Airtable API](https://airtable.com/developers/web/api) to create records programmatically.
+</Tip>
+
+<Warning>
+Keep your webhook URL secure - anyone with this URL can send data to your Airtable base.
+</Warning>
+
+## Step 3: Configure Surface Forms Workflow
+
+1. Open the Surface Forms Workflow Builder
+2. Create a new workflow:
+
+<img src="/images/walkthroughs/airtable/2.png" alt="Airtable webhook URL" />
+
+### Workflow Trigger Options
+
+You can configure when the webhook sends data:
+- On form submission
+- When visitor drops off
+- While form is in progress
+
+<img src="/images/walkthroughs/airtable/3.png" alt="Airtable webhook URL" />
+
+### Configure the Webhook Action
+
+1. Click the **+** button to add a new node
+2. Select **HTTP Request** from the actions menu
+3. In the sidebar configuration:
+   - Set **Request URL** to your Airtable webhook URL
+   - Change **HTTP Method** to `POST`
+   - Under **Body**, add your JSON mapping. Where the object key is the Airtable column name and the value is the form variable.
+
+<img src="/images/walkthroughs/airtable/4.png" alt="HTTP Request configuration" />
+
+
+<Tip>
+Use the `@` symbol in the workflow builder to access form variables. Press `@` and start typing to see available fields from your form.
+</Tip>
+
+## Step 4: Test Your Integration
+
+1. Submit a test entry through your Surface Form
+2. Check your Airtable base for the new record
+3. Verify that all fields are mapping correctly
+
+<Note>
+If you don't see data appearing in Airtable:
+- Check your webhook URL is correct
+- Verify your JSON payload structure matches your Airtable columns
+- Review the workflow logs in Surface Forms
+</Note>
+
+
+## Next Steps
+
+## Walkthrough Complete! 🎉
+
+You've successfully set up your Surface Forms to Airtable integration. Your form submissions will now automatically sync to your Airtable base.
+
+Need help or have questions? Our team is here to assist:
+- Email us at [support@withsurface.com](mailto:support@withsurface.com)
+- Check our [documentation](/introduction) for more guides
+- Schedule a [consultation](mailto:founders@withsurface.com) with our team
