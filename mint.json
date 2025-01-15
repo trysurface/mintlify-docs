@@ -66,8 +66,8 @@
     {
       "group": "Getting Started",
       "pages": [
-        "surface-forms/quick-start/create-first-form",
         "surface-tag/quick-start",
+        "surface-forms/quick-start/create-first-form",
         "surface-tag/website-deanon"
       ]
     },
