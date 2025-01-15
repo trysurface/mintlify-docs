@@ -87,9 +87,10 @@
         {
           "group": "Leads",
           "pages": [
+            "leads/overview",
             {
               "group": "Leads Table",
-              "pages": ["surface-forms/leads/lead-profile"]
+              "pages": ["leads/lead-score"]
             },
             {
               "group": "Segments",
@@ -104,7 +105,7 @@
         {
           "group": "Workflows",
           "pages": [
-            "What is a workflow?",
+            "workflows/overview",
             {
               "group": "What are some of the workflows that can be built on Surface?",
               "pages": ["ABM", "1-click follow-ups"]
@@ -113,11 +114,7 @@
         },
         {
           "group": "Surface Tag",
-          "pages": ["What is the Surface Tag?", "How to install on your site"]
-        },
-        {
-          "group": "Integrations",
-          "pages": ["What is the Surface Tag?", "How to install on your site"]
+          "pages": ["surface-tag/overview", "surface-tag/implementation"]
         }
       ]
     },
