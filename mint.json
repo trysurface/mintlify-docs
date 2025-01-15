@@ -50,7 +50,7 @@
   },
   "tabs": [
     {
-      "name": "Walkthrough",
+      "name": "Guides",
       "url": "walkthrough"
     },
     {
@@ -72,8 +72,18 @@
       ]
     },
     {
-      "group": "Features",
+      "group": "Reference",
       "pages": [
+        {
+          "group": "Forms",
+          "pages": [
+            "surface-forms/overview",
+            "surface-forms/form-builder",
+            "surface-forms/enrichment",
+            "surface-forms/conditional-routing",
+            "surface-forms/ab-testing"
+          ]
+        },
         {
           "group": "Leads",
           "pages": [
@@ -92,7 +102,7 @@
           ]
         },
         {
-          "group": "Workflow Builder",
+          "group": "Workflows",
           "pages": [
             "What is a workflow?",
             {
@@ -102,7 +112,11 @@
           ]
         },
         {
-          "group": "Tag",
+          "group": "Surface Tag",
+          "pages": ["What is the Surface Tag?", "How to install on your site"]
+        },
+        {
+          "group": "Integrations",
           "pages": ["What is the Surface Tag?", "How to install on your site"]
         }
       ]
@@ -136,10 +150,7 @@
       "group": "Walkthrough",
       "pages": [
         "walkthrough/overview",
-        {
-          "group": "Forms",
-          "pages": ["walkthrough/forms/send-data-to-airtable"]
-        }
+        "walkthrough/forms/send-data-to-airtable"
       ]
     }
   ],

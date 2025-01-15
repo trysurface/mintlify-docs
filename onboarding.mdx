@@ -13,7 +13,7 @@ Connect Surface Forms to your website to start capturing visitor data. There are
   Add the Surface Forms JavaScript snippet to your website with minimal setup:
   ```javascript
   <script
-    src="https://cdn.jsdelivr.net/gh/trysurface/scripts@latest/surface_tag.js"
+    src="https://cdn.jsdelivr.net/gh/trysurface/scripts@latest/surface_tag.min.js"
     type="application/javascript"
   > </script>
   ```
@@ -36,20 +36,16 @@ Create your first intelligent form to start engaging visitors:
 
 Connect your existing tools to enrich visitor data and automate follow-ups:
 
-<CardGroup>
-  <Card title="CRM Integration" icon="building">
-    Connect your CRM of choice:
-    - Salesforce
-    - HubSpot
-    - Pipedrive
+
+  <Card>
+    <div style={{ display: 'flex', gap: '16px', width: '100%', flexWrap: 'wrap', justifyContent: 'center' }}>
+      <img src="/images/integrations/zapier.png" alt="Zapier" width={44} height={44} />
+      <img src="/images/integrations/hubspot.png" alt="Hubspot" width={44} height={44} />
+      <img src="/images/integrations/salesforce.png" alt="Salesforce" width={44} height={44} />
+      <img src="/images/integrations/slack.png" alt="Slack" width={44} height={44} />
+    </div>
   </Card>
-  <Card title="Marketing Tools" icon="bullhorn">
-    Connect your marketing stack:
-    - Mailchimp
-    - Marketo
-    - Customer.io
-  </Card>
-</CardGroup>
+
 
 ## Step 4: Define your ICP
 
@@ -67,10 +63,7 @@ Create your Ideal Customer Profile to enable intelligent targeting:
 Turn on website intent data to reveal anonymous visitors:
 
 <Card title="Visitor Intelligence" icon="user-secret">
-  Enable high-coverage website identification with built-in integrations:
-  - 6sense
-  - Clearbit
-  - Custom API integration
+  Enable high-coverage website identification with built-in integrations.
 </Card>
 
 ## Step 6: See walkthroughs
@@ -86,6 +79,23 @@ You're ready to start using Surface Forms! We recommend checking out these resou
   </Card>
   <Card title="Advanced Features" icon="gear">
     Explore advanced capabilities and customizations.
+  </Card>
+</CardGroup>
+
+## Extra Resources
+
+### Add a Surface Form to your Site
+
+Choose your platform below for specific integration instructions:
+<CardGroup cols={3}>
+  <Card title="Framer" icon="frame" href="developers/integrations/framer">
+    Add Surface Forms to your Framer site.
+  </Card>
+  <Card title="Webflow" icon="window" href="developers/integrations/webflow">
+    Install Surface Forms on your Webflow site.
+  </Card>
+  <Card title="Next.js" icon="react" href="developers/integrations/nextjs">
+    Integrate Surface Forms with your Next.js app.
   </Card>
 </CardGroup>
 
