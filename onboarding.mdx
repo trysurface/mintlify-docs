@@ -36,16 +36,26 @@ Create your first intelligent form to start engaging visitors:
 
 Connect your existing tools to enrich visitor data and automate follow-ups:
 
-
-  <Card>
-    <div style={{ display: 'flex', gap: '16px', width: '100%', flexWrap: 'wrap', justifyContent: 'center' }}>
-      <img src="/images/integrations/zapier.png" alt="Zapier" width={44} height={44} />
-      <img src="/images/integrations/hubspot.png" alt="Hubspot" width={44} height={44} />
-      <img src="/images/integrations/salesforce.png" alt="Salesforce" width={44} height={44} />
-      <img src="/images/integrations/slack.png" alt="Slack" width={44} height={44} />
-    </div>
+<CardGroup cols={2}>
+    <Card title="Salesforce" icon="salesforce" href="integrations/salesforce">
+    Push form submissions directly into Salesforce as leads or contacts with custom field mapping
+  </Card>
+  
+  <Card title="HubSpot" icon="hubspot" href="integrations/hubspot">
+    Create or update HubSpot contacts from form submissions in real-time
+  </Card>
+  
+  <Card title="Slack" icon="slack" href="integrations/slack">
+    Get instant Slack notifications when forms are submitted with customizable message formats
   </Card>
 
+  <Card title="Zapier" icon="bolt" href="integrations/zapier">
+    Connect form submissions to 5000+ apps through Zapier's automation platform
+  </Card>
+</CardGroup>
+<Card title="We're adding more integrations all the time">
+  <p>If you don't see the integration you need, please let us know and we'll add it.</p>
+</Card>
 
 ## Step 4: Define your ICP
 
