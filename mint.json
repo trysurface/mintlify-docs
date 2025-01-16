@@ -85,12 +85,12 @@
           ]
         },
         {
-          "group": "Leads",
+          "group": "Leads Hub",
           "pages": [
             "leads/overview",
             {
               "group": "Leads Table",
-              "pages": ["leads/lead-score"]
+              "pages": ["leads/lead-table/overview", "leads/lead-table/lead-score"]
             },
             {
               "group": "Segments",
