@@ -106,10 +106,7 @@
           "group": "Workflows",
           "pages": [
             "workflows/overview",
-            {
-              "group": "What are some of the workflows that can be built on Surface?",
-              "pages": ["ABM", "1-click follow-ups"]
-            }
+            "workflows/examples"
           ]
         },
         {
@@ -148,6 +145,35 @@
       "pages": [
         "walkthrough/overview",
         "walkthrough/forms/send-data-to-airtable"
+      ]
+    },
+    {
+      "group": "Integrations",
+      "pages": [
+        {
+          "group": "Slack",
+          "pages": [
+            "integrations/slack/overview"
+          ]
+        },
+        {
+          "group": "Zapier",
+          "pages": [
+            "integrations/zapier/overview"
+          ]
+        },
+        {
+          "group": "Hubspot",
+          "pages": [
+            "integrations/hubspot/overview"
+          ]
+        },
+        {
+          "group": "Salesforce",
+          "pages": [
+            "integrations/salesforce/overview"
+          ]
+        }
       ]
     }
   ],

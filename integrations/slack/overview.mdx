@@ -1,0 +1,123 @@
+---
+title: "Slack Integration Guide"
+description: "This guide will help you integrate Slack with Surface Products"
+sidebarTitle: "Overview"
+icon: "slack"
+---
+
+Slack is a popular messaging platform that allows you to communicate with your team and customers. Surface Forms can be integrated with Slack to send notifications when a form is submitted, in progress or dropped.
+
+## Integration Steps
+
+<Frame caption="Slack Integration">
+    <img src="/images/integrations/slack/1.png" />
+</Frame>
+
+<Steps>
+  1. Navigate to the **Integrations** panel from the sidebar
+  2. Find the Slack card and click **Authenticate**
+  3. Select your Slack workspace and authorize with required permissions
+  4. Click **Install** to complete the basic setup
+</Steps>
+
+## Channel Configuration
+
+For both public and private channels, you need to add the Surface Bot to the channel.
+
+<Steps>
+  - Open the channel where you want to receive notifications <br/>
+  - Add Surface app to the channel using:
+    <Frame caption="Add Surface app to the channel">
+        <img src="/images/integrations/slack/2.png" />
+    </Frame>
+  - Select "Surface" from the apps list
+    <Frame caption="Select Surface app">
+        <img src="/images/integrations/slack/3.png" />
+    </Frame>
+</Steps>
+
+<Note>
+  Make sure you have the necessary permissions in your Slack workspace to add apps to channels.
+</Note>
+
+## Notification Types
+
+Configure different types of notifications:
+
+<CardGroup cols={2}>
+  <Card title="Form Submissions" icon="paper-plane">
+    Get notified when users complete your forms with submission details
+  </Card>
+  
+  <Card title="Form Progress" icon="spinner">
+    Track when users start filling out forms or complete specific steps
+  </Card>
+  
+  <Card title="Form Abandonment" icon="user-xmark">
+    Receive alerts when users drop off from your forms
+  </Card>
+  
+  <Card title="Lead Alerts" icon="bell">
+    Get instant notifications for high-value leads based on your criteria
+  </Card>
+</CardGroup>
+
+## Message Customization
+
+You can customize notification messages with:
+- Form name and details
+- Lead information
+- Custom fields
+- Conditional formatting
+- Action buttons
+
+Example message format:
+```
+📝 New Form Submission
+Form: {{form.name}}
+Lead: {{lead.name}}
+Company: {{lead.company}}
+Email: {{lead.email}}
+```
+
+## Best Practices
+
+<Card title="Tips for Slack Integration">
+<ol>
+  <li>1. Use dedicated channels for different form types</li>
+  <li>2. Set up separate channels for high-priority leads</li>
+  <li>3. Customize notifications based on form importance</li>
+  <li>4. Regularly review and update channel configurations</li>
+  <li>5. Test notifications after setup</li>
+</ol>
+</Card>
+
+## Troubleshooting
+
+Common issues and solutions:
+
+<AccordionGroup>
+  <Accordion title="Bot Not Posting">
+    1. Verify bot is invited to the channel
+    2. Check channel permissions
+    3. Confirm Surface app is added to channel
+  </Accordion>
+  
+  <Accordion title="Missing Notifications">
+    1. Verify workflow configuration
+    2. Check notification settings
+    3. Ensure correct channel selection
+  </Accordion>
+</AccordionGroup>
+
+## Related Resources
+
+<CardGroup>
+  <Card title="Workflow Examples" icon="diagram-project" href="/workflows/examples">
+    See examples of Slack notification workflows
+  </Card>
+  
+  <Card title="Integration Settings" icon="gear" href="/integrations/settings">
+    Configure advanced integration settings
+  </Card>
+</CardGroup>

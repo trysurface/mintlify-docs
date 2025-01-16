@@ -11,12 +11,32 @@ The Surface Forms Builder lets you create sophisticated forms without writing an
 ### Single Pane vs Dual Pane
 Choose between two powerful layout options:
 
-<CardGroup cols={2}>
+<CardGroup cols={1}>
   <Card title="Single Pane" icon="square">
     Traditional form layout focused on collecting information. Perfect for simple forms and embedded experiences.
+    <br/>
+    <Accordion title="Preview Single Pane">
+      <iframe src="https://forms.withsurface.com/s/cm2iazt4p0001mg03aexfqcnz" width="100%" height="500px" />
+    </Accordion>
   </Card>
   <Card title="Dual Pane" icon="grid">
     Split-screen layout with marketing content on one side and form on the other. Ideal for landing pages and conversion-focused forms.
+    <br/>
+    <Accordion title="Preview Dual Pane">
+      <div style={{
+        width: "100%",
+        height: "300px",
+        overflow: "hidden",
+        position: "relative"
+      }}>
+        <iframe style={{
+          width: "1280px",
+          height: "720px",
+          transform: "scale(0.5)",
+          transformOrigin: "0 0"
+        }} src="https://forms.withsurface.com/s/cm2iazt4p0001mg03aexfqcnz" />
+      </div>
+    </Accordion>
   </Card>
 </CardGroup>
 
@@ -74,7 +94,6 @@ Each component comes with powerful capabilities:
 ## Multi-Step Forms
 
 Create sophisticated multi-step forms:
-
 <Steps>
   1. Add new steps using the "+ Add step" button
   2. Arrange steps in your desired order

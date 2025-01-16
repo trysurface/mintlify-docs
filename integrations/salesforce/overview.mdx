@@ -1,0 +1,107 @@
+---
+title: "Salesforce Integration Guide"
+description: "Connect your forms with Salesforce to automatically create contacts and opportunities"
+sidebarTitle: "Overview"
+icon: "salesforce"
+---
+
+Surface Forms integrates with Salesforce to automatically create and update contacts, opportunities, and other objects from your form submissions.
+
+## Integration Steps
+
+<Steps>
+  1. Navigate to the **Integrations** panel from the sidebar
+  2. Find the Salesforce card and click **Authenticate**
+  3. Log in to your Salesforce account when prompted
+  4. Authorize Surface Forms to access your Salesforce data
+</Steps>
+
+## Setting Up Workflows
+
+<Steps>
+  1. Go to **Workflow Builder** from the sidebar
+  2. Click "Create workflow"
+  3. Select source:
+     - Choose "Surface forms" as source
+     - Select your form
+     - Choose trigger type (Finished/In Progress/Dropped Off)
+  4. Add Salesforce action:
+     - Click "+ Actions"
+     - Select "Salesforce" from the actions list
+</Steps>
+<Frame caption="Workflow Setup">
+    <img src="/images/integrations/salesforce/1.png" />
+</Frame>
+
+## Available Actions
+
+<CardGroup cols={2}>
+  <Card title="Create Contact" icon="user-plus">
+    Create a new contact in Salesforce from form submission data. Map form fields to Salesforce contact fields.
+  </Card>
+  
+  <Card title="Create Opportunity" icon="money-bill">
+    Generate a new opportunity and associate it with contacts. Set opportunity details from form data.
+  </Card>
+</CardGroup>
+
+## Workflow Configuration
+
+<Frame caption="Workflow Setup">
+    <img src="/images/integrations/salesforce/2.png" />
+</Frame>
+
+### Trigger Types
+<CardGroup cols={3}>
+  <Card title="Form Submission" icon="paper-plane">
+    Triggers when form is completed
+  </Card>
+  
+  <Card title="In Progress" icon="spinner">
+    Triggers during form completion
+  </Card>
+  
+  <Card title="Dropped Off" icon="user-xmark">
+    Triggers when form is abandoned
+  </Card>
+</CardGroup>
+
+## Best Practices
+
+<Card title="Integration Tips">
+  <ol>
+    <li>1. Map all essential form fields to Salesforce fields</li>
+    <li>2. Test workflows with sample submissions</li>
+    <li>3. Set up proper error handling</li>
+    <li>4. Monitor integration performance</li>
+    <li>5. Keep field mappings updated</li>
+  </ol>
+</Card>
+
+## Troubleshooting
+
+<AccordionGroup>
+  <Accordion title="Authentication Issues">
+    1. Verify Salesforce credentials
+    2. Check API permissions
+    3. Reconnect integration if needed
+  </Accordion>
+  
+  <Accordion title="Workflow Problems">
+    1. Confirm workflow is activated
+    2. Check trigger conditions
+    3. Verify field mappings
+  </Accordion>
+</AccordionGroup>
+
+## Related Resources
+
+<CardGroup>
+  <Card title="Workflow Examples" icon="diagram-project" href="/workflows/examples">
+    See examples of Salesforce automation workflows
+  </Card>
+  
+  <Card title="Field Mapping Guide" icon="arrows-left-right" href="/integrations/salesforce/field-mapping">
+    Learn about Salesforce field mapping
+  </Card>
+</CardGroup>
