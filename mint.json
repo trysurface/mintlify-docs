@@ -60,16 +60,8 @@
   ],
   "navigation": [
     {
-      "group": "Overview",
-      "pages": ["introduction", "onboarding", "surface-labs/changelog"]
-    },
-    {
       "group": "Getting Started",
-      "pages": [
-        "surface-tag/quick-start",
-        "surface-forms/quick-start/create-first-form",
-        "surface-tag/website-deanon"
-      ]
+      "pages": ["introduction", "onboarding"]
     },
     {
       "group": "Reference",
@@ -88,18 +80,8 @@
           "group": "Leads Hub",
           "pages": [
             "leads/overview",
-            {
-              "group": "Leads Table",
-              "pages": ["leads/lead-table/overview", "leads/lead-table/lead-score"]
-            },
-            {
-              "group": "Segments",
-              "pages": ["surface-forms/segments/create-a-segment"]
-            },
-            {
-              "group": "ICPs",
-              "pages": ["surface-forms/icps/create-an-icp"]
-            }
+            "leads/lead-table/lead-table",
+            "leads/lead-score"
           ]
         },
         {
@@ -111,12 +93,12 @@
         },
         {
           "group": "Surface Tag",
-          "pages": ["surface-tag/overview", "surface-tag/implementation"]
+          "pages": ["surface-tag/overview", "surface-tag/implementation", "surface-tag/website-deanon"]
         }
       ]
     },
     {
-      "group": "Surface Forms",
+      "group": "Developers",
       "pages": [
         "developers/overview",
         {
@@ -128,7 +110,7 @@
           ]
         },
         {
-          "group": "Integrations",
+          "group": "Installation",
           "pages": [
             "developers/integrations/framer",
             "developers/integrations/gtm",
@@ -150,30 +132,10 @@
     {
       "group": "Integrations",
       "pages": [
-        {
-          "group": "Slack",
-          "pages": [
-            "integrations/slack/overview"
-          ]
-        },
-        {
-          "group": "Zapier",
-          "pages": [
-            "integrations/zapier/overview"
-          ]
-        },
-        {
-          "group": "Hubspot",
-          "pages": [
-            "integrations/hubspot/overview"
-          ]
-        },
-        {
-          "group": "Salesforce",
-          "pages": [
-            "integrations/salesforce/overview"
-          ]
-        }
+        "integrations/slack/overview",
+        "integrations/zapier/overview",
+        "integrations/hubspot/overview",
+        "integrations/salesforce/overview"
       ]
     }
   ],
