@@ -10,6 +10,30 @@ og:image: "https://blog.withsurface.com/api/og?title=Framer%20Integration"
 twitter:image: "https://blog.withsurface.com/api/og?title=Framer%20Integration"
 ---
 
+<Info>
+  Before proceeding, make sure you have installed the Surface Tag on your website. Follow this guide to install the Surface Tag first:
+  
+  <Steps>
+    <Step>
+      Go to *settings* of the project.
+    </Step>
+    <Step>
+      Scroll down to *Custom Code* section.
+    </Step>
+    <Step>
+      Add the following code in the *Start of `<head>` tag* section.
+    </Step>
+  </Steps>
+  
+  ```javascript
+  <script
+      src="https://cdn.jsdelivr.net/gh/trysurface/scripts@latest/surface_tag.min.js"
+      type="application/javascript"
+  > </script>
+  ```
+</Info>
+
+
 ### 1. Create a new Surface Form
 
 Create a new form using our no code [form builder](https://app.withsurface.com) and copy the form sharing link. You can also [follow this](../quick-start/create-first-form) tutorial to create a basic Surface Form. <br/> For this tutorial suppose its https://forms.withsurface.com/s/cm2jrdp7o0001jv03ui09zrgy
@@ -59,7 +83,7 @@ Create a new framer projects using [Framer Dashboard](https://framer.com/).
         <!-- Start of Surface Form snippet -->
 
         <script
-            src="https://cdn.jsdelivr.net/gh/trysurface/scripts@latest/surface_tag.js"
+            src="https://cdn.jsdelivr.net/gh/trysurface/scripts@latest/surface_tag.min.js"
             type="application/javascript"
         > </script>
 
@@ -84,7 +108,7 @@ Create a new framer projects using [Framer Dashboard](https://framer.com/).
         <!-- Start of Surface Form snippet -->
 
         <script
-            src="https://cdn.jsdelivr.net/gh/trysurface/scripts@latest/surface_tag.js"
+            src="https://cdn.jsdelivr.net/gh/trysurface/scripts@latest/surface_tag.min.js"
             type="application/javascript"
         > </script>
 

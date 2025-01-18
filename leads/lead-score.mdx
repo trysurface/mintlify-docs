@@ -1,0 +1,165 @@
+---
+title: "Lead Scoring"
+description: "Automatically score and grade leads based on your Ideal Customer Profile (ICP)"
+---
+
+<Frame caption="Surface ICP Configuration">
+<img src="/images/ICP.png" alt="ICP Confiuguration" />
+</Frame>
+
+Surface's lead scoring system automatically evaluates and grades leads based on your defined Ideal Customer Profile (ICP) criteria. The system processes both new and updated leads through our scoring engine to assign accurate grades.
+
+## How Lead Scoring Works
+
+<Steps>
+  1. Lead data is submitted or updated through forms
+  2. System processes lead through our API
+  3. Lead attributes are matched against ICP criteria
+  4. Score is calculated based on matching weights
+  5. Lead is assigned a grade (A, B, or C)
+</Steps>
+
+## Scoring Process
+
+The scoring engine evaluates leads through multiple stages:
+
+<Card>
+- • Lead Creation/Update
+- • Attribute Matching 
+- • ICP Comparison
+- • Score Calculation
+- • Grade Assignment
+</Card>
+
+## Scoring Components
+
+### ICP Criteria
+Define your ideal customer profile with weighted attributes:
+
+<CardGroup cols={2}>
+  <Card title="Company Attributes" icon="building">
+    <ol>
+      <li>• Number of Employees</li>
+      <li>• Company Revenue</li>
+      <li>• Industry</li>
+      <li>• Target Geography</li>
+    </ol>
+  </Card>
+  
+  <Card title="Contact Attributes" icon="user">
+    <ol>
+      <li>• Title</li>
+      <li>• Seniority Level</li>
+      <li>• Department</li>
+      <li>• Role</li>
+    </ol>
+  </Card>
+</CardGroup>
+
+### Attribute Weights
+Each ICP criterion can be assigned a weight (0.0 - 1.0):
+
+```javascript
+{
+  numberOfEmployees: 0.8,    // High importance
+  title: 0.5,               // Medium importance
+  seniorityLevel: 0.5,      // Medium importance
+  companyRevenue: 0.2       // Lower importance
+}
+```
+
+## Score Calculation
+
+The system calculates scores using a weighted average formula:
+
+<Card title="Scoring Formula">
+  ```
+  Score = (Σ (attribute_weight * match_value)) / (Σ weights)
+  
+  Where:
+  - match_value is 1 if attribute matches ICP, 0 if it doesn't
+  - weights are the importance values assigned to each attribute
+  ```
+</Card>
+
+## Grade Assignment
+
+Leads are automatically assigned grades based on their calculated scores:
+
+<CardGroup cols={3}>
+  <Card title="Grade A" icon="star">
+    <ol>
+      <li>1. Score: 0.66 - 1.0</li>
+      <li>2. High-value leads matching most ICP criteria</li>
+    </ol>
+  </Card>
+  
+  <Card title="Grade B" icon="star-half">
+    <ol>
+      <li>1. Score: 0.33 - 0.66</li>
+      <li>2. Moderate-value leads with partial ICP match</li>
+    </ol>
+  </Card>
+  
+  <Card title="Grade C" icon="star-exclamation">
+    <ol>
+      <li>1. Score: 0 - 0.33</li>
+      <li>2. Lower-value leads with minimal ICP match</li>
+    </ol>
+  </Card>
+</CardGroup>
+
+## Example Calculation
+
+For a lead with these attributes:
+```javascript
+{
+  emailAddress: "lead@lead.com",
+  firstName: "lead",
+  lastName: "lead",
+  company: "Uber",
+  title: "CEO",
+  companyRevenue: "5 Million to 10 Million",
+  companyDescription: "This is a great company"
+}
+```
+
+Against this ICP:
+```javascript
+{
+  numberOfEmployees: {
+    values: ["51-100", "100-1000"],
+    weight: 0.8
+  },
+  title: {
+    values: ["CMO", "Director of Marketing"],
+    weight: 0.5
+  },
+  seniorityLevel: {
+    values: ["C-suite"],
+    weight: 0.5
+  },
+  companyRevenue: {
+    values: ["5 Million to 10 Million", "10 Million to 25 Million"],
+    weight: 0.2
+  }
+}
+```
+
+The calculation would be:
+```
+[(0.8 * 0) + (0.5 * 0) + (0.5 * 1) + (0.2 * 1)] / [0.8 + 0.5 + 0.5 + 0.2]
+```
+
+## Best Practices
+
+<Card title="Scoring Tips">
+  <ol>
+    <li>1. Define clear ICP criteria</li>
+    <li>2. Assign weights based on business impact</li>
+    <li>3. Regularly review and adjust weights</li>
+    <li>4. Monitor score distributions</li>
+    <li>5. Validate scoring accuracy</li>
+    <li>6. Update criteria as your ICP evolves</li>
+  </ol>
+</Card>

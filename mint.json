@@ -45,59 +45,97 @@
     "name": "Dashboard",
     "url": "https://app.withsurface.com"
   },
-  "tabs": [],
-  "anchors": [
+  "primaryTab": {
+    "name": "Docs"
+  },
+  "tabs": [
     {
-      "name": "Showcase",
-      "icon": "newspaper",
-      "url": "https://www.withsurface.com/showcase"
+      "name": "Guides",
+      "url": "walkthrough"
     },
     {
-      "name": "Blogs",
-      "icon": "blog",
-      "url": "https://withsurface.com/blog"
+      "name": "Developers",
+      "url": "developers"
     }
   ],
   "navigation": [
     {
-      "group": "Get Started",
-      "pages": [
-        "introduction"
-      ]
+      "group": "Getting Started",
+      "pages": ["introduction", "onboarding"]
     },
     {
-      "group": "Surface Tag",
-      "pages": [
-        "surface-tag/quick-start"
-      ]
-    },
-    {
-      "group": "Surface Forms",
+      "group": "Reference",
       "pages": [
         {
-          "group": "Quick Start",
+          "group": "Surface Forms",
           "pages": [
-            "surface-forms/quick-start/create-first-form"
+            "surface-forms/overview",
+            "surface-forms/form-builder",
+            "surface-forms/enrichment",
+            "surface-forms/conditional-routing",
+            "surface-forms/ab-testing"
           ]
         },
+        {
+          "group": "Leads Hub",
+          "pages": [
+            "leads/overview",
+            "leads/lead-table/lead-table",
+            "leads/lead-score"
+          ]
+        },
+        {
+          "group": "Workflows",
+          "pages": [
+            "workflows/overview",
+            "workflows/examples"
+          ]
+        },
+        {
+          "group": "Surface Tag",
+          "pages": ["surface-tag/overview", "surface-tag/implementation", "surface-tag/website-deanon"]
+        }
+      ]
+    },
+    {
+      "group": "Developers",
+      "pages": [
+        "developers/overview",
         {
           "group": "Embedding",
           "pages": [
-            "surface-forms/embed/inline",
-            "surface-forms/embed/popup-slideover"
+            "developers/surface-forms/inline",
+            "developers/surface-forms/popup-slideover",
+            "developers/surface-forms/email-trigger"
           ]
         },
         {
-          "group": "Integrations",
+          "group": "Installation",
           "pages": [
-            "surface-forms/integrations/framer",
-            "surface-forms/integrations/gtm",
-            "surface-forms/integrations/nextjs",
-            "surface-forms/integrations/reactjs",
-            "surface-forms/integrations/webflow",
-            "surface-forms/integrations/zapier"
+            "developers/integrations/framer",
+            "developers/integrations/gtm",
+            "developers/integrations/nextjs",
+            "developers/integrations/reactjs",
+            "developers/integrations/webflow",
+            "developers/integrations/zapier"
           ]
         }
+      ]
+    },
+    {
+      "group": "Walkthrough",
+      "pages": [
+        "walkthrough/overview",
+        "walkthrough/forms/send-data-to-airtable"
+      ]
+    },
+    {
+      "group": "Integrations",
+      "pages": [
+        "integrations/slack/overview",
+        "integrations/zapier/overview",
+        "integrations/hubspot/overview",
+        "integrations/salesforce/overview"
       ]
     }
   ],

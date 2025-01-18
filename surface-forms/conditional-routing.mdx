@@ -1,0 +1,112 @@
+---
+title: "Flow Builder"
+description: "Create dynamic form flows based on user responses."
+---
+
+<Frame caption="Flow Builder">
+<img src="/images/conditional-routing.png" alt="Flow Builder" />
+</Frame>
+
+Conditional routing lets you create dynamic form experiences by controlling the flow between steps based on user responses. Enable this by clicking the "Flow" button in the Form Builder navigation bar.
+
+## Understanding Flow Mode
+
+When you enter Flow mode, you'll see:
+- Visual representation of your form steps
+- Connections between steps showing possible paths
+- Routing panel for configuring conditions
+- Default paths marked as "default"
+
+## Setting Up Routing
+
+<Steps>
+  1. Click the "Flow" button in the navigation bar
+  2. Select the step you want to add routing to
+  3. Click "+" in the Routing panel to add a condition
+  4. Configure your routing logic
+  5. Choose the destination step
+</Steps>
+
+## Routing Configuration
+
+### Basic Routing
+Set up simple conditional paths:
+
+<Card>
+  - Select source step
+  - Add condition(s)
+  - Choose destination step
+  - Set default path for when conditions aren't met
+</Card>
+
+## Available Operators
+
+When creating conditions, you can use these operators:
+
+<CardGroup cols={2}>
+  <Card title="Text Operators" icon="text">
+    - Equals
+    - Not equals
+    - Greater than
+    - Greater than or equals
+    - Less than
+    - Less than or equals
+    - Contains
+    - Does not contain
+  </Card>
+  
+  <Card title="Value Operators" icon="calculator">
+    - Text
+    - Number
+    - Boolean (T/F)
+  </Card>
+</CardGroup>
+
+## Condition Types
+
+### Field-Based Conditions
+Route based on form field values:
+- Text inputs
+- Dropdown selections
+- Multiple choice answers
+- Checkbox states
+- Identity information
+
+### Variable-Based Conditions
+Use system variables for routing:
+- Form completion status
+- User attributes
+- Enriched data
+- Custom variables
+
+## Best Practices
+
+<Card title="Routing Tips">
+  - Keep flows logical and easy to follow
+  - Set default paths for all conditional steps
+  - Test all possible paths thoroughly
+  - Use clear step names for easier management
+  - Document complex routing logic
+</Card>
+
+## Managing Multiple Conditions
+
+You can add multiple conditions to a single routing rule:
+
+1. Click "+" to add a new condition
+2. Choose "And" or "Or" logic between conditions
+3. Configure each condition independently
+4. Set the destination step for when all conditions are met
+
+## Related Resources
+
+<CardGroup>
+  <Card title="Form Builder" icon="wand-magic-sparkles" href="/surface-forms/form-builder">
+    Learn about the complete form building experience
+  </Card>
+  
+  <Card title="Built-in Enrichment" icon="database" href="/surface-forms/enrichment">
+    Use enriched data in your routing logic
+  </Card>
+</CardGroup>
+

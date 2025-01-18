@@ -1,0 +1,121 @@
+---
+title: "Zapier Integration Guide"
+description: "This guide will help you integrate Zapier with Surface Products"
+sidebarTitle: "Zapier"
+icon: "bolt"
+---
+
+Surface Forms can be integrated with Zapier to automate workflows with thousands of apps. Connect your forms to your favorite tools without writing any code.
+
+## Prerequisites
+
+Before connecting to Zapier, you'll need:
+- A Surface Forms account
+- A Zapier account
+- API key from Surface Forms settings
+
+## Integration Steps
+
+<Steps>
+  1. Navigate to the **Integrations** panel from the sidebar
+  2. Find the Zapier card and click **Connect**
+  3. Accept the invitation to use Surface Forms on Zapier
+  4. Create a new Zap or use existing one
+  5. Add Surface Forms as your trigger app
+</Steps>
+
+## Setting up API Authentication
+
+<Steps>
+  1. Go to Surface Forms Settings tab
+  2. Generate a new API key
+  3. Copy the API key
+  4. In Zapier, choose Surface Forms as trigger
+  5. Paste your API key when prompted
+  6. Click "Continue" to validate connection
+</Steps>
+
+<Note>
+  Keep your API key secure. If compromised, generate a new one from the Settings tab.
+</Note>
+
+## Available Triggers
+
+<CardGroup cols={2}>
+  <Card title="Form Submission" icon="paper-plane">
+    Triggers when a form is completed and submitted
+  </Card>
+  
+  <Card title="Form Started" icon="play">
+    Triggers when someone starts filling out your form
+  </Card>
+  
+  <Card title="Form Abandoned" icon="user-xmark">
+    Triggers when someone leaves the form incomplete
+  </Card>
+  
+  <Card title="Step Completed" icon="list-check">
+    Triggers when a specific form step is completed
+  </Card>
+</CardGroup>
+
+## Common Zap Templates
+
+<CardGroup cols={2}>
+  <Card title="CRM Integration" icon="building-user">
+    Add form submissions to your CRM as leads or contacts
+  </Card>
+  
+  <Card title="Email Marketing" icon="envelope">
+    Add subscribers to your email marketing lists
+  </Card>
+  
+  <Card title="Team Notifications" icon="bell">
+    Send notifications to team communication tools
+  </Card>
+  
+  <Card title="Data Storage" icon="database">
+    Save form submissions to spreadsheets or databases
+  </Card>
+</CardGroup>
+
+## Best Practices
+
+<Card title="Tips for Zapier Integration">
+  <ol>
+    <li>1. Test your Zaps thoroughly before activating</li>
+    <li>2. Use filters to process only relevant submissions</li>
+    <li>3. Map fields correctly between apps</li>
+    <li>4. Monitor your Zap history regularly</li>
+    <li>5. Keep your API key secure</li>
+  </ol>
+</Card>
+
+## Troubleshooting
+
+<AccordionGroup>
+  <Accordion title="Connection Issues">
+    1. Verify API key is correct
+    2. Check if API key is still valid
+    3. Ensure you have accepted the Zapier invitation
+  </Accordion>
+  
+  <Accordion title="Missing Triggers">
+    1. Verify form is published
+    2. Check if Zap is turned on
+    3. Confirm trigger conditions are met
+  </Accordion>
+</AccordionGroup>
+
+## Related Resources
+
+<CardGroup>
+  <Card title="Workflow Examples" icon="diagram-project" href="/workflows/examples">
+    See examples of Zapier automation workflows
+  </Card>
+  
+  <Card title="API Documentation" icon="code" href="/api-reference">
+    Learn about our API capabilities
+  </Card>
+</CardGroup>
+
