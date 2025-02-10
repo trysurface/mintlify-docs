@@ -11,6 +11,32 @@ twitter:image: "https://blog.withsurface.com/api/og?title=Webflow%20Integration"
 ---
 
 <Tip>This feature requires paid tier of webflow!</Tip>
+
+
+<Info>
+  Before proceeding, make sure you have installed the Surface Tag on your website. Follow this guide to install the Surface Tag first:
+  
+  <Steps>
+    <Step>
+      Go to webflow [*dashboard*](https://webflow.com/dashboard).
+    </Step>
+    <Step>
+      Go to `Project Section` > `Custom Code`.
+    </Step>
+    <Step>
+      Add the following code in the *Start of `<head>` tag* section.
+    </Step>
+  </Steps>
+  
+  ```javascript
+  <script
+      src="https://cdn.jsdelivr.net/gh/trysurface/scripts@latest/surface_tag.min.js"
+      type="application/javascript"
+  > </script>
+  ```
+</Info>
+
+
 ### 1. Create a new Surface Form
 
 Create a new form using our no code [form builder](https://app.withsurface.com) and copy the form sharing link. You can also [follow this](../quick-start/create-first-form) tutorial to create a basic Surface Form. <br/> For this tutorial suppose its https://forms.withsurface.com/s/cm2jrdp7o0001jv03ui09zrgy
@@ -47,77 +73,50 @@ Go to webflow [dashboard](https://webflow.com/dashboard) > Go to `Project Sectio
 
 <Tabs>
     <Tab title="Inline Embed">
-        ```HTML
-        <!-- Start of Surface Form snippet -->
-
-        <script
-        src="https://cdn.jsdelivr.net/gh/trysurface/scripts@latest/surface_tag.min.js"
-        type="application/javascript"
-        ></script>
-
+        ```javascript
         <script>
-        window.onload = function() {
-            const surface_src = "<form url here>" // replace this with your Surface Form URL.
-            const surface_embed_type = "inline"
-            const target_element_class = "surface-form-target"
-            const c = new SurfaceEmbed(surface_src, surface_embed_type, target_element_class)
+            window.onload = function() {
+                const surface_src = "<form url here>" // replace this with your Surface Form URL.
+                const surface_embed_type = "inline"
+                const target_element_class = "surface-form-target"
+                const c = new SurfaceEmbed(surface_src, surface_embed_type, target_element_class)
 
-            c.embedSurfaceForm();
-        }
+                c.embedSurfaceForm();
+            }
         </script>
-
-        <!-- End of Surface Form snippet -->
-
         ```
     </Tab>
     <Tab title="Popover/Slideover">
         <Accordion title="Popover">
-            ```HTML
-            <!-- Start of Surface Form snippet -->
-
-            <script
-                src="https://cdn.jsdelivr.net/gh/trysurface/scripts@latest/surface_tag.min.js"
-                type="application/javascript"
-            > </script>
-
+            ```javascript
             <script>
-            window.onload = function() {
-                const surface_src = "<form url here>" // replace this with your Surface Form URL.
-                const surface_embed_type = "popup"
-                const target_element_class = "surface-form-button"
-                const c = new SurfaceEmbed(surface_src, surface_embed_type, target_element_class)
+                window.onload = function() {
+                    const surface_src = "<form url here>" // replace this with your Surface Form URL.
+                    const surface_embed_type = "popup"
+                    const target_element_class = "surface-form-button"
+                    const c = new SurfaceEmbed(surface_src, surface_embed_type, target_element_class)
 
-                c.embedSurfaceForm();
-            }
+                    c.embedSurfaceForm();
+                }
             </script>
-
-            <!-- End of Surface Form snippet -->
-
             ```
-            You can check this [guide](../embed/popup-slideover#control-popup-size) for detailed explaination about Popover Embedding.
+            You can check this [guide](../surface-forms/popup-slideover) for detailed explaination about Popover Embedding.
         </Accordion>
         <Accordion title="Slideover">
 
-            ```HTML
-            <!-- Start of Surface Form snippet -->
-
-            <script
-                src="https://cdn.jsdelivr.net/gh/trysurface/scripts@latest/surface_tag.min.js"
-                type="application/javascript"
-            > </script>
-
+            ```javascript
             <script>
-            window.onload = function() {
-                const surface_src = "<form url here>" // replace this with your Surface Form URL.
-                const surface_embed_type = "slideover"
-                const target_element_class = "surface-form-button"
-                const c = new SurfaceEmbed(surface_src, surface_embed_type, target_element_class)
+                window.onload = function() {
+                    const surface_src = "<form url here>" // replace this with your Surface Form URL.
+                    const surface_embed_type = "slideover"
+                    const target_element_class = "surface-form-button"
+                    const c = new SurfaceEmbed(surface_src, surface_embed_type, target_element_class)
 
-                c.embedSurfaceForm();
-            }
+                    c.embedSurfaceForm();
+                }
             </script>
 
-            <!-- End of Surface Form snippet -->
+            You can check this [guide](../surface-forms/popup-slideover) for detailed explaination about Slideover Embedding.
 
             ```
         </Accordion>

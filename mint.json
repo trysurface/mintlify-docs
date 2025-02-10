@@ -73,7 +73,8 @@
             "surface-forms/form-builder",
             "surface-forms/enrichment",
             "surface-forms/conditional-routing",
-            "surface-forms/ab-testing"
+            "surface-forms/ab-testing",
+            "surface-forms/events"
           ]
         },
         {
