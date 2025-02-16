@@ -72,8 +72,7 @@
             "surface-forms/overview",
             "surface-forms/form-builder",
             "surface-forms/enrichment",
-            "surface-forms/conditional-routing",
-            "surface-forms/ab-testing"
+            "surface-forms/conditional-routing"
           ]
         },
         {
@@ -94,6 +93,18 @@
         {
           "group": "Surface Tag",
           "pages": ["surface-tag/overview", "surface-tag/implementation", "surface-tag/website-deanon"]
+        },
+        {
+          "group": "Experiments",
+          "pages": [
+            {
+              "group": "Form Experiments",
+              "pages": [
+                "experiments/form-experiments/overview",
+                "experiments/form-experiments/ab-testing"
+              ]
+            }
+          ]
         }
       ]
     },
