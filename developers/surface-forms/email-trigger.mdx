@@ -4,6 +4,21 @@ description: "Triggering via email input field submission"
 icon: "chevron-right"
 ---
 
+### Add Surface Tag to your website (if you haven't already)
+
+Before setting up email input field submission, ensure you have added the Surface tag to your website. If you haven't already done so, add the following script tag to your website's HTML:
+
+```javascript
+<script
+  src="https://cdn.jsdelivr.net/gh/trysurface/scripts@latest/surface_tag.min.js"
+  type="application/javascript"
+></script>
+```
+
+
+
+For detailed instructions on implementing the Surface tag and its configuration options, see our [Surface Tag documentation](../../surface-tag/overview).
+
 ### Connect Surface Form to External Email Input
 
 To enable triggering a Surface Form popup from a form field containing an email input, follow these instructions:
@@ -17,9 +32,9 @@ To enable triggering a Surface Form popup from a form field containing an email 
    </form>
    ```
 
-   > **Note:** Add the `surface-form-handler` class to any external form that you want to use to trigger the Surface Form popup.
+   > **Note:** You can use both [Surface Form Popup](/developers/surface-forms/popup-slideover) and Surface Form Email Trigger together.
 
-2. **Include the JavaScript Code**: Add the following JavaScript to the page's `head` tag after the above scripts to handle form submission, validate the email field, and trigger the Surface Form popup. 
+2. **Initialize the Surface Form**: Add the following JavaScript to the page's `head` tag after the above scripts to initialize the Surface Form, validate the email field, and trigger the Surface Form popup. 
 
    > **Note:** You must replace the `<question_id>` within `params` below with the question ID from the Surface Form Builder.
 
@@ -27,51 +42,32 @@ To enable triggering a Surface Form popup from a form field containing an email 
         <img className="block" src="/images/embed/question_id.png" alt="Screenshot showing where to retrieve the question ID in the Surface Form Builder" />
         </Accordion>
 
-   ```JavaScript
-   <script>
-     window.onload = function () {
-       const form = document.querySelector('form.surface-form-handler'); // Select the form by class name
-       const params = {}; // Replace the key below with the question ID retrieved from the Surface Form Builder (e.g., replace "zYTngVeSzJFX" with your actual question ID)
+    ```javascript
+    <script>
+      const surface_src =
+        "[SURFACE_FORM_URL]"; // Replace with your Surface Form URL
 
-       if (form) {
-         form.addEventListener('submit', function (event) {
-           event.preventDefault(); // Prevent the default form submission
+      const surface_embed_type = "input-trigger";
+      const surface_target_element_class = "surface-form-button";
 
-           const emailInput = form.querySelector('input[type="email"]');
-           const emailValue = emailInput?.value.trim();
+      const cSurfaceForm = new SurfaceEmbed(
+        surface_src,
+        surface_embed_type,
+        surface_target_element_class,
+        {
+          emailKey: "[SURFACE_FORM_QUESTION_ID]_emailAddress", // Replace with your Surface Form Question ID
+        }
+      );
 
-           // Custom email validation regex for stricter validation
-           const emailRegex = /^[^\s@]+@[^\s@]+\.[a-zA-Z]{2,}$/;
+      // Can be "small", "medium", or "large"
+      cSurfaceForm.popupSize = "small";
+      cSurfaceForm.embedSurfaceForm();
 
-           // Check that email is valid and properly formatted
-           if (emailInput && emailValue && emailRegex.test(emailValue)) {
 
-             // IMPORTANT: Replace `<question_id>` with the question ID from the Surface Form Builder
-             params["<question_id>_emailAddress"] = emailValue;
+    </script>
+    ```
 
-             c.showSurfaceForm(params); // Call your function with validated data
-           } else {
-             console.log("Invalid email address.");
-             emailInput?.reportValidity(); // Show validation error for the email field
-           }
-         });
-
-         // Ensure pressing "Enter" submits the form
-         form.addEventListener('keydown', function (event) {
-           if (event.key === 'Enter') {
-             const activeElement = document.activeElement;
-             if (activeElement.tagName === 'INPUT' && activeElement.type === 'email') {
-               event.preventDefault();
-               form.dispatchEvent(new Event('submit', { cancelable: true }));
-             }
-           }
-         });
-       } else {
-         console.error('Form with class "surface-form-handler" not found.');
-       }
-     };
-   </script>
-   ```
+  
 
 3. **Explanation of the Code**:
    - **Email Validation**: Ensures that the email field is not empty and matches a stricter email format.
