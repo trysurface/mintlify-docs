@@ -26,10 +26,12 @@ twitter:image: "https://blog.withsurface.com/api/og?title=Framer%20Integration"
   </Steps>
   
   ```javascript
+  <!-- Start of Surface Tag -->
   <script
       src="https://cdn.jsdelivr.net/gh/trysurface/scripts@latest/surface_tag.min.js"
       type="application/javascript"
   > </script>
+  <!-- End of Surface Tag -->
   ```
 </Info>
 
@@ -79,14 +81,7 @@ Create a new framer projects using [Framer Dashboard](https://framer.com/).
     3. Popover or Slideover:
         <Accordion title="Popover">
           Add the following code in the `Start of <body> tag` section.
-        ```HTML
-        <!-- Start of Surface Form snippet -->
-
-        <script
-            src="https://cdn.jsdelivr.net/gh/trysurface/scripts@latest/surface_tag.min.js"
-            type="application/javascript"
-        > </script>
-
+        ```Javascript
         <script>
         window.onload = function() {
                 const surface_src = "<form url here>"
@@ -97,21 +92,12 @@ Create a new framer projects using [Framer Dashboard](https://framer.com/).
                 c.embedSurfaceForm();
         }
         </script>
-
-        <!-- End of Surface Form snippet -->
         ```
         </Accordion>
 
         <Accordion title="Slideover">
           Add the following code in the `Start of <body> tag` section.
-        ```HTML
-        <!-- Start of Surface Form snippet -->
-
-        <script
-            src="https://cdn.jsdelivr.net/gh/trysurface/scripts@latest/surface_tag.min.js"
-            type="application/javascript"
-        > </script>
-
+        ```Javascript
         <script>
         window.onload = function() {
                 const surface_src = "<form url here>" // Replace <form url here> with the form url
@@ -122,8 +108,6 @@ Create a new framer projects using [Framer Dashboard](https://framer.com/).
                 c.embedSurfaceForm();
         }
         </script>
-
-        <!-- End of Surface Form snippet -->
         ```
         </Accordion>
     4. Select the button or element where you want to trigger the form. Open the `properties` of the element and scroll down to `Code Overrides` section.
