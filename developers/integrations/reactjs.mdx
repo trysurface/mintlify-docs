@@ -44,10 +44,13 @@ npx create-react-app reactjs-surface-form
    - Go to `public/index.html` file in your React.js project and add the following code at the end of `<body>` tag:
    
    ```html
+   <!-- Start of Surface Tag -->
    <script
       src="https://cdn.jsdelivr.net/gh/trysurface/scripts@latest/surface_tag.min.js"
       type="application/javascript"
     ></script>
+    <!-- End of Surface Tag -->
+    
     <script>
       window.onload = function () {
         const surface_src = "your_form_url";
