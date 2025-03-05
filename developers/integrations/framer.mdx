@@ -34,6 +34,8 @@ twitter:image: "https://blog.withsurface.com/api/og?title=Framer%20Integration"
 </Info>
 
 
+## Embed Surface Form in Framer
+
 ### 1. Create a new Surface Form
 
 Create a new form using our no code [form builder](https://app.withsurface.com) and copy the form sharing link. You can also [follow this](../quick-start/create-first-form) tutorial to create a basic Surface Form. <br/> For this tutorial suppose its https://forms.withsurface.com/s/cm2jrdp7o0001jv03ui09zrgy
@@ -151,3 +153,81 @@ Create a new framer projects using [Framer Dashboard](https://framer.com/).
 ### 4. Publish the site
 
 Publish the site and that's it! You have successfully embedded Surface Form in your Framer project.
+
+## Send Framer Form Data to Surface Leads using Webhooks
+
+You can automatically send form submissions from Framer to Surface Leads using webhooks. This allows you to collect lead data directly in your Surface Leads Hub.
+
+### 1. Add Form Component in Framer
+
+1. In your Framer project, click on "Insert" to add a new component
+2. Search for "Form" in the components list and add it to your page
+3. Configure the form fields according to your needs (name, email, etc.)
+
+<Frame>
+  <img className="block" src="/images/framer/5.png" alt="Adding Form Component" />
+</Frame>
+
+### 2. Get Surface Webhook URL
+
+1. Log in to your Surface account
+2. Navigate to Leads Hub from the sidebar
+3. Click on the "Configure" tab
+4. Locate the "Lead Submission Endpoint" section
+5. Copy the webhook URL from the cURL command provided
+
+<Frame>
+  <img className="block" src="/images/integrations/unbounce/4.png" alt="Surface Leads Hub Configuration" />
+</Frame>
+
+### 3. Match Field Names
+
+Ensure that the input field names in your Framer form match the field names expected by Surface Leads Hub:
+
+| Surface Lead Field | Description |
+|-------|-------------|
+| `email` | Required field for the lead's email address |
+| `firstName` | Lead's first name |
+| `lastName` | Lead's last name |
+| `company` | Lead's company name |
+| `numberOfEmployees` | Company size |
+| `title` | Lead's job title |
+| `phone` | Lead's phone number |
+| `bookedMeeting` | Meeting status |
+| `linkedin` | LinkedIn profile URL |
+| `companyRevenue` | Company's revenue information |
+
+To set field names in Framer:
+1. Select each form input field
+2. In the properties panel, find the "Name" property
+3. Set the name to match the corresponding Surface lead field (e.g., "email", "firstName")
+
+<Frame>
+  <img className="block" src="/images/framer/6.png" alt="Matching Field Names" />
+</Frame>
+
+### 4. Configure Form to Send Data to Webhook
+
+1. Select your form component in Framer
+2. In the properties panel, scroll down to the "Form" section
+3. Find the "Send to" dropdown and select "Webhook"
+4. Paste the Surface webhook URL you copied earlier in the provided field
+
+<Frame>
+  <img className="block" src="/images/framer/7.png" alt="Configuring Webhook" />
+</Frame>
+
+### 5. Test the Integration
+
+1. Publish your Framer site or preview it
+2. Fill out and submit the form with test data
+3. Go to your Surface Leads Hub and check the leads table to verify that the submission was received correctly
+
+### Troubleshooting
+
+If your form submissions are not appearing in Surface Leads Hub:
+
+1. Verify that the webhook URL is correct
+2. Check that the form field names match the expected Surface lead field names
+3. Ensure your form is properly configured to send data to the webhook
+4. Try submitting the form again and refresh your Surface Leads Hub
