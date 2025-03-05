@@ -1,0 +1,52 @@
+---
+title: "Events"
+---
+
+Surface Forms provides comprehensive event tracking capabilities, including Google Tag Manager (GTM) integration and server-to-client event passing.
+
+## Available Events
+
+Here are all the events that Surface Forms emits:
+
+| Event Name | Description |
+|------------|-------------|
+| `form_viewed` | Triggered when a user views the form |
+| `form_started` | Triggered when a user begins filling out the form |
+| `form_completed` | Triggered when a user successfully completes the entire form |
+| `form_step_viewed` | Triggered when a user views a specific step in a multi-step form |
+| `form_step_submitted` | Triggered when a user successfully submits a form step |
+| `form_step_dropoff` | Triggered when a user abandons a form step |
+| `response_submission_created` | Triggered when a form response is successfully created |
+| `response_submission_error` | Triggered when there's an error during form submission |
+
+## Enable Google Tag Manager
+
+<Frame caption="Enable Google Tag Manager">
+<img src="/images/enable-gtm.png" alt="Enable Google Tag Manager" />
+</Frame>
+
+To enable Google Tag Manager integration:
+
+1. Navigate to your form settings
+2. Click on "Google Tag Manager" section
+3. Toggle "Enable google tag manager" switch
+4. Enter your GTM ID in the provided field
+5. Click "Save"
+
+
+Once enabled, all Surface Forms events will be automatically sent to your Google Tag Manager account, allowing you to track form interactions and set up custom triggers and tags.
+
+### Event Data
+
+Each event sent to GTM includes relevant data about the form interaction. You can use this data to create detailed analytics and tracking implementations in your GTM setup.
+
+## Using Events
+
+These events can be used to:
+- Track form completion rates
+- Analyze user drop-off points
+- Measure form performance
+- Create custom analytics implementations
+- Trigger marketing pixels or conversion tracking
+
+For custom event handling, you can also listen to these events in your application code using standard event listeners.
