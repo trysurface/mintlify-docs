@@ -136,7 +136,17 @@
         "integrations/slack/overview",
         "integrations/zapier/overview",
         "integrations/hubspot/overview",
-        "integrations/salesforce/overview"
+        "integrations/salesforce/overview",
+        {
+          "group": "Schedulers",
+          "pages": [
+            "integrations/schedulars/overview", 
+            "integrations/schedulars/calendly",
+            "integrations/schedulars/cal",
+            "integrations/schedulars/hubspot"
+          ],
+          "icon": "calendar"
+        }
       ]
     }
   ],
