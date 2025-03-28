@@ -9,6 +9,7 @@ twitter:description: "Embed Surface Forms in Framer projects."
 og:image: "https://blog.withsurface.com/api/og?title=Framer%20Integration"
 twitter:image: "https://blog.withsurface.com/api/og?title=Framer%20Integration"
 ---
+import { FramerScript } from "/snippets/framer-script.mdx"
 
 <Info>
   Before proceeding, make sure you have installed the Surface Tag on your website. Follow this guide to install the Surface Tag first:
@@ -145,6 +146,84 @@ Create a new framer projects using [Framer Dashboard](https://framer.com/).
             <Accordion title="Click to expand">
               <img className="block" src="/images/framer/pop-slide/3.png" alt="Hero Light" />
             </Accordion>
+  </Tab>
+  <Tab title="Trigger from Input">
+    1. First, copy the Framer component below which includes an input field and submit button. You can customize its appearance in Framer. Paste the component anywhere in your framer project.
+        - <FramerScript title={"Copy Input Component"} />
+
+    2. Add the following code in the `End of <body> tag` section:
+        ```javascript
+        <script>
+            const surface_src = "form_url_here"; // Replace form_url_here with your form URL
+
+            const surface_embed_type = "popup";
+            const surface_target_element_class = "surface-form-button";
+
+            const cSurfaceForm = new SurfaceEmbed(surface_src, surface_embed_type, surface_target_element_class);
+
+            cSurfaceForm.popupSize = "medium"; // Can be "small", "medium", or "large"
+            cSurfaceForm.embedSurfaceForm();
+
+            // Function to attach event handlers
+            function attachFormHandlers() {
+                const forms = document.querySelectorAll('form.surface-form-handler');
+                forms.forEach((form) => {
+                    if (!form.dataset.listenerAttached) {
+                        form.dataset.listenerAttached = 'true';
+
+                        form.addEventListener('submit', function (event) {
+                            event.preventDefault();
+
+                            const emailInput = form.querySelector('input[type="email"]');
+                            const emailValue = emailInput?.value.trim();
+
+                            const emailRegex = /^[^\s@]+@[^\s@]+\.[a-zA-Z]{2,}$/;
+
+                            if (emailInput && emailValue && emailRegex.test(emailValue)) {
+                                const params = {
+                                    zYTngVeSzJFX_emailAddress: emailValue,
+                                };
+
+                                cSurfaceForm.showSurfaceForm(params);
+                            } else {
+                                console.log("Invalid email address.");
+                                emailInput?.reportValidity();
+                            }
+                        });
+
+                        form.addEventListener('keydown', function (event) {
+                            if (event.key === 'Enter') {
+                                const activeElement = document.activeElement;
+                                if (activeElement.tagName === 'INPUT' && activeElement.type === 'email') {
+                                    event.preventDefault();
+                                    form.dispatchEvent(new Event('submit', { cancelable: true }));
+                                }
+                            }
+                        });
+                    }
+                });
+            }
+            attachFormHandlers();
+
+            const observer = new MutationObserver(attachFormHandlers);
+            observer.observe(document.body, { childList: true, subtree: true });
+
+            document.body.addEventListener('keydown', function (event) {
+                const form = event.target.closest('form.surface-form-handler');
+                if (!form) return;
+
+                if (event.key === 'Enter') {
+                    const activeElement = document.activeElement;
+                    if (activeElement.tagName === 'INPUT') {
+                        event.preventDefault();
+                        form.dispatchEvent(new Event('submit', { cancelable: true })); 
+                    }
+                }
+            });
+        </script>
+        ```
+
+    That's it! The input component is now connected to your Surface Form.
   </Tab>
 </Tabs>
 
