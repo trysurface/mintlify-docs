@@ -10,30 +10,15 @@ og:image: "https://blog.withsurface.com/api/og?title=React.js%20Integration"
 twitter:image: "https://blog.withsurface.com/api/og?title=React.js%20Integration"
 ---
 
-### 1. Create a new Surface Form
 
-Create a new form using our no code [form builder](https://app.withsurface.com) and copy the form sharing link. You can also [follow this](../quick-start/create-first-form) tutorial to create a basic Surface Form. <br/> For this tutorial suppose its https://forms.withsurface.com/s/cm2jrdp7o0001jv03ui09zrgy
+### 1. Embed the Surface Form
 
-<Accordion title="Click to expand">
-  <img className="block" src="/images/webflow/form.png" alt="Hero Light" />
-</Accordion>
-
-### 2. Create a new React.js app
-
-Create a new React.js app using the following command:
-
-```bash
-npx create-react-app reactjs-surface-form
-```
-
-### 3. Embed the Surface Form
-
-1. Using iFrame
+1. Using an iFrame directly:
 
    ```HTML
    <iframe
        id="surface-iframe"
-       src="<your_form_link>"
+       src="<your_form_url>"
        frameborder="0"
        allowfullscreen>
    </iframe>
@@ -41,13 +26,13 @@ npx create-react-app reactjs-surface-form
 
 2. Using script (Recommended)
 
-   - Go to `public/index.html` file in your React.js project and add the following code at the end of `<body>` tag:
+   - Go to the `public/index.html` file in your React.js project and add the following code at the end of `<body>` tag:
    
    ```html
-   <script
-      src="https://cdn.jsdelivr.net/gh/trysurface/scripts@latest/surface_tag.min.js"
-      type="application/javascript"
-    ></script>
+    <!-- Start Surface Tag -->
+    <script src="https://cdn.jsdelivr.net/gh/trysurface/scripts@latest/surface_tag.min.js"></script>
+    <!-- End Surface Tag -->
+
     <script>
       window.onload = function () {
         const surface_src = "your_form_url";
@@ -59,7 +44,6 @@ npx create-react-app reactjs-surface-form
           target_element_class
         );
         c.popupSize = ""; // "small", "medium", "large"
-        c.embedSurfaceForm();
       };
     </script>
     ```
@@ -69,7 +53,7 @@ npx create-react-app reactjs-surface-form
     - Replace `target_element_class` with `"surface-form-button"` if you want to show the form as a popup or `"surface-form-target"` if you want to show the form inline.
     - Replace `popupSize` with `"small"`, `"medium"`, or `"large"` if you want to set the size of the popup form.
 
-### 4. Add className to the target element
+### 2. Add className to the target element
 
 Add `surface-form-button` class to the HTML element if you want to show the form as a popup or `surface-form-target` class to the target element if you want to show the form inline.
 
@@ -77,6 +61,6 @@ Add `surface-form-button` class to the HTML element if you want to show the form
 <button className="surface-form-button">Open Form</button>
 ```
 
-### 5. All done!
+### 3. All done!
 
 You have successfully integrated Surface Forms with your React.js application. You can now embed forms in your React.js application.

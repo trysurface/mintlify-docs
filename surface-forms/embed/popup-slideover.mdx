@@ -22,20 +22,16 @@ Add one of the following code snippets to your site's `head` tag, depending on h
 <AccordionGroup>
   <Accordion title="Popup">
     ```HTML
-    <!-- Start of Surface Form snippet -->
-
+    <!-- Start Surface Form Embed -->
     <script>
     window.onload = function() {
             const surface_src = "<form url here>"
             const surface_embed_type = "popup"
             const target_element_class = "surface-form-button"
             const c = new SurfaceEmbed(surface_src, surface_embed_type, target_element_class)
-
-            c.embedSurfaceForm();
     }
     </script>
-
-    <!-- End of Surface Form snippet -->
+    <!-- End of Surface Form Embed -->
     ```
 
   </Accordion>
@@ -43,20 +39,16 @@ Add one of the following code snippets to your site's `head` tag, depending on h
 
 <Accordion title="Slideover">
     ```HTML
-    <!-- Start of Surface Form snippet -->
-
+    <!-- Start Surface Form Embed -->
     <script>
     window.onload = function() {
             const surface_src = "<form url here>"
             const surface_embed_type = "slideover"
             const target_element_class = "surface-form-button"
             const c = new SurfaceEmbed(surface_src, surface_embed_type, target_element_class)
-
-            c.embedSurfaceForm();
     }
     </script>
-
-    <!-- End of Surface Form snippet -->
+    <!-- End of Surface Form Embed -->
     ```
 
 </Accordion>
@@ -81,8 +73,7 @@ This is done by simply adding the class name `surface-form-button` to the elemen
 In the case you are using the `popup` animation appearance, you can control the size of the popup that appears on your site. See the following snippet
 
 ```HTML
-<!-- Start of Surface Form snippet -->
-
+<!-- Start Surface Form Embed -->
 <script>
 window.onload = function() {
         const surface_src = "<form url here>"
@@ -91,11 +82,9 @@ window.onload = function() {
         const c = new SurfaceEmbed(surface_src, surface_embed_type, target_element_class)
 
         c.popupSize = "medium" // This value can be "medium" or "large"
-        c.embedSurfaceForm();
 }
 </script>
-
-<!-- End of Surface Form snippet -->
+<!-- End of Surface Form Embed -->
 ```
 
 You can set the the `popupSize` variable on the `SurfaceEmbed` instance to control the size of the popup. Current accepted values are `medium` and `large`
