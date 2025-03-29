@@ -1,21 +1,20 @@
 ---
 title: "Framer"
-description: "Embed Surface Forms in Framer projects."
+description: "Add a Surface Form to your Framer Site"
 icon: "code"
-og:title: "Embed Surface Forms in Framer"
-twitter:title: "Embed Surface Forms in Framer"
-og:description: "Embed Surface Forms in Framer projects."
-twitter:description: "Embed Surface Forms in Framer projects."
+og:title: "Add a Surface Form to your Framer Site"
+twitter:title: "Add a Surface Form to your Framer Site"
+og:description: "Add a Surface Form to your Framer Site"
+twitter:description: "Add a Surface Form to your Framer Site"
 og:image: "https://blog.withsurface.com/api/og?title=Framer%20Integration"
 twitter:image: "https://blog.withsurface.com/api/og?title=Framer%20Integration"
 ---
 
 <Info>
   Before proceeding, make sure you have installed the Surface Tag on your website. Follow this guide to install the Surface Tag first:
-  
   <Steps>
     <Step>
-      Go to *settings* of the project.
+      Navigate to the Framer site *settings*.
     </Step>
     <Step>
       Scroll down to *Custom Code* section.
@@ -26,88 +25,60 @@ twitter:image: "https://blog.withsurface.com/api/og?title=Framer%20Integration"
   </Steps>
   
   ```html
-  <script
-      src="https://cdn.jsdelivr.net/gh/trysurface/scripts@latest/surface_tag.min.js"
-      type="application/javascript"
-  > </script>
+  <!-- Start Surface Tag -->
+  <script src="https://cdn.jsdelivr.net/gh/trysurface/scripts@latest/surface_tag.min.js"></script>
+  <!-- End Surface Tag -->
   ```
 </Info>
 
 
-## Embed Surface Form in Framer
+## Embed a Surface Form in Framer
+<Warning icon="lightbulb">
+  Make sure that you have added the [Surface Tag](/surface-tag/overview) to your Framer site before proceeding.
+</Warning>
 
-### 1. Create a new Surface Form
+### 1. Embedding Surface Form
 
-Create a new form using our no code [form builder](https://app.withsurface.com) and copy the form sharing link. You can also [follow this](../quick-start/create-first-form) tutorial to create a basic Surface Form. <br/> For this tutorial suppose its https://forms.withsurface.com/s/cm2jrdp7o0001jv03ui09zrgy
-
-<Accordion title="Click to expand">
-  <img className="block" src="/images/webflow/form.png" alt="Hero Light" />
-</Accordion>
-
-### 2. Create Framer Site
-
-Create a new framer projects using [Framer Dashboard](https://framer.com/).
-
-<Accordion title="Click to expand">
-  <img className="block" src="/images/framer/1.png" alt="Hero Light" />
-</Accordion>
-
-### 3. Embedding Surface Form
 
 <Tabs>
   <Tab title="Inline">
     1. In framer, click on `insert` to add new component inside the website.
     2. Select `Embed` from the list of components.
-        <Accordion title="Click to expand">
-          <img className="block" src="/images/framer/4.png" alt="Hero Light" />
-        </Accordion>
-    3. Insert the component in the desired location. Now go to `properties` of the component and scroll down to `Embed` section.
-    4. Set the `Type` to `URL` and paste you're form URL in the `URL` field.
-        <Accordion title="Click to expand">
-          <img className="block" src="/images/framer/3.png" alt="Hero Light" />
-        </Accordion>
+         <img className="block" src="/images/framer/4.png" alt="Hero Light" />
+    3. Insert the component in the desired location. Now go to `properties` of the component and scroll down to the `Embed` section.
+    4. Set the `Type` to `URL` and paste your form URL in the `URL` field.
+         <img className="block" src="/images/framer/3.png" alt="Hero Light" />
     5. That should look something like this:
-        <Accordion title="Click to expand">
-          <img className="block" src="/images/framer/2.png" alt="Hero Light" />
-        </Accordion> 
+         <img className="block" src="/images/framer/2.png" alt="Hero Light" />
   </Tab>
-  <Tab title="Popover or Slideover">
+  <Tab title="Popup or Slideover">
     <Tip>This feature requires paid tier of framer!</Tip>
-    1. In framer, Go to `settings` of the project.
+    1. In Framer, go to project `settings`.
     2. Scroll down to `Custom Code` section.
         <Accordion title="Click to expand">
           <img className="block" src="/images/framer/pop-slide/1.png" alt="Hero Light" />
         </Accordion>
-    3. Popover or Slideover:
-        <Accordion title="Popover">
+    3. Popup or Slideover:
+        <Accordion title="Popup">
           Add the following code in the `Start of <body> tag` section.
         ```HTML
-        <!-- Start of Surface Form snippet -->
-
-        <script
-            src="https://cdn.jsdelivr.net/gh/trysurface/scripts@latest/surface_tag.min.js"
-            type="application/javascript"
-        > </script>
-
+        <!-- Start Surface Form Embed -->
         <script>
         window.onload = function() {
                 const surface_src = "<form url here>"
                 const surface_embed_type = "popup"
                 const target_element_class = "surface-form-button"
                 const c = new SurfaceEmbed(surface_src, surface_embed_type, target_element_class)
-
-                c.embedSurfaceForm();
         }
         </script>
-
-        <!-- End of Surface Form snippet -->
+        <!-- End of Surface Form Embed -->
         ```
         </Accordion>
 
         <Accordion title="Slideover">
           Add the following code in the `Start of <body> tag` section.
         ```HTML
-        <!-- Start of Surface Form snippet -->
+        <!-- Start Surface Form Embed -->
 
         <script
             src="https://cdn.jsdelivr.net/gh/trysurface/scripts@latest/surface_tag.min.js"
@@ -120,12 +91,10 @@ Create a new framer projects using [Framer Dashboard](https://framer.com/).
                 const surface_embed_type = "slideover"
                 const target_element_class = "surface-form-button"
                 const c = new SurfaceEmbed(surface_src, surface_embed_type, target_element_class)
-
-                c.embedSurfaceForm();
         }
         </script>
 
-        <!-- End of Surface Form snippet -->
+        <!-- End of Surface Form Embed -->
         ```
         </Accordion>
     4. Select the button or element where you want to trigger the form. Open the `properties` of the element and scroll down to `Code Overrides` section.
@@ -150,13 +119,15 @@ Create a new framer projects using [Framer Dashboard](https://framer.com/).
   </Tab>
 </Tabs>
 
-### 4. Publish the site
+### 2. Publish the site
 
-Publish the site and that's it! You have successfully embedded Surface Form in your Framer project.
+Publish the site and that's it! You have successfully embedded a Surface Form in your Framer project.
+
+---
 
 ## Send Framer Form Data to Surface Leads using Webhooks
 
-You can automatically send form submissions from Framer to Surface Leads using webhooks. This allows you to collect lead data directly in your Surface Leads Hub.
+You can also send form submissions from Framer to Surface Leads using a webhook. This allows you to collect lead data directly in your Surface Leads Hub.
 
 ### 1. Add Form Component in Framer
 

@@ -51,7 +51,7 @@
   "tabs": [
     {
       "name": "Guides",
-      "url": "walkthrough"
+      "url": "guides"
     },
     {
       "name": "Developers",
@@ -124,10 +124,10 @@
       ]
     },
     {
-      "group": "Walkthrough",
+      "group": "Guides",
       "pages": [
-        "walkthrough/overview",
-        "walkthrough/forms/send-data-to-airtable"
+        "guides/overview",
+        "guides/forms/send-data-to-airtable"
       ]
     },
     {
