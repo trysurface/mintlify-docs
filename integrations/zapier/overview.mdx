@@ -1,121 +1,97 @@
 ---
-title: "Zapier Integration Guide"
-description: "This guide will help you integrate Zapier with Surface Products"
-sidebarTitle: "Zapier"
-icon: "bolt"
+title: "Zapier"
+description: "Utilize Zapier to send Surface form submission data to various destinations and trigger actions."
+icon: "code"
+og:title: "Integrate Zapier with Surface Forms"
+twitter:title: "Integrate Zapier with Surface Forms"
+og:description: "Utilize Zapier to send Surface form submission data to various destinations and trigger actions."
+twitter:description: "Utilize Zapier to send Surface form submission data to various destinations and trigger actions."
+og:image: "https://blog.withsurface.com/api/og?title=Zapier%20Integration"
+twitter:image: "https://blog.withsurface.com/api/og?title=Zapier%20Integration"
 ---
 
-Surface Forms can be integrated with Zapier to automate workflows with thousands of apps. Connect your forms to your favorite tools without writing any code.
+### 1. Connect Zapier
 
-## Prerequisites
+Navigate to the **Integrations** tab in the Surface App and connect Zapier. Ensure you have a Zapier account.
 
-Before connecting to Zapier, you'll need:
-- A Surface Forms account
-- A Zapier account
-- API key from Surface Forms settings
+<Frame>
+<img className="block" src="/images/zapier/zapier_1.png" alt="Connect Zapier" />
+</Frame>
 
-## Integration Steps
+Accept the invitation to get started.
 
-<Steps>
-  1. Navigate to the **Integrations** panel from the sidebar
-  2. Find the Zapier card and click **Connect**
-  3. Accept the invitation to use Surface Forms on Zapier
-  4. Create a new Zap or use existing one
-  5. Add Surface Forms as your trigger app
-</Steps>
+<Frame>
+<img className="block" src="/images/zapier/zapier_2.png" alt="Accept Invitation" />
+</Frame>
 
-## Setting up API Authentication
+### 2. Create a New Zap
 
-<Steps>
-  1. Go to Surface Forms Settings tab
-  2. Generate a new API key
-  3. Copy the API key
-  4. In Zapier, choose Surface Forms as trigger
-  5. Paste your API key when prompted
-  6. Click "Continue" to validate connection
-</Steps>
+Create a new Zap and search for **Surface Forms**.
 
-<Note>
-  Keep your API key secure. If compromised, generate a new one from the Settings tab.
-</Note>
+<Frame>
+<img className="block" src="/images/zapier/create_zap.png" alt="Create Zap" />
+</Frame>
 
-## Available Triggers
+Select the latest version of Surface Forms as the trigger.
 
-<CardGroup cols={2}>
-  <Card title="Form Submission" icon="paper-plane">
-    Triggers when a form is completed and submitted
-  </Card>
-  
-  <Card title="Form Started" icon="play">
-    Triggers when someone starts filling out your form
-  </Card>
-  
-  <Card title="Form Abandoned" icon="user-xmark">
-    Triggers when someone leaves the form incomplete
-  </Card>
-  
-  <Card title="Step Completed" icon="list-check">
-    Triggers when a specific form step is completed
-  </Card>
-</CardGroup>
+<Frame caption="Select the latest Surface Forms version as Trigger">
+<img className="block" src="/images/zapier/zapier_4.png" alt="Select Trigger" />
+</Frame>
 
-## Common Zap Templates
+Choose a trigger event for the Zap.
 
-<CardGroup cols={2}>
-  <Card title="CRM Integration" icon="building-user">
-    Add form submissions to your CRM as leads or contacts
-  </Card>
-  
-  <Card title="Email Marketing" icon="envelope">
-    Add subscribers to your email marketing lists
-  </Card>
-  
-  <Card title="Team Notifications" icon="bell">
-    Send notifications to team communication tools
-  </Card>
-  
-  <Card title="Data Storage" icon="database">
-    Save form submissions to spreadsheets or databases
-  </Card>
-</CardGroup>
+<Frame caption="Workflow trigger is recommended.">
+<img className="block" src="/images/zapier/zapier_3.png" alt="Select Trigger Event" />
+</Frame>
 
-## Best Practices
+### 3. Connect a Surface Account
 
-<Card title="Tips for Zapier Integration">
-  <ol>
-    <li>1. Test your Zaps thoroughly before activating</li>
-    <li>2. Use filters to process only relevant submissions</li>
-    <li>3. Map fields correctly between apps</li>
-    <li>4. Monitor your Zap history regularly</li>
-    <li>5. Keep your API key secure</li>
-  </ol>
-</Card>
+Under **Account**, click on **Sign In** and connect your account. You should see the following screen:
 
-## Troubleshooting
+<Frame>
+<img className="block" src="/images/zapier/zapier_9.png" alt="Connect Account" />
+</Frame>
 
-<AccordionGroup>
-  <Accordion title="Connection Issues">
-    1. Verify API key is correct
-    2. Check if API key is still valid
-    3. Ensure you have accepted the Zapier invitation
-  </Accordion>
-  
-  <Accordion title="Missing Triggers">
-    1. Verify form is published
-    2. Check if Zap is turned on
-    3. Confirm trigger conditions are met
-  </Accordion>
-</AccordionGroup>
+### 4. Create an API Key
 
-## Related Resources
+To obtain the API key, create a new production key in the Surface app.
 
-<CardGroup>
-  <Card title="Workflow Examples" icon="diagram-project" href="/workflows/examples">
-    See examples of Zapier automation workflows
-  </Card>
-  
-  <Card title="API Documentation" icon="code" href="/api-reference">
-    Learn about our API capabilities
-  </Card>
-</CardGroup>
+Navigate to **Settings > API Keys > + Add API Key** in the Surface app and add a new Production Key (use any label for the API Key).
 
+Copy the API Key and paste it into the API Key field from **Step 3**.
+
+<Frame caption="Add API Key">
+<img className="block" src="/images/zapier/zapier_10.png" alt="Add API Key" />
+</Frame>
+
+### 5. Add the Form ID to Zapier
+
+To find the Form ID, navigate to the form in the Surface app and click on the share icon (to the left of the Edit button). The value that appears after `https://forms.withsurface.com/s/...` is the Form ID.
+
+<Frame caption="Add Form ID">
+<img className="block" src="/images/zapier/zapier_7.png" alt="Add Form ID" />
+</Frame>
+
+Paste this value into the Form ID field in the Zapier Trigger tab.
+
+For "Process Partial Responses," select either `Yes` or `No` depending on whether you want to trigger the Zap on partial form responses.
+
+<Frame>
+<img className="block" src="/images/zapier/zapier_8.png" alt="Process Partial Responses" />
+</Frame>
+
+### 6. Test the Trigger
+
+Test the trigger to ensure you can view Surface form responses.
+
+<Frame>
+<img className="block" src="/images/zapier/zapier_11.png" alt="Test Trigger" />
+</Frame>
+
+### 7. Connect an Action
+
+Finally, connect an action to complete the setup.
+
+<Frame>
+<img className="block" src="/images/zapier/zapier_12.png" alt="Connect Action" />
+</Frame>
