@@ -1,0 +1,191 @@
+---
+title: "Link External HTML Form"
+description: "A step-by-step guide to connect your custom HTML forms with Surface Labs for partial response tracking, workflows, lead scoring, and enrichment"
+---
+
+<Warning icon="lightbulb">
+  Make sure that you have added the [Surface Tag](/surface-tag/quick-start) to your site before proceeding.
+</Warning>
+
+## Overview
+
+This guide walks you through connecting your external HTML forms with Surface Labs. By doing so, you'll unlock powerful features like:
+
+- Partial response tracking
+- Multi-step form workflows
+- Lead scoring and qualification
+- Contact data enrichment
+- Visitor de-anonymization
+- Comprehensive analytics
+
+<CardGroup cols={2}>
+  <Card title="Use Our Template" icon="github" href="https://github.com/trysurface/multi-step-progressive-form">
+    Start with our multi-step form template to simplify your implementation.
+  </Card>
+  <Card title="Form Builder" icon="wand-magic-sparkles" href="/surface-forms/form-builder">
+    Prefer a no-code solution? Use our form builder instead.
+  </Card>
+</CardGroup>
+
+## Step 1: Create a Multi-Step HTML Form
+
+You can either create your own multi-step form or use our starter template.
+
+### Option A: Use Our Template
+
+1. Clone our repository:
+```bash
+git clone https://github.com/trysurface/multi-step-progressive-form
+```
+
+2. Open the project and review the HTML structure:
+```html
+<!-- This is a simplified structure of the template -->
+<form id="surfaceForm" class="surface-form-handler">
+  <!-- Step 1 -->
+  <div class="form-step" data-step="1">
+    <input type="text" name="firstName" data-question-id="firstName" required>
+    <button type="button" class="next-btn">Next</button>
+  </div>
+  
+  <!-- Step 2 -->
+  <div class="form-step" data-step="2">
+    <input type="email" name="email" data-question-id="email" required>
+    <button type="button" class="prev-btn">Back</button>
+    <button type="button" class="next-btn">Next</button>
+  </div>
+  
+  <!-- Final Step -->
+  <div class="form-step" data-step="3">
+    <textarea name="message" data-question-id="message"></textarea>
+    <input type="hidden" name="completed" data-question-id="formCompleted" value="true">
+    <button type="button" class="prev-btn">Back</button>
+    <button type="submit" class="submit-btn">Submit</button>
+  </div>
+</form>
+```
+
+### Option B: Create Your Own Multi-Step Form
+
+If you prefer to build your own form, ensure it has:
+
+1. A container for each step
+2. Navigation buttons between steps
+3. Input fields for collecting user data
+4. A way to track the current step
+5. A hidden field to mark completion
+6. The `surface-form-handler` class on the form element
+
+## Step 2: Connect Your Form to Surface Labs
+
+### Create a New Form in Surface Labs
+
+1. Log in to your [Surface Labs account](https://app.surfacelabs.com)
+2. Navigate to the Forms section
+3. Click "Create New Form"
+4. Select "External Form Integration"
+5. Configure your form settings:
+   - You'll need to add all the fields that you want to track.
+   - Surface Labs will automatically track the form submission and send the data to your form handler endpoint.
+
+### Get Your Integration Details
+
+After creating your form, you'll need:
+
+1. The form handler endpoint URL
+2. Question IDs for each form field
+
+<Accordion title="How to find your integration details">
+  <Frame>
+    <img src="/images/embed/question_id.png" alt="Question ID location in Surface Labs dashboard" />
+  </Frame>
+</Accordion>
+
+## Step 3: Configure Form Submission Endpoint
+
+Update your form to send data to Surface Labs by adding the form handler endpoint:
+
+```html
+<form id="surfaceForm" class="surface-form-handler" action="https://api.surfacelabs.com/forms/YOUR_FORM_ID/submit">
+  <!-- Your form steps here -->
+</form>
+```
+
+Alternatively, you can configure this with JavaScript:
+
+```javascript
+document.addEventListener('DOMContentLoaded', function() {
+  const form = document.getElementById('surfaceForm');
+  form.action = 'https://api.surfacelabs.com/forms/YOUR_FORM_ID/submit';
+});
+```
+
+## Step 4: Add Question IDs to Form Fields
+
+Each field in your form needs a corresponding question ID from Surface Labs:
+
+```html
+<input type="text" name="firstName" data-question-id="q_abc123" required>
+<input type="email" name="email" data-question-id="q_xyz456" required>
+<textarea name="message" data-question-id="q_def789"></textarea>
+```
+
+For the final step, include a hidden field to mark the form as completed:
+
+```html
+<input type="hidden" name="completed" data-question-id="formCompleted" value="true">
+```
+
+## Step 5: Verify Your Integration
+
+To ensure your integration is working correctly:
+
+1. **Test Form Submission**:
+   - Fill out and submit your form
+   - Check your Surface Labs dashboard for the submission
+
+2. **Verify Partial Responses**:
+   - Navigate partially through the form
+   - Check that partial responses appear in Surface Labs
+
+3. **Test Visitor Tracking**:
+   - Visit the page with Surface Tag installed
+   - Confirm visitor data appears in the Analytics section
+
+4. **Check Form Analytics**:
+   - Review the form analytics in Surface Labs
+   - Verify completion rates and drop-off points
+
+## Troubleshooting
+
+If you encounter issues:
+
+1. **Form submissions not appearing**:
+   - Verify your form endpoint URL is correct
+   - Check that question IDs match those in Surface Labs
+   - Ensure the Surface Tag is properly installed
+
+2. **Partial responses not tracking**:
+   - Make sure each step has the proper data-question-id attributes
+   - Check your network tab to confirm requests are being sent
+
+3. **Surface Tag not working**:
+   - Verify the script is in the `<head>` section
+   - Check browser console for errors
+
+## Next Steps
+
+<CardGroup cols={2}>
+  <Card title="Configure Workflows" icon="bolt" href="/workflows/overview">
+    Set up automated actions based on form submissions
+  </Card>
+  <Card title="Lead Scoring" icon="chart-line" href="/leads/scoring">
+    Configure lead scoring to prioritize high-value prospects
+  </Card>
+  <Card title="Integrations" icon="plug" href="/integrations/overview">
+    Connect Surface Labs to your CRM, marketing tools, and more
+  </Card>
+  <Card title="Analytics" icon="chart-pie" href="/analytics/forms">
+    Deep dive into your form performance metrics
+  </Card>
+</CardGroup>
