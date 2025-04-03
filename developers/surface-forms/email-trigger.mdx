@@ -7,6 +7,10 @@ description: "Triggering via email input field submission"
 
 To enable triggering a Surface Form popup from a form field containing an email input, follow these instructions:
 
+<Warning icon="lightbulb">
+  Make sure that you have added the [Surface Tag](/surface-tag/quick-start) to your site before proceeding.
+</Warning>
+
 ### 1. Add the HTML Form 
 Ensure your HTML form includes the `surface-form-handler` class. This class is essential for identifying the form as one that triggers the Surface Form popup. Example:
 
@@ -22,13 +26,13 @@ Ensure your HTML form includes the `surface-form-handler` class. This class is e
 ### 2. Modify the Surface Form Embedding Script
 Modify the Surface Form Embedding Script to include the `data-question-id` attribute. 
 
-   > **Note:** You must replace the `<question_id>` within `params` below with the question ID from the Surface Form Builder.
+   > **Note:** You must replace the `<question_id>` within `data-question-id` attribute below with the question ID from the Surface Form Builder.
 
         <Accordion title="Click to see where to find the question ID in the Surface Form Builder">
         <img className="block" src="/images/embed/question_id.png" alt="Screenshot showing where to retrieve the question ID in the Surface Form Builder" />
         </Accordion>
 
-   ```JavaScript
+   ```HTML
    <script data-question-id="<question_id>">
       window.onload = function () {
         const surface_src = "surface_form_url";

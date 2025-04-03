@@ -9,10 +9,9 @@ og:image: "https://blog.withsurface.com/api/og?title=Inline%20Embed%20Surface%20
 twitter:image: "https://blog.withsurface.com/api/og?title=Inline%20Embed%20Surface%20Form"
 ---
 
-### Add Surface Tag
-
-Before going ahead, make sure you import the `Surface Tag` first.<br/>
-[Follow this guide to import the Surface Tag](/surface-tag/quick-start).
+<Warning icon="lightbulb">
+  Make sure that you have added the [Surface Tag](/surface-tag/quick-start) to your site before proceeding.
+</Warning>
 
 
 ### Edit Head Tag
@@ -28,8 +27,6 @@ Add the following code to your webpage's `head` tag.
 		const surface_embed_type = "inline"
 		const target_element_class = "surface-form-target"
 		const c = new SurfaceEmbed(surface_src, surface_embed_type, target_element_class)
-
-		c.embedSurfaceForm();
   }
 </script>
 
