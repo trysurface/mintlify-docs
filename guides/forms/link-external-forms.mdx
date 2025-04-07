@@ -80,6 +80,10 @@ If you prefer to build your own form, ensure it has:
 
 ### Create a New Form in Surface Labs
 
+<Frame>
+  <img src="/images/external-form/1.png" />
+</Frame>
+
 1. Log in to your [Surface Labs account](https://app.surfacelabs.com)
 2. Navigate to the Forms section
 3. Click "Create New Form"
@@ -88,6 +92,24 @@ If you prefer to build your own form, ensure it has:
    - You'll need to add all the fields that you want to track.
    - Surface Labs will automatically track the form submission and send the data to your form handler endpoint.
 
+### Add Required Fields
+
+When linking your external form, you'll need to add all the fields you want to track in Surface Forms. The form builder provides several field types to match your form's structure:
+
+<Frame>
+  <img src="/images/external-form/2.png" />
+</Frame>
+
+#### Available Field Types
+
+- **Identity Info**: Collect personal information like name, email, or phone number
+- **Short Input**: For short text responses (single line)
+- **Long Input**: For longer text responses (multi-line)
+- **Dropdown**: For selection from predefined options
+- **Multiple Choice**: For radio button or checkbox selections
+
+Once you've added all your fields, they'll be ready to map to your external form using the question IDs provided in the next steps.
+
 ### Get Your Integration Details
 
 After creating your form, you'll need:
@@ -95,11 +117,9 @@ After creating your form, you'll need:
 1. The form handler endpoint URL
 2. Question IDs for each form field
 
-<Accordion title="How to find your integration details">
-  <Frame>
-    <img src="/images/embed/question_id.png" alt="Question ID location in Surface Labs dashboard" />
-  </Frame>
-</Accordion>
+<Frame>
+  <img src="/images/external-form/3.png" alt="Question ID location in Surface Labs dashboard" />
+</Frame>
 
 ## Step 3: Configure Form Submission Endpoint
 
