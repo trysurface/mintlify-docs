@@ -127,7 +127,8 @@
       "group": "Guides",
       "pages": [
         "guides/overview",
-        "guides/forms/send-data-to-airtable"
+        "guides/send-data-to-surface",
+        "guides/send-data-to-airtable"
       ]
     },
     {
