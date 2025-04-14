@@ -122,11 +122,20 @@ Each field in the form requires a corresponding question ID from Surface Labs to
 
 Replace `<Component_Question_ID>` with the question ID obtained while adding components to the external form.
 
-### Add Hidden Field to Mark Form as Completed
-For the final step, include a hidden field before the submit button to mark the form as completed:
+### Add `surface-next-button` to Next Buttons
+
+Add the `surface-next-button` class to all next buttons.
 
 ```html
-<input type="hidden" name="completed" data-question-id="formCompleted" value="true">
+<button type="button" class="surface-next-button">Next</button>
+```
+
+### Add `surface-submit-button` to Submit Button
+
+Add the `surface-submit-button` class to the submit button.
+
+```html
+<button type="submit" class="surface-submit-button">Submit</button>
 ```
 
 ## Troubleshooting
@@ -142,8 +151,8 @@ If issues are encountered:
    - Ensure each step has the proper data-id attributes.
    - Check the network tab to confirm requests are being sent.
 
-3. **Surface Tag not working**:
-   - Verify the script has the `defer` attribute.
+3. **Script not working**:
+   - Verify the script has the `defer` attribute if added to the `<head>` tag.
    - Check the browser console for errors.
 
 ## Next Steps
