@@ -16,29 +16,29 @@ description: "A step-by-step guide to connect custom HTML forms with Surface Lab
   </Card>
 </CardGroup>
 
-## Step 1: Update the Surface Tag
-### Add `defer` Attribute
-To ensure that external HTML forms work seamlessly with Surface Labs, the Surface Tag must be updated to include the `defer` attribute. This ensures that the script loads asynchronously and does not block the rendering of the page.
+## Step 1: Add `SurfaceExternalForm` script to your site
 
-```html
-<!-- Before -->
-<script src="https://cdn.jsdelivr.net/gh/trysurface/scripts@latest/surface_tag.min.js">
-</script>
+To ensure that the Surface Tag tracks the correct site, the `siteId` attribute must be added to the `SurfaceExternalForm` script.
 
-<!-- After -->
-<script defer src="https://cdn.jsdelivr.net/gh/trysurface/scripts@latest/surface_tag.min.js">
-</script>
-```
-
-### Add Site ID to Surface Tag
 <Frame>
   <img src="/images/external-form/5.png" />
 </Frame>
 
-To ensure that the Surface Tag tracks the correct site, the `site-id` attribute must be added to the Surface Tag script.
+### Embed the script in the `<head>` or at the end of the `<body>` tag
 
 ```html
-<script defer site-id="<Your_Site_ID>" src="https://cdn.jsdelivr.net/gh/trysurface/scripts@latest/surface_tag.min.js">
+<!-- For the head tag -->
+<script defer siteId="SITE_ID">
+  const surfaceExternalForm = new SurfaceExternalForm();
+  surfaceExternalForm.attachFormHandlers();
+</script>
+
+<!-- OR -->
+
+<!-- For the body tag -->
+<script siteId="SITE_ID">
+  const surfaceExternalForm = new SurfaceExternalForm();
+  surfaceExternalForm.attachFormHandlers();
 </script>
 ```
 
