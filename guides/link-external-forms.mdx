@@ -97,10 +97,6 @@ git clone https://github.com/trysurface/multi-step-progressive-form
 
 ### Add Form ID to `<form>` Tag
 
-<Info>
-  If separate forms exist for each step, the `data-id` attribute must be added to each form.
-</Info>
-
 ```html
 <form id="demo-form" data-id="<Your_Form_ID>">
   <!-- Form steps here -->
@@ -143,12 +139,13 @@ Add the `surface-submit-button` class to the submit button.
 If issues are encountered:
 
 1. **Form submissions not appearing**:
-   - Verify the form endpoint URL is correct.
+   - Verify the form ID is correct.
    - Check that question IDs match those in Surface Labs.
    - Ensure the Surface Tag is properly installed.
+   - Ensure submit button has the `surface-submit-button` class.
 
 2. **Partial responses not tracking**:
-   - Ensure each step has the proper data-id attributes.
+   - Ensure that each ‘Next’ button has the `surface-next-button` class.
    - Check the network tab to confirm requests are being sent.
 
 3. **Script not working**:
