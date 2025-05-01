@@ -119,8 +119,7 @@
             "developers/integrations/nextjs",
             "developers/integrations/reactjs",
             "developers/integrations/unbounce",
-            "developers/integrations/webflow",
-            "developers/integrations/zapier"
+            "developers/integrations/webflow"
           ]
         }
       ]
