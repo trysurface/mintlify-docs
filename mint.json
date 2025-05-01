@@ -129,7 +129,7 @@
       "pages": [
         "guides/overview",
         "guides/first-form",
-        "guides/link-external-form",
+        "guides/link-external-forms",
         "guides/send-data-to-surface",
         "guides/send-data-to-airtable"
       ]
