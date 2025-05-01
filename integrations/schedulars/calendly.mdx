@@ -1,6 +1,6 @@
 ---
 title: "Calendly Scheduler Integration Guide"
-description: "This guide will help you integrate Calendly Scheduler with Surface Products"
+description: "This guide will help you integrate Calendly Scheduler with Surface Forms"
 sidebarTitle: "Calendly"
 ---
 
@@ -10,7 +10,7 @@ sidebarTitle: "Calendly"
     <img src="/images/integrations/calendly/1.png" />
 </Frame>
 
-1. Navigate to **Surface App** and go to the **Forms** section
+1. Navigate to the **Surface App** and go to the **Forms** section
 2. Select the form you want to add the scheduler to and click **Edit**
 3. Enable edit mode and select the step where you want to add the scheduler
 4. Add a **Scheduler** component to the step
@@ -34,7 +34,13 @@ You can pass form field data to Calendly by adding them as search parameters in 
 - Checking the platform's documentation
 - Inspecting the HTML element to find the field name
 
-This allows you to pre-fill Calendly fields with data collected in your form.
+You can enhance your Calendly integration by adding various URL parameters. Here are some commonly used parameters:
+
+- `embed_type=Inline`: Specifies the embedding type for the Calendly widget
+- `hide_event_type_details=1`: Hides the event type details for a cleaner interface
+- `hide_gdpr_banner=1`: Removes the GDPR consent banner
+
+This allows you to pre-fill Calendly fields with data collected in your form and customize the scheduling experience.
 
 #### Autoscroll to next step
 Surface Form automatically autoscroll to next step when a meeting has been scheduled. It also allows you to:
