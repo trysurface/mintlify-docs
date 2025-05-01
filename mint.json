@@ -127,6 +127,7 @@
       "group": "Guides",
       "pages": [
         "guides/overview",
+        "guides/first-form",
         "guides/send-data-to-surface",
         "guides/send-data-to-airtable"
       ]
