@@ -143,7 +143,8 @@
             "integrations/schedulars/overview", 
             "integrations/schedulars/calendly",
             "integrations/schedulars/cal",
-            "integrations/schedulars/hubspot"
+            "integrations/schedulars/hubspot",
+            "integrations/schedulars/revenue-hero"
           ],
           "icon": "calendar"
         }

@@ -1,0 +1,49 @@
+---
+title: "RevenueHero Scheduler Integration Guide"
+description: "This guide will help you integrate RevenueHero Scheduler with Surface Products"
+sidebarTitle: "RevenueHero"
+---
+
+<Warning>
+    The RevenueHero Schedular will only visible in published forms.
+</Warning>
+
+## Setting Up RevenueHero Scheduler
+
+<Frame>
+    <img src="/images/integrations/calendly/1.png" />
+</Frame>
+
+
+## Create new form and router in RevenueHero
+
+### Create new form
+<Frame>
+    <img src="/images/integrations/revenue-hero/1.png" />
+</Frame>
+- Go to `Inbound` > `Forms` tab and create a new RevenueHero form. 
+- Make sure to add all the fields you need for your form.
+
+### Create new router
+<Frame>
+    <img src="/images/integrations/revenue-hero/2.png" />
+</Frame>
+- Go to `Inbound` > `Routes` tab and create a new RevenueHero router.
+
+### Get Router ID
+Once you have created the router, you can get the router ID from the following ways:
+
+1. Go to the `Routers` tab and copy the ID from the URL.
+2. Go to the `Routers` tab and click on `Widget Installation` from navigation menu, Get the Router ID from the code snippet.
+<Tip>
+    The Router Id is the value of `routerId` variable in the code snippet.
+</Tip>
+
+## Configure the Scheduler Component
+<Frame>
+    <img src="/images/integrations/revenue-hero/3.png" />
+</Frame>
+
+1. Add the Router ID from RevenueHero into `RevenueHero Router ID` field.
+2. Map the form fields.
+
