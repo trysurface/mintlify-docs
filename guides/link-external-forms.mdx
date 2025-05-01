@@ -26,16 +26,12 @@ To ensure that the Surface Tag tracks the correct site, the `siteId` attribute m
 
 ### Embed the script in the `<head>` or at the end of the `<body>` tag
 
+<Note>
+  The script must be added before the closing `</body>` tag and replace `SITE_ID` with the site ID.
+</Note>
+
 ```html
-<!-- For the head tag -->
-<script defer siteId="SITE_ID">
-  const surfaceExternalForm = new SurfaceExternalForm();
-  surfaceExternalForm.attachFormHandlers();
-</script>
-
-<!-- OR -->
-
-<!-- For the body tag -->
+<!-- Before the closing </body> tag -->
 <script siteId="SITE_ID">
   const surfaceExternalForm = new SurfaceExternalForm();
   surfaceExternalForm.attachFormHandlers();
@@ -90,15 +86,23 @@ git clone https://github.com/trysurface/multi-step-progressive-form
 ```
 
 2. Open the project and review the `index.html` file.
-
+<CardGroup cols={2}>
+  <Card>
 <Frame>
-  <img src="/images/external-form/4.png" />
+  <img src="/images/external-form/7.png" />
 </Frame>
+</Card>
+<Card>
+  <Frame>
+    <img src="/images/external-form/8.png" />
+  </Frame>
+</Card>
+</CardGroup>
 
 ### Add Form ID to `<form>` Tag
 
 ```html
-<form id="demo-form" data-id="<Your_Form_ID>">
+<form id="multiStepForm" data-id="<Your_Form_ID>">
   <!-- Form steps here -->
 </form>
 ```
@@ -109,10 +113,17 @@ Replace `<Your_Form_ID>` with the ID of the external form created in Surface Lab
 
 Each field in the form requires a corresponding question ID from Surface Labs to be added to the `data-id` attribute:
 
-```html
+```jsx
 <div class="form-group">
-  <label for="firstName"><span class="required">*</span> First Name:</label>
-  <input data-id="<Component_Question_ID>" type="text" id="firstName" name="firstName" placeholder="First Name" class="input-field" required>
+  <label for="email">Business email</label>
+  <input
+    data-id="<Component_Question_ID>"
+    type="email"
+    id="email"
+    name="email"
+    placeholder="john@telnyx.com"
+    required
+  />
 </div>
 ```
 
