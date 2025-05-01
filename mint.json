@@ -105,7 +105,9 @@
           "group": "Embedding",
           "pages": [
             "developers/surface-forms/inline",
-            "developers/surface-forms/popup-slideover",
+            "developers/surface-forms/popup",
+            "developers/surface-forms/slideover",
+            "developers/surface-forms/widget",
             "developers/surface-forms/email-trigger"
           ]
         },
@@ -117,8 +119,7 @@
             "developers/integrations/nextjs",
             "developers/integrations/reactjs",
             "developers/integrations/unbounce",
-            "developers/integrations/webflow",
-            "developers/integrations/zapier"
+            "developers/integrations/webflow"
           ]
         }
       ]
@@ -128,6 +129,7 @@
       "pages": [
         "guides/overview",
         "guides/first-form",
+        "guides/link-external-form",
         "guides/send-data-to-surface",
         "guides/send-data-to-airtable"
       ]
