@@ -67,13 +67,18 @@
       "group": "Reference",
       "pages": [
         {
+          "group": "Surface Tag",
+          "pages": ["surface-tag/overview", "surface-tag/implementation", "surface-tag/website-deanon"]
+        },
+        {
           "group": "Surface Forms",
           "pages": [
             "surface-forms/overview",
-            "surface-forms/form-builder",
-            "surface-forms/enrichment",
+            "surface-forms/ab-testing",
             "surface-forms/conditional-routing",
-            "surface-forms/ab-testing"
+            "surface-forms/enrichment",
+            "surface-forms/events",
+            "surface-forms/form-builder"
           ]
         },
         {
@@ -90,10 +95,6 @@
             "workflows/overview",
             "workflows/examples"
           ]
-        },
-        {
-          "group": "Surface Tag",
-          "pages": ["surface-tag/overview", "surface-tag/implementation", "surface-tag/website-deanon"]
         }
       ]
     },
