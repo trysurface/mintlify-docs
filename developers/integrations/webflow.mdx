@@ -6,8 +6,8 @@ og:title: "Add a Surface Form to your Webflow Site"
 twitter:title: "Add a Surface Form to your Webflow Site"
 og:description: "Add a Surface Form to your Webflow Site"
 twitter:description: "Add a Surface Form to your Webflow Site"
-og:image: "https://blog.withsurface.com/api/og?title=Webflow%20Integration"
-twitter:image: "https://blog.withsurface.com/api/og?title=Webflow%20Integration"
+og:image: "https://app.withsurface.com/api/v1/form/og?title=Webflow%20Integration"
+twitter:image: "https://app.withsurface.com/api/v1/form/og?title=Webflow%20Integration"
 ---
 
 <Tip>This feature requires being on a paid Webflow site plan.</Tip>
@@ -26,9 +26,15 @@ twitter:image: "https://blog.withsurface.com/api/og?title=Webflow%20Integration"
     <Step>
       Add the following code in the *Start of `<head>` tag* section.
         
-    ```html
+    <Note>
+        Check out the [How to Get Site ID](../../surface-tag/how-to-get-site-id) page to get your site ID.
+    </Note>
+    ```javascript
     <!-- Start Surface Tag -->
-    <script src="https://cdn.jsdelivr.net/gh/trysurface/scripts@latest/surface_tag.min.js"></script>
+    <script 
+      src="https://cdn.jsdelivr.net/gh/trysurface/scripts@latest/surface_tag.min.js"
+      siteId="YOUR_SITE_ID"> // Replace with your site ID
+    </script>
     <!-- End Surface Tag -->
     ```
 

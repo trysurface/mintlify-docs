@@ -6,8 +6,8 @@ og:title: "Add a Surface Form to your Framer Site"
 twitter:title: "Add a Surface Form to your Framer Site"
 og:description: "Add a Surface Form to your Framer Site"
 twitter:description: "Add a Surface Form to your Framer Site"
-og:image: "https://blog.withsurface.com/api/og?title=Framer%20Integration"
-twitter:image: "https://blog.withsurface.com/api/og?title=Framer%20Integration"
+og:image: "https://app.withsurface.com/api/v1/form/og?title=Framer%20Integration"
+twitter:image: "https://app.withsurface.com/api/v1/form/og?title=Framer%20Integration"
 ---
 
 <Info>
@@ -23,10 +23,14 @@ twitter:image: "https://blog.withsurface.com/api/og?title=Framer%20Integration"
       Add the following code in the *Start of `<head>` tag* section.
     </Step>
   </Steps>
-  
-  ```html
+  <Note>
+    Check out the [How to Get Site ID](../../surface-tag/how-to-get-site-id) page to get your site ID.
+  </Note>
+  ```javascript
   <!-- Start Surface Tag -->
-  <script src="https://cdn.jsdelivr.net/gh/trysurface/scripts@latest/surface_tag.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/gh/trysurface/scripts@latest/surface_tag.min.js"
+    siteId="YOUR_SITE_ID"> // Replace with your site ID
+  </script>
   <!-- End Surface Tag -->
   ```
 </Info>
