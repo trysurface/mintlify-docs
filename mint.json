@@ -131,7 +131,8 @@
         "guides/overview",
         "guides/link-external-forms",
         "guides/send-data-to-surface",
-        "guides/send-data-to-airtable"
+        "guides/send-data-to-airtable",
+        "guides/events-to-gtm"
       ]
     },
     {
