@@ -50,34 +50,32 @@ There are three different ways to embed a Surface Form.
 
 <Tabs>
     <Tab title="Inline Embed">
-        To embed an **inline form**, first go to the Webflow [dashboard](https://webflow.com/dashboard) > `Project Section` > Select `Custom Code` and add the following custom code into the `footer` code section.
+        1. To embed an **inline form**, first go to the Webflow [dashboard](https://webflow.com/dashboard) > `Project Section` > Select `Custom Code` and add the following custom code into the `footer` code section.
         
-        ```html
-        <!-- Start Surface Form Embed -->
-        <script>
-            window.onload = function() {
-                // Replace this with your Surface Form URL
-                const surface_src = "<form url here>"
-                
-                const surface_embed_type = "inline"
-                const target_element_class = "surface-form-target"
-                const c = new SurfaceEmbed(surface_src, surface_embed_type, target_element_class)
+          ```html
+          <!-- Speed up connections to forms.withsurface.com by performing early DNS resolution and TCP handshake -->
+          <link rel="dns-prefetch" href="https://forms.withsurface.com">
+          <link rel="preconnect" href="https://forms.withsurface.com" crossorigin>
+          ```
 
-                c.embedSurfaceForm();
-            }
-        </script>
-        <!-- End Surface Form Embed -->
-        ```
+        2. Add a div on the page with height `100vh` and width `100%` (so that it takes up the entire page)
 
-        Here's what the Webflow `footer` code section should look like:
-        <img src="/images/webflow/webflow_inline_footer_code.png" style={{ borderRadius: '0.5rem' }} />
-
-        Next, navigate to your Webflow Design Studio and select the section where the form will be added.
-        After selecting the section, you should see the `Style` tab in the right panel.
-        <img className="block" src="/images/webflow/webflow-design-studio.png" alt="webflow" />
+        3. Add the Code Embed block <i>(only on paid plans)</i> in Webflow within the above div and add the Surface iFrame code in the block.
+        <Frame>
+          <img className="block" src="/images/webflow/webflow-iframe.png" alt="webflow" />
+        </Frame>
         
-        Now add `surface-form-target` in the Style Selector:
-        <img className="block" src="/images/webflow/webflow-design-studio-inline.png" alt="webflow" />
+        4. Optional (but recommended!)
+            - To make the form loading speeds as fast as possible, we can pre-fetch the Surface Form script on the website home page. 
+            - Add the following in the settings of the `home` page of your site
+            ```html
+            <!-- Beginning of Early Access Request form-->
+            <link rel="prefetch" href="https://forms.withsurface.com/s/{form_id}" as="document"> <!-- Replace {form_id} with your form id -->
+            <!--End of Early Access Request form-->
+            ```
+          <Frame caption="It should look like this">
+            <img className="block" src="/images/webflow/webflow-links.png" alt="webflow" />
+          </Frame>
     </Tab>
     <Tab title="Popup">
         To configure a **popup form**, first go to the Webflow [dashboard](https://webflow.com/dashboard) > `Project Section` > Select `Custom Code` and add the following custom code into the `footer` code section.
