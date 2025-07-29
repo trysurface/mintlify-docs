@@ -8,9 +8,6 @@ description: Learn about the events emitted by Surface forms that can be used wi
 Surface forms emit various events that can be tracked and used with analytics platforms like Google Ads and Meta Ads. This guide covers all available events and their associated data.
 
 ## Available Events
-<Info>
-  Note: The `emailProvided` and `meetingBooked` events are only emitted when the respective fields (email input or scheduler) are present in the form.
-</Info>
 
 <CardGroup cols={2}>
   <Card
@@ -28,20 +25,6 @@ Surface forms emit various events that can be tracked and used with analytics pl
     Monitor individual step completions in multi-step forms
   </Card>
   <Card
-    title="Email Provided Event"
-    icon="envelope"
-    href="#email-provided-event"
-  >
-    Track when users provide their email address
-  </Card>
-  <Card
-    title="Meeting Booked Event"
-    icon="calendar"
-    href="#meeting-booked-event"
-  >
-    Track when users book a meeting through the form
-  </Card>
-  <Card
     title="Form Submission Event"
     icon="paper-plane"
     href="#form-submission-event"
@@ -50,46 +33,47 @@ Surface forms emit various events that can be tracked and used with analytics pl
   </Card>
 </CardGroup>
 
-### Form Started Event
+### 1. SurfaceFormStarted
+When a user starts filling out a form, the `SurfaceFormStarted` event is emitted.
 <Frame>
  <img src="/images/surface-events/1.png" />
 </Frame>
-When a user starts filling out a form, the `SurfaceFormStarted` event is emitted.
 
-### Step Completion Event
+### 2. SurfaceFormStepSubmitted
+Each time a user completes a step in a multi-step form, the `SurfaceFormStepSubmitted` event is emitted.
+
+<Info>
+  Note: The `SurfaceFormStepSubmitted` emits value of `emailProvided` and `meetingBooked` in metadata when the respective fields (email input or scheduler) are present in the form.
+  
+  ```json
+  {
+    "emailProvided": true,
+    "meetingBooked": true
+  }
+  ```
+  
+</Info>
+
 <Frame>
  <img src="/images/surface-events/2.png" />
 </Frame>
-Each time a user completes a step in a multi-step form, the `SurfaceFormStepSubmitted` event is emitted.
 
-### Email Provided Event
-<Frame>
- <img src="/images/surface-events/3.png" />
-</Frame>
-When a user provides their email address, the `SurfaceFormEmailProvided` event is emitted.
-
-### Meeting Booked Event
-<Frame>
- <img src="/images/surface-events/4.png" />
-</Frame>
-When a user books a meeting through the form, the `SurfaceFormMeetingBooked` event is emitted.
-
-### Form Submission Event
+### 3. SurfaceFormSubmitEvent
+When a user submits a form, the `SurfaceFormSubmitEvent` event is emitted.
 <Frame>
  <img src="/images/surface-events/5.png" />
 </Frame>
-When a user submits a form, the `SurfaceFormSubmitEvent` event is emitted.
 
 ## Event Flow in Multi-Step Forms
 
 The following diagram shows how events are emitted in a typical multi-step form:
 
+<Frame>
 ```mermaid
 graph TD
     A[Form Started] -->|SurfaceFormStarted| B[Step 1]
     B -->|SurfaceFormStepSubmitted| C[Step 2]
     C -->|SurfaceFormStepSubmitted| D[Step 3]
     D -->|SurfaceFormSubmitEvent| E[Form Submitted]
-    B -->|emailProvided| F[Email Provided]
-    D -->|meetingBooked| G[Meeting Booked]
 ```
+</Frame>
