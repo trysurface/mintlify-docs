@@ -45,13 +45,20 @@ This guide will walk you through the process of integrating Surface forms with y
 2. Click "Add New JavaScript"
 3. Add the following script:
 
+<Note>
+    Check out the [How to Get Site ID](../../surface-tag/how-to-get-site-id) page to get your site ID.
+</Note>
+
 ```javascript
 <!-- Start Surface Tag -->
-<script async="" src="https://cdn.jsdelivr.net/gh/trysurface/scripts@latest/surface_tag.js"></script>
+<script 
+    src="https://cdn.jsdelivr.net/gh/trysurface/scripts@latest/surface_tag.js"
+    siteId="YOUR_SITE_ID"> // Replace with your site ID
+</script>
 <!-- End Surface Tag -->
 
 
-<!-- Start Surface Form Script -->
+<!-- Start Surface Form Embed -->
 <script>
     let surfaceInitialized = false;
 
@@ -73,7 +80,7 @@ This guide will walk you through the process of integrating Surface forms with y
     document.addEventListener("click", initializeSurfaceForm, { once: true });
     document.addEventListener("scroll", initializeSurfaceForm, { once: true });
 </script>
-<!-- End Surface Form Script -->
+<!-- End Surface Form Embed -->
 
 ```
 4. Make sure to replace the `SURFACE_FORM_URL` with your Surface form URL

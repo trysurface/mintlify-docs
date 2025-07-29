@@ -17,11 +17,12 @@
     }
   },
   "metadata": {
-    "og:image": "https://blog.withsurface.com/api/og?title=Docs",
-    "twitter:image": "https://blog.withsurface.com/api/og?title=Docs",
-    "twitter:title": "Documentation - Surface Labs",
-    "og:title": "Documentation - Surface Labs",
-    "twitter:description": "Surface Labs Documentation"
+    "og:image": "https://app.withsurface.com/api/v1/form/og?title=Surface%20Labs%20Documentation",
+    "twitter:image": "https://app.withsurface.com/api/v1/form/og?title=Surface%20Labs%20Documentation",
+    "twitter:title": "Surface Labs Documentation",
+    "og:title": "Surface Labs Documentation",
+    "twitter:description": "Surface Labs Documentation",
+    "og:description": "Surface Labs Documentation"
   },
   "modeToggle": {
     "default": "light",
@@ -51,7 +52,7 @@
   "tabs": [
     {
       "name": "Guides",
-      "url": "walkthrough"
+      "url": "guides"
     },
     {
       "name": "Developers",
@@ -67,13 +68,18 @@
       "group": "Reference",
       "pages": [
         {
+          "group": "Surface Tag",
+          "pages": ["surface-tag/overview", "surface-tag/how-to-get-site-id", "surface-tag/implementation", "surface-tag/website-deanon"]
+        },
+        {
           "group": "Surface Forms",
           "pages": [
             "surface-forms/overview",
-            "surface-forms/form-builder",
-            "surface-forms/enrichment",
+            "surface-forms/ab-testing",
             "surface-forms/conditional-routing",
-            "surface-forms/ab-testing"
+            "surface-forms/enrichment",
+            "surface-forms/events",
+            "surface-forms/form-builder"
           ]
         },
         {
@@ -90,10 +96,6 @@
             "workflows/overview",
             "workflows/examples"
           ]
-        },
-        {
-          "group": "Surface Tag",
-          "pages": ["surface-tag/overview", "surface-tag/implementation", "surface-tag/website-deanon"]
         }
       ]
     },
@@ -105,7 +107,9 @@
           "group": "Embedding",
           "pages": [
             "developers/surface-forms/inline",
-            "developers/surface-forms/popup-slideover",
+            "developers/surface-forms/popup",
+            "developers/surface-forms/slideover",
+            "developers/surface-forms/widget",
             "developers/surface-forms/email-trigger"
           ]
         },
@@ -117,17 +121,20 @@
             "developers/integrations/nextjs",
             "developers/integrations/reactjs",
             "developers/integrations/unbounce",
-            "developers/integrations/webflow",
-            "developers/integrations/zapier"
+            "developers/integrations/webflow"
           ]
         }
       ]
     },
     {
-      "group": "Walkthrough",
+      "group": "Guides",
       "pages": [
-        "walkthrough/overview",
-        "walkthrough/forms/send-data-to-airtable"
+        "guides/overview",
+        "guides/first-form",
+        "guides/link-external-forms",
+        "guides/send-data-to-surface",
+        "guides/send-data-to-airtable",
+        "guides/events-to-gtm"
       ]
     },
     {

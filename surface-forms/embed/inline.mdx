@@ -6,14 +6,14 @@ og:title: "Inline Embed Surface Form | Surface Docs"
 twitter:title: "Inline Embed Surface Form | Surface Docs"
 og:description: "Embed your form inline with the rest of your page by adding scripts to your head tag and class names to the div elements where you want to embed your script"
 twitter:description: "Embed your form inline with the rest of your page by adding scripts to your head tag and class names to the div elements where you want to embed your script"
-og:image: "https://blog.withsurface.com/api/og?title=Inline%20Embed%20Surface%20Form"
-twitter:image: "https://blog.withsurface.com/api/og?title=Inline%20Embed%20Surface%20Form"
+og:image: "https://app.withsurface.com/api/v1/form/og?title=Inline%20Embed%20Surface%20Form"
+twitter:image: "https://app.withsurface.com/api/v1/form/og?title=Inline%20Embed%20Surface%20Form"
 ---
 
 ### Add Surface Tag
 
 Before going ahead, make sure you import the `Surface Tag` first.<br/>
-[Follow this guide to import the Surface Tag](/surface-tag/quick-start).
+[Follow this guide to import the Surface Tag](/surface-tag/implementation).
 
 
 ### Edit Head Tag
@@ -21,8 +21,7 @@ Before going ahead, make sure you import the `Surface Tag` first.<br/>
 Add the following code to your webpage's `head` tag.
 
 ```HTML
-<!-- Start of Surface Form snippet -->
-
+<!-- Start Surface Form Embed -->
 <script>
   window.onload = function() {
 		const surface_src = "<form url here>"
@@ -33,8 +32,7 @@ Add the following code to your webpage's `head` tag.
 		c.embedSurfaceForm();
   }
 </script>
-
-<!-- End of Surface Form snippet -->
+<!-- End of Surface Form Embed -->
 ```
 
 Replace the `<form url here>` with the url to your surface form found by clicking the share button on the surface platform.

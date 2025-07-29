@@ -1,0 +1,64 @@
+---
+title: "Popup"
+description: "Display your form as a popup modal"
+og:title: "Popup Embed Surface Form | Surface Docs"
+twitter:title: "Popup Surface Form | Surface Docs"
+og:description: "Display your form as a popup modal"
+twitter:description: "Display your form as a popup modal"
+og:image: "https://app.withsurface.com/api/v1/form/og?title=Popup%20Embed%20Surface%20Form"
+twitter:image: "https://app.withsurface.com/api/v1/form/og?title=Popup%20Embed%20Surface%20Form"
+---
+
+<Warning icon="lightbulb">
+  Make sure that you have added the [Surface Tag](/surface-tag/implementation) to your site before proceeding.
+</Warning>
+
+### Edit Head Tag
+
+Add the following code snippet to your site's `head` tag to enable the popup form.
+
+```HTML
+<!-- Start Surface Form Embed -->
+<script>
+window.onload = function() {
+    const surface_src = "<form url here>"
+    const surface_embed_type = "popup"
+    const target_element_class = "surface-form-button"
+    const c = new SurfaceEmbed(surface_src, surface_embed_type, target_element_class)
+}
+</script>
+<!-- End of Surface Form Embed -->
+```
+
+Replace the `<form url here>` with the url to your surface form found by clicking the share button on the surface platform.
+
+### Choose trigger buttons
+
+The next step is to choose which buttons you'd like to trigger the form.
+
+This is done by simply adding the class name `surface-form-button` to the elements which should be able to make the form appear.
+
+```HTML
+<button class="... surface-form-button"> </button>
+```
+
+### Control Popup Size
+
+You can control the size of the popup that appears on your site. See the following snippet:
+
+```HTML
+<!-- Start Surface Form Embed -->
+<script>
+window.onload = function() {
+        const surface_src = "<form url here>"
+        const surface_embed_type = "popup"
+        const target_element_class = "surface-form-button"
+        const c = new SurfaceEmbed(surface_src, surface_embed_type, target_element_class)
+
+        c.popupSize = "medium" // This value can be "small", "medium", or "large"
+}
+</script>
+<!-- End of Surface Form Embed -->
+```
+
+You can set the the `popupSize` variable on the `SurfaceEmbed` instance to control the size of the popup. Current accepted values are `small`, `medium` and `large`

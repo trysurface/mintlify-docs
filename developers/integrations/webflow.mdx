@@ -1,19 +1,20 @@
 ---
 title: "Webflow"
-description: "Integrate Surface Forms with Webflow"
+description: "Add a Surface Form to your Webflow Site"
 icon: "webflow"
-og:title: "Integrate Surface Form with Webflow"
-twitter:title: "Integrate Surface Form with Webflow"
-og:description: "Integrate Surface Forms with Webflow"
-twitter:description: "Integrate Surface Forms with Webflow"
-og:image: "https://blog.withsurface.com/api/og?title=Webflow%20Integration"
-twitter:image: "https://blog.withsurface.com/api/og?title=Webflow%20Integration"
+og:title: "Add a Surface Form to your Webflow Site"
+twitter:title: "Add a Surface Form to your Webflow Site"
+og:description: "Add a Surface Form to your Webflow Site"
+twitter:description: "Add a Surface Form to your Webflow Site"
+og:image: "https://app.withsurface.com/api/v1/form/og?title=Webflow%20Integration"
+twitter:image: "https://app.withsurface.com/api/v1/form/og?title=Webflow%20Integration"
 ---
 
-<Tip>This feature requires being on a paid Webflow plan.</Tip>
+<Tip>This feature requires being on a paid Webflow site plan.</Tip>
 
+<img src="/images/webflow/webflow_empty_code.png" style={{ borderRadius: '0.5rem' }} />
 
-<Info>
+<Warning>
   Before proceeding, make sure you have installed the Surface Tag on your website. Follow these steps to install the Surface Tag first:
   <Steps>
     <Step>
@@ -24,105 +25,118 @@ twitter:image: "https://blog.withsurface.com/api/og?title=Webflow%20Integration"
     </Step>
     <Step>
       Add the following code in the *Start of `<head>` tag* section.
+        
+    <Note>
+        Check out the [How to Get Site ID](../../surface-tag/how-to-get-site-id) page to get your site ID.
+    </Note>
+    ```javascript
+    <!-- Start Surface Tag -->
+    <script 
+      src="https://cdn.jsdelivr.net/gh/trysurface/scripts@latest/surface_tag.min.js"
+      siteId="YOUR_SITE_ID"> // Replace with your site ID
+    </script>
+    <!-- End Surface Tag -->
+    ```
+
+    The `head` section containing the `Surface Tag` should now look like this:
+    <img src="/images/webflow/webflow_head_section_tag.png" style={{ borderRadius: '0.5rem' }} />
     </Step>
   </Steps>
-  
-  ```html
-    <!-- Start Surface Tag -->
-    <script async="" src="https://cdn.jsdelivr.net/gh/trysurface/scripts@latest/surface_tag.min.js"/>
-    <!-- End Surface Tag -->
-  ```
-</Info>
+</Warning>
 
+### Embedding a Surface Form in your Webflow Site
 
-### 1. Create a new Surface Form
-
-Create a new form using our no code [form builder](https://app.withsurface.com) and copy the form sharing link. You can also follow [this](../quick-start/create-first-form) tutorial to build a basic Surface Form. <br/> For this tutorial, suppose it is: https://forms.withsurface.com/s/cm2jrdp7o0001jv03ui09zrgy
-
-<Accordion title="Click to expand">
-  <img className="block" src="/images/webflow/form.png" alt="Hero Light" />
-</Accordion>
-
-### 2. Embedding Form in Webflow
-
-There are two ways to embed the Surface Form, you may choose one according to your preference.
+There are three different ways to embed a Surface Form.
 
 <Tabs>
     <Tab title="Inline Embed">
-        To embed the Surface form inline, go to the Webflow design studio and select the section where the form will be added.
-        After selecting the section, you should see the `Style` tab in the right panel.
-        <img className="block" src="/images/webflow/webflow-design-studio.png" alt="webflow" />
-        Now add `surface-form-target` in the Style Selector:
-        <img className="block" src="/images/webflow/webflow-design-studio-inline.png" alt="webflow" />
+        1. To embed an **inline form**, first go to the Webflow [dashboard](https://webflow.com/dashboard) > `Project Section` > Select `Custom Code` and add the following custom code into the `footer` code section.
+        
+          ```html
+          <!-- Speed up connections to forms.withsurface.com by performing early DNS resolution and TCP handshake -->
+          <link rel="dns-prefetch" href="https://forms.withsurface.com">
+          <link rel="preconnect" href="https://forms.withsurface.com" crossorigin>
+          ```
+
+        2. Add a div on the page with height `100vh` and width `100%` (so that it takes up the entire page)
+
+        3. Add the Code Embed block <i>(only on paid plans)</i> in Webflow within the above div and add the Surface iFrame code in the block.
+        <Frame>
+          <img className="block" src="/images/webflow/webflow-iframe.png" alt="webflow" />
+        </Frame>
+        
+        4. Optional (but recommended!)
+            - To make the form loading speeds as fast as possible, we can pre-fetch the Surface Form script on the website home page. 
+            - Add the following in the settings of the `home` page of your site
+            ```html
+            <!-- Beginning of Early Access Request form-->
+            <link rel="prefetch" href="https://forms.withsurface.com/s/{form_id}" as="document"> <!-- Replace {form_id} with your form id -->
+            <!--End of Early Access Request form-->
+            ```
+          <Frame caption="It should look like this">
+            <img className="block" src="/images/webflow/webflow-links.png" alt="webflow" />
+          </Frame>
     </Tab>
-    <Tab title="Popover">
-        To configure the Popover, navigate to your Webflow Design Studio and select the button that triggers the form.
-        After Selecting the button, you should see `Style` tab on your right panel.
-        <img className="block" src="/images/webflow/webflow-design-studio.png" alt="webflow" />
-        Now add `surface-form-button` in Style Selector:
-        <img className="block" src="/images/webflow/webflow-design-studio-popslide.png" alt="webflow" />
-    </Tab>
-    <Tab title="Slideover">
-        To configure the Slideover, navigate to your Webflow Design Studio and select the button that triggers the form.
-        After Selecting the button, you should see `Style` tab on your right panel.
-        <img className="block" src="/images/webflow/webflow-design-studio.png" alt="webflow" />
-        Now add `surface-form-button` in Style Selector:
-        <img className="block" src="/images/webflow/webflow-design-studio-popslide.png" alt="webflow" />
-    </Tab>
-
-</Tabs>
-
-### 3. Adding JavaScript code
-
-Go to the webflow [dashboard](https://webflow.com/dashboard) > `Project Section` > Select `Custom Code` and add the following custom code into the `head` code section.
-
-<Tabs>
-    <Tab title="Inline Embed">
+    <Tab title="Popup">
+        To configure a **popup form**, first go to the Webflow [dashboard](https://webflow.com/dashboard) > `Project Section` > Select `Custom Code` and add the following custom code into the `footer` code section.
+        
         ```html
+        <!-- Start Surface Form Embed -->
         <script>
             window.onload = function() {
-                const surface_src = "<form url here>" // replace this with your Surface Form URL.
-                const surface_embed_type = "inline"
-                const target_element_class = "surface-form-target"
-                const c = new SurfaceEmbed(surface_src, surface_embed_type, target_element_class)
+                // Replace this with your Surface Form URL
+                const surface_src = "<form url here>"
 
-                c.embedSurfaceForm();
+                const surface_embed_type = "popup"
+                const target_element_class = "surface-form-button"
+                const c = new SurfaceEmbed(surface_src, surface_embed_type, target_element_class)
+            
+                // Optional: Set the popup size ("small", "medium", or "large")
+                c.popupSize = "medium"
             }
         </script>
+        <!-- End Surface Form Embed -->
         ```
-    </Tab>
-    <Tab title="Popover">
-            ```html
-            <script>
-                window.onload = function() {
-                    const surface_src = "<form url here>" // replace this with your Surface Form URL.
-                    const surface_embed_type = "popup"
-                    const target_element_class = "surface-form-button"
-                    const c = new SurfaceEmbed(surface_src, surface_embed_type, target_element_class)
 
-                    c.embedSurfaceForm();
-                }
-            </script>
-            ```
-            You can check this [guide](../surface-forms/popup-slideover) for a more detailed explanation about Popover Embedding.
+        Here's what the Webflow `footer` code section should look like:
+        <img src="/images/webflow/webflow_popup_footer_code.png" style={{ borderRadius: '0.5rem' }} />
+
+        Next, navigate to your Webflow Design Studio and select the button that triggers the form.
+        After Selecting the button, you should see `Style` tab on your right panel.
+        <img className="block" src="/images/webflow/webflow-design-studio.png" alt="webflow" />
+        
+        Finally, add `surface-form-button` in Style Selector:
+        <img className="block" src="/images/webflow/webflow-design-studio-popslide.png" alt="webflow" />
     </Tab>
     <Tab title="Slideover">
+        To configure a **slideover form**, first go to the Webflow [dashboard](https://webflow.com/dashboard) > `Project Section` > Select `Custom Code` and add the following custom code into the `footer` code section.
+
         ```html
+        <!-- Start Surface Form Embed -->
         <script>
             window.onload = function() {
-                const surface_src = "<form url here>" // replace this with your Surface Form URL.
+                // Replace this with your Surface Form URL
+                const surface_src = "<form url here>"
+
                 const surface_embed_type = "slideover"
                 const target_element_class = "surface-form-button"
                 const c = new SurfaceEmbed(surface_src, surface_embed_type, target_element_class)
-
-                c.embedSurfaceForm();
             }
         </script>
+        <!-- End Surface Form Embed -->
         ```
-        You can check this [guide](../surface-forms/popup-slideover) for a more detailed explanation about Slideover Embedding.
+
+        Here's what the Webflow `footer` code section should look like:
+        <img src="/images/webflow/webflow_slideover_footer_code.png" style={{ borderRadius: '0.5rem' }} />
+
+        Next, navigate to your Webflow Design Studio and select the button that triggers the form.
+        After Selecting the button, you should see `Style` tab on your right panel.
+        <img className="block" src="/images/webflow/webflow-design-studio.png" alt="webflow" />
+        
+        Finally add `surface-form-button` in Style Selector:
+        <img className="block" src="/images/webflow/webflow-design-studio-popslide.png" alt="webflow" />
     </Tab>
+
 </Tabs>
 
-### 4. Submit all Changes
-
-Your Surface Form should now be embedded on your Webflow website!
+Finally, save and publish your changes. Your Surface Form should now be embedded on your Webflow website!
