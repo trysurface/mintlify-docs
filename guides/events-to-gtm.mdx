@@ -1,6 +1,6 @@
 ---
-title: "Send Surface events to GTM"
-description: "A step-by-step guide to connect Surface Form events to GTM"
+title: "Sending Form Events to Google Tag Manager (GTM)"
+description: "A step-by-step guide to connect Surface Form events to Google Tag Manager (GTM)"
 ---
 
 Surface Forms can push key events to your website's data layer, making it easy to track user interactions and conversions in Google Tag Manager (GTM).
@@ -8,7 +8,7 @@ Surface Forms can push key events to your website's data layer, making it easy t
 <Tip>
     Learn more about Surface events in our [events documentation](/surface-forms/events).
 </Tip>
-## 1. Overview of Surface Form Events
+## Overview of Surface Form Events
 
 Surface Forms push three key events to the data layer:
 
@@ -17,66 +17,49 @@ Surface Forms push three key events to the data layer:
 | `SurfaceFormStarted`     | When the form is started          | (None)                          |
 | `SurfaceFormStepSubmitted` | When a step is submitted (e.g., email entered) | `emailProvided`, `meetingBooked` |
 | `SurfaceFormSubmitEvent` | When the entire form is submitted | (None)      |
-
-<Card>
-  <b>Event Details:</b>
-  <ul>
-    <li><b>SurfaceFormStarted</b>: Fired when the user first begins the form.</li>
-    <li><b>SurfaceFormStepSubmitted</b>: Fired when a user submits a step. Carries <code>emailProvided</code> and <code>meetingBooked</code> metadata.</li>
-    <li><b>SurfaceFormSubmitEvent</b>: Fired when the form is completely submitted. Use to signal a full conversion.</li>
-  </ul>
-</Card>
-
 ---
 
-## 2. Set Up Data Layer Variables in GTM
+## 1. Set Up Data Layer Variables in GTM
 
-To capture metadata from `SurfaceFormStepSubmitted`, create Data Layer Variables in GTM:
+To capture metadata from `SurfaceFormStepSubmitted`, create the following `Data Layer Variables` in GTM:
 
 | Variable Name            | Variable Type         | Data Layer Variable Name    |
 |--------------------------|-----------------------|-----------------------------|
-| emailProvided            | Data Layer Variable   | `emailProvided`             |
-| meetingBooked            | Data Layer Variable   | `meetingBooked`             |
+| dlv - emailProvided            | Data Layer Variable   | `emailProvided`             |
+| dlv - meetingBooked            | Data Layer Variable   | `meetingBooked`             |
 
 **Steps:**
 1. In GTM, go to <b>Variables</b>.
 2. Click <b>New</b> → Choose <b>Data Layer Variable</b>.
-3. Enter the exact name (e.g., <code>DLV - emailProvided</code>) and set the Data Layer Variable Name to <code>emailProvided</code>.
+<img className="block" src="/images/gtm/gtm_12.png" alt="Hero Light" />
+
+3. Enter the exact name (e.g., <code>dlv - emailProvided</code>) and set the Data Layer Variable Name to <code>emailProvided</code>.
+<img className="block" src="/images/gtm/gtm_13.png" alt="Hero Light" />
+
 4. Repeat for <code>meetingBooked</code>.
+<img className="block" src="/images/gtm/gtm_14.png" alt="Hero Light" />
+
 
 ---
 
-## 3. Create Triggers Based on Events
+## 2. Create Triggers Based on Events
 
-You'll use three types of triggers—one for each event type or combination, based on your tracking needs.
-
-### A. Separate Events (No Metadata Needed)
-
-| Trigger Name           | Trigger Type | Event Name              | Conditions         |
-|-----------------------|--------------|------------------------|--------------------|
-| Trigger - Form Started| Custom Event | SurfaceFormStarted      | None (fire on event) |
-| Trigger - Form Completed| Custom Event | SurfaceFormSubmitEvent | None (fire on event) |
-
-### B. Event with Metadata (SurfaceFormStepSubmitted)
+You can now setup triggers that can reference the variables we just created.
 
 | Trigger Name           | Trigger Type | Event Name                | Additional Condition                |
 |-----------------------|--------------|--------------------------|-------------------------------------|
-| Trigger - Email Submitted | Custom Event | SurfaceFormStepSubmitted | DLV - emailProvided equals true     |
-| Trigger - Meeting Booked  | Custom Event | SurfaceFormStepSubmitted | DLV - meetingBooked equals true     |
+| Trigger - Email Submitted | Custom Event | SurfaceFormStepSubmitted | dlv - emailProvided equals true     |
+| Trigger - Meeting Booked  | Custom Event | SurfaceFormStepSubmitted | dlv - meetingBooked equals true     |
 
-<Card>
-  <b>Example: Email Submitted Trigger</b>
-  <ul>
-    <li>Event Name: <code>SurfaceFormStepSubmitted</code></li>
-    <li>Condition: <code>DLV - emailProvided</code> equals <code>true</code></li>
-  </ul>
-</Card>
+<img className="block" src="/images/gtm/gtm_15.png" alt="Hero Light" />
 
 ---
 
-## 4. Set Up Google Ads Conversion Tags
+## 3. Set Up Google Ads Conversion Tags
 
-For each trigger, create a corresponding Google Ads Conversion Tag. This lets you track different conversion points with the right conversion action in Google Ads.
+Finally, in order to send conversion data to your analytics platform or ads (Google, Meta, LinkedIn, etc) you must configure a new tag that references the triggers we just created. 
+
+For example, here are the steps to setup a corresponding Google Ads Conversion Tag. This allows you to track different conversion points with the right conversion action in Google Ads.
 
 | Tag Name                | Conversion Action (in Ads) | Firing Trigger           |
 |------------------------|----------------------------|--------------------------|
@@ -85,27 +68,23 @@ For each trigger, create a corresponding Google Ads Conversion Tag. This lets yo
 | GAds - Meeting Booked  | Meeting Booked             | Trigger - Meeting Booked |
 | GAds - Form Completed  | Form Completed             | Trigger - Form Completed |
 
+For more details on how to setup Google Ads Conversion Tags, please refer to our [Google Ads Tracking Guide](/guides/google-ads-tracking).
+
 <Card>
   <b>Tip:</b> Make sure your Google Ads account has conversion actions that match these names or your chosen naming convention.
 </Card>
 
 ---
 
-## 5. Final Checklist
+## Final Checklist
 
-| Task                                                                 | Status |
-|----------------------------------------------------------------------|--------|
-| Create Data Layer Variables (<code>DLV - emailProvided</code>, <code>DLV - meetingBooked</code>) | ✅     |
-| Create Custom Event Triggers for: SurfaceFormStarted, SurfaceFormSubmitEvent, SurfaceFormStepSubmitted (with conditions) | ✅     |
-| Configure triggers for: Email Submitted (condition: emailProvided equals true), Meeting Booked (condition: meetingBooked equals true) | ✅     |
-| Setup Google Ads Conversion Tags for each of the conversion events   | ✅     |
-| Test the setup in GTM Preview Mode before publishing                 | ✅     |
-
-<Card>
-  <b>Best Practice:</b> Always test your setup in GTM Preview Mode before publishing to ensure all triggers and tags fire as expected.
-</Card>
-
----
+| Task                                                                 |
+|----------------------------------------------------------------------|
+| Create Data Layer Variables (<code>dlv - emailProvided</code>, <code>dlv - meetingBooked</code>) |
+| Create Custom Event Triggers for: SurfaceFormStarted, SurfaceFormSubmitEvent, SurfaceFormStepSubmitted (with conditions) |
+| Configure triggers for: Email Submitted (condition: emailProvided equals true), Meeting Booked (condition: meetingBooked equals true) |
+| Setup Google Ads Conversion Tags for each of the conversion events   |
+| Test the setup in GTM Preview Mode before publishing                 |
 
 ## Need Help?
 

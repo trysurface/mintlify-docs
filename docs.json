@@ -1,0 +1,190 @@
+{
+  "$schema": "https://mintlify.com/docs.json",
+  "theme": "mint",
+  "name": "Docs",
+  "colors": {
+    "primary": "#3D63E6",
+    "light": "#3D63E6",
+    "dark": "#3D63E6"
+  },
+  "favicon": "/favicon.png",
+  "navigation": {
+    "tabs": [
+      {
+        "tab": "Home",
+        "pages": [
+          "home"
+        ]
+      },
+      {
+        "tab": "Docs",
+        "groups": [
+          {
+            "group": "Getting Started",
+            "pages": [
+              "quickstart"
+            ]
+          },
+          {
+            "group": "Reference",
+            "pages": [
+              {
+                "group": "Surface Tag",
+                "pages": [
+                  "surface-tag/overview",
+                  "surface-tag/how-to-get-site-id",
+                  "surface-tag/implementation",
+                  "surface-tag/website-deanon"
+                ]
+              },
+              {
+                "group": "Surface Forms",
+                "pages": [
+                  "surface-forms/overview",
+                  "surface-forms/ab-testing",
+                  "surface-forms/conditional-routing",
+                  "surface-forms/enrichment",
+                  "surface-forms/events",
+                  "surface-forms/form-builder"
+                ]
+              },
+              {
+                "group": "Leads Hub",
+                "pages": [
+                  "leads/overview",
+                  "leads/lead-table/lead-table",
+                  "leads/lead-score"
+                ]
+              },
+              {
+                "group": "Workflows",
+                "pages": [
+                  "workflows/overview",
+                  "workflows/examples"
+                ]
+              }
+            ]
+          },
+          {
+            "group": "Integrations",
+            "pages": [
+              "integrations/slack/overview",
+              "integrations/zapier/overview",
+              "integrations/hubspot/overview",
+              "integrations/salesforce/overview",
+              {
+                "group": "Schedulers",
+                "icon": "calendar",
+                "pages": [
+                  "integrations/schedulars/overview",
+                  "integrations/schedulars/calendly",
+                  "integrations/schedulars/cal",
+                  "integrations/schedulars/hubspot",
+                  "integrations/schedulars/revenue-hero"
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "tab": "Guides",
+        "groups": [
+          {
+            "group": "Guides",
+            "pages": [
+              "guides/overview",
+              "guides/first-form",
+              "guides/events-to-gtm",
+              "guides/link-external-forms",
+              "guides/send-data-to-surface",
+              "guides/send-data-to-airtable"
+            ]
+          }
+        ]
+      },
+      {
+        "tab": "Developers",
+        "groups": [
+          {
+            "group": "Developers",
+            "pages": [
+              "developers/overview",
+              {
+                "group": "Embedding",
+                "pages": [
+                  "developers/surface-forms/inline",
+                  "developers/surface-forms/popup",
+                  "developers/surface-forms/slideover",
+                  "developers/surface-forms/widget",
+                  "developers/surface-forms/email-trigger"
+                ]
+              },
+              {
+                "group": "Installation",
+                "pages": [
+                  "developers/integrations/framer",
+                  "developers/integrations/nextjs",
+                  "developers/integrations/reactjs",
+                  "developers/integrations/unbounce",
+                  "developers/integrations/webflow"
+                ]
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  "logo": {
+    "light": "/images/surface-logo.png",
+    "dark": "/images/surface-logo.png",
+    "href": "https://www.withsurface.com"
+  },
+  "appearance": {
+    "default": "light",
+    "strict": true
+  },
+  "background": {
+    "color": {
+      "light": "#fcfcfc",
+      "dark": "#1A1A1A"
+    }
+  },
+  "navbar": {
+    "links": [
+      {
+        "label": "Contact Us",
+        "href": "mailto:founders@withsurface.com"
+      }
+    ],
+    "primary": {
+      "type": "button",
+      "label": "Dashboard",
+      "href": "https://app.withsurface.com"
+    }
+  },
+  "seo": {
+    "metatags": {
+      "og:image": "https://app.withsurface.com/api/v1/form/og?title=Surface%20Labs%20Documentation",
+      "twitter:image": "https://app.withsurface.com/api/v1/form/og?title=Surface%20Labs%20Documentation",
+      "twitter:title": "Surface Labs Documentation",
+      "og:title": "Surface Labs Documentation",
+      "twitter:description": "Surface Labs Documentation",
+      "og:description": "Surface Labs Documentation"
+    },
+    "indexing": "navigable"
+  },
+  "footer": {
+    "socials": {
+      "website": "https://www.withsurface.com",
+      "linkedin": "https://www.linkedin.com/company/surface-labs",
+      "twitter": "https://x.com/surfacelabs_ai"
+    }
+  },
+  "integrations": {
+    "intercom": {
+      "appId": "gnu10kz2"
+    }
+  }
+}
