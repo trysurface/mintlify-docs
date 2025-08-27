@@ -1,0 +1,201 @@
+---
+title: "Unbounce Integration"
+description: "Integrate Surface forms with Unbounce landing pages"
+sidebarTitle: "Unbounce"
+---
+
+## Overview
+
+This guide will walk you through the process of integrating Surface forms with your Unbounce landing pages. You'll learn how to add the Surface tag and configure a form to appear in a popup when users interact with specific buttons.
+
+## Prerequisites
+
+- An active Unbounce account
+- A published Surface Form & Unbounce landing page
+
+## Integration Steps
+
+### 1. Access Your Unbounce Page
+
+1. Log in to your Unbounce account
+2. Navigate to your landing pages
+3. Select the page you want to edit
+4. Click "Edit Page" to enter the editor
+
+### 2. Add Surface Tag & Form Script
+
+<Frame>
+![Unbounce JavaScript Settings](/images/integrations/unbounce/1.png)
+</Frame>
+
+1. In the bottom toolbar, click the "JavaScript" button
+2. Click "Add New JavaScript"
+3. Add the following script:
+
+Check out the [**How to Get Site ID**](https://docs.withsurface.com/surface-tag/how-to-get-site-id) page to get your site ID.
+
+```html
+<!-- Start Surface Tag -->
+<script 
+    src="https://cdn.jsdelivr.net/gh/trysurface/scripts@latest/surface_tag.min.js"
+    siteId="YOUR_SITE_ID"> // Replace with your site ID
+</script>
+<!-- End Surface Tag -->
+
+<!-- Start Surface Form Embed -->
+<script>
+    let surfaceInitialized = false;
+
+    function initializeSurfaceForm() {
+        if (surfaceInitialized || typeof SurfaceEmbed === "undefined") return;
+        surfaceInitialized = true;
+
+        const surface_src = "SURFACE_FORM_URL"; // Replace with your Surface form URL
+        const surface_embed_type = "popup";
+        const surface_target_element_class = "surface-form-button";
+
+        const cSurfaceForm = new SurfaceEmbed(surface_src, surface_embed_type, surface_target_element_class);
+        cSurfaceForm.popupSize = "medium";
+      
+      	cSurfaceForm.embedSurfaceForm();
+    }
+
+    // Run initializeSurfaceForm only when user interacts
+    document.addEventListener("click", initializeSurfaceForm, { once: true });
+    document.addEventListener("scroll", initializeSurfaceForm, { once: true });
+</script>
+<!-- End Surface Form Embed -->
+```
+
+1. Make sure to replace the **`SURFACE_FORM_URL`** with your Surface form URL
+2. Set the script placement to "Before the body Tag"
+3. Click "Done" to save the changes
+
+<Frame>
+![Unbounce Script Configuration](/images/integrations/unbounce/2.png)
+</Frame>
+
+This is how your script should look like
+
+### 3. Configure Form Trigger Button
+
+<Frame>
+![Unbounce Button Configuration](/images/integrations/unbounce/3.png)
+</Frame>
+
+1. Select any button on your page where you want the Surface form to appear
+2. In the sidebar, scroll to the bottom
+3. Under "Element Metadata", set the class to **`surface-form-button`**
+
+## Trigger via Email Input Submission
+
+You can also trigger the Surface form when users submit an Unbounce form. Here's how to set it up:
+
+<Accordion title="Click to see where to find the question ID in the Surface Form Builder">
+<Frame>
+![Question ID Location](/images/embed/question_id.png)
+</Frame>
+</Accordion>
+
+### 1. Update the Surface Form Script
+
+Add the `data-question-id` attribute to your Surface form script
+
+<Frame>
+![Updated Script Configuration](/images/integrations/unbounce/2.png)
+</Frame>
+
+### 2. Configure Unbounce Form
+
+1. In your Unbounce page editor, add a form element
+2. Select the form's submit button
+3. In the sidebar, under "Element Metadata", add the class **`surface-form-button`**
+
+<Frame>
+![Form Button Configuration](/images/integrations/unbounce/3.png)
+</Frame>
+
+Now, when users submit the Unbounce form, the Surface form will appear in a popup.
+
+## Send Unbounce Form Data to Surface Leads using Webhooks
+
+You can automatically send form submissions from Unbounce to Surface Leads using webhooks. Here's how to set it up:
+
+### 1. Access Unbounce Webhook Settings
+
+1. Log in to your Unbounce account
+2. Select your project page
+3. Navigate to the "Integration" tab
+4. Click on "Add webhook" in the webhooks section
+
+### 2. Get Surface Webhook URL
+
+1. Log in to your Surface account
+2. Navigate to Leads Hub from the sidebar
+3. Click on the "Configure" tab
+4. Locate the "Lead Submission Endpoint" section
+5. Copy the webhook URL from the cURL command provided
+
+<Frame>
+![Surface Leads Hub Configuration](/images/integrations/unbounce/4.png)
+</Frame>
+
+### 3. Configure Webhook in Unbounce
+
+1. Return to the Unbounce webhook configuration page
+2. Paste the Surface webhook URL you copied
+3. Set the Request Type to "JSON"
+4. Under "Map Fields", match your Unbounce form fields to Surface lead fields:
+    - Map email field to **`email`**
+    - Map first name to **`firstName`**
+    - Map last name to **`lastName`**
+    - Map company name to **`company`**
+    - Map other relevant fields according to your form structure
+
+<Frame>
+![Webhook Configuration](/images/integrations/unbounce/5.png)
+</Frame>
+
+This is how your webhook configuration should look like
+
+### Available Surface Lead Fields
+
+You can map Unbounce form fields to any of these Surface lead properties:
+
+| **Field** | **Description** |
+| --- | --- |
+| **`email`** | Required field for the lead's email address |
+| **`firstName`** | Lead's first name |
+| **`lastName`** | Lead's last name |
+| **`company`** | Lead's company name |
+| **`numberOfEmployees`** | Company size |
+| **`title`** | Lead's job title |
+| **`phone`** | Lead's phone number |
+| **`bookedMeeting`** | Meeting status |
+| **`linkedin`** | LinkedIn profile URL |
+| **`companyRevenue`** | Company's revenue information |
+
+### Testing the Integration
+
+After setting up the webhook:
+
+1. Submit a test form on your Unbounce page
+2. Check the Surface Leads Hub to verify the lead data is being received
+3. Review the webhook logs in Unbounce to troubleshoot any issues
+
+## Customization
+
+You can customize the integration by:
+
+- Changing the **`popupSize`** value to "small", "medium", or "large"
+- Modifying the **`surface_target_element_class`** to match your preferred class name
+- Updating the **`surface_src`** URL to point to your specific Surface form
+
+## Troubleshooting
+
+If the form doesn't appear:
+
+1. Verify that both scripts are properly added and placed before the body tag
+2. Check that the button has the correct class name (**`surface-form-button`**)
+3. Ensure your Surface form URL and question ID are correct
+4. Check the browser console for any error messages

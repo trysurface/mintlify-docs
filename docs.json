@@ -12,9 +12,7 @@
     "tabs": [
       {
         "tab": "Home",
-        "pages": [
-          "home"
-        ]
+        "pages": ["home"]
       },
       {
         "tab": "Docs",
@@ -40,9 +38,7 @@
           },
           {
             "group": "External Forms",
-            "pages": [
-              "docs/external-forms/link-external-html-form"
-            ]
+            "pages": ["docs/external-forms/link-external-html-form"]
           },
           {
             "group": "Workflows",
@@ -55,9 +51,7 @@
           },
           {
             "group": "Website Visitor De-Anonymization",
-            "pages": [
-              "docs/website-visitor-deanonymization/overview"
-            ]
+            "pages": ["docs/website-visitor-deanonymization/overview"]
           }
         ]
       },
@@ -65,14 +59,13 @@
         "tab": "Guides",
         "groups": [
           {
-            "group": "Guides",
+            "group": "Form Embedding",
             "pages": [
-              "guides/overview",
-              "guides/first-form",
-              "guides/events-to-gtm",
-              "guides/link-external-forms",
-              "guides/send-data-to-surface",
-              "guides/send-data-to-airtable"
+              "guides/embedding/framer",
+              "guides/embedding/react",
+              "guides/embedding/next",
+              "guides/embedding/unbounce",
+              "guides/embedding/webflow"
             ]
           }
         ]
