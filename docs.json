@@ -64,7 +64,9 @@
                   "docs/platform/form-builder/conditional-logic",
                   "docs/platform/form-builder/workflows"
                 ]
-              }
+              },
+              "docs/platform/response-table",
+              "docs/platform/form-analytics"
             ]
           }
         ]
