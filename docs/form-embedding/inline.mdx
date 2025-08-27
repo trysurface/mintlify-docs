@@ -1,0 +1,54 @@
+---
+title: "Inline Form Embed"
+description: "Embed your form inline with the rest of your page"
+sidebarTitle: "Inline"
+---
+
+Embed your form inline with the rest of your page by adding scripts to your head tag and class names to the div elements where you want to embed your script.
+
+<Warning>
+Make sure that you have added the [**Surface Tag**](https://docs.withsurface.com/surface-tag/implementation) to your site before proceeding.
+</Warning>
+
+## iFrame Embed Code
+
+Add the following code wherever you'd like the form to appear:
+
+```html
+<!-- Start Surface Form Embed -->
+
+<iframe
+  src="<form url here>"
+  allowfullscreen
+  loading="eager"
+  fetchpriority="high"
+ >
+</iframe>
+
+<!-- End of Surface Form Embed -->
+```
+
+Replace `<form url here>` with your actual Surface form URL. You can find this URL by clicking the "Share" button in the `Overview` section of the form.
+
+## Optimize Speed
+
+Add the following `<link>` tags inside the `<head>` of your site:
+
+```html
+<!-- Speed up connections to forms.withsurface.com by performing early DNS resolution and TCP handshake -->
+<link rel="dns-prefetch" href="https://forms.withsurface.com">
+<link rel="preconnect" href="https://forms.withsurface.com" crossorigin>
+
+<!--  Fetch the form in advance, so it's ready when a user opens it. -->
+<link rel="prefetch" href="FORM_URL" as="document">
+```
+
+<Info>
+Replace `FORM_URL` with Surface Form URL.
+</Info>
+
+## Explanation
+
+1. dns-prefetch → Resolves the domain early to skip DNS lookup delays.
+2. preconnect → Prepares the TCP + TLS handshake so the browser is ready to request assets immediately.
+3. prefetch → Fetches the form in advance, so it's ready when a user opens it.

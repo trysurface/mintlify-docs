@@ -20,6 +20,17 @@
         "tab": "Docs",
         "groups": [
           {
+            "group": "Form Embedding",
+            "pages": [
+              "docs/form-embedding/inline",
+              "docs/form-embedding/popup",
+              "docs/form-embedding/slideover",
+              "docs/form-embedding/widget",
+              "docs/form-embedding/input-field",
+              "docs/form-embedding/optimize"
+            ]
+          },
+          {
             "group": "Getting Started",
             "pages": [
               "quickstart"

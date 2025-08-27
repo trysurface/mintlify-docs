@@ -1,0 +1,59 @@
+---
+title: "Slideover Form Embed"
+description: "Display your form as a full page slide-over"
+sidebarTitle: "Slideover"
+---
+
+<Warning>
+Make sure that you have added the [**Surface Tag**](https://docs.withsurface.com/surface-tag/implementation) to your site before proceeding.
+</Warning>
+
+## Edit Head Tag
+
+Add the following code snippet to your site's `head` tag to enable the slideover form.
+
+```html
+<!-- Start Surface Form Embed -->
+<script>
+window.onload = function() {
+    const surface_src = "<form url here>"
+    const surface_embed_type = "slideover"
+    const target_element_class = "surface-form-button"
+    const c = new SurfaceEmbed(surface_src, surface_embed_type, target_element_class)
+}
+</script>
+<!-- End of Surface Form Embed -->
+```
+
+Replace the **`<form url here>`** with the url to your surface form found by clicking the share button on the surface platform.
+
+## Choose trigger buttons
+
+The next step is to choose which buttons you'd like to trigger the form. This is done by simply adding the class name `surface-form-button` to the elements which should be able to make the form appear.
+
+```html
+<button class="... surface-form-button"> </button>
+```
+
+## Optimize Speed
+
+Add the following `<link>` tags inside the `<head>` of your site:
+
+```html
+<!-- Speed up connections to forms.withsurface.com by performing early DNS resolution and TCP handshake -->
+<link rel="dns-prefetch" href="https://forms.withsurface.com">
+<link rel="preconnect" href="https://forms.withsurface.com" crossorigin>
+
+<!--  Fetch the form in advance, so it's ready when a user opens it. -->
+<link rel="prefetch" href="FORM_URL" as="document">
+```
+
+<Info>
+Replace `FORM_URL` with Surface Form URL.
+</Info>
+
+## Explanation
+
+1. dns-prefetch → Resolves the domain early to skip DNS lookup delays.
+2. preconnect → Prepares the TCP + TLS handshake so the browser is ready to request assets immediately.
+3. prefetch → Fetches the form in advance, so it's ready when a user opens it.

@@ -1,0 +1,32 @@
+---
+title: "Optimize Loading Speed"
+description: "Optimize Surface Forms loading speed for better performance"
+sidebarTitle: "Optimize"
+---
+
+Surface Forms are designed to load quickly, but you can further reduce latency by instructing the browser to prepare connections to [forms.withsurface.com](http://forms.withsurface.com/) ahead of time. 
+
+This ensures your forms appear almost instantly when triggered.
+
+## How to Optimize
+
+Add the following `<link>` tags inside the `<head>` of your site:
+
+```html
+<!-- Speed up connections to forms.withsurface.com by performing early DNS resolution and TCP handshake -->
+<link rel="dns-prefetch" href="https://forms.withsurface.com">
+<link rel="preconnect" href="https://forms.withsurface.com" crossorigin>
+
+<!--  Fetch the form in advance, so it's ready when a user opens it. -->
+<link rel="prefetch" href="FORM_URL" as="document">
+```
+
+<Info>
+Replace `FORM_URL` with Surface Form URL.
+</Info>
+
+## Explanation
+
+1. dns-prefetch → Resolves the domain early to skip DNS lookup delays.
+2. preconnect → Prepares the TCP + TLS handshake so the browser is ready to request assets immediately.
+3. prefetch → Fetches the form in advance, so it's ready when a user opens it.
