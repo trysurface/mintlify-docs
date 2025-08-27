@@ -12,7 +12,7 @@
     "tabs": [
       {
         "tab": "Home",
-        "pages": ["home"]
+        "pages": ["home/home", "home/surface-tag"]
       },
       {
         "tab": "Docs",
@@ -92,7 +92,7 @@
               "guides/embedding/unbounce",
               "guides/embedding/webflow"
             ]
-          }          
+          }
         ]
       }
     ]
