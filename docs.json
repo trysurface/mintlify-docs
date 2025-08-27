@@ -45,63 +45,18 @@
             ]
           },
           {
-            "group": "Reference",
+            "group": "Workflows",
             "pages": [
-              {
-                "group": "Surface Tag",
-                "pages": [
-                  "surface-tag/overview",
-                  "surface-tag/how-to-get-site-id",
-                  "surface-tag/implementation",
-                  "surface-tag/website-deanon"
-                ]
-              },
-              {
-                "group": "Surface Forms",
-                "pages": [
-                  "surface-forms/overview",
-                  "surface-forms/ab-testing",
-                  "surface-forms/conditional-routing",
-                  "surface-forms/enrichment",
-                  "surface-forms/events",
-                  "surface-forms/form-builder"
-                ]
-              },
-              {
-                "group": "Leads Hub",
-                "pages": [
-                  "leads/overview",
-                  "leads/lead-table/lead-table",
-                  "leads/lead-score"
-                ]
-              },
-              {
-                "group": "Workflows",
-                "pages": [
-                  "workflows/overview",
-                  "workflows/examples"
-                ]
-              }
+              "docs/workflows/slack",
+              "docs/workflows/hubspot",
+              "docs/workflows/salesforce",
+              "docs/workflows/zapier"
             ]
           },
           {
-            "group": "Integrations",
+            "group": "Website Visitor De-Anonymization",
             "pages": [
-              "integrations/slack/overview",
-              "integrations/zapier/overview",
-              "integrations/hubspot/overview",
-              "integrations/salesforce/overview",
-              {
-                "group": "Schedulers",
-                "icon": "calendar",
-                "pages": [
-                  "integrations/schedulars/overview",
-                  "integrations/schedulars/calendly",
-                  "integrations/schedulars/cal",
-                  "integrations/schedulars/hubspot",
-                  "integrations/schedulars/revenue-hero"
-                ]
-              }
+              "docs/website-visitor-deanonymization/overview"
             ]
           }
         ]
