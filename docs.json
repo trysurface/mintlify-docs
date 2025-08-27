@@ -31,9 +31,11 @@
             ]
           },
           {
-            "group": "Getting Started",
+            "group": "Events",
             "pages": [
-              "quickstart"
+              "docs/events/form-events",
+              "docs/events/google-tag-manager",
+              "docs/events/google-ads-tracking"
             ]
           },
           {
