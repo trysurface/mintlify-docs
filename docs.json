@@ -57,7 +57,16 @@
       },
       {
         "tab": "Guides",
-        "groups": [
+        "pages": [
+          {
+            "group": "Guides",
+            "pages": [
+              "guides/first-form",
+              "guides/send-data-to-hubspot",
+              "guides/send-data-to-airtable",
+              "guides/send-data-to-surface"
+            ]
+          },
           {
             "group": "Form Embedding",
             "pages": [
@@ -67,38 +76,7 @@
               "guides/embedding/unbounce",
               "guides/embedding/webflow"
             ]
-          }
-        ]
-      },
-      {
-        "tab": "Developers",
-        "groups": [
-          {
-            "group": "Developers",
-            "pages": [
-              "developers/overview",
-              {
-                "group": "Embedding",
-                "pages": [
-                  "developers/surface-forms/inline",
-                  "developers/surface-forms/popup",
-                  "developers/surface-forms/slideover",
-                  "developers/surface-forms/widget",
-                  "developers/surface-forms/email-trigger"
-                ]
-              },
-              {
-                "group": "Installation",
-                "pages": [
-                  "developers/integrations/framer",
-                  "developers/integrations/nextjs",
-                  "developers/integrations/reactjs",
-                  "developers/integrations/unbounce",
-                  "developers/integrations/webflow"
-                ]
-              }
-            ]
-          }
+          }          
         ]
       }
     ]
