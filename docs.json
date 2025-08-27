@@ -52,6 +52,20 @@
           {
             "group": "Website Visitor De-Anonymization",
             "pages": ["docs/website-visitor-deanonymization/overview"]
+          },
+          {
+            "group": "Platform",
+            "pages": [
+              "docs/platform/leads-table",
+              {
+                "group": "Form Builder",
+                "pages": [
+                  "docs/platform/form-builder/form-builder",
+                  "docs/platform/form-builder/conditional-logic",
+                  "docs/platform/form-builder/workflows"
+                ]
+              }
+            ]
           }
         ]
       },
