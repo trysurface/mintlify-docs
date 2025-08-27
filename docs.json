@@ -12,7 +12,7 @@
     "tabs": [
       {
         "tab": "Home",
-        "pages": ["home/home", "home/surface-tag"]
+        "pages": ["home", "home/surface-tag"]
       },
       {
         "tab": "Docs",
