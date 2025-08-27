@@ -39,6 +39,12 @@
             ]
           },
           {
+            "group": "External Forms",
+            "pages": [
+              "docs/external-forms/link-external-html-form"
+            ]
+          },
+          {
             "group": "Reference",
             "pages": [
               {
