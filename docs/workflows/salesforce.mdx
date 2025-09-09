@@ -1,0 +1,47 @@
+---
+title: "Salesforce"
+description: "Connect your forms with Salesforce to automatically create contacts and opportunities"
+sidebarTitle: "Salesforce"
+og:title: "Salesforce | Surface Docs"
+twitter:title: "Salesforce | Surface Docs"
+og:description: "Connect your forms with Salesforce to automatically create contacts and opportunities"
+twitter:description: "Connect your forms with Salesforce to automatically create contacts and opportunities"
+og:image: "https://app.withsurface.com/api/v1/form/og?title=Salesforce"
+twitter:image: "https://app.withsurface.com/api/v1/form/og?title=Salesforce"
+---
+
+Surface Forms integrates with Salesforce to automatically create and update contacts, opportunities, and other objects from your form submissions.
+
+## Integration Steps
+
+<Frame>
+![Salesforce Integration Setup](/images/integrations/salesforce/1.png)
+</Frame>
+
+1. Navigate to the **Workflow Builder**
+2. Add any Salesforce action and click **Connect**
+3. Log in to your Salesforce account when prompted
+4. Authorize Surface Forms to access your Salesforce data
+
+## Setting Up Workflows
+
+1. Go to **Workflow Builder** from the sidebar
+2. Click "Create workflow"
+3. Select source:
+    - Choose "Surface forms" as source
+    - Select your form
+    - Choose trigger type (Finished/In Progress/Dropped Off)
+4. Add Salesforce action:
+    - Click "+ Actions"
+    - Select "Salesforce" from the actions list
+        
+        <Frame>
+        ![Salesforce Actions Selection](/images/integrations/salesforce/2.png)
+        </Frame>
+
+## Available Actions
+
+1. **Create Contact:** Create a new contact in Salesforce from form submission data. Map form fields to Salesforce contact fields.
+2. **Create Opportunity:** Generate a new opportunity and associate it with contacts. Set opportunity details from form data.
+3. **Create Account:** Create a new account in Salesforce from form submission data.
+4. **Get Owner:** Retrieve a Salesforce user by email address.

@@ -1,0 +1,55 @@
+---
+title: "Slack"
+description: "This guide will help you integrate Slack with Surface"
+sidebarTitle: "Slack"
+og:title: "Slack | Surface Docs"
+twitter:title: "Slack | Surface Docs"
+og:description: "This guide will help you integrate Slack with Surface"
+twitter:description: "This guide will help you integrate Slack with Surface"
+og:image: "https://app.withsurface.com/api/v1/form/og?title=Slack"
+twitter:image: "https://app.withsurface.com/api/v1/form/og?title=Slack"
+---
+
+Surface Forms can be integrated with Slack to send notifications when someone submits a form, completes a particular form step, or drops off the form.
+
+## Integration Steps
+
+<Frame>
+![Slack Integration Setup](/images/integrations/slack/1.png)
+</Frame>
+
+1. Navigate to the **Workflow Builder**
+2. Click a + button to add an action
+3. Add a Slack action and click **Connect Slack**
+4. Select your Slack workspace and authorize with required permissions
+5. Click **Install** to complete the basic setup
+
+## Private Channel Configuration
+
+For private channels, you need to add the Surface Bot to the channel.
+
+- Open the channel where you want to receive notifications
+- Add Surface app to the channel using:
+    
+    <Frame>
+    ![Add Surface App to Channel](/images/integrations/slack/2.png)
+    </Frame>
+    
+- Select "Surface" from the apps list
+    
+    <Frame>
+    ![Select Surface App](/images/integrations/slack/3.png)
+    </Frame>
+
+<Info>
+Make sure you have the necessary permissions in your Slack workspace to add apps to channels.
+</Info>
+
+## Notification Types
+
+Configure different types of notifications:
+
+1. **Form Submissions** — Get notified when users complete your forms with submission details
+2. **Form Progress** — Track when users start filling out forms or complete specific steps
+3. **Form Abandonment** — Receive alerts when users drop off from your forms
+4. **Lead Alerts** — Get instant notifications for high-value leads based on your criteria

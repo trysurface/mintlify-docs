@@ -12,124 +12,90 @@
     "tabs": [
       {
         "tab": "Home",
-        "pages": [
-          "home"
-        ]
+        "pages": ["home"]
       },
       {
         "tab": "Docs",
         "groups": [
           {
-            "group": "Getting Started",
+            "group": "Surface Tag",
+            "pages": ["docs/surface-tag/surface-tag"]
+          },
+          {
+            "group": "Form Embedding",
             "pages": [
-              "quickstart"
+              "docs/form-embedding/inline",
+              "docs/form-embedding/popup",
+              "docs/form-embedding/slideover",
+              "docs/form-embedding/widget",
+              "docs/form-embedding/input-field",
+              "docs/form-embedding/optimize"
             ]
           },
           {
-            "group": "Reference",
+            "group": "Events",
             "pages": [
-              {
-                "group": "Surface Tag",
-                "pages": [
-                  "surface-tag/overview",
-                  "surface-tag/how-to-get-site-id",
-                  "surface-tag/implementation",
-                  "surface-tag/website-deanon"
-                ]
-              },
-              {
-                "group": "Surface Forms",
-                "pages": [
-                  "surface-forms/overview",
-                  "surface-forms/ab-testing",
-                  "surface-forms/conditional-routing",
-                  "surface-forms/enrichment",
-                  "surface-forms/events",
-                  "surface-forms/form-builder"
-                ]
-              },
-              {
-                "group": "Leads Hub",
-                "pages": [
-                  "leads/overview",
-                  "leads/lead-table/lead-table",
-                  "leads/lead-score"
-                ]
-              },
-              {
-                "group": "Workflows",
-                "pages": [
-                  "workflows/overview",
-                  "workflows/examples"
-                ]
-              }
+              "docs/events/form-events",
+              "docs/events/google-tag-manager",
+              "docs/events/google-ads-tracking"
             ]
           },
           {
-            "group": "Integrations",
+            "group": "External Forms",
+            "pages": ["docs/external-forms/link-external-html-form"]
+          },
+          {
+            "group": "Workflows",
             "pages": [
-              "integrations/slack/overview",
-              "integrations/zapier/overview",
-              "integrations/hubspot/overview",
-              "integrations/salesforce/overview",
+              "docs/workflows/slack",
+              "docs/workflows/hubspot",
+              "docs/workflows/salesforce",
+              "docs/workflows/zapier"
+            ]
+          },
+          {
+            "group": "Website Visitor De-Anonymization",
+            "pages": ["docs/website-visitor-deanonymization/overview"]
+          },
+          {
+            "group": "Platform",
+            "pages": [
+              "docs/platform/leads-table",
               {
-                "group": "Schedulers",
-                "icon": "calendar",
+                "group": "Form Builder",
                 "pages": [
-                  "integrations/schedulars/overview",
-                  "integrations/schedulars/calendly",
-                  "integrations/schedulars/cal",
-                  "integrations/schedulars/hubspot",
-                  "integrations/schedulars/revenue-hero"
+                  "docs/platform/form-builder/form-builder",
+                  "docs/platform/form-builder/conditional-logic",
+                  "docs/platform/form-builder/workflows"
                 ]
-              }
+              },
+              "docs/platform/response-table",
+              "docs/platform/form-analytics"
             ]
           }
         ]
       },
       {
         "tab": "Guides",
-        "groups": [
+        "pages": [
+          {
+            "group": "Form Embedding",
+            "pages": [
+              "guides/embedding/website-editors",
+              "guides/embedding/framer",
+              "guides/embedding/react",
+              "guides/embedding/next",
+              "guides/embedding/unbounce",
+              "guides/embedding/webflow"
+            ]
+          },
           {
             "group": "Guides",
             "pages": [
-              "guides/overview",
               "guides/first-form",
-              "guides/events-to-gtm",
-              "guides/link-external-forms",
-              "guides/send-data-to-surface",
-              "guides/send-data-to-airtable"
-            ]
-          }
-        ]
-      },
-      {
-        "tab": "Developers",
-        "groups": [
-          {
-            "group": "Developers",
-            "pages": [
-              "developers/overview",
-              {
-                "group": "Embedding",
-                "pages": [
-                  "developers/surface-forms/inline",
-                  "developers/surface-forms/popup",
-                  "developers/surface-forms/slideover",
-                  "developers/surface-forms/widget",
-                  "developers/surface-forms/email-trigger"
-                ]
-              },
-              {
-                "group": "Installation",
-                "pages": [
-                  "developers/integrations/framer",
-                  "developers/integrations/nextjs",
-                  "developers/integrations/reactjs",
-                  "developers/integrations/unbounce",
-                  "developers/integrations/webflow"
-                ]
-              }
+              "guides/send-data-to-hubspot",
+              "guides/send-data-to-airtable",
+              "guides/send-data-to-surface"
             ]
           }
         ]

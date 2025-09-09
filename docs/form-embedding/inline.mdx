@@ -1,0 +1,59 @@
+---
+title: "Inline Form Embed"
+description: "Embed your form inline with the rest of your page"
+sidebarTitle: "Inline"
+og:title: "Inline Form Embed | Surface Docs"
+twitter:title: "Inline Form Embed | Surface Docs"
+og:description: "Embed your form inline with the rest of your page"
+twitter:description: "Embed your form inline with the rest of your page"
+og:image: "https://app.withsurface.com/api/v1/form/og?title=Inline%20Form%20Embed"
+twitter:image: "https://app.withsurface.com/api/v1/form/og?title=Inline%20Form%20Embed"
+---
+
+import SurfaceTagWarning from '/snippets/surface-tag-warning.mdx';
+
+
+<SurfaceTagWarning />
+
+## iFrame Embed Code
+
+Add the following code wherever you'd like the form to appear:
+
+```html
+<!-- Start Surface Form Embed -->
+
+<iframe
+  src="REPLACE ME WITH FORM URL"
+  allowfullscreen
+  loading="eager"
+  fetchpriority="high"
+ >
+</iframe>
+
+<!-- End of Surface Form Embed -->
+```
+
+Replace `REPLACE ME WITH FORM URL` with your actual Surface form URL. You can find this URL by clicking the "Share" button in the `Overview` section of the form.
+
+## Optimize Speed
+
+Add the following `<link>` tags inside the `<head>` of your site:
+
+```html
+<!-- Speed up connections to forms.withsurface.com by performing early DNS resolution and TCP handshake -->
+<link rel="dns-prefetch" href="https://forms.withsurface.com">
+<link rel="preconnect" href="https://forms.withsurface.com" crossorigin>
+
+<!--  Fetch the form in advance, so it's ready when a user opens it. -->
+<link rel="prefetch" href="REPLACE ME WITH FORM URL" as="document">
+```
+
+<Info>
+Replace `REPLACE ME WITH FORM URL` with a Surface Form URL.
+</Info>
+
+## Explanation
+
+1. dns-prefetch → Resolves the domain early to skip DNS lookup delays.
+2. preconnect → Prepares the TCP + TLS handshake so the browser is ready to request assets immediately.
+3. prefetch → Fetches the form in advance, so it's ready when a user opens it.

@@ -1,0 +1,123 @@
+---
+title: "Framer Integration"
+description: "Add a Surface Form to your Framer Site"
+sidebarTitle: "Framer"
+og:title: "Framer Integration | Surface Docs"
+twitter:title: "Framer Integration | Surface Docs"
+og:description: "Add a Surface Form to your Framer Site"
+twitter:description: "Add a Surface Form to your Framer Site"
+og:image: "https://app.withsurface.com/api/v1/form/og?title=Framer%20Integration"
+twitter:image: "https://app.withsurface.com/api/v1/form/og?title=Framer%20Integration"
+---
+
+import SurfaceTagWarning from '/snippets/surface-tag-warning.mdx';
+
+1. Navigate to the Framer site *settings*.
+2. Scroll down to *Custom Code* section.
+3. Add the following code in the *Start of **`<head>`** tag* section.
+
+Check out the [**How to Get Site ID**](/docs/surface-tag/surface-tag#where-to-find-your-site-id) page to get your site ID.
+
+```html
+<!-- Start Surface Tag -->
+
+<script 
+	src="https://cdn.jsdelivr.net/gh/trysurface/scripts@latest/surface_tag.min.js"  
+	siteId="YOUR_SITE_ID" // Replace with your site ID
+></script>
+
+<!-- End Surface Tag -->
+```
+
+### Inline Embedding
+
+1. In framer, click on **`insert`** to add new component inside the website.
+2. Select **`Embed`** from the list of components.
+    
+    <Frame>
+    ![Framer Embed Component](/images/framer/4.png)
+    </Frame>
+    
+3. Insert the component in the desired location. Now go to **`properties`** of the component and scroll down to the **`Embed`** section.
+4. Set the **`Type`** to **`URL`** and paste your form URL in the **`URL`** field.
+    
+    <Frame>
+    ![Framer URL Configuration](/images/framer/3.png)
+    </Frame>
+    
+5. That should look something like this:
+    
+    <Frame>
+    ![Framer Form Preview](/images/framer/2.png)
+    </Frame>
+
+### Popup/Slideover Embedding
+
+<Tip>This feature requires paid tier of framer!</Tip>
+    1. In Framer, go to project `settings`.
+    2. Scroll down to `Custom Code` section.
+        <Accordion title="Click to expand">
+          <img className="block" src="/images/framer/pop-slide/1.png" alt="Hero Light" />
+        </Accordion>
+    3. Popup or Slideover:
+        <Accordion title="Popup">
+          Add the following code in the `Start of <body> tag` section.
+        ```HTML
+        <!-- Start Surface Form Embed -->
+        <script>
+        window.onload = function() {
+                const surface_src = "REPLACE ME WITH FORM URL"
+                const surface_embed_type = "popup"
+                const target_element_class = "surface-form-button"
+                const c = new SurfaceEmbed(surface_src, surface_embed_type, target_element_class)
+        }
+        </script>
+        <!-- End of Surface Form Embed -->
+        ```
+        </Accordion>
+
+        <Accordion title="Slideover">
+          Add the following code in the `Start of <body> tag` section.
+        ```HTML
+        <!-- Start Surface Form Embed -->
+
+        <script
+            src="https://cdn.jsdelivr.net/gh/trysurface/scripts@latest/surface_tag.min.js"
+            type="application/javascript"
+        > </script>
+
+        <script>
+        window.onload = function() {
+                const surface_src = "REPLACE ME WITH FORM URL" // Replace REPLACE ME WITH FORM URL with the form url
+                const surface_embed_type = "slideover"
+                const target_element_class = "surface-form-button"
+                const c = new SurfaceEmbed(surface_src, surface_embed_type, target_element_class)
+        }
+        </script>
+
+        <!-- End of Surface Form Embed -->
+        ```
+        </Accordion>
+    4. Select the button or element where you want to trigger the form. Open the `properties` of the element and scroll down to `Code Overrides` section.
+        1. Click on `New File` under `File` selection menu.
+            <Accordion title="Click to expand">
+              <img className="block" src="/images/framer/pop-slide/2.png" alt="Hero Light" />
+            </Accordion>
+        2. Rename the file and click on `Create`.
+        3. Add the following code in the editor.
+            ```TSX
+            export function withClass(Component): ComponentType {
+                return (props) => {
+                    props.className += " surface-form-button" // Remember to add a space
+                    return <Component {...props} />
+                }
+            }
+            ```
+        4. Now go back to the element, In `File` selection menu, select the file you just created and select `withClass` from the `Override` selection menu.
+            <Accordion title="Click to expand">
+              <img className="block" src="/images/framer/pop-slide/3.png" alt="Hero Light" />
+            </Accordion>
+
+## Publish the site
+
+Publish the site and that's it! You have successfully embedded a Surface Form in your Framer project.

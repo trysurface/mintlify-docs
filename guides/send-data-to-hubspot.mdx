@@ -1,0 +1,81 @@
+---
+title: "Send Data to HubSpot"
+description: "Learn how to send Surface Form submissions directly to HubSpot using the built-in HubSpot action in the Workflow Builder"
+sidebarTitle: "Send Data to HubSpot"
+og:title: "Send Data to HubSpot | Surface Docs"
+twitter:title: "Send Data to HubSpot | Surface Docs"
+og:description: "Learn how to send Surface Form submissions directly to HubSpot using the built-in HubSpot action in the Workflow Builder"
+twitter:description: "Learn how to send Surface Form submissions directly to HubSpot using the built-in HubSpot action in the Workflow Builder"
+og:image: "https://app.withsurface.com/api/v1/form/og?title=Send%20Data%20to%20HubSpot"
+twitter:image: "https://app.withsurface.com/api/v1/form/og?title=Send%20Data%20to%20HubSpot"
+---
+
+Learn how to send Surface Form submissions directly to **HubSpot** using the built-in HubSpot action in the Workflow Builder. You can automatically create or update contacts, companies, deals, and more.
+
+## Prerequisites
+
+Before you begin, make sure you have:
+
+- A **Surface** account
+- A **HubSpot** account with the right permissions
+- Admin access to connect HubSpot to Surface
+
+## Step 1: Connect HubSpot to Surface Forms
+
+<Frame>
+![HubSpot Integration in Workflow Builder](/images/integrations/hubspot/1.png)
+</Frame>
+
+1. Open the **Workflow Builder**.
+2. Click the **+** button to add a new action node.
+3. From the integrations list, choose **HubSpot**.
+
+## Step 2: Choose a HubSpot Action
+
+The HubSpot integration supports multiple actions:
+
+- **Create Contact** → Add a new contact in HubSpot
+- **Create or Update Contact** → Add a new contact or update existing ones
+- **Create Company** → Create a company record
+- **Create Form Response** → Push a form submission directly into HubSpot
+- **Create Deal** → Add a new deal in HubSpot
+- **Get Owner** → Fetch a HubSpot owner by email
+- **HubSpot AI Agent** → Use AI to manage contacts and deals automatically
+
+## Step 3: Configure the HubSpot Action
+
+<Frame>
+![HubSpot Action Configuration](/images/integrations/hubspot/2.png)
+</Frame>
+
+1. After selecting an action, configure the settings in the right-hand panel.
+2. Choose the HubSpot object (e.g., Form, Contact, Company, Deal).
+3. Map your Surface Form fields to HubSpot properties:
+    - Example: email → Email from Form Submission or Lead
+    - Example: firstName → First Name from Form Submission or Lead
+
+## Using the HubSpot AI Agent
+
+<Frame>
+![HubSpot AI Agent Configuration](/images/integrations/hubspot/3.png)
+</Frame>
+
+The **HubSpot AI Agent** is a powerful option within the HubSpot integration. Instead of manually configuring individual actions (like creating a contact or deal), you can give the AI Agent **instructions in plain English**, and it will take care of managing contacts, companies, and deals in HubSpot.
+
+### Write Instructions for the Agent
+
+In the configuration panel, you'll see a text area labeled **Instructions**.
+
+Here, describe in natural language what you want the AI to do.
+
+For example:
+
+```
+Check HubSpot to see if the company exists.  
+If the company doesn't exist, create a new company.  
+If a contact with the new lead's email doesn't exist, create one.  
+Associate the contact with the company.  
+If there are no open deals in the "Sales" pipeline, create a new deal and assign it to the company owner.  
+```
+
+You can be as detailed as you need - the AI Agent interprets and executes based on HubSpot's API.

@@ -1,0 +1,85 @@
+---
+title: "Widget Form Embed"
+description: "Display your form as a customizable widget on your website"
+sidebarTitle: "Widget"
+og:title: "Widget Form Embed | Surface Docs"
+twitter:title: "Widget Form Embed | Surface Docs"
+og:description: "Display your form as a customizable widget on your website"
+twitter:description: "Display your form as a customizable widget on your website"
+og:image: "https://app.withsurface.com/api/v1/form/og?title=Widget%20Form%20Embed"
+twitter:image: "https://app.withsurface.com/api/v1/form/og?title=Widget%20Form%20Embed"
+---
+
+import SurfaceTagWarning from '/snippets/surface-tag-warning.mdx';
+
+<SurfaceTagWarning />
+
+## Edit Surface Form Embedding Script
+
+Let's edit the Surface Form Embedding Script to display the form as a widget.
+
+```html
+<!-- Start Surface Form Embed -->
+<script>
+window.onload = function() {
+    const surface_src = "surface_form_url";
+    const surface_embed_type = "widget"; // switch to "widget" to display the form as a widget
+    const target_element_class = "surface-form-button";
+    const c = new SurfaceEmbed(
+        surface_src,
+        surface_embed_type,
+        target_element_class,
+        {
+            widgetStyles: {
+                position: "right",
+                bottomMargin: "40px",
+                sideMargin: "30px",
+                size: "64px",
+                backgroundColor: "#1a56db",
+                hoverScale: "1.05",
+                boxShadow: "0 6px 12px rgba(0,0,0,0.25)"
+            }, // customize the widget appearance
+        }
+    );
+
+    c.popupSize = "small";
+}
+</script>
+<!-- End of Surface Form Embed -->
+```
+
+## Customize Widget Appearance
+
+You can customize the appearance of the widget by adjusting the `widgetStyles` options in the `SurfaceEmbed` instance.
+
+```javascript
+widgetStyles: {
+
+    position: "right", // position of the widget (right, left)
+
+    bottomMargin: "40px", // margin from the bottom of the page (in px)
+    
+    sideMargin: "30px", // margin from the side of the page (in px)
+    
+    size: "64px", // size of the widget (in px)
+    
+    backgroundColor: "#1a56db", // background color of the widget (in hex)
+    
+    hoverScale: "1.05", // scale of the widget when hovered (in decimal)
+    
+    boxShadow: "0 6px 12px rgba(0,0,0,0.25)" // shadow of the widget (in hex)
+
+}
+```
+
+## Control Popup Size
+
+When the widget is clicked, it triggers a popup. You can control the size of this popup using the popupSize variable on the SurfaceEmbed instance. Current accepted values are small, medium, and large.
+
+```javascript
+c.popupSize = "small";
+```
+
+## Use it with Popup Embedding
+
+The widget inherits the popup embedding type only, Hence, we can still use the popup embedding type by adding `surface-form-button` class to any HTML element to trigger the popup.

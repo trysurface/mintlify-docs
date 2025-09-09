@@ -1,0 +1,95 @@
+---
+title: "Google Tag Manager Integration"
+description: "A step-by-step guide to connect Surface Form events to Google Tag Manager (GTM)"
+sidebarTitle: "Google Tag Manager"
+og:title: "Google Tag Manager Integration | Surface Docs"
+twitter:title: "Google Tag Manager Integration | Surface Docs"
+og:description: "A step-by-step guide to connect Surface Form events to Google Tag Manager (GTM)"
+twitter:description: "A step-by-step guide to connect Surface Form events to Google Tag Manager (GTM)"
+og:image: "https://app.withsurface.com/api/v1/form/og?title=Google%20Tag%20Manager%20Integration"
+twitter:image: "https://app.withsurface.com/api/v1/form/og?title=Google%20Tag%20Manager%20Integration"
+---
+
+Surface Forms can push key events to your website's data layer, making it easy to track user interactions and conversions in Google Tag Manager (GTM).
+
+<Info>
+Learn more about Surface events in our [**events documentation**](/docs/events/form-events).
+</Info>
+
+## Overview of Surface Form Events
+
+Surface Forms push three key events to the data layer:
+
+| **Event Name** | **When Fired** | Metadata |
+| --- | --- | --- |
+| **`SurfaceFormStarted`** | When the form is started | (None) |
+| **`SurfaceFormStepSubmitted`** | When a step is submitted (e.g., email entered) | `emailProvided`, `meetingBooked` , `url` and `urlParams`  |
+| **`SurfaceFormSubmitEvent`** | When the entire form is submitted | (None) |
+
+## 1. Set Up Data Layer Variables in GTM
+
+To capture metadata from `SurfaceFormStepSubmitted`, create the following `Data Layer Variables`  in GTM:
+
+| **Variable Name** | **Variable Type** | **Data Layer Variable Name** |
+| --- | --- | --- |
+| dlv - emailProvided | Data Layer Variable | **`emailProvided`** |
+| dlv - meetingBooked | Data Layer Variable | **`meetingBooked`** |
+| dlv - urlParam | Data Layer Variable (Object) | `urlParam` |
+| dlv - url | Data Layer Variable | `url` |
+
+**Steps:**
+
+1. In GTM, go to **Variables**.
+2. Click **New** → Choose **Data Layer Variable**.
+    <Frame>
+    ![GTM Variables Setup](/images/gtm/gtm_1.png)
+    </Frame>
+3. Enter the exact name (e.g., **`dlv - emailProvided`**) and set the Data Layer Variable Name to **`emailProvided`**. Make sure to capitalize the p in `emailProvided` !
+    <Frame>
+    ![GTM Data Layer Variable Configuration](/images/gtm/gtm_2.png)
+    </Frame>
+4. Repeat for **`meetingBooked`, `url`**  and **`urlParams`.**
+    
+    <Info>
+    `urlParams` is an object, we need to use dot notation e.g. `{{ urlParams.medium }}` to get the data.
+    </Info>
+    <Frame>
+    ![GTM URL Parameters Configuration](/images/gtm/gtm_3.png)
+    </Frame>
+
+## 2. Create Triggers Based on Events
+
+You can now setup triggers that can reference the variables we just created.
+
+| **Trigger Name** | **Trigger Type** | **Event Name** | **Additional Condition** |
+| --- | --- | --- | --- |
+| Trigger - Email Submitted | Custom Event | SurfaceFormStepSubmitted | dlv - emailProvided equals true |
+| Trigger - Meeting Booked | Custom Event | SurfaceFormStepSubmitted | dlv - meetingBooked equals true |
+| Trigger - URL | Custom Event | SurfaceFormStepSubmitted | Any |
+| Trigger - urlParam | Custom Event | SurfaceFormStepSubmitted | Any |
+
+<Frame>
+![GTM Triggers Setup](/images/gtm/gtm_4.png)
+</Frame>
+
+## 3. Set Up Google Ads Conversion Tags
+
+Finally, in order to send conversion data to your analytics platform or ads (Google, Meta, LinkedIn, etc) you must configure a new tag that references the triggers we just created. For example, here are the steps to setup a corresponding Google Ads Conversion Tag. This allows you to track different conversion points with the right conversion action in Google Ads.
+
+| **Tag Name** | **Conversion Action (in Ads)** | **Firing Trigger** |
+| --- | --- | --- |
+| GAds - Form Started | Form Started | Trigger - Form Started |
+| GAds - Email Submitted | Email Submitted | Trigger - Email Submitted |
+| GAds - Meeting Booked | Meeting Booked | Trigger - Meeting Booked |
+| GAds - Form Completed | Form Completed | Trigger - Form Completed |
+
+For more details on how to setup Google Ads Conversion Tags, please refer to our [**Google Ads Tracking Guide**](/docs/events/google-ads-tracking).
+
+<Info>
+**Tip:** Make sure your Google Ads account has conversion actions that match these names or your chosen naming convention.
+</Info>
+
+
+## Need Help?
+
+If you have questions or need support, reach out to us at [**support@withsurface.com**](mailto:support@withsurface.com).

@@ -1,0 +1,61 @@
+---
+title: "React.js Integration"
+description: "Integrate Surface Forms with React.js to embed forms in your React.js application"
+sidebarTitle: "React.js"
+og:title: "React.js Integration | Surface Docs"
+twitter:title: "React.js Integration | Surface Docs"
+og:description: "Integrate Surface Forms with React.js to embed forms in your React.js application"
+twitter:description: "Integrate Surface Forms with React.js to embed forms in your React.js application"
+og:image: "https://app.withsurface.com/api/v1/form/og?title=React.js%20Integration"
+twitter:image: "https://app.withsurface.com/api/v1/form/og?title=React.js%20Integration"
+---
+
+import SurfaceTagWarning from '/snippets/surface-tag-warning.mdx';
+
+<SurfaceTagWarning />
+
+## Embed the Surface Form
+
+### 1. Using an iFrame directly:
+
+```html
+<iframe
+    id="surface-iframe"
+    src="<your_form_url>"
+    frameborder="0"
+    allowfullscreen>
+</iframe>
+```
+
+### 2. Using script (Recommended):
+
+
+Go to the **`public/index.html`** file in your React.js project and add the following code at the end of **`<body>`** tag:
+
+```html
+ <script>
+   window.onload = function () {
+     const surface_src = "your_form_url";
+     const surface_embed_type = "popup"; // "popup" or "slideover"
+     const target_element_class = "surface-form-button";
+     const c = new SurfaceEmbed(
+       surface_src,
+       surface_embed_type,
+       target_element_class
+     );
+     c.popupSize = "medium"; // "small", "medium", "large"
+   };
+ </script>
+```
+
+## Add className to the target element
+
+Add **`surface-form-button`** class to the HTML element if you want to show the form as a popup or **`surface-form-target`** class to the target element if you want to show the form inline.
+
+```jsx
+<button className="surface-form-button">Open Form</button>
+```
+
+## All Done!
+
+You have successfully integrated Surface Forms with your React.js application. You can now embed forms in your React.js application.

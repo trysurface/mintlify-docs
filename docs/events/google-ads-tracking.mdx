@@ -1,0 +1,66 @@
+---
+title: "Google Ads Tracking"
+description: "Add GTM Container ID to Surface Form to configure various marketing tags from a single place"
+sidebarTitle: "Google Ads Tracking"
+og:title: "Google Ads Tracking | Surface Docs"
+twitter:title: "Google Ads Tracking | Surface Docs"
+og:description: "Add GTM Container ID to Surface Form to configure various marketing tags from a single place"
+twitter:description: "Add GTM Container ID to Surface Form to configure various marketing tags from a single place"
+og:image: "https://app.withsurface.com/api/v1/form/og?title=Google%20Ads%20Tracking"
+twitter:image: "https://app.withsurface.com/api/v1/form/og?title=Google%20Ads%20Tracking"
+---
+
+<Warning>
+Make sure to implement [Google Tag Manager (GTM)](/docs/events/google-tag-manager) first before setting up Google Ads tracking.
+</Warning>
+
+## 1. Create a new conversion action in Google Ads
+
+<Columns cols={2}>
+<Frame>
+![Create Conversion Action Step 1](/images/gtm/gtm_1.png)
+</Frame>
+
+<Frame>
+![Create Conversion Action Step 2](/images/gtm/gtm_2.png)
+</Frame>
+</Columns>
+
+## 2. Keep note of the Conversion ID and the Conversion Label
+
+<Frame>
+![Conversion ID and Label](/images/gtm/gtm_3.png)
+</Frame>
+
+## 3. Log into Google Tag Manager
+
+<Frame>
+![Google Tag Manager Dashboard](/images/gtm/gtm_4.png)
+</Frame>
+
+## 4. Create Custom Event Trigger with event name set to `SurfaceFormSubmitEvent`
+
+<Columns cols={2}>
+<Frame>
+![Create Custom Event Trigger Step 1](/images/gtm/gtm_5.png)
+</Frame>
+
+<Frame>
+![Create Custom Event Trigger Step 2](/images/gtm/gtm_6.png)
+</Frame>
+</Columns>
+
+## 5. Configure the following tags in GTM:
+
+1. Conversion Linker
+2. Google Ads Conversion Tracking
+
+<Frame>
+![Configure GTM Tags](/images/gtm/gtm_7.png)
+</Frame>
+
+## 6. Submit all Changes
+
+<Frame>
+![Submit Changes](/images/gtm/gtm_11.png)
+</Frame>
