@@ -19,7 +19,7 @@
         "groups": [
           {
             "group": "Surface Tag",
-            "pages": ["docs/surface-tag/surface-tag"]
+            "pages": ["docs/surface-tag/installation"]
           },
           {
             "group": "Form Embedding",
