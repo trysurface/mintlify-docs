@@ -10,9 +10,9 @@ og:image: "https://app.withsurface.com/api/v1/form/og?title=Popup%20Form%20Embed
 twitter:image: "https://app.withsurface.com/api/v1/form/og?title=Popup%20Form%20Embed"
 ---
 
-<Warning>
-Make sure that you have added the [**Surface Tag**](/home/surface-tag) to your site before proceeding.
-</Warning>
+import SurfaceTagWarning from '/snippets/surface-tag-warning.mdx';
+
+<SurfaceTagWarning />
 
 ## Edit Head Tag
 
@@ -23,7 +23,7 @@ Add the following code snippet to your site's `head` tag to enable the popup for
 
 <script>
 window.onload = function() {
-    const surface_src = "<form url here>"
+    const surface_src = "REPLACE ME WITH FORM URL"
     const surface_embed_type = "popup"
     const target_element_class = "surface-form-button"
     const c = new SurfaceEmbed(surface_src, surface_embed_type, target_element_class)
@@ -33,7 +33,7 @@ window.onload = function() {
 <!-- End of Surface Form Embed -->
 ```
 
-Replace the **`<form url here>`** with the url to your surface form found by clicking the share button on the surface platform.
+Replace the **`REPLACE ME WITH FORM URL`** with the url to your surface form found by clicking the share button on the surface platform.
 
 ## Choose trigger buttons
 
@@ -52,7 +52,7 @@ You can control the size of the popup that appears on your site. See the followi
 
 <script>
 window.onload = function() {
-        const surface_src = "<form url here>"
+        const surface_src = "REPLACE ME WITH FORM URL"
         const surface_embed_type = "popup"
         const target_element_class = "surface-form-button"
         const c = new SurfaceEmbed(surface_src, surface_embed_type, target_element_class)
@@ -74,11 +74,11 @@ Add the following `<link>` tags inside the `<head>` of your site:
 <link rel="preconnect" href="https://forms.withsurface.com" crossorigin>
 
 <!--  Fetch the form in advance, so it's ready when a user opens it. -->
-<link rel="prefetch" href="FORM_URL" as="document">
+<link rel="prefetch" href="REPLACE ME WITH FORM URL" as="document">
 ```
 
 <Info>
-Replace `FORM_URL` with Surface Form URL.
+Replace `REPLACE ME WITH FORM URL` with a Surface Form URL.
 </Info>
 
 ## Explanation

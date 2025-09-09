@@ -38,7 +38,7 @@ This guide will walk you through the process of integrating Surface forms with y
 2. Click "Add New JavaScript"
 3. Add the following script:
 
-Check out the [**How to Get Site ID**](https://docs.withsurface.com/surface-tag/how-to-get-site-id) page to get your site ID.
+Check out the [**How to Get Site ID**](/docs/surface-tag/surface-tag#where-to-find-your-site-id) page to get your site ID.
 
 ```html
 <!-- Start Surface Tag -->
@@ -56,7 +56,7 @@ Check out the [**How to Get Site ID**](https://docs.withsurface.com/surface-tag/
         if (surfaceInitialized || typeof SurfaceEmbed === "undefined") return;
         surfaceInitialized = true;
 
-        const surface_src = "SURFACE_FORM_URL"; // Replace with your Surface form URL
+        const surface_src = "SURFACE_REPLACE ME WITH FORM URL"; // Replace with your Surface form URL
         const surface_embed_type = "popup";
         const surface_target_element_class = "surface-form-button";
 
@@ -73,7 +73,7 @@ Check out the [**How to Get Site ID**](https://docs.withsurface.com/surface-tag/
 <!-- End Surface Form Embed -->
 ```
 
-1. Make sure to replace the **`SURFACE_FORM_URL`** with your Surface form URL
+1. Make sure to replace the **`SURFACE_REPLACE ME WITH FORM URL`** with your Surface form URL
 2. Set the script placement to "Before the body Tag"
 3. Click "Done" to save the changes
 

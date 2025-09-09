@@ -10,11 +10,10 @@ og:image: "https://app.withsurface.com/api/v1/form/og?title=Inline%20Form%20Embe
 twitter:image: "https://app.withsurface.com/api/v1/form/og?title=Inline%20Form%20Embed"
 ---
 
-Embed your form inline with the rest of your page by adding scripts to your head tag and class names to the div elements where you want to embed your script.
+import SurfaceTagWarning from '/snippets/surface-tag-warning.mdx';
 
-<Warning>
-Make sure that you have added the [**Surface Tag**](/home/surface-tag) to your site before proceeding.
-</Warning>
+
+<SurfaceTagWarning />
 
 ## iFrame Embed Code
 
@@ -24,7 +23,7 @@ Add the following code wherever you'd like the form to appear:
 <!-- Start Surface Form Embed -->
 
 <iframe
-  src="<form url here>"
+  src="REPLACE ME WITH FORM URL"
   allowfullscreen
   loading="eager"
   fetchpriority="high"
@@ -34,7 +33,7 @@ Add the following code wherever you'd like the form to appear:
 <!-- End of Surface Form Embed -->
 ```
 
-Replace `<form url here>` with your actual Surface form URL. You can find this URL by clicking the "Share" button in the `Overview` section of the form.
+Replace `REPLACE ME WITH FORM URL` with your actual Surface form URL. You can find this URL by clicking the "Share" button in the `Overview` section of the form.
 
 ## Optimize Speed
 
@@ -46,11 +45,11 @@ Add the following `<link>` tags inside the `<head>` of your site:
 <link rel="preconnect" href="https://forms.withsurface.com" crossorigin>
 
 <!--  Fetch the form in advance, so it's ready when a user opens it. -->
-<link rel="prefetch" href="FORM_URL" as="document">
+<link rel="prefetch" href="REPLACE ME WITH FORM URL" as="document">
 ```
 
 <Info>
-Replace `FORM_URL` with Surface Form URL.
+Replace `REPLACE ME WITH FORM URL` with a Surface Form URL.
 </Info>
 
 ## Explanation

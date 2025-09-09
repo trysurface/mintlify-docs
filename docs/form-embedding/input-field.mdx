@@ -10,13 +10,9 @@ og:image: "https://app.withsurface.com/api/v1/form/og?title=Triggering%20via%20E
 twitter:image: "https://app.withsurface.com/api/v1/form/og?title=Triggering%20via%20Email%20Input%20Field"
 ---
 
-# Connect Surface Form to External Email Input
+import SurfaceTagWarning from '/snippets/surface-tag-warning.mdx';
 
-To enable triggering a Surface Form popup from a form field containing an email input, follow these instructions:
-
-<Warning>
-Make sure that you have added the [**Surface Tag**](/home/surface-tag) to your site before proceeding.
-</Warning>
+<SurfaceTagWarning />
 
 ## 1. Add the HTML Form
 
@@ -81,11 +77,11 @@ Add the following `<link>` tags inside the `<head>` of your site:
 <link rel="preconnect" href="https://forms.withsurface.com" crossorigin>
 
 <!--  Fetch the form in advance, so it's ready when a user opens it. -->
-<link rel="prefetch" href="FORM_URL" as="document">
+<link rel="prefetch" href="REPLACE ME WITH FORM URL" as="document">
 ```
 
 <Info>
-Replace `FORM_URL` with Surface Form URL.
+Replace `REPLACE ME WITH FORM URL` with a Surface Form URL.
 </Info>
 
 ## Explanation

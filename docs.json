@@ -12,11 +12,15 @@
     "tabs": [
       {
         "tab": "Home",
-        "pages": ["home", "home/surface-tag"]
+        "pages": ["home"]
       },
       {
         "tab": "Docs",
         "groups": [
+          {
+            "group": "Surface Tag",
+            "pages": ["docs/surface-tag/surface-tag"]
+          },
           {
             "group": "Form Embedding",
             "pages": [
@@ -75,22 +79,23 @@
         "tab": "Guides",
         "pages": [
           {
+            "group": "Form Embedding",
+            "pages": [
+              "guides/embedding/website-editors",
+              "guides/embedding/framer",
+              "guides/embedding/react",
+              "guides/embedding/next",
+              "guides/embedding/unbounce",
+              "guides/embedding/webflow"
+            ]
+          },
+          {
             "group": "Guides",
             "pages": [
               "guides/first-form",
               "guides/send-data-to-hubspot",
               "guides/send-data-to-airtable",
               "guides/send-data-to-surface"
-            ]
-          },
-          {
-            "group": "Form Embedding",
-            "pages": [
-              "guides/embedding/framer",
-              "guides/embedding/react",
-              "guides/embedding/next",
-              "guides/embedding/unbounce",
-              "guides/embedding/webflow"
             ]
           }
         ]
