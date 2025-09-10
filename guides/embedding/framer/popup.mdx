@@ -1,0 +1,60 @@
+---
+title: "Step 2.2: Popup"
+description: "Embed a Surface Form as a popup"
+sidebarTitle: "Step 2.2: Popup"
+og:title: "Framer Popup Integration | Surface Docs"
+twitter:title: "Framer Popup Integration | Surface Docs"
+og:description: "Embed a Surface Form as a popup"
+twitter:description: "Embed a Surface Form as a popup"
+og:image: "https://app.withsurface.com/api/v1/form/og?title=Framer%20Popup%20Integration"
+twitter:image: "https://app.withsurface.com/api/v1/form/og?title=Framer%20Popup%20Integration"
+---
+
+<Tip>This feature requires paid tier of framer!</Tip>
+
+## Create Surface Constructor
+
+1. In Framer, go to project `settings`.
+2. Scroll down to `Custom Code` section.
+    <Frame>
+        <img className="block" src="/images/framer/pop-slide/1.png" />
+    </Frame>
+Add the following code in the `End of <body> tag` section.
+```HTML
+    <!-- Start Surface Form Embed -->
+    <script>
+        window.onload = function() {
+            const surface_src = "REPLACE ME WITH FORM URL"
+            const surface_embed_type = "popup"
+            const target_element_class = "surface-form-button"
+            const c = new SurfaceEmbed(surface_src, surface_embed_type, target_element_class)
+        }
+    </script>
+    <!-- End of Surface Form Embed -->
+```
+
+## Add className to the target element
+
+Select the button or element where you want to trigger the form. Open the `properties` of the element and scroll down to `Code Overrides` section.
+    1. Click on `New File` under `File` selection menu. Name it `SurfaceFormButton`.
+        <Frame>
+             <img className="block" src="/images/framer/pop-slide/2.png" alt="Hero Light" />
+        </Frame>
+    2. Rename the file and click on `Create`.
+    3. In the code editor, go to the very bottom, add a new line, and paste the following code:
+        ```TSX
+            export function withClass(Component): ComponentType {
+                return (props) => {
+                    props.className += " surface-form-button" // Remember to add a space
+                    return <Component {...props} />
+                }
+            }
+        ```
+    4. Now go back to the element, In `File` selection menu, select `SurfaceFormButton` in the first dropdown and select `withClass` from the `Override` selection menu.
+        <Frame>
+            <img className="block" src="/images/framer/pop-slide/3.png" alt="Hero Light" />
+        </Frame>
+
+## Publish the site
+
+Publish the site and that's it! You have successfully embedded a Surface Form in your Framer project.

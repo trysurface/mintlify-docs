@@ -82,7 +82,17 @@
             "group": "Form Embedding",
             "pages": [
               "guides/embedding/website-editors",
-              "guides/embedding/framer",
+              {
+                "group": "Framer",
+                "pages": [
+                  "guides/embedding/framer/overview",
+                  "guides/embedding/framer/embedding",
+                  "guides/embedding/framer/inline",
+                  "guides/embedding/framer/popup",
+                  "guides/embedding/framer/slideover",
+                  "guides/embedding/framer/optimize"
+                ]
+              },
               "guides/embedding/react",
               "guides/embedding/next",
               "guides/embedding/unbounce",
