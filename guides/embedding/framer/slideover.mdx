@@ -37,12 +37,12 @@ Add the following code in the `End of <body> tag` section.
 ## Add className to the target element
 
 Select the button or element where you want to trigger the form. Open the `properties` of the element and scroll down to `Code Overrides` section.
-    1. Click on `New File` under `File` selection menu.
+    1. Click on `New File` under `File` selection menu. Name it `SurfaceFormButton`.
         <Frame>
              <img className="block" src="/images/framer/pop-slide/2.png" alt="Hero Light" />
         </Frame>
     2. Rename the file and click on `Create`.
-    3. Add the following code in the editor.
+    3. In the code editor, go to the very bottom, add a new line, and paste the following code:
         ```TSX
             export function withClass(Component): ComponentType {
                 return (props) => {
@@ -51,7 +51,7 @@ Select the button or element where you want to trigger the form. Open the `prope
                 }
             }
         ```
-    4. Now go back to the element, In `File` selection menu, select the file you just created and select `withClass` from the `Override` selection menu.
+    4. Now go back to the element, In `File` selection menu, select `SurfaceFormButton` in the first dropdown and select `withClass` from the `Override` selection menu.
         <Frame>
             <img className="block" src="/images/framer/pop-slide/3.png" alt="Hero Light" />
         </Frame>
