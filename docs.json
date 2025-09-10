@@ -87,7 +87,9 @@
                 "pages": [
                   "guides/embedding/framer/embedding",
                   "guides/embedding/framer/inline",
-                  "guides/embedding/framer/popup-slideover"
+                  "guides/embedding/framer/popup",
+                  "guides/embedding/framer/slideover",
+                  "guides/embedding/framer/optimize"
                 ]
               },
               "guides/embedding/react",
