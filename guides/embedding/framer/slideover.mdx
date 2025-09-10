@@ -16,10 +16,9 @@ twitter:image: "https://app.withsurface.com/api/v1/form/og?title=Framer%20Slideo
 
 1. In Framer, go to project `settings`.
 2. Scroll down to `Custom Code` section.
-    <Accordion title="Click to expand">
-        <img className="block" src="/images/framer/pop-slide/1.png" alt="Hero Light" />
-    </Accordion>
-
+    <Frame>
+        <img className="block" src="/images/framer/pop-slide/1.png" />
+    </Frame>
 
 Add the following code in the `End of <body> tag` section.
 ```HTML
@@ -39,9 +38,9 @@ Add the following code in the `End of <body> tag` section.
 
 Select the button or element where you want to trigger the form. Open the `properties` of the element and scroll down to `Code Overrides` section.
     1. Click on `New File` under `File` selection menu.
-        <Accordion title="Click to expand">
+        <Frame>
              <img className="block" src="/images/framer/pop-slide/2.png" alt="Hero Light" />
-        </Accordion>
+        </Frame>
     2. Rename the file and click on `Create`.
     3. Add the following code in the editor.
         ```TSX
@@ -53,9 +52,9 @@ Select the button or element where you want to trigger the form. Open the `prope
             }
         ```
     4. Now go back to the element, In `File` selection menu, select the file you just created and select `withClass` from the `Override` selection menu.
-        <Accordion title="Click to expand">
+        <Frame>
             <img className="block" src="/images/framer/pop-slide/3.png" alt="Hero Light" />
-        </Accordion>
+        </Frame>
 
 ## Publish the site
 
