@@ -140,7 +140,16 @@
                   "guides/embedding/unbounce/optimize"
                 ]
               },
-              "guides/embedding/webflow"
+              {
+                "group": "Webflow",
+                "pages": [
+                  "guides/embedding/webflow/embedding",
+                  "guides/embedding/webflow/inline",
+                  "guides/embedding/webflow/popup",
+                  "guides/embedding/webflow/slideover",
+                  "guides/embedding/webflow/optimize"
+                ]
+              }
             ]
           },
           {

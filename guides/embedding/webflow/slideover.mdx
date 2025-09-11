@@ -1,0 +1,49 @@
+---
+title: "Step 2.3: Slideover"
+description: "Embed a Surface Form slideover"
+og:title: "Webflow Slideover | Surface Docs"
+twitter:title: "Webflow Slideover | Surface Docs"
+og:description: "Embed a Surface Form slideover"
+twitter:description: "Embed a Surface Form slideover"
+og:image: "https://app.withsurface.com/api/v1/form/og?title=Webflow%20Slideover"
+twitter:image: "https://app.withsurface.com/api/v1/form/og?title=Webflow%20Slideover"
+---
+
+### 1. Create Surface Constructor
+
+Go to the Webflow [**dashboard**](https://webflow.com/dashboard) > **`Project Section`** > Select **`Custom Code`** and add the following custom code into the **`footer`** code section.
+
+```html
+<!-- Start Surface Form Embed -->
+<script>
+    // Replace this with your Surface Form URL
+    const surface_src = "REPLACE ME WITH FORM URL"
+
+    const surface_embed_type = "slideover"
+    const target_element_class = "surface-form-button"
+    const c = new SurfaceEmbed(surface_src, surface_embed_type, target_element_class)
+</script>
+<!-- End Surface Form Embed -->
+```
+
+This is how your script should look like:
+
+<Frame>
+![Webflow Footer Code Section](/images/webflow/webflow_slideover_footer_code.png)
+</Frame>
+
+### 2. Configure Form Trigger Button
+
+Next, navigate to your Webflow Design Studio and select the button that triggers the form. After Selecting the button, you should see `Style` tab on your right panel.
+
+<Frame>
+![Webflow Design Studio](/images/webflow/webflow-design-studio.png)
+</Frame>
+
+Finally, add `surface-form-button` in Style Selector:
+
+<Frame>
+![Webflow Button Class Configuration](/images/webflow/webflow-design-studio-popslide.png)
+</Frame>
+
+Finally, save and publish your changes. Your Surface Form should now be embedded on your Webflow website!
