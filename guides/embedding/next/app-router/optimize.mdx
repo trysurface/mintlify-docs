@@ -1,0 +1,27 @@
+---
+title: "Step 4: Optimize"
+description: "Optimize Surface Form loading speed"
+sidebarTitle: "Step 4: Optimize"
+og:title: "Optimize Surface Form | Surface Docs"
+twitter:title: "Optimize Surface Form | Surface Docs"
+og:description: "Optimize Surface Form loading speed"
+twitter:description: "Optimize Surface Form loading speed"
+og:image: "https://app.withsurface.com/api/v1/form/og?title=Optimize%20Surface%20Form"
+twitter:image: "https://app.withsurface.com/api/v1/form/og?title=Optimize%20Surface%20Form"
+---
+
+1. Navigate to the `app/layout.tsx` file.
+2. Add the following `<link>` tags in the *Start of **`<head>`** tag* section.
+
+```html
+<!-- Speed up connections to forms.withsurface.com by performing early DNS resolution and TCP handshake -->
+<link rel="dns-prefetch" href="https://forms.withsurface.com">
+<link rel="preconnect" href="https://forms.withsurface.com" crossorigin="">
+
+<!--  Fetch the form in advance, so it's ready when a user opens it. -->
+<link rel="prefetch" href="REPLACE ME WITH FORM URL" as="document">
+```
+
+<Info>
+Replace `REPLACE ME WITH FORM URL` with a Surface Form URL.
+</Info>

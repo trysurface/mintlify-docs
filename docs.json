@@ -103,7 +103,33 @@
                   "guides/embedding/react/optimize"
                 ]
               },
-              "guides/embedding/next",
+              {
+                "group": "Next.js",
+                "pages": [
+                  {
+                    "group": "App Router",
+                    "pages": [
+                      "guides/embedding/next/app-router/embedding",
+                      "guides/embedding/next/app-router/constructor",
+                      "guides/embedding/next/app-router/inline",
+                      "guides/embedding/next/app-router/popup",
+                      "guides/embedding/next/app-router/slideover",
+                      "guides/embedding/next/app-router/optimize"
+                    ]
+                  },
+                  {
+                    "group": "Page Router",
+                    "pages": [
+                      "guides/embedding/next/page-router/embedding",
+                      "guides/embedding/next/page-router/constructor",
+                      "guides/embedding/next/page-router/inline",
+                      "guides/embedding/next/page-router/popup",
+                      "guides/embedding/next/page-router/slideover",
+                      "guides/embedding/next/page-router/optimize"
+                    ]
+                  }
+                ]
+              },
               "guides/embedding/unbounce",
               "guides/embedding/webflow"
             ]
