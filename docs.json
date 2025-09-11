@@ -136,7 +136,8 @@
                   "guides/embedding/unbounce/embedding",
                   "guides/embedding/unbounce/inline",
                   "guides/embedding/unbounce/popup",
-                  "guides/embedding/unbounce/slideover"
+                  "guides/embedding/unbounce/slideover",
+                  "guides/embedding/unbounce/optimize"
                 ]
               },
               "guides/embedding/webflow"
