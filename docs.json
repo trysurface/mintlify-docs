@@ -96,6 +96,7 @@
               {
                 "group": "React.js",
                 "pages": [
+                  "guides/embedding/react/overview",
                   "guides/embedding/react/embedding",
                   "guides/embedding/react/inline",
                   "guides/embedding/react/popup",
@@ -106,6 +107,7 @@
               {
                 "group": "Next.js",
                 "pages": [
+                  "guides/embedding/next/overview",
                   {
                     "group": "App Router",
                     "pages": [
@@ -133,6 +135,7 @@
               {
                 "group": "Unbounce",
                 "pages": [
+                  "guides/embedding/unbounce/overview",
                   "guides/embedding/unbounce/embedding",
                   "guides/embedding/unbounce/inline",
                   "guides/embedding/unbounce/popup",
@@ -143,6 +146,7 @@
               {
                 "group": "Webflow",
                 "pages": [
+                  "guides/embedding/webflow/overview",
                   "guides/embedding/webflow/embedding",
                   "guides/embedding/webflow/inline",
                   "guides/embedding/webflow/popup",
