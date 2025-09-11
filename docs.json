@@ -130,7 +130,15 @@
                   }
                 ]
               },
-              "guides/embedding/unbounce",
+              {
+                "group": "Unbounce",
+                "pages": [
+                  "guides/embedding/unbounce/embedding",
+                  "guides/embedding/unbounce/inline",
+                  "guides/embedding/unbounce/popup",
+                  "guides/embedding/unbounce/slideover"
+                ]
+              },
               "guides/embedding/webflow"
             ]
           },

@@ -1,0 +1,64 @@
+---
+title: "Step 2.2: Popup"
+description: "Embed a Surface Form popup"
+og:title: "Unbounce Popup | Surface Docs"
+twitter:title: "Unbounce Popup | Surface Docs"
+og:description: "Embed a Surface Form popup"
+twitter:description: "Embed a Surface Form popup"
+og:image: "https://app.withsurface.com/api/v1/form/og?title=Unbounce%20Popup"
+twitter:image: "https://app.withsurface.com/api/v1/form/og?title=Unbounce%20Popup"
+---
+
+### 1. Create Surface Constructor
+
+<Frame>
+![Unbounce JavaScript Settings](/images/integrations/unbounce/1.png)
+</Frame>
+
+1. In the bottom toolbar, click the "JavaScript" button
+2. Click "Add New JavaScript"
+3. Add the following script:
+
+```html
+<!-- Start Surface Form Embed -->
+<script>
+    let surfaceInitialized = false;
+
+    function initializeSurfaceForm() {
+        if (surfaceInitialized || typeof SurfaceEmbed === "undefined") return;
+        surfaceInitialized = true;
+
+        const surface_src = "REPLACE ME WITH FORM URL"; // Replace with your Surface form URL
+        const surface_embed_type = "popup";
+        const surface_target_element_class = "surface-form-button";
+
+        const cSurfaceForm = new SurfaceEmbed(surface_src, surface_embed_type, surface_target_element_class);
+        cSurfaceForm.popupSize = "medium"; // "small", "medium", "large"
+    }
+
+    // Run initializeSurfaceForm only when user interacts
+    document.addEventListener("click", initializeSurfaceForm, { once: true });
+    document.addEventListener("scroll", initializeSurfaceForm, { once: true });
+</script>
+<!-- End Surface Form Embed -->
+```
+
+1. Make sure to replace the **`REPLACE ME WITH FORM URL`** with your Surface form URL
+2. Set the script placement to "Before the body Tag"
+3. Click "Done" to save the changes
+
+This is how your script should look like:
+
+<Frame>
+![Unbounce Script Configuration](/images/integrations/unbounce/2.png)
+</Frame>
+
+### 2. Configure Form Trigger Button
+
+<Frame>
+![Unbounce Button Configuration](/images/integrations/unbounce/3.png)
+</Frame>
+
+1. Select any button on your page where you want the Surface form to appear
+2. In the sidebar, scroll to the bottom
+3. Under "Element Metadata", set the class to **`surface-form-button`**

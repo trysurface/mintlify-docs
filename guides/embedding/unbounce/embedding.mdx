@@ -1,0 +1,42 @@
+---
+title: "Step 1: Embed Surface Tag"
+description: "Add a Surface Tag to your Unbounce Site"
+og:title: "Embed Surface Tag | Surface Docs"
+twitter:title: "Embed Surface Tag | Surface Docs"
+og:description: "Add a Surface Tag to your Unbounce Site"
+twitter:description: "Add a Surface Tag to your Unbounce Site"
+og:image: "https://app.withsurface.com/api/v1/form/og?title=Embedding%20Surface%20Tag"
+twitter:image: "https://app.withsurface.com/api/v1/form/og?title=Embedding%20Surface%20Tag"
+---
+
+
+### 1. Access Your Unbounce Page
+
+1. Log in to your Unbounce account
+2. Navigate to your landing pages
+3. Select the page you want to edit
+4. Click "Edit Page" to enter the editor
+
+### 2. Add Surface Tag
+
+<Frame>
+![Unbounce JavaScript Settings](/images/integrations/unbounce/1.png)
+</Frame>
+
+1. In the bottom toolbar, click the "JavaScript" button
+2. Click "Add New JavaScript"
+3. Add the following script:
+
+Check out the [**How to Get Site ID**](/docs/surface-tag/installation#where-to-find-your-site-id) page to get your site ID.
+
+```html
+<!-- Start Surface Tag -->
+<script 
+    src="https://cdn.jsdelivr.net/gh/trysurface/scripts@latest/surface_tag.min.js"
+    siteId="YOUR_SITE_ID"> // Replace with your site ID
+</script>
+<!-- End Surface Tag -->
+```
+
+1. Set the script placement to "Before the body Tag"
+2. Click "Done" to save the changes
