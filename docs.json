@@ -42,7 +42,19 @@
           },
           {
             "group": "External Forms",
-            "pages": ["docs/external-forms/link-external-html-form"]
+            "pages": [
+              {
+                "group": "Link External HTML Form",
+                "pages": [
+                  "docs/external-forms/overview",
+                  "docs/external-forms/embedding",
+                  "docs/external-forms/create-external-form",
+                  "docs/external-forms/create-multi-step-html-form",
+                  "docs/external-forms/modify-form-fields",
+                  "docs/external-forms/submit-form"
+                ]
+              }
+            ]
           },
           {
             "group": "Workflows",
