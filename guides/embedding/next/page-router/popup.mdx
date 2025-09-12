@@ -1,0 +1,44 @@
+---
+title: "Step 2.2.1: Popup"
+description: "Embed a Surface Form popup"
+og:title: "Next.js Popup | Surface Docs"
+twitter:title: "Next.js Popup | Surface Docs"
+og:description: "Embed a Surface Form popup"
+twitter:description: "Embed a Surface Form popup"
+og:image: "https://app.withsurface.com/api/v1/form/og?title=Next.js%20Popup"
+twitter:image: "https://app.withsurface.com/api/v1/form/og?title=Next.js%20Popup"
+---
+
+Let's add the **`SurfaceFormScript()`** component that we created in [**Step 2**](/guides/embedding/next/page-router/constructor) to the **`pages/_app.tsx`** file:
+
+```tsx
+import "@/styles/globals.css";
+import type { AppProps } from "next/app";
+import SurfaceFormScript from "../../surfaceFormScript";
+
+export default function App({ Component, pageProps }: AppProps) {
+  return (
+    <>
+      <Component {...pageProps} />
+      <SurfaceFormScript
+         formUrl="REPLACE ME WITH FORM URL" // Replace this with a Surface Form URL
+         embedType="popup"
+         popupSize="medium" // "small", "medium", "large"
+         buttonClassName="surface-form-button"
+       />
+    </>
+  );
+}
+```
+
+Add the `surface-form-button` className to the element you want to use to trigger the form.
+
+```tsx
+export default function Home() {
+    return (
+        <div>
+            <button className="surface-form-button">Open Form</button>
+        </div>
+    );
+}
+``` 

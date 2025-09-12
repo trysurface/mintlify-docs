@@ -1,0 +1,39 @@
+---
+title: "Step 1: Embed Surface Scripts"
+description: "Add Surface Scripts to your Site"
+og:title: "Embed Surface Scripts | Surface Docs"
+twitter:title: "Embed Surface Scripts | Surface Docs"
+og:description: "Add Surface Scripts to your Site"
+twitter:description: "Add Surface Scripts to your Site"
+og:image: "https://app.withsurface.com/api/v1/form/og?title=Embedding%20Surface%20Scripts"
+twitter:image: "https://app.withsurface.com/api/v1/form/og?title=Embedding%20Surface%20Scripts"
+---
+
+Check out the [**How to Get Site ID**](/docs/surface-tag/installation#where-to-find-your-site-id) page to get your site ID.
+
+### Surface Tag
+
+Add the following script tag inside your `<head>` tag:
+
+
+```html
+<!-- Start Surface Tag -->
+
+<script 
+	src="https://cdn.jsdelivr.net/gh/trysurface/scripts@latest/surface_tag.min.js"  
+	siteId="YOUR_SITE_ID" // Replace with your site ID
+></script>
+
+<!-- End Surface Tag -->
+```
+
+### Surface External Script
+
+Embed the script at the end of the `<body>` tag:
+
+```html
+<script siteId="YOUR_SITE_ID">
+  const surfaceExternalForm = new SurfaceExternalForm();
+  surfaceExternalForm.attachFormHandlers();
+</script>
+```

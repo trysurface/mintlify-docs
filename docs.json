@@ -42,7 +42,19 @@
           },
           {
             "group": "External Forms",
-            "pages": ["docs/external-forms/link-external-html-form"]
+            "pages": [
+              {
+                "group": "Link External HTML Form",
+                "pages": [
+                  "docs/external-forms/overview",
+                  "docs/external-forms/embedding",
+                  "docs/external-forms/create-external-form",
+                  "docs/external-forms/create-multi-step-html-form",
+                  "docs/external-forms/modify-form-fields",
+                  "docs/external-forms/submit-form"
+                ]
+              }
+            ]
           },
           {
             "group": "Workflows",
@@ -93,10 +105,67 @@
                   "guides/embedding/framer/optimize"
                 ]
               },
-              "guides/embedding/react",
-              "guides/embedding/next",
-              "guides/embedding/unbounce",
-              "guides/embedding/webflow"
+              {
+                "group": "Webflow",
+                "pages": [
+                  "guides/embedding/webflow/overview",
+                  "guides/embedding/webflow/embedding",
+                  "guides/embedding/webflow/inline",
+                  "guides/embedding/webflow/popup",
+                  "guides/embedding/webflow/slideover",
+                  "guides/embedding/webflow/optimize"
+                ]
+              },
+              {
+                "group": "React.js",
+                "pages": [
+                  "guides/embedding/react/overview",
+                  "guides/embedding/react/embedding",
+                  "guides/embedding/react/inline",
+                  "guides/embedding/react/popup",
+                  "guides/embedding/react/slideover",
+                  "guides/embedding/react/optimize"
+                ]
+              },
+              {
+                "group": "Next.js",
+                "pages": [
+                  "guides/embedding/next/overview",
+                  {
+                    "group": "App Router",
+                    "pages": [
+                      "guides/embedding/next/app-router/embedding",
+                      "guides/embedding/next/app-router/inline",
+                      "guides/embedding/next/app-router/component",
+                      "guides/embedding/next/app-router/popup",
+                      "guides/embedding/next/app-router/slideover",
+                      "guides/embedding/next/app-router/optimize"
+                    ]
+                  },
+                  {
+                    "group": "Page Router",
+                    "pages": [
+                      "guides/embedding/next/page-router/embedding",
+                      "guides/embedding/next/page-router/inline",
+                      "guides/embedding/next/page-router/component",
+                      "guides/embedding/next/page-router/popup",
+                      "guides/embedding/next/page-router/slideover",
+                      "guides/embedding/next/page-router/optimize"
+                    ]
+                  }
+                ]
+              },
+              {
+                "group": "Unbounce",
+                "pages": [
+                  "guides/embedding/unbounce/overview",
+                  "guides/embedding/unbounce/embedding",
+                  "guides/embedding/unbounce/inline",
+                  "guides/embedding/unbounce/popup",
+                  "guides/embedding/unbounce/slideover",
+                  "guides/embedding/unbounce/optimize"
+                ]
+              }
             ]
           },
           {

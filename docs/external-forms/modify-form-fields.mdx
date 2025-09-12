@@ -1,0 +1,36 @@
+---
+title: "Step 3.2: Modify Form Fields"
+description: "Modify form fields in Multi-Step HTML Form"
+og:title: "Modify Form Fields | Multi-Step HTML Form"
+twitter:title: "Modify Form Fields | Multi-Step HTML Form"
+og:description: "Modify form fields in Multi-Step HTML Form"
+twitter:description: "Modify form fields in Multi-Step HTML Form"
+og:image: "https://app.withsurface.com/api/v1/form/og?title=Modify%20Form%20Fields"
+twitter:image: "https://app.withsurface.com/api/v1/form/og?title=Modify%20Form%20Fields"
+---
+
+After creating the External Form and adding all fields in [Step 2](/docs/external-forms/create-external-form), the Component Question IDs for each form field must be obtained.
+
+<Frame>
+![Integration Details](/images/external-form/3.png)
+</Frame>
+
+### Add question IDs to form fields
+
+Each field in the form requires a corresponding question ID from Surface Labs to be added to the `data-id` attribute in the Multi-Step HTML Form:
+
+```html
+<div class="form-group">
+  <label for="email">Business email</label>
+  <input
+    data-id="<Component_Question_ID>"
+    type="email"
+    id="email"
+    name="email"
+    placeholder="john@telnyx.com"
+    required
+  />
+</div>
+```
+
+Replace **`<Component_Question_ID>`** with the question ID obtained while adding components to the external form in [Step 2](/docs/external-forms/create-external-form).
