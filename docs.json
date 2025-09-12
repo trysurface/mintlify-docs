@@ -94,6 +94,17 @@
                 ]
               },
               {
+                "group": "Webflow",
+                "pages": [
+                  "guides/embedding/webflow/overview",
+                  "guides/embedding/webflow/embedding",
+                  "guides/embedding/webflow/inline",
+                  "guides/embedding/webflow/popup",
+                  "guides/embedding/webflow/slideover",
+                  "guides/embedding/webflow/optimize"
+                ]
+              },
+              {
                 "group": "React.js",
                 "pages": [
                   "guides/embedding/react/overview",
@@ -112,8 +123,8 @@
                     "group": "App Router",
                     "pages": [
                       "guides/embedding/next/app-router/embedding",
-                      "guides/embedding/next/app-router/constructor",
                       "guides/embedding/next/app-router/inline",
+                      "guides/embedding/next/app-router/component",
                       "guides/embedding/next/app-router/popup",
                       "guides/embedding/next/app-router/slideover",
                       "guides/embedding/next/app-router/optimize"
@@ -123,8 +134,8 @@
                     "group": "Page Router",
                     "pages": [
                       "guides/embedding/next/page-router/embedding",
-                      "guides/embedding/next/page-router/constructor",
                       "guides/embedding/next/page-router/inline",
+                      "guides/embedding/next/page-router/component",
                       "guides/embedding/next/page-router/popup",
                       "guides/embedding/next/page-router/slideover",
                       "guides/embedding/next/page-router/optimize"
@@ -141,17 +152,6 @@
                   "guides/embedding/unbounce/popup",
                   "guides/embedding/unbounce/slideover",
                   "guides/embedding/unbounce/optimize"
-                ]
-              },
-              {
-                "group": "Webflow",
-                "pages": [
-                  "guides/embedding/webflow/overview",
-                  "guides/embedding/webflow/embedding",
-                  "guides/embedding/webflow/inline",
-                  "guides/embedding/webflow/popup",
-                  "guides/embedding/webflow/slideover",
-                  "guides/embedding/webflow/optimize"
                 ]
               }
             ]
