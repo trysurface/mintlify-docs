@@ -1,0 +1,38 @@
+---
+title: "Step 1: Embed Surface Tag"
+description: "Add a Surface Tag to your Next.js Site"
+sidebarTitle: "Step 1: Embed Surface Tag"
+og:title: "Embed Surface Tag | Surface Docs"
+twitter:title: "Embed Surface Tag | Surface Docs"
+og:description: "Add a Surface Tag to your Next.js Site"
+twitter:description: "Add a Surface Tag to your Next.js Site"
+og:image: "https://app.withsurface.com/api/v1/form/og?title=Embedding%20Surface%20Tag"
+twitter:image: "https://app.withsurface.com/api/v1/form/og?title=Embedding%20Surface%20Tag"
+---
+
+1. Navigate to the `pages/_document.tsx` file.
+2. Add the following code in the *Start of `<head>` tag* section.
+
+Check out the [**How to Get Site ID**](/docs/surface-tag/installation#where-to-find-your-site-id) page to get your site ID.
+
+```tsx
+import { Html, Head, Main, NextScript } from "next/document";
+import Script from "next/script";
+
+export default function Document() {
+  return (
+    <Html lang="en">
+      <Head />
+      <body className="antialiased">
+        <Main />
+        <NextScript />
+        <Script
+          src="https://cdn.jsdelivr.net/gh/trysurface/scripts@latest/surface_tag.min.js"
+          data-site-id="SITE_ID" // Replace this with your site id
+          strategy="beforeInteractive"
+        />
+      </body>
+    </Html>
+  );
+}
+```

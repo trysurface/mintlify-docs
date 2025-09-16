@@ -1,0 +1,39 @@
+---
+title: "Step 2.2: Popup"
+description: "Embed a Surface Form popup"
+sidebarTitle: "Step 2.2: Popup"
+og:title: "React.js Popup | Surface Docs"
+twitter:title: "React.js Popup | Surface Docs"
+og:description: "Embed a Surface Form popup"
+twitter:description: "Embed a Surface Form popup"
+og:image: "https://app.withsurface.com/api/v1/form/og?title=React.js%20Popup"
+twitter:image: "https://app.withsurface.com/api/v1/form/og?title=React.js%20Popup"
+---
+
+### Create Surface Constructor
+
+Go to the **`public/index.html`** file in your React.js project and add the following code at the end of **`<body>`** tag:
+
+```html
+ <script>
+   window.onload = function () {
+     const surface_src = "your_form_url";
+     const surface_embed_type = "popup";
+     const target_element_class = "surface-form-button";
+     const c = new SurfaceEmbed(
+       surface_src,
+       surface_embed_type,
+       target_element_class
+     );
+     c.popupSize = "medium"; // "small", "medium", "large"
+   };
+ </script>
+```
+
+## Add className to the target element
+
+Add **`surface-form-button`** class to the HTML element if you want to show the form as a popup.
+
+```jsx
+<button className="surface-form-button">Open Form</button>
+```
