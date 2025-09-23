@@ -72,7 +72,8 @@
           {
             "group": "Tracking",
             "pages": [
-              "docs/tracking/hubspot-tracking"
+              "docs/tracking/hubspot-tracking",
+              "docs/tracking/cookie-tracking"
             ]
           },
           {
