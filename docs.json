@@ -70,6 +70,13 @@
             "pages": ["docs/website-visitor-deanonymization/overview"]
           },
           {
+            "group": "Tracking",
+            "pages": [
+              "docs/tracking/hubspot-tracking",
+              "docs/tracking/cookie-tracking"
+            ]
+          },
+          {
             "group": "Platform",
             "pages": [
               "docs/platform/leads-table",
