@@ -1,0 +1,34 @@
+---
+title: "Email Input Field Trigger"
+description: "Triggering via email input field submission"
+sidebarTitle: "Triggering via Email Input Field"
+og:title: "Triggering via Email Input Field | Surface Docs"
+twitter:title: "Triggering via Email Input Field | Surface Docs"
+og:description: "Triggering via email input field submission"
+twitter:description: "Triggering via email input field submission"
+og:image: "https://app.withsurface.com/api/v1/form/og?title=Triggering%20via%20Email%20Input%20Field"
+twitter:image: "https://app.withsurface.com/api/v1/form/og?title=Triggering%20via%20Email%20Input%20Field"
+---
+
+## 1. Modify the Surface Form Embedding Script 
+
+Add the `data-question-id` attribute to your Surface form script.
+
+<Note>
+You must replace the **`<question_id>`** within **`data-question-id`** attribute below with the question ID from the Surface Form Builder.
+</Note>
+
+<Accordion title="Click to see where to find the question ID in the Surface Form Builder">
+    <img className="block" src="/images/embed/question_id.png" alt="Screenshot showing where to retrieve the question ID in the Surface Form Builder" />
+</Accordion>
+
+<Frame>
+    <img src="/images/integrations/unbounce/2.png" />
+</Frame>
+
+## 2. Configure Unbounce Form
+
+1. In your Unbounce page editor, add a form element
+2. Select the form element
+3. In the sidebar, under "Element Metadata", add the class `surface-form-handler`
+
