@@ -109,7 +109,8 @@
                   "guides/embedding/framer/inline",
                   "guides/embedding/framer/popup",
                   "guides/embedding/framer/slideover",
-                  "guides/embedding/framer/optimize"
+                  "guides/embedding/framer/optimize",
+                  "guides/embedding/framer/input-field"
                 ]
               },
               {
@@ -131,7 +132,8 @@
                   "guides/embedding/react/inline",
                   "guides/embedding/react/popup",
                   "guides/embedding/react/slideover",
-                  "guides/embedding/react/optimize"
+                  "guides/embedding/react/optimize",
+                  "guides/embedding/react/input-field"
                 ]
               },
               {
@@ -146,7 +148,8 @@
                       "guides/embedding/next/app-router/component",
                       "guides/embedding/next/app-router/popup",
                       "guides/embedding/next/app-router/slideover",
-                      "guides/embedding/next/app-router/optimize"
+                      "guides/embedding/next/app-router/optimize",
+                      "guides/embedding/next/app-router/input-field"
                     ]
                   },
                   {
@@ -157,7 +160,8 @@
                       "guides/embedding/next/page-router/component",
                       "guides/embedding/next/page-router/popup",
                       "guides/embedding/next/page-router/slideover",
-                      "guides/embedding/next/page-router/optimize"
+                      "guides/embedding/next/page-router/optimize",
+                      "guides/embedding/next/page-router/input-field"
                     ]
                   }
                 ]

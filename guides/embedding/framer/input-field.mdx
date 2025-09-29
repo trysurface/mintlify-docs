@@ -1,0 +1,87 @@
+---
+title: "Email Input Field Trigger"
+description: "Triggering via email input field submission"
+sidebarTitle: "Triggering via Email Input Field"
+og:title: "Triggering via Email Input Field | Surface Docs"
+twitter:title: "Triggering via Email Input Field | Surface Docs"
+og:description: "Triggering via email input field submission"
+twitter:description: "Triggering via email input field submission"
+og:image: "https://app.withsurface.com/api/v1/form/og?title=Triggering%20via%20Email%20Input%20Field"
+twitter:image: "https://app.withsurface.com/api/v1/form/og?title=Triggering%20via%20Email%20Input%20Field"
+---
+
+## 1. Modify the Surface Form Embedding Script
+
+Modify the Surface Form Embedding Script to include the `data-question-id` attribute.
+
+<Note>
+You must replace the **`<question_id>`** within **`data-question-id`** attribute below with the question ID from the Surface Form Builder.
+</Note>
+
+<Frame>
+![Question ID Location](/images/embed/question_id.png)
+</Frame>
+
+```html
+<!-- Start Surface Form Embed -->
+
+<script data-question-id="<question_id>">
+   window.onload = function () {
+     const surface_src = "surface_form_url";
+     const surface_embed_type = "slideover"; // works on all embedding types!
+     const target_element_class = "surface-form-button";
+     const c = new SurfaceEmbed(
+       surface_src,
+       surface_embed_type,
+       target_element_class,
+     );
+   };
+</script>
+
+<!-- End Surface Form Embed -->
+```
+
+## 2. Add the Form Component
+
+1. In Framer, click on **`insert`** to add new component inside the website.
+2. Select **`Form Builder`** from the list of components.
+
+<Frame>
+![Form Component](/images/framer/5.png)
+</Frame>
+
+## 2. Create new code override for the form component
+
+1. In the form component, click on **`properties`** to open the properties panel.
+2. Scroll down to **`Code Overrides`** section.
+3. Click on **`New File`** to create a new file.
+4. Name the file as **`SurfaceFormHandler`**.
+5. Click on **`Create`** to create the file.
+
+## 3. Modify the Surface Form Embedding Script
+
+In the `SurfaceFormHandler` file, add the following code:
+
+```TSX
+export function withClass(Component): ComponentType {
+    return (props) => {
+        props.className += " surface-form-handler" // Remember to add a space
+        return <Component {...props} />
+    }
+}
+```
+
+## 4. Apply the code override to the form component
+
+1. In the form component, click on **`properties`** to open the properties panel.
+2. Scroll down to **`Code Overrides`** section.
+3. Select **`SurfaceFormHandler`** from the list of files.
+4. Select **`withClass`** from the list of overrides.
+5. Click on **`Apply`** to apply the code override.
+
+## 5. Test Your Integration
+
+- Enter a valid email in the input field and press "Submit" or hit "Enter".
+- Verify that the Surface Form is displayed as expected.
+
+Now you should be able to trigger a Surface Form from an external email input field!
