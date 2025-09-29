@@ -121,7 +121,8 @@
                   "guides/embedding/webflow/inline",
                   "guides/embedding/webflow/popup",
                   "guides/embedding/webflow/slideover",
-                  "guides/embedding/webflow/optimize"
+                  "guides/embedding/webflow/optimize",
+                  "guides/embedding/webflow/input-field"
                 ]
               },
               {
