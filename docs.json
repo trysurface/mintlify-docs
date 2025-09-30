@@ -123,11 +123,16 @@
                 "pages": [
                   "guides/embedding/webflow/overview",
                   "guides/embedding/webflow/embedding",
-                  "guides/embedding/webflow/inline",
-                  "guides/embedding/webflow/popup",
-                  "guides/embedding/webflow/slideover",
-                  "guides/embedding/webflow/optimize",
-                  "guides/embedding/webflow/input-field"
+                  {
+                    "group": "Step 2: Embed Surface Form",
+                    "pages": [
+                      "guides/embedding/webflow/inline",
+                      "guides/embedding/webflow/input-field",
+                      "guides/embedding/webflow/popup",
+                      "guides/embedding/webflow/slideover"
+                    ]
+                  },
+                  "guides/embedding/webflow/optimize"
                 ]
               },
               {
