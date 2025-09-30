@@ -20,6 +20,7 @@ Add the following code snippet to your site's `head` tag to enable the slideover
 
 ```html
 <!-- Start Surface Form Embed -->
+
 <script>
 window.onload = function() {
     const surface_src = "REPLACE ME WITH FORM URL"
@@ -28,6 +29,7 @@ window.onload = function() {
     const c = new SurfaceEmbed(surface_src, surface_embed_type, target_element_class)
 }
 </script>
+
 <!-- End of Surface Form Embed -->
 ```
 
@@ -40,6 +42,21 @@ The next step is to choose which buttons you'd like to trigger the form. This is
 ```html
 <button class="... surface-form-button"> </button>
 ```
+
+## Direct Link
+
+Append `showSurfaceForm=true` to the url of your website.
+
+For example:
+```
+https://YOUR_WEBSITE.com/?showSurfaceForm=true
+```
+
+<Info>
+Replace `YOUR_WEBSITE.com` with your actual website URL.
+</Info>
+
+This will automatically trigger the slideover form to appear when the page loads, without requiring the user to click a trigger button.
 
 ## Optimize Speed
 
@@ -58,7 +75,7 @@ Add the following `<link>` tags inside the `<head>` of your site:
 Replace `REPLACE ME WITH FORM URL` with a Surface Form URL.
 </Info>
 
-## Explanation
+### Explanation
 
 1. dns-prefetch → Resolves the domain early to skip DNS lookup delays.
 2. preconnect → Prepares the TCP + TLS handshake so the browser is ready to request assets immediately.
