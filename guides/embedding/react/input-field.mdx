@@ -25,9 +25,11 @@ Ensure your HTML form includes the `surface-form-handler` class. This class is e
 Add the **`surface-form-handler`** class to any external form that you want to use to trigger the Surface Form popup.
 </Note>
 
-## 2. Modify the Surface Form Embedding Script
+## 2. Surface Form Constructor
 
-Modify the Surface Form Embedding Script to include the `data-question-id` attribute.
+Go to the **`public/index.html`** file in your React.js project and add the following code at the end of **`<body>`** tag:
+
+Add the `data-question-id` attribute to your Surface form script.
 
 <Note>
 You must replace the **`<question_id>`** within **`data-question-id`** attribute below with the question ID from the Surface Form Builder.

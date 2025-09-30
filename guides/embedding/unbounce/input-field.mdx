@@ -9,25 +9,56 @@ og:image: "https://app.withsurface.com/api/v1/form/og?title=Triggering%20via%20E
 twitter:image: "https://app.withsurface.com/api/v1/form/og?title=Triggering%20via%20Email%20Input%20Field"
 ---
 
-## 1. Modify the Surface Form Embedding Script 
-
-Add the `data-question-id` attribute to your Surface form script.
-
-<Note>
-You must replace the **`<question_id>`** within **`data-question-id`** attribute below with the question ID from the Surface Form Builder.
-</Note>
-
-<Frame>
-    <img className="block" src="/images/embed/question_id.png" alt="Screenshot showing where to retrieve the question ID in the Surface Form Builder" />
-</Frame>
-
-<Frame>
-    <img src="/images/integrations/unbounce/2.png" />
-</Frame>
-
-## 2. Configure Unbounce Form
+## 1. Configure Unbounce Form
 
 1. In your Unbounce page editor, add a form element
 2. Select the form element
 3. In the sidebar, under "Element Metadata", add the class `surface-form-handler`
 
+## 2. Surface Form Constructor
+
+<Frame>
+![Unbounce JavaScript Settings](/images/integrations/unbounce/1.png)
+</Frame>
+
+1. In the bottom toolbar, click the "JavaScript" button
+2. Click "Add New JavaScript"
+3. Replace the **`<question_id>`** with the question ID from the Surface Form Builder
+<Frame>
+![Question ID Location](/images/embed/question_id.png)
+</Frame>
+4. Add the following script:
+
+```html
+<!-- Start Surface Form Embed -->
+<script data-question-id="<question_id>">
+    let surfaceInitialized = false;
+
+    function initializeSurfaceForm() {
+        if (surfaceInitialized || typeof SurfaceEmbed === "undefined") return;
+        surfaceInitialized = true;
+
+        const surface_src = "REPLACE ME WITH FORM URL"; // Replace with your Surface form URL
+        const surface_embed_type = "popup";
+        const surface_target_element_class = "surface-form-button";
+
+        const cSurfaceForm = new SurfaceEmbed(surface_src, surface_embed_type, surface_target_element_class);
+        cSurfaceForm.popupSize = "medium"; // "small", "medium", "large"
+    }
+
+    // Run initializeSurfaceForm only when user interacts
+    document.addEventListener("click", initializeSurfaceForm, { once: true });
+    document.addEventListener("scroll", initializeSurfaceForm, { once: true });
+</script>
+<!-- End Surface Form Embed -->
+```
+
+1. Make sure to replace the **`REPLACE ME WITH FORM URL`** with your Surface form URL
+2. Set the script placement to "Before the body Tag"
+3. Click "Done" to save the changes
+
+This is what your script should look like:
+
+<Frame>
+![Unbounce Script Configuration](/images/integrations/unbounce/2.png)
+</Frame>

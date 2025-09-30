@@ -24,9 +24,32 @@ Ensure your HTML form includes the `surface-form-handler` class. This class is e
 Add the **`surface-form-handler`** class to any external form that you want to use to trigger the Surface Form popup.
 </Note>
 
-## 2. Modify the Surface Form Embedding Script
+## 2. Surface Form Constructor
 
-Modify the Surface Form Embedding Script to include the `data-question-id` attribute.
+Let's add the **`SurfaceFormScript()`** component that we created in [**Step 2**](/guides/embedding/next/page-router/component) to the **`pages/_app.tsx`** file:
+
+```tsx
+import "@/styles/globals.css";
+import type { AppProps } from "next/app";
+import SurfaceFormScript from "../../surfaceFormScript";
+
+export default function App({ Component, pageProps }: AppProps) {
+  return (
+    <>
+      <Component {...pageProps} />
+      <SurfaceFormScript
+         formUrl="REPLACE ME WITH FORM URL" // Replace this with a Surface Form URL
+         embedType="popup"
+         popupSize="medium" // "small", "medium", "large"
+         buttonClassName="surface-form-button"
+       />
+    </>
+  );
+}
+```
+
+
+Add the `data-question-id` attribute to your Surface Tag script in the **`pages/_document.tsx`** file.
 
 <Note>
 You must replace the **`<question_id>`** within **`data-question-id`** attribute below with the question ID from the Surface Form Builder.

@@ -24,9 +24,11 @@ twitter:image: "https://app.withsurface.com/api/v1/form/og?title=Triggering%20vi
 1. In the form block component, Select **`Form`** from the list of elements.
 2. On the right side, under **`Style Selector`**, add the **`surface-form-handler`** class to the form.
 
-## 3. Modify the Surface Form Embedding Script
+## 3. Surface Form Constructor
 
-Modify the Surface Form Embedding Script to include the `data-question-id` attribute.
+Go to the Webflow [**dashboard**](https://webflow.com/dashboard) > **`Project Section`** > Select **`Custom Code`** and add the following custom code into the **`footer`** code section.
+
+Add the `data-question-id` attribute to your Surface form script.
 
 <Note>
 You must replace the **`<question_id>`** within **`data-question-id`** attribute below with the question ID from the Surface Form Builder.
