@@ -199,11 +199,16 @@
                 "pages": [
                   "guides/embedding/unbounce/overview",
                   "guides/embedding/unbounce/embedding",
-                  "guides/embedding/unbounce/inline",
-                  "guides/embedding/unbounce/popup",
-                  "guides/embedding/unbounce/slideover",
-                  "guides/embedding/unbounce/optimize",
-                  "guides/embedding/unbounce/input-field"
+                  {
+                    "group": "Step 2: Embed Surface Form",
+                    "pages": [
+                      "guides/embedding/unbounce/inline",
+                      "guides/embedding/unbounce/input-field",
+                      "guides/embedding/unbounce/popup",
+                      "guides/embedding/unbounce/slideover"
+                    ]
+                  },
+                  "guides/embedding/unbounce/optimize"
                 ]
               }
             ]
