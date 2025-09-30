@@ -106,11 +106,16 @@
                 "pages": [
                   "guides/embedding/framer/overview",
                   "guides/embedding/framer/embedding",
-                  "guides/embedding/framer/inline",
-                  "guides/embedding/framer/popup",
-                  "guides/embedding/framer/slideover",
-                  "guides/embedding/framer/optimize",
-                  "guides/embedding/framer/input-field"
+                  {
+                    "group": "Step 2: Embed Surface Form",
+                    "pages": [
+                      "guides/embedding/framer/inline",
+                      "guides/embedding/framer/input-field",
+                      "guides/embedding/framer/popup",
+                      "guides/embedding/framer/slideover"
+                    ]
+                  },
+                  "guides/embedding/framer/optimize"
                 ]
               },
               {
