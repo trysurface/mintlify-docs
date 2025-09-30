@@ -160,24 +160,36 @@
                     "group": "App Router",
                     "pages": [
                       "guides/embedding/next/app-router/embedding",
-                      "guides/embedding/next/app-router/inline",
                       "guides/embedding/next/app-router/component",
-                      "guides/embedding/next/app-router/popup",
-                      "guides/embedding/next/app-router/slideover",
-                      "guides/embedding/next/app-router/optimize",
-                      "guides/embedding/next/app-router/input-field"
+                      {
+                        "group": "Step 3: Embed Surface Form",
+                        "pages": [
+                          "guides/embedding/next/app-router/inline",
+                          "guides/embedding/next/app-router/input-field",
+                          "guides/embedding/next/app-router/popup",
+                          "guides/embedding/next/app-router/slideover"
+                        ]
+                      },
+
+                      "guides/embedding/next/app-router/optimize"
                     ]
                   },
                   {
                     "group": "Page Router",
                     "pages": [
                       "guides/embedding/next/page-router/embedding",
-                      "guides/embedding/next/page-router/inline",
                       "guides/embedding/next/page-router/component",
-                      "guides/embedding/next/page-router/popup",
-                      "guides/embedding/next/page-router/slideover",
-                      "guides/embedding/next/page-router/optimize",
-                      "guides/embedding/next/page-router/input-field"
+                      {
+                        "group": "Step 3: Embed Surface Form",
+                        "pages": [
+                          "guides/embedding/next/page-router/inline",
+                          "guides/embedding/next/page-router/input-field",
+                          "guides/embedding/next/page-router/popup",
+                          "guides/embedding/next/page-router/slideover"
+                        ]
+                      },
+
+                      "guides/embedding/next/page-router/optimize"
                     ]
                   }
                 ]
