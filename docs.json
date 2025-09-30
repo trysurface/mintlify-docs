@@ -140,11 +140,16 @@
                 "pages": [
                   "guides/embedding/react/overview",
                   "guides/embedding/react/embedding",
-                  "guides/embedding/react/inline",
-                  "guides/embedding/react/popup",
-                  "guides/embedding/react/slideover",
-                  "guides/embedding/react/optimize",
-                  "guides/embedding/react/input-field"
+                  {
+                    "group": "Step 2: Embed Surface Form",
+                    "pages": [
+                      "guides/embedding/react/inline",
+                      "guides/embedding/react/input-field",
+                      "guides/embedding/react/popup",
+                      "guides/embedding/react/slideover"
+                    ]
+                  },
+                  "guides/embedding/react/optimize"
                 ]
               },
               {
