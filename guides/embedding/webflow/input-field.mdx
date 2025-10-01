@@ -1,0 +1,63 @@
+---
+title: "Email Input Field Trigger"
+description: "Triggering via email input field submission"
+sidebarTitle: "Email Input Field Trigger"
+og:title: "Triggering via Email Input Field | Surface Docs"
+twitter:title: "Triggering via Email Input Field | Surface Docs"
+og:description: "Triggering via email input field submission"
+twitter:description: "Triggering via email input field submission"
+og:image: "https://app.withsurface.com/api/v1/form/og?title=Triggering%20via%20Email%20Input%20Field"
+twitter:image: "https://app.withsurface.com/api/v1/form/og?title=Triggering%20via%20Email%20Input%20Field"
+---
+
+## 1. Add Form Block component 
+
+<Frame>
+![Form Block Component](/images/webflow/webflow_form_block.png)
+</Frame>
+
+
+1. In Webflow, click on **`Add Element`** to add a new element.
+2. Select **`Form Block`** from the list of elements.
+
+## 2. Configure Form Block component
+
+<Frame>
+![Form Block Component](/images/webflow/webflow_form.png)
+</Frame>
+
+1. In the form block component, Select **`Form`** from the list of elements.
+2. On the right side, under **`Style Selector`**, add the **`surface-form-handler`** class to the form.
+
+## 3. Surface Form Constructor
+
+Go to the Webflow [**dashboard**](https://webflow.com/dashboard) > **`Project Section`** > Select **`Custom Code`** and add the following custom code into the **`footer`** code section.
+
+Add the `data-question-id` attribute to your Surface form script.
+
+<Note>
+You must replace the **`<question_id>`** within **`data-question-id`** attribute below with the question ID from the Surface Form Builder.
+</Note>
+
+<Frame>
+![Question ID Location](/images/embed/question_id.png)
+</Frame>
+
+```html
+<!-- Start Surface Form Embed -->
+
+<script data-question-id="<question_id>">
+   window.onload = function () {
+     const surface_src = "surface_form_url";
+     const surface_embed_type = "slideover"; // works on all embedding types!
+     const target_element_class = "surface-form-button";
+     const c = new SurfaceEmbed(
+       surface_src,
+       surface_embed_type,
+       target_element_class,
+     );
+   };
+</script>
+
+<!-- End Surface Form Embed -->
+```

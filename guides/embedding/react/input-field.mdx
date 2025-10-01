@@ -1,6 +1,7 @@
 ---
 title: "Email Input Field Trigger"
 description: "Triggering via email input field submission"
+sidebarTitle: "Email Input Field Trigger"
 og:title: "Triggering via Email Input Field | Surface Docs"
 twitter:title: "Triggering via Email Input Field | Surface Docs"
 og:description: "Triggering via email input field submission"
@@ -8,10 +9,6 @@ twitter:description: "Triggering via email input field submission"
 og:image: "https://app.withsurface.com/api/v1/form/og?title=Triggering%20via%20Email%20Input%20Field"
 twitter:image: "https://app.withsurface.com/api/v1/form/og?title=Triggering%20via%20Email%20Input%20Field"
 ---
-
-import SurfaceTagWarning from '/snippets/surface-tag-warning.mdx';
-
-<SurfaceTagWarning />
 
 ## 1. Add the HTML Form
 
@@ -28,9 +25,11 @@ Ensure your HTML form includes the `surface-form-handler` class. This class is e
 Add the **`surface-form-handler`** class to any external form that you want to use to trigger the Surface Form popup.
 </Note>
 
-## 2. Modify the Surface Form Embedding Script
+## 2. Surface Form Constructor
 
-Modify the Surface Form Embedding Script to include the `data-question-id` attribute.
+Go to the **`public/index.html`** file in your React.js project and add the following code at the end of **`<body>`** tag:
+
+Add the `data-question-id` attribute to your Surface form script.
 
 <Note>
 You must replace the **`<question_id>`** within **`data-question-id`** attribute below with the question ID from the Surface Form Builder.
@@ -58,33 +57,3 @@ You must replace the **`<question_id>`** within **`data-question-id`** attribute
 
 <!-- End Surface Form Embed -->
 ```
-
-## 3. Test Your Integration
-
-- Enter a valid email in the input field and press "Submit" or hit "Enter".
-- Verify that the Surface Form popup is displayed as expected.
-
-Now you should be able to trigger a Surface Form popup from an external email input field!
-
-## Optimize Speed
-
-Add the following `<link>` tags inside the `<head>` of your site:
-
-```html
-<!-- Speed up connections to forms.withsurface.com by performing early DNS resolution and TCP handshake -->
-<link rel="dns-prefetch" href="https://forms.withsurface.com">
-<link rel="preconnect" href="https://forms.withsurface.com" crossorigin>
-
-<!--  Fetch the form in advance, so it's ready when a user opens it. -->
-<link rel="prefetch" href="REPLACE ME WITH FORM URL" as="document">
-```
-
-<Info>
-Replace `REPLACE ME WITH FORM URL` with a Surface Form URL.
-</Info>
-
-## Explanation
-
-1. dns-prefetch → Resolves the domain early to skip DNS lookup delays.
-2. preconnect → Prepares the TCP + TLS handshake so the browser is ready to request assets immediately.
-3. prefetch → Fetches the form in advance, so it's ready when a user opens it.

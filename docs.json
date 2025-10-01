@@ -107,9 +107,15 @@
                 "pages": [
                   "guides/embedding/framer/overview",
                   "guides/embedding/framer/embedding",
-                  "guides/embedding/framer/inline",
-                  "guides/embedding/framer/popup",
-                  "guides/embedding/framer/slideover",
+                  {
+                    "group": "Step 2: Embed Surface Form",
+                    "pages": [
+                      "guides/embedding/framer/inline",
+                      "guides/embedding/framer/input-field",
+                      "guides/embedding/framer/popup",
+                      "guides/embedding/framer/slideover"
+                    ]
+                  },
                   "guides/embedding/framer/optimize"
                 ]
               },
@@ -118,9 +124,15 @@
                 "pages": [
                   "guides/embedding/webflow/overview",
                   "guides/embedding/webflow/embedding",
-                  "guides/embedding/webflow/inline",
-                  "guides/embedding/webflow/popup",
-                  "guides/embedding/webflow/slideover",
+                  {
+                    "group": "Step 2: Embed Surface Form",
+                    "pages": [
+                      "guides/embedding/webflow/inline",
+                      "guides/embedding/webflow/input-field",
+                      "guides/embedding/webflow/popup",
+                      "guides/embedding/webflow/slideover"
+                    ]
+                  },
                   "guides/embedding/webflow/optimize"
                 ]
               },
@@ -129,9 +141,15 @@
                 "pages": [
                   "guides/embedding/react/overview",
                   "guides/embedding/react/embedding",
-                  "guides/embedding/react/inline",
-                  "guides/embedding/react/popup",
-                  "guides/embedding/react/slideover",
+                  {
+                    "group": "Step 2: Embed Surface Form",
+                    "pages": [
+                      "guides/embedding/react/inline",
+                      "guides/embedding/react/input-field",
+                      "guides/embedding/react/popup",
+                      "guides/embedding/react/slideover"
+                    ]
+                  },
                   "guides/embedding/react/optimize"
                 ]
               },
@@ -143,10 +161,17 @@
                     "group": "App Router",
                     "pages": [
                       "guides/embedding/next/app-router/embedding",
-                      "guides/embedding/next/app-router/inline",
                       "guides/embedding/next/app-router/component",
-                      "guides/embedding/next/app-router/popup",
-                      "guides/embedding/next/app-router/slideover",
+                      {
+                        "group": "Step 3: Embed Surface Form",
+                        "pages": [
+                          "guides/embedding/next/app-router/inline",
+                          "guides/embedding/next/app-router/input-field",
+                          "guides/embedding/next/app-router/popup",
+                          "guides/embedding/next/app-router/slideover"
+                        ]
+                      },
+
                       "guides/embedding/next/app-router/optimize"
                     ]
                   },
@@ -154,10 +179,17 @@
                     "group": "Page Router",
                     "pages": [
                       "guides/embedding/next/page-router/embedding",
-                      "guides/embedding/next/page-router/inline",
                       "guides/embedding/next/page-router/component",
-                      "guides/embedding/next/page-router/popup",
-                      "guides/embedding/next/page-router/slideover",
+                      {
+                        "group": "Step 3: Embed Surface Form",
+                        "pages": [
+                          "guides/embedding/next/page-router/inline",
+                          "guides/embedding/next/page-router/input-field",
+                          "guides/embedding/next/page-router/popup",
+                          "guides/embedding/next/page-router/slideover"
+                        ]
+                      },
+
                       "guides/embedding/next/page-router/optimize"
                     ]
                   }
@@ -168,9 +200,15 @@
                 "pages": [
                   "guides/embedding/unbounce/overview",
                   "guides/embedding/unbounce/embedding",
-                  "guides/embedding/unbounce/inline",
-                  "guides/embedding/unbounce/popup",
-                  "guides/embedding/unbounce/slideover",
+                  {
+                    "group": "Step 2: Embed Surface Form",
+                    "pages": [
+                      "guides/embedding/unbounce/inline",
+                      "guides/embedding/unbounce/input-field",
+                      "guides/embedding/unbounce/popup",
+                      "guides/embedding/unbounce/slideover"
+                    ]
+                  },
                   "guides/embedding/unbounce/optimize"
                 ]
               }
