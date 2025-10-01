@@ -42,11 +42,11 @@ To capture metadata from `SurfaceFormStepSubmitted`, create the following `Data 
 1. In GTM, go to **Variables**.
 2. Click **New** → Choose **Data Layer Variable**.
     <Frame>
-    ![GTM Variables Setup](/images/gtm/gtm_1.png)
+    ![GTM Variables Setup](/images/gtm/gtm_12.png)
     </Frame>
 3. Enter the exact name (e.g., **`dlv - emailProvided`**) and set the Data Layer Variable Name to **`emailProvided`**. Make sure to capitalize the p in `emailProvided` !
     <Frame>
-    ![GTM Data Layer Variable Configuration](/images/gtm/gtm_2.png)
+    ![GTM Data Layer Variable Configuration](/images/gtm/gtm_13.png)
     </Frame>
 4. Repeat for **`meetingBooked`, `url`**  and **`urlParams`.**
     
@@ -54,7 +54,7 @@ To capture metadata from `SurfaceFormStepSubmitted`, create the following `Data 
     `urlParams` is an object, we need to use dot notation e.g. `{{ urlParams.medium }}` to get the data.
     </Info>
     <Frame>
-    ![GTM URL Parameters Configuration](/images/gtm/gtm_3.png)
+    ![GTM URL Parameters Configuration](/images/gtm/gtm_14.png)
     </Frame>
 
 ## 2. Create Triggers Based on Events
