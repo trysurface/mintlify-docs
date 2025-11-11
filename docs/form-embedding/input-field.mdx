@@ -44,16 +44,16 @@ You must replace the **`<question_id>`** within **`data-question-id`** attribute
 <!-- Start Surface Form Embed -->
 
 <script data-question-id="<question_id>">
-   window.onload = function () {
-     const surface_src = "surface_form_url";
-     const surface_embed_type = "slideover"; // works on all embedding types!
-     const target_element_class = "surface-form-button";
-     const c = new SurfaceEmbed(
-       surface_src,
-       surface_embed_type,
-       target_element_class,
-     );
-   };
+  (function () {
+    const surface_src = "surface_form_url";
+    const surface_embed_type = "slideover"; // works on all embedding types!
+    const target_element_class = "surface-form-button";
+    const c = new SurfaceEmbed(
+      surface_src,
+      surface_embed_type,
+      target_element_class,
+    );
+  })();
 </script>
 
 <!-- End Surface Form Embed -->

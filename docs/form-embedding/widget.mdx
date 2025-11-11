@@ -21,7 +21,7 @@ Let's edit the Surface Form Embedding Script to display the form as a widget.
 ```html
 <!-- Start Surface Form Embed -->
 <script>
-window.onload = function() {
+  (function() {
     const surface_src = "surface_form_url";
     const surface_embed_type = "widget"; // switch to "widget" to display the form as a widget
     const target_element_class = "surface-form-button";
@@ -43,7 +43,7 @@ window.onload = function() {
     );
 
     c.popupSize = "small";
-}
+  })();
 </script>
 <!-- End of Surface Form Embed -->
 ```
