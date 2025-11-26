@@ -22,12 +22,12 @@ Add the following code snippet to your site's `head` tag to enable the slideover
 <!-- Start Surface Form Embed -->
 
 <script>
-window.onload = function() {
+  (function() {
     const surface_src = "REPLACE ME WITH FORM URL"
     const surface_embed_type = "slideover"
     const target_element_class = "surface-form-button"
     const c = new SurfaceEmbed(surface_src, surface_embed_type, target_element_class)
-}
+  })();
 </script>
 
 <!-- End of Surface Form Embed -->

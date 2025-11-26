@@ -1,12 +1,12 @@
 ```
 <script>
-  window.onload = function() {
-		const surface_src = "REPLACE ME WITH FORM URL"
-		const embed_type = "{embedType}"
-		const target_element_class = "surface-form-button"
-		const c = new SurfaceEmbed(surface_src, embed_type, target_element_class)
+  (function() {
+	const surface_src = "REPLACE ME WITH FORM URL"
+	const embed_type = "{embedType}"
+	const target_element_class = "surface-form-button"
+	const c = new SurfaceEmbed(surface_src, embed_type, target_element_class)
 
-		c.embedSurfaceForm();
-  }
+	c.embedSurfaceForm();
+  })();
 </script>
 ```
