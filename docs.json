@@ -161,9 +161,8 @@
                     "group": "App Router",
                     "pages": [
                       "guides/embedding/next/app-router/embedding",
-                      "guides/embedding/next/app-router/component",
                       {
-                        "group": "Step 3: Embed Surface Form",
+                        "group": "Step 2: Embed Surface Form",
                         "pages": [
                           "guides/embedding/next/app-router/inline",
                           "guides/embedding/next/app-router/input-field",
@@ -179,9 +178,8 @@
                     "group": "Page Router",
                     "pages": [
                       "guides/embedding/next/page-router/embedding",
-                      "guides/embedding/next/page-router/component",
                       {
-                        "group": "Step 3: Embed Surface Form",
+                        "group": "Step 2: Embed Surface Form",
                         "pages": [
                           "guides/embedding/next/page-router/inline",
                           "guides/embedding/next/page-router/input-field",
