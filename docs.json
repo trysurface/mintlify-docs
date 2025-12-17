@@ -218,6 +218,7 @@
             "group": "Guides",
             "pages": [
               "guides/first-form",
+              "guides/control-form-logic-based-on-api",
               "guides/send-data-to-hubspot",
               "guides/send-data-to-airtable",
               "guides/send-data-to-surface"
