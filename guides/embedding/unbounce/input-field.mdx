@@ -1,15 +1,31 @@
 ---
-title: "Popup"
-description: "Embed a Surface Form popup"
-og:title: "Unbounce Popup | Surface Docs"
-twitter:title: "Unbounce Popup | Surface Docs"
-og:description: "Embed a Surface Form popup"
-twitter:description: "Embed a Surface Form popup"
-og:image: "https://app.withsurface.com/api/v1/form/og?title=Unbounce%20Popup"
-twitter:image: "https://app.withsurface.com/api/v1/form/og?title=Unbounce%20Popup"
+title: "Email Input Field Trigger"
+description: "Triggering via email input field submission"
+og:title: "Triggering via Email Input Field | Surface Docs"
+twitter:title: "Triggering via Email Input Field | Surface Docs"
+og:description: "Triggering via email input field submission"
+twitter:description: "Triggering via email input field submission"
+og:image: "https://app.withsurface.com/api/v1/form/og?title=Triggering%20via%20Email%20Input%20Field"
+twitter:image: "https://app.withsurface.com/api/v1/form/og?title=Triggering%20via%20Email%20Input%20Field"
 ---
 
-### 1. Surface Form Constructor
+## 1. Add HTML form in Unbounce
+
+Add `Custom HTML` component to your Unbounce page:
+<Frame>
+![Unbounce Custom HTML Component](/images/integrations/unbounce/6.png)
+</Frame>
+
+Add the following code to the `Custom HTML` component:
+
+```html
+<form class="surface-form-handler">
+  <input type="email" placeholder="Enter your email" required />
+  <button type="submit">Submit</button>
+</form>
+```
+
+## 2. Surface Form Constructor
 
 <Frame>
 ![Unbounce JavaScript Settings](/images/integrations/unbounce/1.png)
@@ -17,11 +33,15 @@ twitter:image: "https://app.withsurface.com/api/v1/form/og?title=Unbounce%20Popu
 
 1. In the bottom toolbar, click the "JavaScript" button
 2. Click "Add New JavaScript"
-3. Add the following script:
+3. Replace the **`<question_id>`** with the question ID from the Surface Form Builder
+<Frame>
+![Question ID Location](/images/embed/question_id.png)
+</Frame>
+4. Add the following script:
 
 ```html
 <!-- Start Surface Form Embed -->
-<script>
+<script data-question-id="<question_id>">
     let surfaceInitialized = false;
 
     function initializeSurfaceForm() {
@@ -52,13 +72,3 @@ This is what your script should look like:
 <Frame>
 ![Unbounce Script Configuration](/images/integrations/unbounce/2.png)
 </Frame>
-
-### 2. Configure Form Trigger Button
-
-<Frame>
-![Unbounce Button Configuration](/images/integrations/unbounce/3.png)
-</Frame>
-
-1. Select any button on your page where you want the Surface form to appear
-2. In the sidebar, scroll to the bottom
-3. Under "Element Metadata", set the class to **`surface-form-button`**

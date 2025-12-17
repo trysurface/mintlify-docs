@@ -1,7 +1,7 @@
 ---
-title: "Step 2.3: Slideover"
+title: "Slideover"
 description: "Embed a Surface Form slideover"
-sidebarTitle: "Step 2.3: Slideover"
+sidebarTitle: "Slideover"
 og:title: "React.js Slideover | Surface Docs"
 twitter:title: "React.js Slideover | Surface Docs"
 og:description: "Embed a Surface Form slideover"
@@ -16,7 +16,7 @@ Go to the **`public/index.html`** file in your React.js project and add the foll
 
 ```html
  <script>
-   window.onload = function () {
+  (function () {
      const surface_src = "your_form_url";
      const surface_embed_type = "slideover";
      const target_element_class = "surface-form-button";
@@ -25,7 +25,7 @@ Go to the **`public/index.html`** file in your React.js project and add the foll
        surface_embed_type,
        target_element_class
      );
-   };
+   })();
  </script>
 ```
 

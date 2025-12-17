@@ -2,13 +2,13 @@
 <script src="https://cdn.jsdelivr.net/gh/trysurface/scripts@latest/surface_tag.min.js"></script>
 
 <script>
-  window.onload = function() {
-		const surface_src = "REPLACE ME WITH FORM URL"
-		const embed_type = "{embed}"
-		const target_element_class = "surface-form-button"
-		const c = new SurfaceEmbed(surface_src, embed_type, target_element_class)
+  (function() {
+	const surface_src = "REPLACE ME WITH FORM URL"
+	const embed_type = "{embed}"
+	const target_element_class = "surface-form-button"
+	const c = new SurfaceEmbed(surface_src, embed_type, target_element_class)
 
-		c.embedSurfaceForm();
-  }
+	c.embedSurfaceForm();
+  })();
 </script>
 ```

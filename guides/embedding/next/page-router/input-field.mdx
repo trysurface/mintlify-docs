@@ -1,0 +1,83 @@
+---
+title: "Email Input Field Trigger"
+description: "Triggering via email input field submission"
+og:title: "Triggering via Email Input Field | Surface Docs"
+twitter:title: "Triggering via Email Input Field | Surface Docs"
+og:description: "Triggering via email input field submission"
+twitter:description: "Triggering via email input field submission"
+og:image: "https://app.withsurface.com/api/v1/form/og?title=Triggering%20via%20Email%20Input%20Field"
+twitter:image: "https://app.withsurface.com/api/v1/form/og?title=Triggering%20via%20Email%20Input%20Field"
+---
+
+## 1. Add the HTML Form
+
+Ensure your HTML form includes the `surface-form-handler` class. This class is essential for identifying the form as one that triggers the Surface Form popup. Example:
+
+```html
+<form class="surface-form-handler">
+  <input type="email" placeholder="Enter your email" required />
+  <button type="submit">Submit</button>
+</form>
+```
+
+<Note>
+Add the **`surface-form-handler`** class to any external form that you want to use to trigger the Surface Form popup.
+</Note>
+
+## 2. Surface Form Constructor
+
+Let's add the **`SurfaceFormScript()`** component that we created in [**Step 2**](/guides/embedding/next/page-router/component) to the **`pages/_app.tsx`** file:
+
+```tsx
+import "@/styles/globals.css";
+import type { AppProps } from "next/app";
+import SurfaceFormScript from "../../surfaceFormScript";
+
+export default function App({ Component, pageProps }: AppProps) {
+  return (
+    <>
+      <Component {...pageProps} />
+      <SurfaceFormScript
+         formUrl="REPLACE ME WITH FORM URL" // Replace this with a Surface Form URL
+         embedType="popup"
+         popupSize="medium" // "small", "medium", "large"
+         buttonClassName="surface-form-button"
+       />
+    </>
+  );
+}
+```
+
+
+Add the `data-question-id` attribute to your Surface Tag script in the **`pages/_document.tsx`** file.
+
+<Note>
+You must replace the **`<question_id>`** within **`data-question-id`** attribute below with the question ID from the Surface Form Builder.
+</Note>
+
+<Frame>
+![Question ID Location](/images/embed/question_id.png)
+</Frame>
+
+```jsx
+import { Html, Head, Main, NextScript } from "next/document";
+import Script from "next/script";
+
+export default function Document() {
+  return (
+    <Html lang="en">
+      <Head />
+      <body className="antialiased">
+        <Main />
+        <NextScript />
+        <Script
+          src="https://cdn.jsdelivr.net/gh/trysurface/scripts@latest/surface_tag.min.js"
+          data-site-id="SITE_ID" // Replace this with your site id
+          strategy="beforeInteractive"
+          data-question-id="<question_id>" // Replace this with the question ID from the Surface Form Builder
+        />
+      </body>
+    </Html>
+  );
+}
+```
