@@ -38,7 +38,8 @@
             "pages": [
               "docs/events/form-events",
               "docs/events/google-tag-manager",
-              "docs/events/google-ads-tracking"
+              "docs/events/google-ads-tracking",
+              "docs/events/google-analytics-tracking"
             ]
           },
           {
