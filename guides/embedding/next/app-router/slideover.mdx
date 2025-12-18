@@ -9,38 +9,48 @@ og:image: "https://app.withsurface.com/api/v1/form/og?title=Next.js%20Slideover"
 twitter:image: "https://app.withsurface.com/api/v1/form/og?title=Next.js%20Slideover"
 ---
 
-Let's add the **`SurfaceFormScript()`** component that we created in [**Step 2**](/guides/embedding/next/app-router/component) to the **`app/layout.tsx`** file:
+Add the following code to the **`app/layout.tsx`** file:
 
 ```tsx
 import Script from "next/script";
-import SurfaceFormScript from "./surfaceFormScript";
 
 export default function RootLayout({
-	children,
-}: Readonly<{
-	children: React.ReactNode;
-}>) {
-return (
-	  <html lang="en">
-	  <head>
+  children,
+}: {
+  children: React.ReactNode,
+}) {
+  return (
+    <html lang="en">
+      <head>
         <Script
           src="https://cdn.jsdelivr.net/gh/trysurface/scripts@latest/surface_tag.min.js"
           data-site-id="SITE_ID" // Replace this with your Site ID
           strategy="beforeInteractive"
-         />
+        />
+        <Script
+          strategy="afterInteractive"
+          id="surface-form-script"
+          dangerouslySetInnerHTML={{
+            __html: `
+              (function () {
+                const surface_src = "REPLACE ME WITH FORM URL"
+                const surface_embed_type = "slideover"
+                const target_element_class = "surface-form-button"
+                const c = new SurfaceEmbed(surface_src, surface_embed_type, target_element_class)
+              })();
+            `,
+          }}
+        />
       </head>
-		<body>
-		 {children}
-		  <SurfaceFormScript
-           formUrl="REPLACE ME WITH FORM URL" // Replace this with a Surface Form URL
-           embedType="slideover"
-           buttonClassName="surface-form-button"
-         />
-		  </body>
-	  </html>
-	);
+      <body>{children}</body>
+    </html>
+  );
 }
 ```
+
+<Note>
+You must replace the **`REPLACE ME WITH FORM URL`** with the form URL from the Surface Form Builder.
+</Note>
 
 Add the `surface-form-button` className to the element you want to use to trigger the form.
 
