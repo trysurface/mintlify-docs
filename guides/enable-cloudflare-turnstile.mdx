@@ -1,0 +1,71 @@
+---
+title: "Enable Cloudflare Turnstile"
+description: "Learn how to enable **Cloudflare Turnstile** and add the widget to your Surface Form to protect your forms from spam and abuse."
+og:title: "Enable Cloudflare Turnstile | Surface Docs"
+twitter:title: "Enable Cloudflare Turnstile | Surface Docs"
+og:description: "Learn how to enable Cloudflare Turnstile and add the widget to your Surface Form"
+twitter:description: "Learn how to enable Cloudflare Turnstile and add the widget to your Surface Form"
+og:image: "https://app.withsurface.com/api/v1/form/og?title=Enable%20Cloudflare%20Turnstile"
+twitter:image: "https://app.withsurface.com/api/v1/form/og?title=Enable%20Cloudflare%20Turnstile"
+sidebarTitle: "Enable Cloudflare Turnstile"
+---
+
+
+## Step 1: Navigate to Cloudflare Turnstile
+
+<Frame>
+  <img className="block" src="/images/cf-turnstile/1.png" alt="Cloudflare Turnstile dashboard" />
+</Frame>
+
+1. Login to [Cloudflare Dashboard](https://dash.cloudflare.com/)
+2. Navigate to **Protect & Connect > Application security > Turnstile**
+
+## Step 2: Add New Widget
+
+<Frame>
+  <img className="block" src="/images/cf-turnstile/2.png" alt="Add new Turnstile widget" />
+</Frame>
+
+Click on **Add new widget** to create a new Turnstile widget.
+
+## Step 3: Configure Widget Settings
+
+<Frame>
+  <img className="block" src="/images/cf-turnstile/3.png" alt="Turnstile widget configuration" />
+</Frame>
+
+1. Set up the widget configurations
+2. Add `forms.withsurface.com` in the **Hostnames** field for the widget
+3. Click `Add` button to add the host
+
+## Step 4: Create Widget and Copy Keys
+
+<Frame>
+  <img className="block" src="/images/cf-turnstile/4.png" alt="Turnstile widget created with keys" />
+</Frame>
+
+1. Click **Create** to create the widget
+2. After creating the widget, copy the **Site Key** and **Secret Key**
+   - These keys will be used to configure Turnstile in your Surface Form settings
+
+## Step 5: Configure Turnstile in Surface Form Settings
+
+<Frame>
+  <img className="block" src="/images/cf-turnstile/5.png" alt="Surface form Cloudflare Turnstile settings" />
+</Frame>
+
+1. Navigate to your Surface Form settings page
+2. Go to **Cloudflare Turnstile** section
+3. Paste the **Site Key** and **Secret Key** that you copied in Step 4
+4. Click **Save** to save the settings
+
+## Step 6: Add Turnstile Widget to Your Form
+
+<Frame>
+  <img className="block" src="/images/cf-turnstile/6.png" alt="Add Turnstile widget component to form" />
+</Frame>
+
+1. In the Form Builder, navigate to the step where you want to add the Turnstile widget
+2. Click **+ Add component** or **Copy existing component**
+3. Select the **Turnstile** widget component from the component list
+4. The Turnstile widget will now appear in your form and will be validated when users submit the form

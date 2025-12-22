@@ -9,27 +9,51 @@ og:image: "https://app.withsurface.com/api/v1/form/og?title=Next.js%20Popup"
 twitter:image: "https://app.withsurface.com/api/v1/form/og?title=Next.js%20Popup"
 ---
 
-Let's add the **`SurfaceFormScript()`** component that we created in [**Step 2**](/guides/embedding/next/page-router/component) to the **`pages/_app.tsx`** file:
+Add the following code to the **`pages/_document.tsx`** file:
 
 ```tsx
-import "@/styles/globals.css";
-import type { AppProps } from "next/app";
-import SurfaceFormScript from "../../surfaceFormScript";
+import Document, { Html, Head, Main, NextScript } from "next/document";
+import Script from "next/script";
 
-export default function App({ Component, pageProps }: AppProps) {
-  return (
-    <>
-      <Component {...pageProps} />
-      <SurfaceFormScript
-         formUrl="REPLACE ME WITH FORM URL" // Replace this with a Surface Form URL
-         embedType="popup"
-         popupSize="medium" // "small", "medium", "large"
-         buttonClassName="surface-form-button"
-       />
-    </>
-  );
+export default class MyDocument extends Document {
+  render() {
+    return (
+      <Html lang="en">
+        <Head>
+          <Script
+            id="surface-tag"
+            src="https://cdn.jsdelivr.net/gh/trysurface/scripts@latest/surface_tag.min.js"
+            data-site-id="SITE_ID" // Replace this with your Site ID
+            strategy="beforeInteractive"
+          />
+          <Script
+            id="surface-form-script"
+            strategy="afterInteractive"
+            dangerouslySetInnerHTML={{
+              __html: `
+                (function () {
+                  const surface_src = "<your_form_url>"
+                  const surface_embed_type = "popup"
+                  const target_element_class = "surface-form-button"
+                  const c = new SurfaceEmbed(surface_src, surface_embed_type, target_element_class)
+                })();
+              `,
+            }}
+          />
+        </Head>
+        <body>
+          <Main />
+          <NextScript />
+        </body>
+      </Html>
+    );
+  }
 }
 ```
+
+<Note>
+You must replace the **`<your_form_url>`** with the form URL from the Surface Form Builder.
+</Note>
 
 Add the `surface-form-button` className to the element you want to use to trigger the form.
 

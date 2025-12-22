@@ -22,52 +22,54 @@ Ensure your HTML form includes the `surface-form-handler` class. This class is e
 ```
 
 <Note>
-Add the **`surface-form-handler`** class to any external form that you want to use to trigger the Surface Form popup.
+  Add the **`surface-form-handler`** class to any external form that you want to
+  use to trigger the Surface Form popup.
 </Note>
 
 ## 2. Surface Form Constructor
 
-Let's add the **`SurfaceFormScript()`** component that we created in [**Step 2**](/guides/embedding/next/app-router/component) to the **`app/layout.tsx`** file:
-
-Add the `data-question-id` attribute to your Surface Tag script.
-
-<Note>
-You must replace the **`<question_id>`** within **`data-question-id`** attribute below with the question ID from the Surface Form Builder.
-</Note>
-
-<Frame>
-![Question ID Location](/images/embed/question_id.png)
-</Frame>
+Add the following code to the **`app/layout.tsx`** file:
 
 ```tsx
 import Script from "next/script";
-import SurfaceFormScript from "./surfaceFormScript";
 
 export default function RootLayout({
-	children,
-}: Readonly<{
-	children: React.ReactNode;
-}>) {
-return (
-	  <html lang="en">
-	  <head>
+  children,
+}: {
+  children: React.ReactNode,
+}) {
+  return (
+    <html lang="en">
+      <head>
         <Script
           src="https://cdn.jsdelivr.net/gh/trysurface/scripts@latest/surface_tag.min.js"
           data-site-id="SITE_ID" // Replace this with your Site ID
           strategy="beforeInteractive"
-          data-question-id="<question_id>" // Replace this with the question ID from the Surface Form Builder
-         />
+        />
+        <Script
+          strategy="afterInteractive"
+          id="surface-form-script"
+          data-question-id="<question_id>"
+          dangerouslySetInnerHTML={{
+            __html: `
+              (function () {
+                const surface_src = "REPLACE ME WITH FORM URL"
+                const surface_embed_type = "popup"
+                const target_element_class = "surface-form-button"
+                const c = new SurfaceEmbed(surface_src, surface_embed_type, target_element_class)
+              })();
+            `,
+          }}
+        />
       </head>
-		<body>
-		 {children}
-		  <SurfaceFormScript
-           formUrl="REPLACE ME WITH FORM URL" // Replace this with a Surface Form URL
-           embedType="popup" // works on all embedding types!
-           popupSize="medium" // "small", "medium", "large"
-           buttonClassName="surface-form-button"
-         />
-		  </body>
-	  </html>
-	);
+      <body>{children}</body>
+    </html>
+  );
 }
 ```
+
+<Note>
+You must replace the **`<question_id>`** within **`data-question-id`** attribute and **`REPLACE ME WITH FORM URL`** with the question ID from the Surface Form Builder and the form URL respectively.
+</Note>
+
+<Frame>![Question ID Location](/images/embed/question_id.png)</Frame>
