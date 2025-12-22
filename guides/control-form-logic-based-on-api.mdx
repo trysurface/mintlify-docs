@@ -71,9 +71,6 @@ You can either:
 
 
 ## Step 4: Create an Advanced Routing rule using External API Data
-<Frame>
-  <img className="block" src="/images/form-logic-external-api/5.png" alt="Create an Advanced Routing rule using External API Data" />
-</Frame>
 
 <Frame>
   <img className="block" src="/images/form-logic-external-api/6.png" alt="Routing rule checking External API Data equals true" />
@@ -82,14 +79,14 @@ You can either:
 2. Set **Jump to step** to the step you want to send the user to when the condition is met.
 3. Under **IF**, set:
    - **Source**: `External API Data`
-   - **Condition**: choose the field you mapped (for example, `authenticated`) and compare it to the expected value (for example, `true`)
+   - **Condition**: choose the field you mapped (for example, `isPriorityLead`) and compare it to the expected value (for example, `true`)
 
 
 
-### Example: Only proceed if authenticated
+### Example: Only proceed if isPriorityLead is true
 
-- **IF**: `External API Data.authenticated` equals `true`
-- **THEN**: Jump to `Step: Success`
+- **IF**: `External API Data.isPriorityLead` equals `true`
+- **THEN**: Jump to `Step: 1 (Book a Demo)`
 - **ELSE**: Keep default routing to next step (or jump to a “Not eligible” / “Invalid” step)
 
 <Frame>
