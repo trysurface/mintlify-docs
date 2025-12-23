@@ -1,0 +1,104 @@
+---
+title: "Meta Ads Tracking"
+description: "Track Surface Form conversions in Meta Ads using Google Tag Manager (GTM)"
+sidebarTitle: "Meta Ads Tracking"
+og:title: "Meta Ads Tracking | Surface Docs"
+twitter:title: "Meta Ads Tracking | Surface Docs"
+og:description: "Track Surface Form conversions in Meta Ads using Google Tag Manager (GTM)"
+twitter:description: "Track Surface Form conversions in Meta Ads using Google Tag Manager (GTM)"
+og:image: "https://app.withsurface.com/api/v1/form/og?title=Meta%20Ads%20Tracking"
+twitter:image: "https://app.withsurface.com/api/v1/form/og?title=Meta%20Ads%20Tracking"
+---
+
+<Warning>
+Make sure to implement [Google Tag Manager (GTM)](/docs/events/google-tag-manager) first before setting up Meta Ads tracking.
+</Warning>
+
+## 1. Get your Meta Pixel ID
+
+1. Log into [Meta Ads Manager](https://business.facebook.com/) and click on **Events Manager** from left sidebar
+
+<Frame>
+![Open Events Manager](/images/meta-tracking/1.png)
+</Frame>
+
+2. In **Datasets**, find your Pixel and copy the **ID**.
+
+<Frame>
+![Copy Pixel ID](/images/meta-tracking/2.png)
+</Frame>
+
+## 2. Create a Custom Event Trigger in GTM
+
+Create a trigger that fires when a Surface form is submitted.
+
+**Steps:**
+1. In GTM, go to **Triggers**
+2. Click **New** → **Trigger Configuration**
+3. Select **Custom Event**
+4. Set the event name to **`SurfaceFormSubmitEvent`**
+5. Click **Save**
+
+<Columns cols={2}>
+<Frame>
+![Create Custom Event Trigger Step 1](/images/gtm/gtm_5.png)
+</Frame>
+
+<Frame>
+![Create Custom Event Trigger Step 2](/images/gtm/gtm_6.png)
+</Frame>
+</Columns>
+
+## 3. Add the Facebook Pixel tag template
+
+**Steps:**
+1. In GTM, go to **Tags**
+2. Click **New** → **Tag Configuration**
+3. Click **Community Template Gallery** and search for **Facebook Pixel**
+4. Select **Facebook Pixel**
+
+<Frame>
+![Find Facebook Pixel template](/images/meta-tracking/3.png)
+</Frame>
+
+## 4. Configure the tag
+
+**Steps:**
+1. Paste your **Pixel ID** into the **Facebook Pixel ID(s)** field
+2. Set **Event Name** to **Standard** and select **Lead**
+3. Under **Triggering**, select the trigger you created in Step 2 (`SurfaceFormSubmitEvent`)
+4. Click **Save**
+
+<Frame>
+![Configure Pixel ID and Lead event](/images/meta-tracking/4.png)
+</Frame>
+
+<Frame>
+![Save and attach trigger](/images/meta-tracking/5.png)
+</Frame>
+
+## 5. Submit and publish changes
+
+1. Click **Submit** in GTM
+2. Add a version name and description
+3. Click **Publish**
+
+<Frame>
+![Submit Changes](/images/gtm/gtm_11.png)
+</Frame>
+
+## 6. Test the tracking in Events Manager
+
+**Steps:**
+1. In Events Manager, open your dataset and go to **Test events**
+2. Under “Confirm your website’s events are set up correctly”, enter your website URL and click **Test Events**
+3. In a new tab, submit a Surface Form
+4. Confirm you see a **Lead** event appear in **Test events**
+
+<Frame>
+![Enter website URL in Test events](/images/meta-tracking/6.png)
+</Frame>
+
+<Frame>
+![Lead event received](/images/meta-tracking/7.png)
+</Frame>
