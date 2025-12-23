@@ -1,0 +1,106 @@
+---
+title: "API based Conditional Logic"
+description: "Conditional Form Logic Based on Your API Response"
+og:title: "API based Conditional Logic | Surface Docs"
+twitter:title: "API based Conditional Logic | Surface Docs"
+og:description: "Route respondents to different steps based on JSON returned from an external API request"
+twitter:description: "Route respondents to different steps based on JSON returned from an external API request"
+og:image: "https://app.withsurface.com/api/v1/form/og?title=Conditional%20Form%20Logic%20Based%20on%20Your%20API%20Response"
+twitter:image: "https://app.withsurface.com/api/v1/form/og?title=Conditional%20Form%20Logic%20Based%20on%20Your%20API%20Response"
+sidebarTitle: "API based Conditional Logic"
+---
+
+Use **External API Data** in the **Logic** tab to create branching form flows based on your own API response (for example: auth checks, eligibility checks, plan gating, or enrichment).
+
+<Tip>
+If you're new to conditional logic, start with the overview in [Conditional Logic](/docs/platform/form-builder/conditional-logic).
+</Tip>
+
+## Step 1: Open the Logic tab
+
+1. Open your form in the Surface editor.
+2. Click **Logic** at the top.
+3. Select the step where you want to evaluate routing (this is typically the step where the user clicks “Next”).
+
+<Frame>
+  <img className="block" src="/images/form-logic-external-api/1.png" alt="Logic tab in the Surface form builder" />
+</Frame>
+
+## Step 2: Add an HTTP Request
+
+1. With your step selected, click **+ HTTP Request**.
+2. Configure the request:
+   - **URL**: your endpoint (for example, `https://api.yourdomain.com/eligibility`)
+   - **Method**: `GET` or `POST` depending on your API
+   - **Params / Headers**: add any required values
+   - **Body (POST)**: send JSON, using form variables if needed
+
+<Frame>
+  <img className="block" src="/images/form-logic-external-api/2.png" alt="Add HTTP Request in the Logic tab" />
+</Frame>
+
+<Tip>
+You can use form variables in the URL, Params, Headers, and Body.
+</Tip>
+
+## Step 3: Map fields from the API response
+
+<Frame>
+  <img className="block" src="/images/form-logic-external-api/3.png" alt="Configure API response mapping automatically or manually" />
+</Frame>
+After your request is configured, map values from the JSON response so they're available as **External API Data**.
+
+You can either:
+
+### Automatically Configure the API Response
+<Frame>
+  <img className="block" src="/images/form-logic-external-api/4.png" alt="Automatically Configure the API Response" />
+</Frame>
+
+1. Click on "Configure automatically" button.
+2. Surface reads the API response and suggests fields you can map.
+3. Select the fields you want to map and click on "Save" button.
+
+### Manually Configure the API Response
+<Frame>
+  <img className="block" src="/images/form-logic-external-api/8.png" alt="Manually Configure the API Response" />
+</Frame>
+
+1. Click on "Configure manually" button.
+2. You select the fields to extract from the JSON response yourself.
+
+
+## Step 4: Create an Advanced Routing rule using External API Data
+
+<Frame>
+  <img className="block" src="/images/form-logic-external-api/6.png" alt="Routing rule checking External API Data equals true" />
+</Frame>
+1. Open **Advanced Routing** for the step.
+2. Set **Jump to step** to the step you want to send the user to when the condition is met.
+3. Under **IF**, set:
+   - **Source**: `External API Data`
+   - **Condition**: choose the field you mapped (for example, `isPriorityLead`) and compare it to the expected value (for example, `true`)
+
+
+
+### Example: Only proceed if isPriorityLead is true
+
+- **IF**: `External API Data.isPriorityLead` equals `true`
+- **THEN**: Jump to `Step: 1 (Book a Demo)`
+- **ELSE**: Keep default routing to next step (or jump to a “Not eligible” / “Invalid” step)
+
+<Frame>
+  <img className="block" src="/images/form-logic-external-api/7.png" alt="Testing External API Data based routing in a published form" />
+</Frame>
+
+## Step 5: Publish and test
+
+<Frame>
+  <img className="block" src="/images/form-logic-external-api/FormLogic.gif" alt="Form Logic External API Data based routing in a published form" />
+</Frame>
+
+
+1. Publish your form.
+2. Submit test entries that should pass and fail the condition.
+3. Confirm respondents are routed to the right step in both cases.
+

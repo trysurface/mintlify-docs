@@ -217,6 +217,7 @@
             "group": "Guides",
             "pages": [
               "guides/first-form",
+              "guides/control-form-logic-based-on-api",
               "guides/enable-cloudflare-turnstile",
               "guides/send-data-to-hubspot",
               "guides/send-data-to-airtable",
