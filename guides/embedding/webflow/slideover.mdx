@@ -15,14 +15,20 @@ Go to the Webflow [**dashboard**](https://webflow.com/dashboard) > **`Project Se
 
 ```html
 <!-- Start Surface Form Embed -->
-<script>
-    // Replace this with your Surface Form URL
-    const surface_src = "REPLACE ME WITH FORM URL"
 
-    const surface_embed_type = "slideover"
-    const target_element_class = "surface-form-button"
-    const c = new SurfaceEmbed(surface_src, surface_embed_type, target_element_class)
+<script>
+  (function () {
+     const surface_src = "REPLACE ME WITH FORM URL";
+     const surface_embed_type = "slideover";
+     const target_element_class = "surface-form-button";
+     const c = new SurfaceEmbed(
+       surface_src,
+       surface_embed_type,
+       target_element_class,
+     );
+   })();
 </script>
+
 <!-- End Surface Form Embed -->
 ```
 
