@@ -29,7 +29,75 @@ twitter:image: "https://app.withsurface.com/api/v1/form/og?title=Triggering%20vi
 1. In the form block component, Select **`Form`** from the list of elements.
 2. On the right side, under **`Style Selector`**, add the **`surface-form-handler`** class to the form.
 
-## 3. Surface Form Constructor
+<Tip>
+We automatically prefill the email field based on the email input field.
+</Tip>
+
+## 3. Prefill Other Fields (Optional)
+
+If you want to prefill fields other than the email input, you can do so by adding custom attributes to your Webflow form fields.
+
+### Identity Info Fields
+
+For identity-related fields (except email), add a custom attribute to the input field in Webflow:
+
+1. Select the input field in Webflow
+2. Go to **Settings** in the right sidebar
+3. Scroll to the bottom and click **Add Custom Attribute**
+4. Set the attribute:
+   - **Key:** `data-field-name`
+   - **Value:** One of the supported field names below
+
+<Frame>
+![Field Name Attribute](/images/webflow/webflow_field_name.png)
+</Frame>
+
+<Accordion title="Supported Identity Field Values">
+| Field Name | Description |
+|------------|-------------|
+| `firstName` | First name |
+| `lastName` | Last name |
+| `emailAddress` | Email address |
+| `phoneNumber` | Phone number |
+| `companyName` | Company name |
+| `numberOfEmployees` | Number of employees |
+| `websiteUrl` | Website URL |
+| `title` | Job title |
+| `streetAddress` | Street address |
+| `aptSuiteEtc` | Apartment/Suite/etc. |
+| `city` | City |
+| `state` | State |
+| `country` | Country |
+| `zipCode` | Zip/Postal code |
+| `companyRevenue` | Company revenue |
+</Accordion>
+
+### Other Form Fields
+
+For all other fields (non-identity fields), you'll need to use the question ID from your Surface form:
+
+1. Get the **Question ID** from the Surface Form Builder
+
+<Frame>
+![Question ID Location](/images/webflow/webflow_question_id.png)
+</Frame>
+
+2. In Webflow, select the input field
+3. Go to **Settings** in the right sidebar
+4. Scroll to the bottom and click **Add Custom Attribute**
+5. Set the attribute:
+   - **Key:** `data-question-id`
+   - **Value:** The component ID from Surface
+
+<Note>
+This method works with the following Surface form components:
+- **Short Input**
+- **Long Input**
+- **Dropdown**
+- **Multiple Choice Question**
+</Note>
+
+## 4. Surface Form Constructor
 
 Go to the Webflow [**dashboard**](https://webflow.com/dashboard) > **`Project Section`** > Select **`Custom Code`** and add the following custom code into the **`footer`** code section.
 
