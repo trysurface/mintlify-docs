@@ -34,6 +34,20 @@
             ]
           },
           {
+            "group": "API Reference",
+            "pages": [
+              "docs/api-reference/api-keys",
+              {
+                "group": "Responses",
+                "pages": [
+                  "docs/api-reference/responses/get-all-responses",
+                  "docs/api-reference/responses/get-form-responses",
+                  "docs/api-reference/responses/component-response-shapes"
+                ]
+              }
+            ]
+          },
+          {
             "group": "Events",
             "pages": [
               "docs/events/form-events",
@@ -75,8 +89,7 @@
           {
             "group": "Tracking",
             "pages": [
-              "docs/tracking/hubspot-tracking",
-              "docs/tracking/cookie-tracking"
+              "docs/tracking/hubspot-tracking"
             ]
           },
           {

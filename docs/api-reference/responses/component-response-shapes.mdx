@@ -1,0 +1,785 @@
+---
+title: "Component Response Shapes"
+description: "Reference documentation for all supported component response shapes"
+---
+
+The `data` array in form responses contains question responses, where each response object follows a specific shape based on the component type. This page documents all supported component response shapes.
+
+## Response Structure
+
+Each question response in the `data` array follows this structure:
+
+```typescript
+{
+  questionId: string;
+  response: {
+    type: string; // Component type
+    componentShapeVersion?: string; // Optional version (e.g., "2.0")
+    headline?: string; // Optional headline
+    leadAttribute?: string; // Optional lead attribute
+    // ... component-specific fields
+  }
+}
+```
+
+## Identity Info
+
+**Component Type:** `"IdentityInfo"`
+
+<Expandable title="Response Fields">
+
+<ResponseField name="type" type="string" required>
+  Always `"IdentityInfo"` for this component type.
+</ResponseField>
+
+<ResponseField name="componentShapeVersion" type="string">
+  Version of the component shape (e.g., `"2.0"`).
+</ResponseField>
+
+<ResponseField name="headline" type="string">
+  Optional headline text displayed with the component.
+</ResponseField>
+
+<ResponseField name="leadAttribute" type="string">
+  Optional lead attribute mapping for CRM integration.
+</ResponseField>
+
+<ResponseField name="firstName" type="string">
+  First name of the respondent.
+</ResponseField>
+
+<ResponseField name="lastName" type="string">
+  Last name of the respondent.
+</ResponseField>
+
+<ResponseField name="emailAddress" type="string">
+  Email address of the respondent.
+</ResponseField>
+
+<ResponseField name="workEmailAddress" type="string">
+  Work email address of the respondent.
+</ResponseField>
+
+<ResponseField name="phoneNumber" type="string">
+  Phone number of the respondent.
+</ResponseField>
+
+<ResponseField name="companyName" type="string">
+  Company name of the respondent.
+</ResponseField>
+
+<ResponseField name="numberOfEmployees" type="string">
+  Number of employees at the company.
+</ResponseField>
+
+<ResponseField name="websiteUrl" type="string">
+  Website URL of the company.
+</ResponseField>
+
+<ResponseField name="title" type="string">
+  Job title of the respondent.
+</ResponseField>
+
+<ResponseField name="streetAddress" type="string">
+  Street address.
+</ResponseField>
+
+<ResponseField name="aptSuiteEtc" type="string">
+  Apartment, suite, or other address details.
+</ResponseField>
+
+<ResponseField name="city" type="string">
+  City name.
+</ResponseField>
+
+<ResponseField name="state" type="string">
+  State or province.
+</ResponseField>
+
+<ResponseField name="country" type="string">
+  Country name.
+</ResponseField>
+
+<ResponseField name="zipCode" type="string">
+  ZIP or postal code.
+</ResponseField>
+
+<ResponseField name="companyRevenue" type="string">
+  Company revenue range.
+</ResponseField>
+
+<ResponseField name="profilePictureUrl" type="string">
+  URL to the profile picture.
+</ResponseField>
+
+<ResponseField name="fullName" type="string">
+  Calculated full name (firstName + lastName).
+</ResponseField>
+
+<ResponseField name="readExternalStateId" type="string">
+  External state ID being read.
+</ResponseField>
+
+<ResponseField name="triggerExternalStatesIds" type="array">
+  Array of external state IDs to trigger.
+</ResponseField>
+
+<ResponseField name="enrichedFields" type="array">
+  Array of field names that were enriched.
+</ResponseField>
+
+<ResponseField name="enrichmentType" type="string">
+  Type of enrichment applied.
+</ResponseField>
+
+</Expandable>
+
+**Example:**
+
+```json
+{
+  "questionId": "identity_123",
+  "response": {
+    "type": "IdentityInfo",
+    "componentShapeVersion": "2.0",
+    "headline": "Tell us about yourself",
+    "firstName": "John",
+    "lastName": "Doe",
+    "emailAddress": "john.doe@example.com",
+    "companyName": "Acme Corp",
+    "fullName": "John Doe"
+  }
+}
+```
+
+## Multiple Choice Question (MCQ)
+
+**Component Type:** `"MultipleOptionsQuestion"`
+
+<Expandable title="Response Fields">
+
+<ResponseField name="type" type="string" required>
+  Always `"MultipleOptionsQuestion"` for this component type.
+</ResponseField>
+
+<ResponseField name="componentShapeVersion" type="string">
+  Version of the component shape (e.g., `"2.0"`).
+</ResponseField>
+
+<ResponseField name="headline" type="string">
+  Optional headline text displayed with the component.
+</ResponseField>
+
+<ResponseField name="leadAttribute" type="string">
+  Optional lead attribute mapping for CRM integration.
+</ResponseField>
+
+<ResponseField name="choices" type="array" required>
+  Array of choice objects, each containing:
+  
+  <ResponseField name="key" type="string">
+    The choice text/value.
+  </ResponseField>
+  
+  <ResponseField name="value" type="boolean">
+    Whether this choice is selected.
+  </ResponseField>
+  
+  <ResponseField name="index" type="number">
+    Index of the choice in the list.
+  </ResponseField>
+</ResponseField>
+
+<ResponseField name="selectedOther" type="boolean">
+  Whether the "Other" option is selected.
+</ResponseField>
+
+</Expandable>
+
+**Example:**
+
+```json
+{
+  "questionId": "moq_123",
+  "response": {
+    "type": "MultipleOptionsQuestion",
+    "componentShapeVersion": "2.0",
+    "headline": "Select all that apply",
+    "choices": [
+      { "key": "Option 1", "value": true, "index": 0 },
+      { "key": "Option 2", "value": false, "index": 1 },
+      { "key": "Option 3", "value": true, "index": 2 }
+    ],
+    "selectedOther": false
+  }
+}
+```
+
+## Dropdown
+
+**Component Type:** `"Dropdown"`
+
+<Expandable title="Response Fields">
+
+<ResponseField name="type" type="string" required>
+  Always `"Dropdown"` for this component type.
+</ResponseField>
+
+<ResponseField name="componentShapeVersion" type="string">
+  Version of the component shape (e.g., `"2.0"`).
+</ResponseField>
+
+<ResponseField name="headline" type="string">
+  Optional headline text displayed with the component.
+</ResponseField>
+
+<ResponseField name="leadAttribute" type="string">
+  Optional lead attribute mapping for CRM integration.
+</ResponseField>
+
+<ResponseField name="selected" type="string | array">
+  Selected value(s). Can be a single string for single-select dropdowns, or an array of strings for multi-select dropdowns.
+</ResponseField>
+
+</Expandable>
+
+**Example (Single Select):**
+
+```json
+{
+  "questionId": "dropdown_123",
+  "response": {
+    "type": "Dropdown",
+    "componentShapeVersion": "2.0",
+    "headline": "Select a country",
+    "selected": "United States"
+  }
+}
+```
+
+**Example (Multi-Select):**
+
+```json
+{
+  "questionId": "dropdown_123",
+  "response": {
+    "type": "Dropdown",
+    "componentShapeVersion": "2.0",
+    "headline": "Select countries",
+    "selected": ["United States", "Canada", "Mexico"]
+  }
+}
+```
+
+## Short Input
+
+**Component Type:** `"ShortInput"`
+
+<Expandable title="Response Fields">
+
+<ResponseField name="type" type="string" required>
+  Always `"ShortInput"` for this component type.
+</ResponseField>
+
+<ResponseField name="componentShapeVersion" type="string">
+  Version of the component shape (e.g., `"2.0"`).
+</ResponseField>
+
+<ResponseField name="headline" type="string">
+  Optional headline text displayed with the component.
+</ResponseField>
+
+<ResponseField name="leadAttribute" type="string">
+  Optional lead attribute mapping for CRM integration.
+</ResponseField>
+
+<ResponseField name="input" type="string" required>
+  The text input value entered by the user.
+</ResponseField>
+
+</Expandable>
+
+**Example:**
+
+```json
+{
+  "questionId": "shortinput_123",
+  "response": {
+    "type": "ShortInput",
+    "componentShapeVersion": "2.0",
+    "headline": "What's your name?",
+    "input": "John Doe"
+  }
+}
+```
+
+## Long Input
+
+**Component Type:** `"LongInput"`
+
+<Expandable title="Response Fields">
+
+<ResponseField name="type" type="string" required>
+  Always `"LongInput"` for this component type.
+</ResponseField>
+
+<ResponseField name="componentShapeVersion" type="string">
+  Version of the component shape (e.g., `"2.0"`).
+</ResponseField>
+
+<ResponseField name="headline" type="string">
+  Optional headline text displayed with the component.
+</ResponseField>
+
+<ResponseField name="leadAttribute" type="string">
+  Optional lead attribute mapping for CRM integration.
+</ResponseField>
+
+<ResponseField name="input" type="string" required>
+  The textarea input value entered by the user.
+</ResponseField>
+
+</Expandable>
+
+**Example:**
+
+```json
+{
+  "questionId": "longinput_123",
+  "response": {
+    "type": "LongInput",
+    "componentShapeVersion": "2.0",
+    "headline": "Tell us more",
+    "input": "This is a longer text response..."
+  }
+}
+```
+
+## Graphic Options
+
+**Component Type:** `"GraphicOptions"`
+
+<Expandable title="Response Fields">
+
+<ResponseField name="type" type="string" required>
+  Always `"GraphicOptions"` for this component type.
+</ResponseField>
+
+<ResponseField name="componentShapeVersion" type="string">
+  Version of the component shape (e.g., `"2.0"`).
+</ResponseField>
+
+<ResponseField name="headline" type="string">
+  Optional headline text displayed with the component.
+</ResponseField>
+
+<ResponseField name="leadAttribute" type="string">
+  Optional lead attribute mapping for CRM integration.
+</ResponseField>
+
+<ResponseField name="index" type="number" required>
+  Index of the selected option.
+</ResponseField>
+
+<ResponseField name="value" type="string" required>
+  Value/label of the selected option.
+</ResponseField>
+
+</Expandable>
+
+**Example:**
+
+```json
+{
+  "questionId": "graphic_123",
+  "response": {
+    "type": "GraphicOptions",
+    "componentShapeVersion": "2.0",
+    "headline": "Choose a plan",
+    "index": 2,
+    "value": "Premium Plan"
+  }
+}
+```
+
+## Calendly Screen
+
+**Component Type:** `"CalendlyScreen"`
+
+<Expandable title="Response Fields">
+
+<ResponseField name="type" type="string" required>
+  Always `"CalendlyScreen"` for this component type.
+</ResponseField>
+
+<ResponseField name="componentShapeVersion" type="string">
+  Version of the component shape (e.g., `"2.0"`).
+</ResponseField>
+
+<ResponseField name="headline" type="string">
+  Optional headline text displayed with the component.
+</ResponseField>
+
+<ResponseField name="leadAttribute" type="string">
+  Optional lead attribute mapping for CRM integration.
+</ResponseField>
+
+<ResponseField name="autoscrolls" type="boolean">
+  Whether the component autoscrolls.
+</ResponseField>
+
+<ResponseField name="eventScheduled" type="boolean" required>
+  Whether an event was scheduled.
+</ResponseField>
+
+<ResponseField name="uri" type="string" required>
+  Calendly URI for the scheduled event.
+</ResponseField>
+
+<ResponseField name="meetingTime" type="string">
+  Meeting start time (ISO 8601 format).
+</ResponseField>
+
+<ResponseField name="meetingEndTime" type="string">
+  Meeting end time (ISO 8601 format).
+</ResponseField>
+
+<ResponseField name="ownerEmails" type="string">
+  Owner email address(es).
+</ResponseField>
+
+<ResponseField name="guestEmails" type="string">
+  Guest email address(es).
+</ResponseField>
+
+</Expandable>
+
+**Example:**
+
+```json
+{
+  "questionId": "calendly_123",
+  "response": {
+    "type": "CalendlyScreen",
+    "componentShapeVersion": "2.0",
+    "headline": "Schedule a meeting",
+    "autoscrolls": true,
+    "eventScheduled": true,
+    "uri": "https://calendly.com/user/meeting",
+    "meetingTime": "2024-01-15T10:00:00Z",
+    "meetingEndTime": "2024-01-15T10:30:00Z",
+    "ownerEmails": "owner@example.com",
+    "guestEmails": "guest@example.com"
+  }
+}
+```
+
+## File Uploader
+
+**Component Type:** `"FileUploader"`
+
+<Expandable title="Response Fields">
+
+<ResponseField name="type" type="string" required>
+  Always `"FileUploader"` for this component type.
+</ResponseField>
+
+<ResponseField name="componentShapeVersion" type="string">
+  Version of the component shape (e.g., `"2.0"`).
+</ResponseField>
+
+<ResponseField name="headline" type="string">
+  Optional headline text displayed with the component.
+</ResponseField>
+
+<ResponseField name="leadAttribute" type="string">
+  Optional lead attribute mapping for CRM integration.
+</ResponseField>
+
+<ResponseField name="fileUrl" type="string">
+  URL of the uploaded file.
+</ResponseField>
+
+</Expandable>
+
+**Example:**
+
+```json
+{
+  "questionId": "file_123",
+  "response": {
+    "type": "FileUploader",
+    "componentShapeVersion": "2.0",
+    "headline": "Upload a file",
+    "fileUrl": "https://example.com/uploads/file.pdf"
+  }
+}
+```
+
+## Disclaimer
+
+**Component Type:** `"Disclaimer"`
+
+<Expandable title="Response Fields">
+
+<ResponseField name="type" type="string" required>
+  Always `"Disclaimer"` for this component type.
+</ResponseField>
+
+<ResponseField name="componentShapeVersion" type="string">
+  Version of the component shape (e.g., `"2.0"`).
+</ResponseField>
+
+<ResponseField name="headline" type="string">
+  Optional headline text displayed with the component.
+</ResponseField>
+
+<ResponseField name="leadAttribute" type="string">
+  Optional lead attribute mapping for CRM integration.
+</ResponseField>
+
+<ResponseField name="check" type="boolean">
+  Whether the disclaimer checkbox is checked.
+</ResponseField>
+
+</Expandable>
+
+**Example:**
+
+```json
+{
+  "questionId": "disclaimer_123",
+  "response": {
+    "type": "Disclaimer",
+    "componentShapeVersion": "2.0",
+    "headline": "Terms and Conditions",
+    "check": true
+  }
+}
+```
+
+## Recaptcha
+
+**Component Type:** `"Recaptcha"`
+
+<Expandable title="Response Fields">
+
+<ResponseField name="type" type="string" required>
+  Always `"Recaptcha"` for this component type.
+</ResponseField>
+
+<ResponseField name="componentShapeVersion" type="string">
+  Version of the component shape (e.g., `"2.0"`).
+</ResponseField>
+
+<ResponseField name="headline" type="string">
+  Optional headline text displayed with the component.
+</ResponseField>
+
+<ResponseField name="leadAttribute" type="string">
+  Optional lead attribute mapping for CRM integration.
+</ResponseField>
+
+<ResponseField name="input" type="string" required>
+  The reCAPTCHA token/response.
+</ResponseField>
+
+</Expandable>
+
+**Example:**
+
+```json
+{
+  "questionId": "recaptcha_123",
+  "response": {
+    "type": "Recaptcha",
+    "componentShapeVersion": "2.0",
+    "headline": "Verify you're human",
+    "input": "03AGdBq25..."
+  }
+}
+```
+
+
+## Password Input
+
+**Component Type:** `"PasswordInput"`
+
+<Expandable title="Response Fields">
+
+<ResponseField name="type" type="string" required>
+  Always `"PasswordInput"` for this component type.
+</ResponseField>
+
+<ResponseField name="componentShapeVersion" type="string">
+  Version of the component shape (e.g., `"2.0"`).
+</ResponseField>
+
+<ResponseField name="headline" type="string">
+  Optional headline text displayed with the component.
+</ResponseField>
+
+<ResponseField name="leadAttribute" type="string">
+  Optional lead attribute mapping for CRM integration.
+</ResponseField>
+
+<ResponseField name="input" type="string" required>
+  The password value (should be hashed/encrypted).
+</ResponseField>
+
+</Expandable>
+
+**Example:**
+
+```json
+{
+  "questionId": "password_123",
+  "response": {
+    "type": "PasswordInput",
+    "componentShapeVersion": "2.0",
+    "headline": "Enter your password",
+    "input": "hashed_password_value"
+  }
+}
+```
+
+## Password Creator Input
+
+**Component Type:** `"PasswordCreatorInput"`
+
+<Expandable title="Response Fields">
+
+<ResponseField name="type" type="string" required>
+  Always `"PasswordCreatorInput"` for this component type.
+</ResponseField>
+
+<ResponseField name="componentShapeVersion" type="string">
+  Version of the component shape (e.g., `"2.0"`).
+</ResponseField>
+
+<ResponseField name="headline" type="string">
+  Optional headline text displayed with the component.
+</ResponseField>
+
+<ResponseField name="leadAttribute" type="string">
+  Optional lead attribute mapping for CRM integration.
+</ResponseField>
+
+<ResponseField name="input" type="string" required>
+  The created password value (should be hashed/encrypted).
+</ResponseField>
+
+</Expandable>
+
+**Example:**
+
+```json
+{
+  "questionId": "passwordcreator_123",
+  "response": {
+    "type": "PasswordCreatorInput",
+    "componentShapeVersion": "2.0",
+    "headline": "Create a password",
+    "input": "hashed_password_value"
+  }
+}
+```
+
+## Turnstile Widget
+
+**Component Type:** `"TurnstileWidget"`
+
+<Expandable title="Response Fields">
+
+<ResponseField name="type" type="string" required>
+  Always `"TurnstileWidget"` for this component type.
+</ResponseField>
+
+<ResponseField name="componentShapeVersion" type="string">
+  Version of the component shape (e.g., `"2.0"`).
+</ResponseField>
+
+<ResponseField name="headline" type="string">
+  Optional headline text displayed with the component.
+</ResponseField>
+
+<ResponseField name="leadAttribute" type="string">
+  Optional lead attribute mapping for CRM integration.
+</ResponseField>
+
+<ResponseField name="token" type="string" required>
+  Cloudflare Turnstile token.
+</ResponseField>
+
+</Expandable>
+
+**Example:**
+
+```json
+{
+  "questionId": "turnstile_123",
+  "response": {
+    "type": "TurnstileWidget",
+    "componentShapeVersion": "2.0",
+    "headline": "Verify with Turnstile",
+    "token": "0.abcdefghijklmnop..."
+  }
+}
+```
+
+## AI Chatbot
+
+**Component Type:** `"AiChatbot"`
+
+<Expandable title="Response Fields">
+
+<ResponseField name="type" type="string" required>
+  Always `"AiChatbot"` for this component type.
+</ResponseField>
+
+<ResponseField name="componentShapeVersion" type="string">
+  Version of the component shape (e.g., `"2.0"`).
+</ResponseField>
+
+<ResponseField name="headline" type="string">
+  Optional headline text displayed with the component.
+</ResponseField>
+
+<ResponseField name="leadAttribute" type="string">
+  Optional lead attribute mapping for CRM integration.
+</ResponseField>
+
+<ResponseField name="summary" type="string" required>
+  Summary of the conversation.
+</ResponseField>
+
+<ResponseField name="chatbotMode" type="string" required>
+  Mode of the chatbot. Can be `"Conversation"` or `"Questionnaire"`.
+</ResponseField>
+
+<ResponseField name="history" type="string">
+  Conversation history.
+</ResponseField>
+
+<ResponseField name="qna" type="string">
+  Q&A data if in questionnaire mode.
+</ResponseField>
+
+</Expandable>
+
+**Example:**
+
+```json
+{
+  "questionId": "aichatbot_123",
+  "response": {
+    "type": "AiChatbot",
+    "componentShapeVersion": "2.0",
+    "headline": "Chat with AI",
+    "summary": "User asked about pricing and features",
+    "chatbotMode": "Conversation",
+    "history": "User: What are your prices?\nAI: Our pricing starts at $99/month..."
+  }
+}
+```
+

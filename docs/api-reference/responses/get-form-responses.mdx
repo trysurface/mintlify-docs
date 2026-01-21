@@ -1,0 +1,178 @@
+---
+title: "Get Form Responses"
+description: "Retrieve responses for a specific form"
+---
+
+<Endpoint method="GET" path="/api/v1/responses" summary="Get responses for a specific form">
+  <ParamField header="x-api-key" type="string" required>
+    Your API key for authentication.
+  </ParamField>
+  
+  <ParamField query="formId" type="string" required>
+    The ID of the form to fetch responses for.
+  </ParamField>
+  
+  <ParamField query="returnPartials" type="boolean" default="false">
+    Set to `true` to include partial/incomplete responses. Defaults to `false`.
+  </ParamField>
+</Endpoint>
+
+Returns responses for a specific form. When filtering by form ID, the API returns a maximum of 10 responses per request.
+
+## Request
+
+<Tip> Learn how to create an API key in the [API Keys](/docs/api-reference/api-keys) documentation. </Tip>
+
+<CodeGroup>
+```bash cURL
+# Get completed responses only
+curl -X GET 'https://forms.withsurface.com/api/v1/responses?formId=your-form-id' \
+  -H 'x-api-key: your-api-key-here'
+
+# Include partial responses
+curl -X GET 'https://forms.withsurface.com/api/v1/responses?formId=your-form-id&returnPartials=true' \
+  -H 'x-api-key: your-api-key-here'
+```
+
+```typescript TypeScript
+async function getFormResponses(apiKey: string, formId: string, includePartials = false) {
+  const url = new URL('https://forms.withsurface.com/api/v1/responses');
+  url.searchParams.set('formId', formId);
+  
+  if (includePartials) {
+    url.searchParams.set('returnPartials', 'true');
+  }
+  
+  const response = await fetch(url.toString(), {
+    method: 'GET',
+    headers: {
+      'x-api-key': apiKey,
+    },
+  });
+  
+  if (!response.ok) {
+    throw new Error(`HTTP error! status: ${response.status}`);
+  }
+  
+  return await response.json();
+}
+
+// Usage: Get completed responses only
+const responses = await getFormResponses('your-api-key-here', 'your-form-id');
+
+// Usage: Include partial responses
+const allResponses = await getFormResponses('your-api-key-here', 'your-form-id', true);
+```
+</CodeGroup>
+
+## Parameters
+
+<ParamField query="formId" type="string" required>
+  The ID of the form to fetch responses for. This parameter is required when querying responses for a specific form.
+</ParamField>
+
+<ParamField query="returnPartials" type="boolean" default="false">
+  Set to `true` to include partial/incomplete responses in the results. When set to `false` (default), only completed responses are returned. Partial responses are those where the user started filling out the form but did not complete the submission.
+</ParamField>
+
+## Response
+
+<ResponseField name="data" type="array">
+  Array of response objects for the specified form. Limited to 10 most recent responses.
+  
+  <Expandable title="Response object properties">
+    <ResponseField name="id" type="string">
+      Unique identifier for the response.
+    </ResponseField>
+    
+    <ResponseField name="createdAt" type="string">
+      ISO 8601 timestamp of when the response was created.
+    </ResponseField>
+    
+    <ResponseField name="updatedAt" type="string">
+      ISO 8601 timestamp of when the response was last updated.
+    </ResponseField>
+    
+    <ResponseField name="dataUpdatedAt" type="string">
+      ISO 8601 timestamp of when the response data was last updated.
+    </ResponseField>
+    
+    <ResponseField name="finished" type="boolean">
+      Whether the response is complete (true) or partial (false).
+    </ResponseField>
+    
+    <ResponseField name="status" type="number">
+      Status code of the response.
+    </ResponseField>
+    
+    <ResponseField name="formId" type="string">
+      ID of the form this response belongs to.
+    </ResponseField>
+    
+    <ResponseField name="version" type="string">
+      Version of the response format.
+    </ResponseField>
+    
+    <ResponseField name="data" type="array">
+      Array of question responses, each containing a `response` object and `questionId`. Each response object follows a specific shape based on the component type. See the [Component Response Shapes](/docs/api-reference/responses/component-response-shapes) documentation for details on all supported component types.
+    </ResponseField>
+    
+    <ResponseField name="meta" type="object">
+      Metadata associated with the response, including `leadId`.
+    </ResponseField>
+    
+    <ResponseField name="personAttributes" type="object">
+      Attributes about the person who submitted the response, including IP address, country, and form visit statistics.
+    </ResponseField>
+  </Expandable>
+</ResponseField>
+
+### Example Response
+
+<ResponseExample name="200 - Success">
+
+```json
+{
+  "data": [
+    {
+      "id": "cmasda085pa0018js0barsadxn5b",
+      "createdAt": "2026-01-20T19:45:59.519Z",
+      "updatedAt": "2026-01-20T19:46:37.149Z",
+      "dataUpdatedAt": "2026-01-20T19:46:01.725Z",
+      "finished": true,
+      "status": 4,
+      "formId": "casdkgkufzp0001kw0btrmz1asd",
+      "version": "2.0",
+      "data": [
+        {
+          "response": {
+            "type": "IdentityInfo",
+            "headline": "Identity Info",
+            "emailAddress": "john.doe@example.com",
+            "firstName": "John",
+            "lastName": "Doe",
+            "companyName": "Example Inc.",
+            "componentShapeVersion": "2.0"
+          },
+          "questionId": "gOyoYYzZRnvo"
+        },
+      ],
+      "meta": {
+        "leadId": "lead_1234567890"
+      },
+      "personAttributes": {
+        "ip": "123.45.67.89",
+        "country": "United States",
+        "visitedForm": 1,
+        "completedForm": 0
+      }
+    },
+  ]
+}
+```
+
+</ResponseExample>
+
+<Note>
+  When fetching by `formId`, the API returns a maximum of 10 responses per request. To retrieve more responses, you may need to implement pagination or use the environment-wide endpoint.
+</Note>
