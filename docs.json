@@ -34,6 +34,19 @@
             ]
           },
           {
+            "group": "API Reference",
+            "pages": [
+              "docs/api-reference/api-keys",
+              {
+                "group": "Responses",
+                "pages": [
+                  "docs/api-reference/responses/get-all-responses",
+                  "docs/api-reference/responses/get-form-responses"
+                ]
+              }
+            ]
+          },
+          {
             "group": "Events",
             "pages": [
               "docs/events/form-events",
@@ -222,8 +235,7 @@
               "guides/enable-cloudflare-turnstile",
               "guides/send-data-to-hubspot",
               "guides/send-data-to-airtable",
-              "guides/send-data-to-surface",
-              "guides/response-api"
+              "guides/send-data-to-surface"
             ]
           }
         ]
