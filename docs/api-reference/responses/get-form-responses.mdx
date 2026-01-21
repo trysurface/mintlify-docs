@@ -114,7 +114,7 @@ const allResponses = await getFormResponses('your-api-key-here', 'your-form-id',
     </ResponseField>
     
     <ResponseField name="data" type="array">
-      Array of question responses, each containing a `response` object and `questionId`.
+      Array of question responses, each containing a `response` object and `questionId`. Each response object follows a specific shape based on the component type. See the [Component Response Shapes](/docs/api-reference/responses/component-response-shapes) documentation for details on all supported component types.
     </ResponseField>
     
     <ResponseField name="meta" type="object">

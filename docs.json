@@ -41,7 +41,8 @@
                 "group": "Responses",
                 "pages": [
                   "docs/api-reference/responses/get-all-responses",
-                  "docs/api-reference/responses/get-form-responses"
+                  "docs/api-reference/responses/get-form-responses",
+                  "docs/api-reference/responses/component-response-shapes"
                 ]
               }
             ]
