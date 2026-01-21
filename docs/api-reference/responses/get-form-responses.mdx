@@ -71,23 +71,23 @@ const allResponses = await getFormResponses('your-api-key-here', 'your-form-id',
   Array of response objects for the specified form. Limited to 10 most recent responses.
   
   <Expandable title="Response object properties">
-    <ResponseField name="id" type="string" required>
+    <ResponseField name="id" type="string">
       Unique identifier for the response.
     </ResponseField>
     
-    <ResponseField name="formId" type="string" required>
+    <ResponseField name="formId" type="string">
       ID of the form this response belongs to.
     </ResponseField>
     
-    <ResponseField name="submittedAt" type="string" required>
+    <ResponseField name="submittedAt" type="string">
       ISO 8601 timestamp of when the response was submitted. For partial responses, this may be the last update time.
     </ResponseField>
     
-    <ResponseField name="isComplete" type="boolean" required>
+    <ResponseField name="isComplete" type="boolean">
       Whether the response is complete or partial.
     </ResponseField>
     
-    <ResponseField name="data" type="object" required>
+    <ResponseField name="data" type="object">
       Object containing the form field values submitted by the respondent.
     </ResponseField>
   </Expandable>

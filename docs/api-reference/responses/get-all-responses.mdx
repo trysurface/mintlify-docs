@@ -44,19 +44,19 @@ const data = await response.json();
   Array of response objects for all forms in your environment.
   
   <Expandable title="Response object properties">
-    <ResponseField name="id" type="string" required>
+    <ResponseField name="id" type="string">
       Unique identifier for the response.
     </ResponseField>
     
-    <ResponseField name="formId" type="string" required>
+    <ResponseField name="formId" type="string">
       ID of the form this response belongs to.
     </ResponseField>
     
-    <ResponseField name="submittedAt" type="string" required>
+    <ResponseField name="submittedAt" type="string">
       ISO 8601 timestamp of when the response was submitted.
     </ResponseField>
     
-    <ResponseField name="data" type="object" required>
+    <ResponseField name="data" type="object">
       Object containing the form field values submitted by the respondent.
     </ResponseField>
   </Expandable>
