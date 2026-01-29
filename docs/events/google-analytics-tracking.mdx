@@ -11,18 +11,19 @@ twitter:image: "https://app.withsurface.com/api/v1/form/og?title=Google%20Analyt
 ---
 
 <Warning>
-Make sure to implement [Google Tag Manager (GTM)](/docs/events/google-tag-manager) first before setting up Google Analytics tracking.
+  Make sure to implement [Google Tag Manager
+  (GTM)](/docs/events/google-tag-manager) first before setting up Google
+  Analytics tracking.
 </Warning>
 
 ## 1. Create a new data stream in Google Analytics
 
-<Frame>
-![Create Data Stream Step 1](/images/google-analytics/1.png)
-</Frame>
+<Frame>![Create Data Stream Step 1](/images/google-analytics/1.png)</Frame>
 
 Navigate to your Google Analytics property and create a new data stream for your website.
 
 **Steps:**
+
 1. Go to **Admin** → **Data Collection and Modification** → **Data Streams**
 2. Click **Add stream** → **Web**
 3. Enter your website URL and stream name
@@ -30,17 +31,38 @@ Navigate to your Google Analytics property and create a new data stream for your
 
 ## 2. Get the Google Analytics Measurement ID
 
-<Frame>
-![Create Data Stream Step 2](/images/google-analytics/2.png)
-</Frame>
+<Frame>![Create Data Stream Step 2](/images/google-analytics/2.png)</Frame>
 
 Once your data stream is created, you'll need to copy the Measurement ID to use in GTM.
 
 **Steps:**
+
 1. In the data stream settings, click on your newly created data stream
 2. Copy the **Measurement ID** (starts with G-XXXXXXXXXX)
 
-## 3. Create Custom Event Triggers in GTM
+## 3. Create Custom Events in Google Analytics
+
+Before setting up triggers in GTM, you need to create custom events in Google Analytics.
+
+**Steps:**
+
+<Frame>![Create Custom Event Step 1](/images/google-analytics/6.png)</Frame>
+
+1. Go to **Admin** → **Data Display** → **Events**
+2. Click **Create event**
+3. Name the event **SurfaceFormSubmitEvent** (this should match the event name you'll use in GTM)
+4. Scroll down and click **View more options**
+
+<Columns cols={2}>
+<Frame>![Create Custom Event Step 2](/images/google-analytics/7.png)</Frame>
+
+<Frame>![Create Custom Event Step 3](/images/google-analytics/8.png)</Frame>
+</Columns>
+
+5. Under **Matching conditions**, remove the `page_location` parameter
+6. Click **Save**
+
+## 4. Create Custom Event Triggers in GTM
 
 <Columns cols={2}>
 <Frame>
@@ -55,13 +77,14 @@ Once your data stream is created, you'll need to copy the Measurement ID to use 
 Set up trigger for the Surface Form events you want to track in Google Analytics.
 
 **Steps:**
+
 1. In GTM, go to **Triggers**
 2. Click **New** → **Trigger Configuration**
 3. Select **Custom Event**
 4. Enter the event name as **SurfaceFormSubmitEvent**
 5. Click **Save**
 
-## 4. Create Google Analytics GA4 Event Tags
+## 5. Create Google Analytics GA4 Event Tags
 
 <Columns cols={2}>
 <Frame>
@@ -73,23 +96,21 @@ Set up trigger for the Surface Form events you want to track in Google Analytics
 </Frame>
 </Columns>
 
-
 Now create GA4 Event tags that will send the Surface Form events to Google Analytics.
 
 **Steps:**
+
 1. In GTM, go to **Tags**
 2. Click **New** → **Tag Configuration**
 3. Select **Google Analytics: GA4 Event**
 4. Enter your **Measurement ID** (from Step 2)
 5. Set the **Event Name**
-6. Under **Triggering**, select the trigger you created in Step 3
+6. Under **Triggering**, select the trigger you created in Step 4
 7. Click **Save**
 
-## 5. Submit and Publish Changes
+## 6. Submit and Publish Changes
 
-<Frame>
-![Submit Changes](/images/gtm/gtm_11.png)
-</Frame>
+<Frame>![Submit Changes](/images/gtm/gtm_11.png)</Frame>
 
 1. Click **Submit** in GTM
 2. Add a version name and description
@@ -97,9 +118,7 @@ Now create GA4 Event tags that will send the Surface Form events to Google Analy
 
 ## Testing using Google Tag Assistant
 
-<Frame>
-![Google Tag Assistant Step 1](/images/google-analytics/5.png)
-</Frame>
+<Frame>![Google Tag Assistant Step 1](/images/google-analytics/5.png)</Frame>
 
 1. Install the [Google Tag Assistant extension](https://tagassistant.google.com/) in your browser
 2. Go to [tagassistant.google.com](https://tagassistant.google.com/)
