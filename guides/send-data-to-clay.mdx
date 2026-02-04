@@ -1,0 +1,90 @@
+---
+title: "Send Data to Clay"
+description: "Learn how to send Surface Form submissions to Clay using webhooks and the HTTP Request action"
+og:title: "Send Data to Clay | Surface Docs"
+twitter:title: "Send Data to Clay | Surface Docs"
+og:description: "Learn how to send Surface Form submissions to Clay using webhooks"
+twitter:description: "Learn how to send Surface Form submissions to Clay using webhooks"
+og:image: "https://app.withsurface.com/api/v1/form/og?title=Send%20Data%20to%20Clay"
+twitter:image: "https://app.withsurface.com/api/v1/form/og?title=Send%20Data%20to%20Clay"
+---
+
+## Step 1: Create a Webhook Table in Clay
+
+1. In Clay, create a new table
+2. Add **Webhook** as the data source for the table
+
+<Frame>
+  <img
+    src="/images/surface-to-clay/1.png"
+    alt="Create a new table in Clay with Webhook as source"
+  />
+</Frame>
+
+## Step 2: Copy the Webhook URL and Set Response Format
+
+1. In the Webhook source configuration, find the **Webhook URL**
+2. Copy the Webhook URL — you'll paste this into Surface in a later step
+3. Set **Set response as** to **JSON** so Clay expects and parses JSON payloads
+
+<Frame>
+  <img
+    src="/images/surface-to-clay/2.png"
+    alt="Copy Webhook URL and set response as JSON in Clay"
+  />
+</Frame>
+
+## Step 3: Add an HTTP Request Action in Surface Workflow Builder
+
+1. Open the **Workflow Builder** in the Surface Platform for your form
+2. Add a new action to your workflow
+3. Select **HTTP Request** from the available actions
+
+<Frame>
+  <img
+    src="/images/surface-to-clay/3.png"
+    alt="Add HTTP Request action in Surface Workflow Builder"
+  />
+</Frame>
+
+## Step 4: Configure the HTTP Request Action
+
+Configure the HTTP Request action with the following settings:
+
+1. **Request URL** — Paste the Webhook URL you copied from Clay
+2. **HTTP Method** — Set to **POST**
+3. **Body** — Add a JSON object where each key is the field name Clay expects and each value is the form data. Use the `@` symbol in the workflow builder to insert form variables (e.g. `@email`, `@name`).
+
+<Frame>
+  <img
+    src="/images/surface-to-clay/4.png"
+    alt="Configure HTTP Request: URL, POST method, and JSON body"
+  />
+</Frame>
+
+<Tip>
+  Press `@` in the workflow builder and start typing to see available form
+  fields you can use in the JSON body.
+</Tip>
+
+## Step 5: Verify Data in Clay
+
+1. Save your Surface workflow
+2. Submit a test response through your Surface Form
+3. In Clay, check your webhook table — you should see the new row with the data sent from Surface
+
+<Frame>
+  <img
+    src="/images/surface-to-clay/5.png"
+    alt="Data from Surface appearing in Clay table"
+  />
+</Frame>
+
+## Troubleshooting
+
+If data isn't appearing in Clay:
+
+- Confirm the Webhook URL in the HTTP Request action matches the URL from Clay exactly
+- Ensure **Set response as** is set to **JSON** in Clay and your request body is valid JSON
+- Check that the JSON keys in the body match the columns or fields Clay expects
+- Review workflow logs in Surface to see if the request was sent and whether Clay returned any errors

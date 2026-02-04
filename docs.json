@@ -235,6 +235,7 @@
               "guides/enable-cloudflare-turnstile",
               "guides/send-data-to-hubspot",
               "guides/send-data-to-airtable",
+              "guides/send-data-to-clay",
               "guides/send-data-to-surface"
             ]
           }
