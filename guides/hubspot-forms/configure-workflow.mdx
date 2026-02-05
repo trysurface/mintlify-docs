@@ -1,0 +1,95 @@
+---
+title: "Step 2: Configure HubSpot in Surface Workflow"
+description: "Set up workflows in Surface to send form submissions to HubSpot"
+sidebarTitle: "Step 2: Configure HubSpot in Surface Workflow"
+og:title: "Step 2: Configure HubSpot in Surface Workflow | Surface Docs"
+twitter:title: "Step 2: Configure HubSpot in Surface Workflow | Surface Docs"
+og:description: "Set up workflows in Surface to send form submissions to HubSpot"
+twitter:description: "Set up workflows in Surface to send form submissions to HubSpot"
+og:image: "https://app.withsurface.com/api/v1/form/og?title=Step%202:%20Configure%20HubSpot%20in%20Surface%20Workflow"
+twitter:image: "https://app.withsurface.com/api/v1/form/og?title=Step%202:%20Configure%20HubSpot%20in%20Surface%20Workflow"
+---
+
+After configuring your HubSpot form, you need to set up workflows in Surface to send form submissions to HubSpot. This guide covers connecting HubSpot and configuring the workflow action.
+
+## Prerequisites
+
+Before you begin, make sure you have:
+- Configured your HubSpot form (either duplicated or with hidden field)
+- Your HubSpot Form ID ready (if using duplicated form)
+- Admin access to connect HubSpot to Surface
+
+## Step 1: Connect HubSpot to Surface
+
+<Frame>
+  <img src="/images/integrations/hubspot/1.png" alt="HubSpot Integration Setup" />
+</Frame>
+
+1. Navigate to the **Workflow Builder** in Surface
+2. Add any HubSpot action and click **Connect**
+3. Select your HubSpot organization when prompted
+4. Accept Surface Labs invite
+5. Click **Connect App** to complete setup
+
+## Step 2: Create a Workflow
+
+
+
+1. Go to **Workflow Builder** from the sidebar
+2. Click **Create workflow**
+3. Choose trigger type:
+    - **Finished** - For complete submissions
+    - **Dropped Off** - For partial submissions
+
+## Step 3: Add HubSpot Action
+
+<Frame>
+  <img src="/images/integrations/hubspot/2.png" alt="HubSpot Actions Selection" />
+</Frame>
+
+1. Click **+ Actions**
+2. Select **HubSpot** from the actions list
+3. Choose **Create Form Response** action
+
+## Step 4: Configure Form Response Action
+
+### Select your HubSpot Form
+<Frame>
+  <img src="/images/hubspot/configure-workflow/3.png" alt="HubSpot Create Form Response configuration" />
+</Frame>
+
+1. Click on the **HubSpot Form** dropdown
+2. Select the form you want to use for this workflow
+
+### Map Surface Form fields to HubSpot form fields
+<Frame>
+  <img src="/images/hubspot/configure-workflow/1.png" alt="HubSpot Create Form Response configuration" />
+</Frame>
+
+1. Click on **Add column** button to add a new column
+2. Example: key `email` → value `Email` → Email field in HubSpot
+3. Example: key `firstName` → value `First Name` → First Name field in HubSpot
+
+### Map hidden field to HubSpot form field [Only for duplicated form]
+If you are using a duplicated form, you need to map the hidden field to the HubSpot form field
+<Frame>
+  <img src="/images/hubspot/configure-workflow/2.png" alt="HubSpot Create Form Response configuration" />
+</Frame>
+
+1. Click on **Add column** button to add a new column
+2. Example: key `submission_type` → value `Response Status` → Submission Type field in HubSpot
+
+## Step 5: Configure Additional HubSpot Actions (Optional)
+
+You can add multiple HubSpot actions to your workflow:
+
+- **Create Contact** - Create a new contact in HubSpot
+- **Create or Update Contact** - Create or update a contact
+- **Create Company** - Create a company record
+- **Create Deal** - Create a new deal
+- **HubSpot AI Agent** - Use AI to manage contacts and deals automatically
+
+<Frame>
+  <img src="/images/integrations/hubspot/3.png" alt="HubSpot AI Agent Configuration" />
+</Frame>
+
