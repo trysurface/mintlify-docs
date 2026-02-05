@@ -228,6 +228,27 @@
             ]
           },
           {
+            "group": "HubSpot Forms Configuration",
+            "pages": [
+              "guides/hubspot-forms/overview",
+              {
+                "group": "Getting Started",
+                "pages": [
+                  {
+                    "group": "Step 1: Configure HubSpot Form",
+                    "pages": [
+                      "guides/hubspot-forms/configure-hubspot-form",
+                      "guides/hubspot-forms/duplicate-form",
+                      "guides/hubspot-forms/existing-form"
+                    ]
+                  },
+                  "guides/hubspot-forms/configure-workflow",
+                  "guides/hubspot-forms/configure-tracking"
+                ]
+              }
+            ]
+          },
+          {
             "group": "Guides",
             "pages": [
               "guides/first-form",
