@@ -10,31 +10,35 @@ og:image: "https://app.withsurface.com/api/v1/form/og?title=Configure%20HubSpot%
 twitter:image: "https://app.withsurface.com/api/v1/form/og?title=Configure%20HubSpot%20Forms%20for%20Surface"
 ---
 
-Surface Forms can capture partial leads when users start filling out your form but don't complete it. To ensure these partial submissions work correctly with HubSpot, you'll need to configure your HubSpot form and set up workflows in Surface.
+Surface Forms can capture partial leads when users start filling out your form but don't complete it. To ensure these partial submissions work correctly with HubSpot, you'll need to configure your HubSpot integration.
 
 ## Why Configure HubSpot Forms?
 
 When Surface Forms captures partial leads, some required fields in your HubSpot form may be empty. To prevent submission errors, you need to configure your HubSpot form to accept optional fields.
 
+## Getting Started
+
+Choose the setup method that works best for you:
+
 <CardGroup cols={2}>
   <Card
-    title="Step 1: Configure HubSpot Form"
-    icon="list-check"
-    href="/guides/hubspot-forms/configure-hubspot-form"
+    title="One Click Setup"
+    icon="bolt"
+    href="/guides/hubspot-forms/one-click-setup"
   >
-    Set up your HubSpot form to accept partial submissions with two configuration options
+    Automatically create HubSpot forms and start syncing submissions with just authentication
   </Card>
 
   <Card
-    title="Step 2: Configure HubSpot in Surface Workflow"
-    icon="diagram-project"
-    href="/guides/hubspot-forms/configure-workflow"
+    title="Manual Setup"
+    icon="wrench"
+    href="/guides/hubspot-forms/manual-setup"
   >
-    Set up workflows in Surface to send form submissions to HubSpot
+    Manually configure HubSpot forms and workflows for complete control
   </Card>
 
   <Card
-    title="Step 3: Configure HubSpot Tracking"
+    title="HubSpot Tracking"
     icon="chart-line"
     href="/guides/hubspot-forms/configure-tracking"
   >
@@ -42,3 +46,8 @@ When Surface Forms captures partial leads, some required fields in your HubSpot 
   </Card>
 </CardGroup>
 
+## Related Guides
+
+- [HubSpot Workflows](/docs/workflows/hubspot) - Learn about HubSpot integration in Surface
+- [HubSpot Tracking](/docs/tracking/hubspot-tracking) - Detailed HubSpot tracking documentation
+- [Send Data to HubSpot](/guides/send-data-to-hubspot) - General guide for sending data to HubSpot
