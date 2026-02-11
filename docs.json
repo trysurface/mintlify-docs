@@ -235,7 +235,17 @@
               "guides/enable-cloudflare-turnstile",
               "guides/send-data-to-hubspot",
               "guides/send-data-to-airtable",
-              "guides/send-data-to-surface"
+              "guides/send-data-to-surface",
+              {
+                "group": "Email Sequences with Customer.io and Calendly",
+                "pages": [
+                  "guides/email-sequences-customerio-calendly/overview",
+                  "guides/email-sequences-customerio-calendly/step-1-webhook-trigger",
+                  "guides/email-sequences-customerio-calendly/step-2-surface-workflow",
+                  "guides/email-sequences-customerio-calendly/step-3-event-campaigns",
+                  "guides/email-sequences-customerio-calendly/step-4-calendly-check"
+                ]
+              }
             ]
           }
         ]
