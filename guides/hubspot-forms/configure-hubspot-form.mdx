@@ -1,47 +1,106 @@
 ---
-title: "Overview"
-description: "Configure your HubSpot form to accept partial leads from Surface Forms"
-sidebarTitle: "Overview"
+title: "Step 1: Configure HubSpot Form"
+description: "Configure your HubSpot form to accept submissions from Surface Forms"
+sidebarTitle: "Step 1: Configure HubSpot Form"
 og:title: "Step 1: Configure HubSpot Form | Surface Docs"
-twitter:title: "Configure HubSpot Form | Surface Docs"
-og:description: "Configure your HubSpot form to accept partial leads from Surface Forms"
-twitter:description: "Configure your HubSpot form to accept partial leads from Surface Forms"
-og:image: "https://app.withsurface.com/api/v1/form/og?title=Configure%20HubSpot%20Form"
-twitter:image: "https://app.withsurface.com/api/v1/form/og?title=Configure%20HubSpot%20Form"
+twitter:title: "Step 1: Configure HubSpot Form | Surface Docs"
+og:description: "Configure your HubSpot form to accept submissions from Surface Forms"
+twitter:description: "Configure your HubSpot form to accept submissions from Surface Forms"
+og:image: "https://app.withsurface.com/api/v1/form/og?title=Step%201:%20Configure%20HubSpot%20Form"
+twitter:image: "https://app.withsurface.com/api/v1/form/og?title=Step%201:%20Configure%20HubSpot%20Form"
 ---
 
-To ensure Surface Forms can submit partial leads to HubSpot without errors, you need to configure your HubSpot form to accept optional fields. Choose the option that best fits your setup.
+To ensure Surface Forms can submit to HubSpot without errors, you need to configure your HubSpot form. Add a hidden "partial" status field to your existing form to track both complete and partial submissions.
 
-## Configuration Options
+## Step 1: Access Your HubSpot Form
 
-<CardGroup cols={2}>
-  <Card
-    title="Option 1: Duplicate Form"
-    icon="copy"
-    href="/guides/hubspot-forms/duplicate-form"
-  >
-    Create a duplicate of your existing HubSpot form with fields marked as optional for partial lead capture
-  </Card>
+1. Log in to your **HubSpot** account
+2. Navigate to **Marketing** → **Lead Capture** → **Forms**
+3. Click on the form you want to modify
 
-  <Card
-    title="Option 2: Existing Form"
-    icon="edit"
-    href="/guides/hubspot-forms/existing-form"
-  >
-    Add a hidden "partial" status field to your existing form - ideal if you have workflows already connected
-  </Card>
-</CardGroup>
+## Step 2: Add a Hidden Field
 
-## Which Option Should You Choose?
+<Frame>
+  <img src="/images/hubspot/existing-form/1.png" alt="HubSpot form add field option" />
+</Frame>
 
-**Choose Option 1: Duplicate Form** if:
-- You want to keep your original form unchanged
-- You're starting fresh with Surface Forms
-- You want separate forms for complete vs. partial submissions
-- You prefer clear separation between full and partial lead data
+1. In your form editor, click **Add field** or the **+** button
+2. Select **Hidden field** from the field types
+3. If "Hidden field" isn't available, you can:
+   - Add a regular field and mark it as hidden in the field settings
+   - Or use a custom property field
 
-**Choose Option 2: Existing Form** if:
-- You have existing workflows connected to your HubSpot form
-- You want to use the same form for both complete and partial submissions
-- You prefer minimal changes to your current setup
-- You want to maintain a single source of truth for form submissions
+## Step 3: Configure the Hidden Field
+
+<Frame>
+  <img src="/images/hubspot/existing-form/2.png" alt="HubSpot hidden field configuration" />
+</Frame>
+
+1. Click on the hidden field you just added
+2. Configure the field settings:
+   - **Field label**: `Partial Lead Status` or `Submission Type`
+   - **Internal name**: `partial_lead_status` or `submission_type`
+   - **Field type**: Select **Single-line text** or **Dropdown**
+   - **Required**: Set to **No** (optional)
+   - **Hidden**: Ensure this is set to **Yes** or **Hidden**
+
+3. If using a dropdown:
+   - Add options: `complete` and `partial`
+   - Set default value to `partial` (optional)
+
+4. Click **Save** or **Apply**
+
+## Step 4: Make Existing Fields Optional (If Needed)
+
+For submissions to work successfully, you may need to make some required fields optional:
+
+1. Click on each field that might be empty in submissions
+2. Find the **Required** checkbox or toggle
+3. **Uncheck** or **disable** the Required option for fields that:
+   - Are not essential for lead capture
+   - May be filled in later stages of the form
+   - Are not needed for your workflows
+
+4. **Keep required** any fields that are:
+   - Essential for your workflows
+   - Needed for contact identification (like email)
+   - Required for your business logic
+
+## Step 5: Create or Update Custom Property (Optional)
+
+If you want to track submission status in HubSpot contacts:
+
+1. Go to **Settings** → **Properties**
+2. Navigate to **Contact properties** (or Company/Deal properties)
+3. Click **Create property**
+4. Configure:
+   - **Label**: `Partial Lead Status`
+   - **Internal name**: `partial_lead_status`
+   - **Field type**: Single-line text or Dropdown
+   - **Group**: Choose an appropriate group
+5. Click **Create**
+
+## Best Practices
+
+- **Field Naming**: Use consistent naming conventions for your hidden field
+- **Workflow Testing**: Test workflows with both partial and complete submissions
+- **Documentation**: Document which fields are optional and why
+- **Monitoring**: Track partial vs. complete submissions to optimize your forms
+
+## Troubleshooting
+
+**Issue**: Hidden field not appearing in form response
+- **Solution**: Verify the field is properly configured as hidden
+- **Solution**: Check that the field name matches in your Surface workflow mapping
+
+**Issue**: Submissions still failing
+- **Solution**: Review which fields are still marked as required
+- **Solution**: Ensure email or another identifier field remains required if needed for workflows
+
+**Issue**: Workflows not triggering correctly
+- **Solution**: Verify the hidden field value is being set correctly
+- **Solution**: Check workflow conditions match the field values you're sending
+
+## Next Steps
+
+- [Configure HubSpot in Surface Workflow](/guides/hubspot-forms/configure-workflow) - Set up workflows and map the hidden field

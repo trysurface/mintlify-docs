@@ -1,24 +1,18 @@
 ---
-title: "Configure HubSpot Forms for Surface"
-description: "Complete guide to configuring HubSpot forms and workflows to work seamlessly with Surface Forms for capturing partial leads"
+title: "Connect Surface to your HubSpot forms"
+description: "Configure Surface Forms to supercharge your HubSpot forms with partial response tracking, user journey insights, and more."
 sidebarTitle: "Overview"
-og:title: "Configure HubSpot Forms for Surface | Surface Docs"
-twitter:title: "Configure HubSpot Forms for Surface | Surface Docs"
-og:description: "Complete guide to configuring HubSpot forms and workflows to work seamlessly with Surface Forms for capturing partial leads"
-twitter:description: "Complete guide to configuring HubSpot forms and workflows to work seamlessly with Surface Forms for capturing partial leads"
-og:image: "https://app.withsurface.com/api/v1/form/og?title=Configure%20HubSpot%20Forms%20for%20Surface"
-twitter:image: "https://app.withsurface.com/api/v1/form/og?title=Configure%20HubSpot%20Forms%20for%20Surface"
+og:title: "Connect Surface to your HubSpot forms | Surface Docs"
+twitter:title: "Connect Surface to your HubSpot forms | Surface Docs"
+og:description: "Configure Surface Forms to supercharge your HubSpot forms with partial response tracking, user journey insights, and more."
+twitter:description: "Configure Surface Forms to supercharge your HubSpot forms with partial response tracking, user journey insights, and more."
+og:image: "https://app.withsurface.com/api/v1/form/og?title=Connect%20Surface%20to%20your%20HubSpot%20forms"
+twitter:image: "https://app.withsurface.com/api/v1/form/og?title=Connect%20Surface%20to%20your%20HubSpot%20forms"
 ---
 
-Surface Forms can capture partial leads when users start filling out your form but don't complete it. To ensure these partial submissions work correctly with HubSpot, you'll need to configure your HubSpot integration.
-
-## Why Configure HubSpot Forms?
-
-When Surface Forms captures partial leads, some required fields in your HubSpot form may be empty. To prevent submission errors, you need to configure your HubSpot form to accept optional fields.
+import { oneClickDescription } from '/snippets/hubspot-one-click-description.mdx';
 
 ## Getting Started
-
-Choose the setup method that works best for you:
 
 <CardGroup cols={2}>
   <Card
@@ -26,23 +20,27 @@ Choose the setup method that works best for you:
     icon="bolt"
     href="/guides/hubspot-forms/one-click-setup"
   >
-    Automatically create HubSpot forms and start syncing submissions with just authentication
+    {oneClickDescription}
   </Card>
 
   <Card
-    title="Manual Setup"
-    icon="wrench"
+    title="Custom Configuration"
+    icon="sliders"
     href="/guides/hubspot-forms/manual-setup"
   >
-    Manually configure HubSpot forms and workflows for complete control
+    Select your target HubSpot form and define exactly how fields map between Surface and HubSpot
   </Card>
+</CardGroup>
 
+## HubSpot Tracking
+
+<CardGroup cols={1}>
   <Card
     title="HubSpot Tracking"
     icon="chart-line"
     href="/guides/hubspot-forms/configure-tracking"
   >
-    Add HubSpot tracking script to your Surface form for enhanced analytics
+    Configure HubSpot tracking to properly track UTMs, first landing page, and lead sources
   </Card>
 </CardGroup>
 

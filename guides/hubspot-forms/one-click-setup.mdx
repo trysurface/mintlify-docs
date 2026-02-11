@@ -1,16 +1,18 @@
 ---
 title: "One Click Setup"
-description: "Automatically configure HubSpot forms and start syncing submissions with just authentication"
+description: "Create HubSpot forms from Surface and start syncing partial & complete submissions"
 sidebarTitle: "One Click Setup"
 og:title: "One Click Setup | Surface Docs"
 twitter:title: "One Click Setup | Surface Docs"
-og:description: "Automatically configure HubSpot forms and start syncing submissions with just authentication"
-twitter:description: "Automatically configure HubSpot forms and start syncing submissions with just authentication"
+og:description: "Create HubSpot forms from Surface and start syncing partial & complete submissions"
+twitter:description: "Create HubSpot forms from Surface and start syncing partial & complete submissions"
 og:image: "https://app.withsurface.com/api/v1/form/og?title=One%20Click%20Setup"
 twitter:image: "https://app.withsurface.com/api/v1/form/og?title=One%20Click%20Setup"
 ---
 
-The One Click Setup automatically creates HubSpot forms (both complete and partial) and starts sending form submissions to HubSpot. All you need to do is authenticate with HubSpot and enable the sync.
+import { oneClickDescription } from '/snippets/hubspot-one-click-description.mdx';
+
+The One Click Setup automatically creates HubSpot forms (both complete and partial) and starts sending form submissions to HubSpot.
 
 ## Step 1: Authenticate with HubSpot
 
@@ -19,7 +21,7 @@ The One Click Setup automatically creates HubSpot forms (both complete and parti
 </Frame>
 
 1. Go to **Form Settings** → **HubSpot**
-2. Click on **Connect HubSpot**
+2. Click on **Connect HubSpot** if you're not already authenticated
 3. Follow the on-screen instructions to authenticate
 4. Select your HubSpot organization when prompted
 5. Accept the necessary permissions to complete the connection
@@ -32,8 +34,8 @@ The One Click Setup automatically creates HubSpot forms (both complete and parti
 
 1. Under **HubSpot Connection**, toggle on **Enable HubSpot Sync**
 2. Surface will automatically:
-   - Create a complete form in HubSpot for finished submissions
-   - Create a partial form in HubSpot for incomplete submissions
+   - Create a form in HubSpot for finished submissions
+   - Create a form in HubSpot for incomplete submissions
    - Start syncing form submissions to HubSpot
 
 ## What Happens Next?
@@ -46,4 +48,4 @@ Once enabled, Surface will:
 
 ## Next Steps
 
-- [HubSpot Tracking](/guides/hubspot-forms/configure-tracking) - Add tracking for analytics
+- [HubSpot Tracking](/guides/hubspot-forms/configure-tracking) - Configure HubSpot tracking to properly track UTMs, first landing page, and lead sources

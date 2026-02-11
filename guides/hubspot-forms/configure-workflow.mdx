@@ -15,8 +15,7 @@ After configuring your HubSpot form, you need to set up workflows in Surface to 
 ## Prerequisites
 
 Before you begin, make sure you have:
-- Configured your HubSpot form (either duplicated or with hidden field)
-- Your HubSpot Form ID ready (if using duplicated form)
+- Configured your HubSpot form with a hidden field
 - Admin access to connect HubSpot to Surface
 
 ## Step 1: Connect HubSpot to Surface
@@ -70,14 +69,17 @@ Before you begin, make sure you have:
 2. Example: key `email` → value `Email` → Email field in HubSpot
 3. Example: key `firstName` → value `First Name` → First Name field in HubSpot
 
-### Map hidden field to HubSpot form field [Only for duplicated form]
-If you are using a duplicated form, you need to map the hidden field to the HubSpot form field
+### Map hidden field to HubSpot form field
+Map the hidden field to track submission status in HubSpot:
 <Frame>
   <img src="/images/hubspot/configure-workflow/2.png" alt="HubSpot Create Form Response configuration" />
 </Frame>
 
 1. Click on **Add column** button to add a new column
 2. Example: key `submission_type` → value `Response Status` → Submission Type field in HubSpot
+3. Set the value based on trigger type:
+   - For **In Progress** or **Dropped Off** triggers: Set value to `partial`
+   - For **Finished** trigger: Set value to `complete`
 
 ## Step 5: Configure Additional HubSpot Actions (Optional)
 
