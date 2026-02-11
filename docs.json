@@ -240,7 +240,8 @@
                     "pages": [
                       "guides/hubspot-forms/manual-setup",
                       "guides/hubspot-forms/configure-hubspot-form",
-                      "guides/hubspot-forms/configure-workflow"
+                      "guides/hubspot-forms/configure-workflow",
+                      "guides/hubspot-forms/add-surface-domain"
                     ]
                   }
                 ]
