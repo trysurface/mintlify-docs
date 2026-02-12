@@ -1,0 +1,62 @@
+---
+title: "HubSpot Tracking"
+description: "Add HubSpot tracking script to your Surface form for enhanced analytics and visitor insights"
+sidebarTitle: "HubSpot Tracking"
+og:title: "HubSpot Tracking | Surface Docs"
+twitter:title: "HubSpot Tracking | Surface Docs"
+og:description: "Add HubSpot tracking script to your Surface form for enhanced analytics and visitor insights"
+twitter:description: "Add HubSpot tracking script to your Surface form for enhanced analytics and visitor insights"
+og:image: "https://app.withsurface.com/api/v1/form/og?title=HubSpot%20Tracking"
+twitter:image: "https://app.withsurface.com/api/v1/form/og?title=HubSpot%20Tracking"
+---
+
+Add HubSpot tracking to your Surface form to track visitor behavior, identify anonymous visitors, and gain insights into how users interact with your forms.
+
+## Step 1: Get the HubSpot Tracking Script
+
+<Frame>
+  <img src="/images/hubspot-tracking/1.png" alt="HubSpot settings and tracking code location" />
+</Frame>
+
+1. **Navigate to HubSpot Settings**
+   - In your HubSpot account, click the **settings** icon (⚙️) in the top navigation bar
+
+2. **Access Tracking Code**
+   - In the left sidebar, look for **Account Management**
+   - Click on **Tracking Code** under the Account Management section
+
+3. **Copy the Tracking Code**
+   - You'll see your HubSpot tracking code displayed in a text box
+   - Copy the entire tracking script code
+   - The code typically looks like:
+     ```html
+     <!-- Start of HubSpot Embed Code -->
+     <script type="text/javascript" id="hs-script-loader" async defer src="//js.hs-scripts.com/XXXXXXX.js"></script>
+     <!-- End of HubSpot Embed Code -->
+     ```
+
+## Step 2: Enable and Add HubSpot Tracking Script in Surface Form
+
+1. **Open Form Settings**
+   - Go to your Surface form dashboard
+   - Navigate to the form you want to add HubSpot tracking to
+   - Click on **Settings**
+
+3. **Toggle on Cookie Tracking**
+   <Frame>
+    <img src="/images/hubspot/tracking/1.png" alt="Surface form HubSpot cookie tracking settings" />
+   </Frame>
+   - In the form settings, look for **Cookie Tracking** section
+   - Toggle on **Enable Cookie Tracking** to track UTMs, first landing page, and lead sources
+
+2. **Find HubSpot Tracking Option**
+   - In the form settings, look for **Ads / Tracking** section
+   - Click on **HubSpot Tracking**
+
+3. **Enable and Configure Tracking**
+   <Frame>
+    <img src="/images/hubspot/tracking/2.png" alt="Surface form HubSpot tracking settings" />
+   </Frame>
+   - Toggle the **Enable HubSpot tracking** switch to turn it on
+   - Paste the HubSpot tracking script you copied in Step 1 into the script field below
+   - Click **Save** to apply the changes
