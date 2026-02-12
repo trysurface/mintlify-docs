@@ -12,12 +12,6 @@ twitter:image: "https://app.withsurface.com/api/v1/form/og?title=Step%202:%20Con
 
 After configuring your HubSpot form, you need to set up workflows in Surface to send form submissions to HubSpot. This guide covers connecting HubSpot and configuring the workflow action.
 
-## Prerequisites
-
-Before you begin, make sure you have:
-- Configured your HubSpot form with a hidden field
-- Admin access to connect HubSpot to Surface
-
 ## Connect HubSpot to Surface
 
 <Frame>
@@ -58,26 +52,54 @@ Before you begin, make sure you have:
 1. Click on the **HubSpot Form** dropdown
 2. Select the form you want to use for this workflow
 
+### Get Internal Names from HubSpot Form Fields
+
+Before mapping fields, you need to get the **internal names** (also called API names) of your HubSpot form fields. These internal names are what you'll use as the **value** when mapping in Surface workflows.
+
+<Frame>
+  <img src="/images/hubspot/configure-workflow/4.png" alt="Finding HubSpot form field internal name" />
+</Frame>
+
+To find the internal name for each HubSpot form field:
+
+1. In your HubSpot form editor, **select the field** you want to map (e.g., Email or First Name)
+2. In the **Edit field** panel on the left, click on **Connected property** (it will show as "Connected" with a green indicator)
+3. Under the Connected property section, you'll see the **Internal name** (e.g., `email` or `firstname`)
+
+<Info>
+The internal name is different from the field label. For example, a field labeled "Email Address" might have an internal name of `email` or `emailaddress`. Always use the exact internal name shown in the Connected property section.
+</Info>
+
+
 ### Map Surface Form fields to HubSpot form fields
+
 <Frame>
   <img src="/images/hubspot/configure-workflow/1.png" alt="HubSpot Create Form Response configuration" />
 </Frame>
 
-1. Click on **Add column** button to add a new column
-2. Example: key `email` → value `Email` → Email field in HubSpot
-3. Example: key `firstName` → value `First Name` → First Name field in HubSpot
+Now that you have the internal names from HubSpot, map your Surface Form fields:
 
-### Map hidden field to HubSpot form field
-Map the hidden field to track submission status in HubSpot:
-<Frame>
-  <img src="/images/hubspot/configure-workflow/2.png" alt="HubSpot Create Form Response configuration" />
-</Frame>
+1. Click on **Add column** button to add a new field mapping
+2. **Key (Surface Field)**: Select the field from your Surface Form
+   - Example: `email` from Form Submission or Lead
+   - Example: `firstName` from Form Submission or Lead
+3. **Value (HubSpot Internal Name)**: Enter the exact internal name you found in HubSpot
+   - Example: `email` (from the Email field's Connected property)
+   - Example: `firstname` (from the First Name field's Connected property)
+4. **HubSpot Field**: Select the corresponding HubSpot form field from the dropdown
+   - Example: Email
+   - Example: First Name
 
-1. Click on **Add column** button to add a new column
-2. Example: key `submission_type` → value `Response Status` → Submission Type field in HubSpot
-3. Set the value based on trigger type:
-   - For **In Progress** or **Dropped Off** triggers: Set value to `partial`
-   - For **Finished** trigger: Set value to `complete`
+**Mapping Examples:**
+
+| Surface Field (Key) | HubSpot Internal Name (Value) | HubSpot Field |
+|---------------------|------------------------------|---------------|
+| `email` (from Form Submission) | `email` | Email |
+| `firstName` (from Form Submission) | `firstname` | First Name |
+
+<Warning>
+The **Value** field must match the internal name exactly as shown in HubSpot's Connected property section. This is case-sensitive—`email` is different from `Email` or `EMAIL`.
+</Warning>
 
 ## Configure Additional HubSpot Actions (Optional)
 
