@@ -1,0 +1,77 @@
+---
+title: "Step 3: Event-Based Email Campaigns"
+description: "Create event-triggered campaigns for partial and completed form submissions with customizable follow-up emails and delays"
+sidebarTitle: "Step 3: Event-Based Email Campaigns"
+og:title: "Event-Based Email Campaigns | Surface Docs"
+twitter:title: "Event-Based Email Campaigns | Surface Docs"
+og:description: "Create event-triggered campaigns for partial and completed form submissions with customizable follow-up emails"
+twitter:description: "Create event-triggered campaigns for partial and completed form submissions with customizable follow-up emails"
+og:image: "https://app.withsurface.com/api/v1/form/og?title=Event%20Based%20Email%20Campaigns"
+twitter:image: "https://app.withsurface.com/api/v1/form/og?title=Event%20Based%20Email%20Campaigns"
+---
+
+In this step, you'll create **two event-triggered campaigns** in Customer.io—one for partial form submissions and one for completed submissions. Each campaign will send a series of follow-up emails with customizable delays between them.
+
+## Create the Partial Submission Campaign
+
+<Frame>
+  <img src="/images/email-sequences-customerio-calendly/6.png" alt="Event trigger configuration" />
+</Frame>
+
+1. In Customer.io, go to **Campaigns** and click **Create Campaign**
+2. Click **Event** as the trigger type
+3. Configure the trigger:
+   - **Event name**: `partialFormFilled` (must match the event from your partial webhook campaign in Step 1)
+   - **Workspace**: Select the workspace where your leads are stored
+   - Add any filters if needed (e.g., segment, attribute)
+
+
+## Build the Email Sequence
+
+Add your follow-up emails and delays to the campaign workflow:
+
+<Steps>
+  <Step title="First email">
+    Add an **Email** block as the first step. This sends immediately when the person enters the campaign.
+  </Step>
+  <Step title="Delay">
+    Add a **Delay** block. Set the delay (e.g., 2 days, 3 days) before the next touchpoint.
+  </Step>
+  <Step title="Calendly check (Step 4)">
+    Add a **Send and receive data** (webhook) block that checks Calendly. If the meeting is booked, the person exits. Otherwise, continue. See [Step 4: Calendly Meeting Check](/guides/email-sequences-customerio-calendly/step-4-calendly-check).
+  </Step>
+  <Step title="Second email">
+    Add another **Email** block. This sends only if the person didn't book a meeting.
+  </Step>
+  <Step title="Repeat">
+    Add another **Delay** → **Webhook (Calendly check)** → **Email**. Repeat for as many follow-ups as you want.
+  </Step>
+</Steps>
+
+<Frame>
+  <img src="/images/email-sequences-customerio-calendly/7.png" alt="Email sequence workflow" />
+</Frame>
+
+
+## Create the Completed Submission Campaign
+
+Repeat the same process for completed submissions:
+
+1. Create a new campaign with **Event** trigger
+2. Set **Event name**: `formCompleted` (must match the event from your completed webhook campaign in Step 1)
+3. Build the same structure: Email → Delay → Calendly check → Email → …
+4. Use different copy and timing if you want (e.g., shorter delays for completed submissions, since they're more engaged)
+
+<Tip>
+Completed leads are typically warmer, so you might use a shorter, more sales-focused sequence. Partial leads may need more nurturing and clear calls-to-action to book a meeting.
+</Tip>
+
+## Save and Activate
+
+1. Review each campaign
+2. Click **Start Campaign** for both
+3. They will trigger when the corresponding events fire from your webhook campaign
+
+## Next Step
+
+Add the Calendly meeting check (webhook node) before each follow-up email (after the first). This ensures the campaign exits when a lead books a meeting. See [Step 4: Calendly Meeting Check](/guides/email-sequences-customerio-calendly/step-4-calendly-check).
