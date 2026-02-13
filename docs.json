@@ -228,6 +228,28 @@
             ]
           },
           {
+            "group": "HubSpot Forms Configuration",
+            "pages": [
+              "guides/hubspot-forms/overview",
+              {
+                "group": "Getting Started",
+                "pages": [
+                  "guides/hubspot-forms/one-click-setup",
+                  {
+                    "group": "Custom Configuration",
+                    "pages": [
+                      "guides/hubspot-forms/manual-setup",
+                      "guides/hubspot-forms/configure-hubspot-form",
+                      "guides/hubspot-forms/configure-workflow",
+                      "guides/hubspot-forms/add-surface-domain"
+                    ]
+                  }
+                ]
+              },
+              "guides/hubspot-forms/configure-tracking"
+            ]
+          },
+          {
             "group": "Guides",
             "pages": [
               "guides/first-form",
@@ -245,7 +267,8 @@
                   "guides/email-sequences-customerio-calendly/step-3-event-campaigns",
                   "guides/email-sequences-customerio-calendly/step-4-calendly-check"
                 ]
-              }
+              },
+              "guides/send-data-to-clay"
             ]
           }
         ]
