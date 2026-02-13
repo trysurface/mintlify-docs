@@ -15,7 +15,10 @@ In this step, you'll create **two webhook-triggered campaigns** in Customer.io�
 ## Create the First Webhook Campaign (Partial / Dropped Off)
 
 <Frame>
-  <img src="/images/email-sequences-customerio-calendly/1.png" alt="Customer.io webhook campaign trigger" />
+  <img
+    src="/images/email-sequences-customerio-calendly/1.png"
+    alt="Customer.io webhook campaign trigger"
+  />
 </Frame>
 
 1. In Customer.io, go to **Campaigns** and click **Create Campaign**
@@ -41,13 +44,19 @@ Add two actions to this campaign:
    - **Attributes**: Add any additional attributes you want to store (e.g., `firstName`, `lastName`)
 
 <Frame>
-  <img src="/images/email-sequences-customerio-calendly/2.png" alt="Create or Update Person configuration" />
+  <img
+    src="/images/email-sequences-customerio-calendly/2.png"
+    alt="Create or Update Person configuration"
+  />
 </Frame>
 
 #### Add "Send Event"
 
 <Frame>
-  <img src="/images/email-sequences-customerio-calendly/3.png" alt="Send Event configuration" />
+  <img
+    src="/images/email-sequences-customerio-calendly/3.png"
+    alt="Send Event configuration"
+  />
 </Frame>
 
 1. Drag **Send Event** into the workflow (after Create or Update Person)
@@ -59,7 +68,9 @@ Add two actions to this campaign:
    - **Event Name**: Use `partialFormFilled` (you'll use this in your event-triggered campaign in Step 3)
 
 <Tip>
-Use the `trigger` object to reference incoming webhook data. For example, `trigger.email`, `trigger.firstName`, or `trigger.lastName`. The exact keys depend on the payload you send from Surface.
+  Use the `trigger` object to reference incoming webhook data. For example,
+  `trigger.email`, `trigger.firstName`, or `trigger.lastName`. The exact keys
+  depend on the payload you send from Surface.
 </Tip>
 
 4. Click **Next** to review, then **Start Campaign**
@@ -72,7 +83,7 @@ Repeat the same process for completed submissions:
 1. Create a **new** webhook campaign
 2. Copy the **Webhook URL**—you'll use this for the **Form Submission** path in Step 2
 3. Add **Create or Update Person** (same configuration as above)
-4. Add **Send Event** with **Event Name**: `formCompleted` (or `formSubmitted`—whatever you'll use in Step 3)
+4. Add **Send Event** with **Event Name**: `formCompleted`
 5. Start the campaign and save the Webhook URL for the Form Submission path
 
 You now have **two webhook URLs**—one for partial, one for completed. Surface will send to the appropriate URL based on whether the lead dropped off or completed the form.
