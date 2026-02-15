@@ -1,0 +1,86 @@
+---
+title: "Email Sequences with HubSpot"
+description: "Enroll leads in HubSpot email sequences when they submit or drop off your Surface form"
+sidebarTitle: "Overview"
+og:title: "Email Sequences with HubSpot | Surface Docs"
+twitter:title: "Email Sequences with HubSpot | Surface Docs"
+og:description: "Enroll leads in HubSpot email sequences when they submit or drop off your Surface form"
+twitter:description: "Enroll leads in HubSpot email sequences when they submit or drop off your Surface form"
+og:image: "https://app.withsurface.com/api/v1/form/og?title=Email%20Sequences%20HubSpot"
+twitter:image: "https://app.withsurface.com/api/v1/form/og?title=Email%20Sequences%20HubSpot"
+---
+
+This guide shows you how to run **HubSpot email sequences** when leads submit your Surface form—including when they **drop off** partway through. As soon as a lead submits (even partially), they are enrolled into your HubSpot sequence and receive your automated follow-up emails, with optional personalization and meeting links.
+
+## How It Works
+
+<Steps>
+  <Step title="Form submission">
+    A lead submits your Surface form (partial or completed). Surface sends the submission to HubSpot via the **Create Form Response** workflow action.
+  </Step>
+  <Step title="HubSpot form response">
+    HubSpot records the form submission for the HubSpot form you configured in your Surface workflow.
+  </Step>
+  <Step title="Automation enrolls in sequence">
+    A HubSpot automation triggers on "Contact submits a specific form" and enrolls the contact in your sequence.
+  </Step>
+  <Step title="Email sequence">
+    The contact receives your sequence emails (with delays and optional personalization and meeting links) according to the sequence you built.
+  </Step>
+</Steps>
+
+## Prerequisites
+
+Before you begin, make sure you have:
+
+- A **Surface** account with a form that captures at least email (e.g., multi-step form where leads can drop off after the first step)
+- A **HubSpot** account with **Sales Hub** (or higher) for Sequences and **Marketing Hub** for forms and automations
+- In [Step 5](/guides/email-sequences-hubspot/step-5-surface-workflow) you'll connect Surface to HubSpot and set up a workflow that sends form submissions using **Create Form Response**. For more options, see [Configure HubSpot in Surface Workflow](/guides/hubspot-forms/configure-workflow) in the HubSpot forms guide.
+
+<Info>
+For **dropped-off** leads to be enrolled, your Surface workflow (Step 5) must use the **Dropped Off** trigger and map fields to the same HubSpot form used in the automation. Use **Finished** if you only want to enroll completed submissions.
+</Info>
+
+## Setup Steps
+
+<CardGroup cols={2}>
+  <Card
+    title="Step 1: Create HubSpot Form"
+    icon="list-check"
+    href="/guides/email-sequences-hubspot/step-1-hubspot-form"
+  >
+    Create a HubSpot form with all fields optional except email, so partial submissions from Surface can be recorded
+  </Card>
+
+  <Card
+    title="Step 2: Create HubSpot Sequence"
+    icon="envelope"
+    href="/guides/email-sequences-hubspot/step-2-hubspot-sequence"
+  >
+    Create a sequence with automated emails, personalization tokens, and your HubSpot meeting link
+  </Card>
+
+  <Card
+    title="Step 3: Add Follow-Up Emails and Delays"
+    icon="clock"
+    href="/guides/email-sequences-hubspot/step-3-follow-up-delays"
+  >
+    Add more sequence steps with delays (business days) between each email
+  </Card>
+
+  <Card
+    title="Step 4: Add Automation"
+    icon="diagram-project"
+    href="/guides/email-sequences-hubspot/step-4-automation"
+  >
+    Create an automation that enrolls contacts in the sequence when they submit your form
+  </Card>
+
+  <Card
+    title="Step 5: Connect Surface Workflow"
+    icon="link"
+    href="/guides/email-sequences-hubspot/step-5-surface-workflow"
+  >
+    Set up the Surface workflow to send form submissions (and drop-offs) to your HubSpot form
+  </Card>
+</CardGroup>

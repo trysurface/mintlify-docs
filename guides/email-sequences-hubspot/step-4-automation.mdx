@@ -1,0 +1,57 @@
+---
+title: "Step 4: Add Automation"
+description: "Create a HubSpot automation that enrolls contacts in your sequence when they submit the form"
+sidebarTitle: "Step 4: Add Automation"
+og:title: "HubSpot Automation for Email Sequences | Surface Docs"
+twitter:title: "HubSpot Automation for Email Sequences | Surface Docs"
+og:description: "Enroll contacts in a HubSpot sequence when they submit your Surface-connected form"
+twitter:description: "Enroll contacts in a HubSpot sequence when they submit your Surface-connected form"
+og:image: "https://app.withsurface.com/api/v1/form/og?title=HubSpot%20Automation%20Sequence"
+twitter:image: "https://app.withsurface.com/api/v1/form/og?title=HubSpot%20Automation%20Sequence"
+---
+
+In this step, you'll create a **HubSpot automation** that triggers when a contact submits the HubSpot form you use with Surface. The automation will **enroll the contact in your sequence** so they receive the emails you set up in Steps 2 and 3.
+
+## Create the Automation
+
+<Frame>
+  <img src="/images/email-sequences-hubspot/9.png" alt="Automate tab – Create an automation" />
+</Frame>
+
+1. In your sequence, open the **Automate** tab
+2. Click **Create an automation**
+
+## Set the Trigger: Form Submission
+
+<Frame>
+  <img src="/images/email-sequences-hubspot/10.png" alt="Trigger: Contact submits a specific form" />
+</Frame>
+
+<Frame>
+  <img src="/images/email-sequences-hubspot/11.png" alt="Enroll contact in this sequence" />
+</Frame>
+
+1. Set the trigger to **Form submission**
+2. Choose **Contact submits a specific form**
+3. Select the **HubSpot form** you created in [Step 1](/guides/email-sequences-hubspot/step-1-hubspot-form) (the same form your Surface workflow sends to via Create Form Response)
+
+<Warning>
+The form you select here must be the **exact same form** that your Surface workflow uses in the **Create Form Response** action. Otherwise, submissions from Surface won't trigger this automation.
+</Warning>
+
+## Configure the Enrollment Action
+
+<Frame>
+  <img src="/images/email-sequences-hubspot/12.png" alt="Enroll contact in this sequence" />
+</Frame>
+
+1. Add an action and choose **Enroll contact in this sequence** (or the equivalent sequence enrollment action)
+2. Configure **sender email** and **sender name** so emails come from the right address and identity
+3. Review any other options (e.g., eligibility, max enrollments) if your HubSpot plan supports them
+
+## Create and Turn On the Automation
+
+1. Click **Create** (or **Save**) to create the automation
+2. Turn the automation **on** so it runs when the form is submitted
+
+After this, any contact who submits that form—whether from a Surface **Dropped Off** or **Form Submission** workflow—will be enrolled in the sequence and receive your automated emails according to the steps and delays you configured.

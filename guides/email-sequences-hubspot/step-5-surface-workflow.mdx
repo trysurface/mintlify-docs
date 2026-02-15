@@ -1,0 +1,126 @@
+---
+title: "Step 5: Connect HubSpot Form with Surface Workflow"
+description: "Set up a Surface workflow to send form submissions to your HubSpot form so leads get enrolled in your sequence"
+sidebarTitle: "Step 5: Connect Surface Workflow"
+og:title: "Connect HubSpot Form with Surface Workflow | Surface Docs"
+twitter:title: "Connect HubSpot Form with Surface Workflow | Surface Docs"
+og:description: "Configure Surface to send form submissions to your HubSpot form for email sequence enrollment"
+twitter:description: "Configure Surface to send form submissions to your HubSpot form for email sequence enrollment"
+og:image: "https://app.withsurface.com/api/v1/form/og?title=Connect%20HubSpot%20Surface%20Workflow"
+twitter:image: "https://app.withsurface.com/api/v1/form/og?title=Connect%20HubSpot%20Surface%20Workflow"
+---
+
+In this step, you'll configure **Surface** to send form submissions to the **same HubSpot form** you created in [Step 1](/guides/email-sequences-hubspot/step-1-hubspot-form). When a lead submits or drops off your Surface form, Surface will create a form response in HubSpot, which triggers the automation from [Step 4](/guides/email-sequences-hubspot/step-4-automation) and enrolls them in your sequence.
+
+For more detail and alternative setups, see the full guide [Configure HubSpot in Surface Workflow](/guides/hubspot-forms/configure-workflow).
+
+## Connect HubSpot to Surface
+
+<Frame>
+  <img src="/images/integrations/hubspot/1.png" alt="HubSpot Integration Setup" />
+</Frame>
+
+1. Navigate to the **Workflow Builder** in Surface
+2. Add any HubSpot action and click **Connect**
+3. Select your HubSpot organization when prompted
+4. Accept Surface Labs invite
+5. Click **Connect App** to complete setup
+
+## Create a Workflow
+
+1. Go to **Workflow Builder** from the sidebar
+2. Click **Create workflow**
+3. Choose trigger type:
+   - **Dropped Off** — For partial submissions (lead leaves before completing the form). Use this so drop-offs still get enrolled in your sequence.
+   - **Finished** — For complete submissions only (lead submits the full form)
+
+Add one or both triggers depending on whether you want to enroll partial submissions, completed submissions, or both.
+
+<Frame>
+  <img src="/images/integrations/hubspot/2.png" alt="Surface workflow trigger options and HubSpot actions" />
+</Frame>
+
+## Add HubSpot Action
+
+1. Click **+ Actions**
+2. Select **HubSpot** from the actions list
+3. Choose **Create Form Response** action
+
+## Configure Form Response Action
+
+### Select your HubSpot Form
+
+<Frame>
+  <img src="/images/hubspot/configure-workflow/3.png" alt="HubSpot Create Form Response configuration" />
+</Frame>
+
+1. Click on the **HubSpot Form** dropdown
+2. Select the **same form** you created in [Step 1](/guides/email-sequences-hubspot/step-1-hubspot-form) and used in your [Step 4](/guides/email-sequences-hubspot/step-4-automation) automation
+
+This form must match the one in your HubSpot automation so that submissions from Surface trigger enrollment in your sequence.
+
+### Get Internal Names from HubSpot Form Fields
+
+Before mapping fields, you need the **internal names** (API names) of your HubSpot form fields. You'll use these as the **Value** when mapping in Surface.
+
+<Frame>
+  <img src="/images/hubspot/configure-workflow/4.png" alt="Finding HubSpot form field internal name" />
+</Frame>
+
+To find the internal name for each HubSpot form field:
+
+1. In your HubSpot form editor, **select the field** (e.g., Email or First Name)
+2. In the **Edit field** panel on the left, click **Connected property** (shown as "Connected" with a green indicator)
+3. Under the Connected property section, note the **Internal name** (e.g., `email`, `firstname`)
+
+<Info>
+The internal name is different from the field label. Always use the exact internal name from the Connected property section when mapping in Surface.
+</Info>
+
+### Map Surface Form Fields to HubSpot Form Fields
+
+<Frame>
+  <img src="/images/hubspot/configure-workflow/1.png" alt="Map Surface fields to HubSpot form fields" />
+</Frame>
+
+Map your Surface form fields to the HubSpot form so contact data (and sequence personalization) is correct:
+
+1. Click **Add column** to add a new field mapping
+2. **Key (Surface Field)**: Select the field from your Surface form (e.g., from Form Submission or Lead)
+   - Example: `email`, `firstName`, `lastName`
+3. **Value (HubSpot Internal Name)**: Enter the exact internal name from HubSpot
+   - Example: `email`, `firstname`, `lastname`
+4. **HubSpot Field**: Select the corresponding HubSpot form field from the dropdown (e.g., Email, First name, Last name)
+
+**Mapping examples:**
+
+| Surface Field (Key) | HubSpot Internal Name (Value) | HubSpot Field |
+|--------------------|------------------------------|---------------|
+| `email` (Form Submission) | `email` | Email |
+| `firstName` (Form Submission) | `firstname` | First Name |
+| `lastName` (Form Submission) | `lastname` | Last Name |
+
+<Warning>
+The **Value** must match the HubSpot internal name exactly (case-sensitive). This ensures data flows into the right contact properties and your sequence personalization tokens work.
+</Warning>
+
+## Save and Activate
+
+1. Save the workflow
+2. Activate it so it runs when leads submit or drop off your Surface form
+
+Once this is done, submissions from your Surface form will create form responses in HubSpot and trigger your automation, enrolling contacts in the sequence you set up in Steps 2–4.
+
+## Summary
+
+You've connected your Surface form to the HubSpot form used for email sequences:
+
+- **Dropped Off** trigger → partial submissions are sent to HubSpot and enrolled in the sequence
+- **Finished** trigger → completed submissions are sent and enrolled
+- Field mapping ensures email and other fields (e.g., first name) are available for sequence emails and personalization
+
+For optional HubSpot actions (Create Contact, Create Deal, etc.), see [Configure HubSpot in Surface Workflow – Additional actions](/guides/hubspot-forms/configure-workflow#configure-additional-hubspot-actions-optional).
+
+## You're All Set
+
+Your email sequence flow is complete: when leads submit or drop off your Surface form, they're sent to HubSpot, enrolled in your sequence, and receive your automated follow-up emails. Return to the [Email Sequences with HubSpot overview](/guides/email-sequences-hubspot/overview) for the full flow diagram and related guides.
