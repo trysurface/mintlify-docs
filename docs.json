@@ -268,6 +268,17 @@
                   "guides/email-sequences-customerio-calendly/step-4-calendly-check"
                 ]
               },
+              {
+                "group": "Email Sequences with HubSpot",
+                "pages": [
+                  "guides/email-sequences-hubspot/overview",
+                  "guides/email-sequences-hubspot/step-1-hubspot-form",
+                  "guides/email-sequences-hubspot/step-2-hubspot-sequence",
+                  "guides/email-sequences-hubspot/step-3-follow-up-delays",
+                  "guides/email-sequences-hubspot/step-4-automation",
+                  "guides/email-sequences-hubspot/step-5-surface-workflow"
+                ]
+              },
               "guides/send-data-to-clay"
             ]
           }

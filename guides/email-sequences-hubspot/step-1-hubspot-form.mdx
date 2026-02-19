@@ -1,0 +1,57 @@
+---
+title: "Step 1: Create HubSpot Form"
+description: "Create a HubSpot form with all fields optional except email so partial Surface submissions can be recorded"
+sidebarTitle: "Step 1: Create HubSpot Form"
+og:title: "Create HubSpot Form for Email Sequences | Surface Docs"
+twitter:title: "Create HubSpot Form for Email Sequences | Surface Docs"
+og:description: "Create a HubSpot form with email required and all other fields optional for Surface drop-off sequencing"
+twitter:description: "Create a HubSpot form with email required and all other fields optional for Surface drop-off sequencing"
+og:image: "https://app.withsurface.com/api/v1/form/og?title=HubSpot%20Form%20Email%20Sequences"
+twitter:image: "https://app.withsurface.com/api/v1/form/og?title=HubSpot%20Form%20Email%20Sequences"
+---
+
+In this step, you'll create a **HubSpot form** that Surface will submit to when leads complete or drop off your Surface form. Making all fields **optional except email** ensures that partial submissions (e.g., when a lead only enters their email and leaves) still create a valid form response in HubSpot, which your automation can use to enroll them in a sequence.
+
+If you already have a HubSpot form and only need to adjust which fields are required, see [Step 1: Configure HubSpot Form](/guides/hubspot-forms/configure-hubspot-form) in the HubSpot forms guide to make existing fields optional.
+
+## Create a New Form in HubSpot
+
+1. In HubSpot, go to **Marketing** → **Forms** (or **Marketing** → **Lead Capture** → **Forms** depending on your HubSpot layout)
+2. Click **Create form** and choose **Embedded** (or the form type that fits your use case)
+3. Name the form (e.g., "Surface – Email sequence enrollment")
+
+<Frame>
+  <img src="/images/hubspot/existing-form/1.png" alt="HubSpot Forms – create or select form" />
+</Frame>
+
+## Set Fields: Email Required, Rest Optional
+
+1. Add the fields you want to capture (e.g., **Email**, **First name**, **Last name**, **Company**)
+2. For **Email**: keep it **required** so every submission has at least an email for the sequence
+3. For **all other fields**: set them to **optional** (not required), so partial submissions from Surface are accepted
+
+This way, when a lead drops off your Surface form after only entering their email, Surface can still send that single field to HubSpot and HubSpot will accept it as a valid form submission.
+
+<Frame>
+  <img src="/images/hubspot/existing-form/2.png" alt="HubSpot form field settings – required vs optional" />
+</Frame>
+
+<Tip>
+Match these fields to the ones you map in your Surface workflow. Use the same **internal names** (e.g., `email`, `firstname`, `lastname`) when configuring [Create Form Response](/guides/hubspot-forms/configure-workflow#map-surface-form-fields-to-hubspot-form-fields) so data lines up with your sequence personalization tokens.
+</Tip>
+
+## Connect Properties and Publish
+
+1. Ensure each form field is **connected** to the correct HubSpot contact property (e.g., Email → `email`, First name → `firstname`)
+2. Complete any other form settings (thank-you message, redirect, etc.)
+3. **Publish** the form
+
+You don't need to embed this form on a page—Surface will submit to it via the API when you configure the workflow in [Step 5: Connect HubSpot Form with Surface Workflow](/guides/email-sequences-hubspot/step-5-surface-workflow). Note the form name so you can select it in Step 4 (automation) and Step 5 (Surface workflow).
+
+## Next Step
+
+Create the HubSpot sequence and first email template with personalization and meeting link. See [Step 2: Create HubSpot Sequence](/guides/email-sequences-hubspot/step-2-hubspot-sequence).
+
+<Info>
+You'll connect this form to Surface in [Step 5](/guides/email-sequences-hubspot/step-5-surface-workflow). Steps 2–4 are done in HubSpot (sequence and automation) first.
+</Info>
