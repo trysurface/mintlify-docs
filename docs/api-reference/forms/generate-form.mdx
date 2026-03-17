@@ -225,8 +225,8 @@ console.log(data.result.form); // { id: "...", url: "/s/..." }
   </Expandable>
 </ParamField>
 
-<ParamField body="MultipleChoiceSingleAnswer" type="component">
-  Radio-button style single selection.
+<ParamField body="MultipleOptionsQuestion" type="component">
+  Single or multi-select options question.
 
   <Expandable title="Content fields">
     | Field | Type | Description |
@@ -234,23 +234,13 @@ console.log(data.result.form); // { id: "...", url: "/s/..." }
     | `question` | string | The question/label text |
     | `choices` | string[] | Array of choice options. You can also use `options` as an alias. |
     | `subheading` | string | Subheading text below the question |
-  </Expandable>
-</ParamField>
-
-<ParamField body="MultipleChoiceQuestion" type="component">
-  Checkbox-style multi-selection.
-
-  <Expandable title="Content fields">
-    | Field | Type | Description |
-    |-------|------|-------------|
-    | `question` | string | The question/label text |
-    | `choices` | string[] | Array of choice options. You can also use `options` as an alias. |
+    | `isMulti` | boolean | Allow multiple selections |
   </Expandable>
 </ParamField>
 
 ### Scheduling Components
 
-<ParamField body="CalendlyScreen" type="component">
+<ParamField body="Scheduler" type="component">
   Embeds a calendar scheduling widget (supports Calendly, Cal.com, HubSpot, SavvyCal, RevenueHero, and more). Requires a calendar URL.
 
   <Expandable title="Content fields">
@@ -260,20 +250,6 @@ console.log(data.result.form); // { id: "...", url: "/s/..." }
     | `message` | string | No | Message displayed above the calendar |
     | `calendarType` | string | No | Calendar provider: `"Calendly"`, `"Cal"`, `"Hubspot"`, `"SavvyCal"`, `"RevenueHero"`, `"ReclaimAI"`, `"Clari"`, `"ChiliCal"` |
     | `prefillEmail` | boolean | No | Auto-fill email from earlier form steps |
-  </Expandable>
-</ParamField>
-
-<ParamField body="DynamicScheduler" type="component">
-  Routes to different calendars based on conditional logic (e.g., route to different sales reps based on form answers). Requires a default calendar.
-
-  <Expandable title="Content fields">
-    | Field | Type | Required | Description |
-    |-------|------|----------|-------------|
-    | `defaultCalendar` | object | Yes | The default calendar to show |
-    | `defaultCalendar.name` | string | Yes | Calendar display name |
-    | `defaultCalendar.dataUrl` | string | No | Calendar URL. You can also use `url` as an alias. |
-    | `calendarType` | string | No | Calendar provider (same options as CalendlyScreen) |
-    | `calendars` | array | No | Additional calendars with conditional routing rules |
   </Expandable>
 </ParamField>
 
@@ -289,20 +265,32 @@ console.log(data.result.form); // { id: "...", url: "/s/..." }
   </Expandable>
 </ParamField>
 
-<ParamField body="NextBackButtons" type="component">
-  Next and back buttons together.
+### Display Components
+
+<ParamField body="Header" type="component">
+  A text header displayed at the top of a step.
 
   <Expandable title="Content fields">
     | Field | Type | Description |
     |-------|------|-------------|
-    | `nextLabel` | string | Next button text (alias for `nextButtonText`) |
-    | `backLabel` | string | Back button text (alias for `backButtonText`) |
+    | `title` | string | The heading text |
+    | `subheading` | string | Optional subheading text below the title |
+  </Expandable>
+</ParamField>
+
+<ParamField body="Disclaimer" type="component">
+  A block of disclaimer or legal text.
+
+  <Expandable title="Content fields">
+    | Field | Type | Description |
+    |-------|------|-------------|
+    | `text` | string | The disclaimer text content |
   </Expandable>
 </ParamField>
 
 ### Other Components
 
-Additional component types are supported: `Header`, `EmailForm`, `Disclaimer`, `FileUploader`, `GraphicOptions`, `MultipleOptionsQuestion`, `PasswordInput`, and more. These follow the same pattern — pass the `type` and relevant `content` fields.
+Additional component types are supported: `EmailForm`, `FileUploader`, `GraphicOptions`, `PasswordInput`, and more. These follow the same pattern — pass the `type` and relevant `content` fields.
 
 ## Response
 
@@ -325,10 +313,9 @@ Additional component types are supported: `Header`, `EmailForm`, `Disclaimer`, `
   </Expandable>
 </ResponseField>
 
-### Example Response
+#### Example Response
 
-<ResponseExample name="200 - Success">
-```json
+```json 200 - Success
 {
   "success": true,
   "result": {
@@ -339,12 +326,11 @@ Additional component types are supported: `Header`, `EmailForm`, `Disclaimer`, `
   }
 }
 ```
-</ResponseExample>
 
-### Error Responses
+#### Error Responses
 
-<ResponseExample name="400 - Invalid Request">
-```json
+<CodeGroup>
+```json 400 - Invalid Request
 {
   "message": "Invalid request body",
   "errors": [
@@ -355,21 +341,17 @@ Additional component types are supported: `Header`, `EmailForm`, `Disclaimer`, `
   ]
 }
 ```
-</ResponseExample>
 
-<ResponseExample name="404 - Source Form Not Found">
-```json
+```json 404 - Source Form Not Found
 {
   "message": "Source form not found"
 }
 ```
-</ResponseExample>
-
-## Examples
+</CodeGroup>
 
 ### Form with Scheduling
 
-Create a lead capture form with a Calendly scheduling step:
+Create a lead capture form with a scheduler step:
 
 <CodeGroup>
 ```bash cURL
@@ -464,46 +446,3 @@ const response = await fetch(
 );
 ```
 </CodeGroup>
-
-### Form with Dynamic Scheduling
-
-Route leads to different calendars based on their answers:
-
-```json
-{
-  "sourceFormId": "your-source-form-id",
-  "name": "Routed Booking Form",
-  "steps": [
-    {
-      "name": "Qualification",
-      "components": [
-        {
-          "type": "Dropdown",
-          "content": {
-            "question": "Company size",
-            "options": ["1-50", "51-200", "201-1000", "1000+"]
-          }
-        },
-        {
-          "type": "NextButton",
-          "content": { "label": "Next" }
-        }
-      ]
-    },
-    {
-      "name": "Book a Call",
-      "components": [
-        {
-          "type": "DynamicScheduler",
-          "content": {
-            "defaultCalendar": {
-              "name": "Sales Team",
-              "dataUrl": "https://calendly.com/sales-team/intro"
-            }
-          }
-        }
-      ]
-    }
-  ]
-}
-```
