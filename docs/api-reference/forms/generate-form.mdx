@@ -10,6 +10,10 @@ description: "Programmatically create a new form from a source template using th
   <ParamField path="environmentId" type="string" required>
     The ID of the environment to create the form in.
   </ParamField>
+
+  <Info>
+    <code>environmentId</code> is your <strong>Site ID</strong> (<code>site-id</code>). You can find it in the Surface dashboard under <code>Settings</code> → <code>Overview</code>. See [How to Get Site ID](/docs/surface-tag/installation#where-to-find-your-site-id).
+  </Info>
 </Endpoint>
 
 Create a new form programmatically by providing a source form as a template and defining the steps and components for the new form. The generated form inherits all styling, fonts, backgrounds, and layout settings from the source form.
