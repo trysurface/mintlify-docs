@@ -1,0 +1,448 @@
+---
+title: "Generate Form"
+description: "Programmatically create a new form from a source template using the API"
+---
+
+<Endpoint method="POST" path="/api/v1/environments/{environmentId}/forms/generate" summary="Generate a new form from a source template">
+  <ParamField header="x-api-key" type="string" required>
+    Your API key for authentication.
+  </ParamField>
+  <ParamField path="environmentId" type="string" required>
+    The ID of the environment to create the form in.
+  </ParamField>
+
+  <Info>
+    <code>environmentId</code> is your <strong>Site ID</strong> (<code>site-id</code>). You can find it in the Surface dashboard under <code>Settings</code> → <code>Overview</code>. See [How to Get Site ID](/docs/surface-tag/installation#where-to-find-your-site-id).
+  </Info>
+</Endpoint>
+
+Create a new form programmatically by providing a source form as a template and defining the steps and components for the new form. The generated form inherits all styling, fonts, backgrounds, and layout settings from the source form.
+
+<Tip> You'll need an API key to use this endpoint. See the [API Keys](/docs/api-reference/api-keys) documentation to create one. </Tip>
+
+## How It Works
+
+1. You provide a **source form ID** — this form acts as a style template. The generated form inherits its fonts, colors, backgrounds, and component styles.
+2. You define the **steps** and **components** for the new form. Each step contains one or more components (inputs, dropdowns, scheduling widgets, etc.).
+3. The API creates the form, publishes it, and returns the form ID and URL.
+
+<Info>
+  The source form must belong to the same environment and must not be deleted. Component types that are not in the source form's styles will automatically receive default styling.
+</Info>
+
+## Request
+
+<CodeGroup>
+```bash cURL
+curl -X POST 'https://forms.withsurface.com/api/v1/environments/{environmentId}/forms/generate' \
+  -H 'x-api-key: your-api-key-here' \
+  -H 'Content-Type: application/json' \
+  -d '{
+    "sourceFormId": "your-source-form-id",
+    "name": "My Generated Form",
+    "steps": [
+      {
+        "name": "Contact Info",
+        "components": [
+          {
+            "type": "IdentityInfo",
+            "content": {
+              "fields": [
+                { "type": "text", "name": "firstName", "label": "First Name", "required": true },
+                { "type": "text", "name": "lastName", "label": "Last Name", "required": true },
+                { "type": "email", "name": "emailAddress", "label": "Email", "required": true }
+              ]
+            }
+          },
+          {
+            "type": "NextButton",
+            "content": { "label": "Continue" }
+          }
+        ]
+      },
+      {
+        "name": "Additional Details",
+        "components": [
+          {
+            "type": "Dropdown",
+            "content": {
+              "question": "What is your role?",
+              "options": ["Engineering", "Product", "Design", "Marketing", "Sales", "Other"]
+            }
+          },
+          {
+            "type": "NextButton",
+            "content": { "label": "Submit" }
+          }
+        ]
+      }
+    ]
+  }'
+```
+
+```typescript TypeScript
+const response = await fetch(
+  `https://forms.withsurface.com/api/v1/environments/${environmentId}/forms/generate`,
+  {
+    method: "POST",
+    headers: {
+      "x-api-key": "your-api-key-here",
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify({
+      sourceFormId: "your-source-form-id",
+      name: "My Generated Form",
+      steps: [
+        {
+          name: "Contact Info",
+          components: [
+            {
+              type: "IdentityInfo",
+              content: {
+                fields: [
+                  { type: "text", name: "firstName", label: "First Name", required: true },
+                  { type: "text", name: "lastName", label: "Last Name", required: true },
+                  { type: "email", name: "emailAddress", label: "Email", required: true },
+                ],
+              },
+            },
+            {
+              type: "NextButton",
+              content: { label: "Continue" },
+            },
+          ],
+        },
+        {
+          name: "Additional Details",
+          components: [
+            {
+              type: "Dropdown",
+              content: {
+                question: "What is your role?",
+                options: ["Engineering", "Product", "Design", "Marketing", "Sales", "Other"],
+              },
+            },
+            {
+              type: "NextButton",
+              content: { label: "Submit" },
+            },
+          ],
+        },
+      ],
+    }),
+  }
+);
+
+const data = await response.json();
+console.log(data.result.form); // { id: "...", url: "/s/..." }
+```
+</CodeGroup>
+
+## Body Parameters
+
+<ParamField body="sourceFormId" type="string" required>
+  The ID of an existing form to use as a style template. The generated form inherits all visual settings (fonts, colors, backgrounds, component styles) from this form.
+</ParamField>
+
+<ParamField body="name" type="string" required>
+  Display name for the generated form.
+</ParamField>
+
+<ParamField body="steps" type="array" required>
+  Array of step objects (minimum 2). Each step represents a page/screen in the form.
+
+  <Expandable title="Step object properties">
+    <ParamField body="steps[].name" type="string" required>
+      Display name for the step.
+    </ParamField>
+
+    <ParamField body="steps[].components" type="array" required>
+      Array of component objects (minimum 1). Each component is a form element within the step.
+
+      <Expandable title="Component object properties">
+        <ParamField body="type" type="string" required>
+          The component type. See [Supported Component Types](#supported-component-types) below.
+        </ParamField>
+        <ParamField body="content" type="object" required>
+          Component-specific content. The shape depends on the component type.
+        </ParamField>
+      </Expandable>
+    </ParamField>
+  </Expandable>
+</ParamField>
+
+## Supported Component Types
+
+### Input Components
+
+<ParamField body="ShortInput" type="component">
+  Single-line text input.
+
+  <Expandable title="Content fields">
+    | Field | Type | Description |
+    |-------|------|-------------|
+    | `question` | string | The question/label text |
+  </Expandable>
+</ParamField>
+
+<ParamField body="LongInput" type="component">
+  Multi-line text area.
+
+  <Expandable title="Content fields">
+    | Field | Type | Description |
+    |-------|------|-------------|
+    | `question` | string | The question/label text |
+  </Expandable>
+</ParamField>
+
+<ParamField body="IdentityInfo" type="component">
+  Collects identity fields (name, email, company, etc.). This component has a **strict schema** — only the `fields` array is accepted.
+
+  <Expandable title="Content fields">
+    | Field | Type | Required | Description |
+    |-------|------|----------|-------------|
+    | `fields` | array | Yes | Array of field objects |
+    | `fields[].type` | string | Yes | Field type: `"text"` or `"email"` |
+    | `fields[].name` | string | Yes | Field identifier: `"firstName"`, `"lastName"`, `"emailAddress"`, `"companyName"`, `"phone"` |
+    | `fields[].label` | string | Yes | Display label |
+    | `fields[].required` | boolean | No | Whether the field is required |
+  </Expandable>
+</ParamField>
+
+### Selection Components
+
+<ParamField body="Dropdown" type="component">
+  Dropdown select menu. Requires at least one option.
+
+  <Expandable title="Content fields">
+    | Field | Type | Required | Description |
+    |-------|------|----------|-------------|
+    | `question` | string | No | The question/label text |
+    | `options` | string[] | Yes | Array of dropdown options (at least 1). You can also use `choices` as an alias. |
+    | `placeholder` | string | No | Placeholder text |
+    | `isMulti` | boolean | No | Allow multiple selections |
+    | `hideQuestion` | boolean | No | Hide the question label |
+  </Expandable>
+</ParamField>
+
+<ParamField body="MultipleOptionsQuestion" type="component">
+  Single or multi-select options question.
+
+  <Expandable title="Content fields">
+    | Field | Type | Description |
+    |-------|------|-------------|
+    | `question` | string | The question/label text |
+    | `choices` | string[] | Array of choice options. You can also use `options` as an alias. |
+    | `subheading` | string | Subheading text below the question |
+    | `isMulti` | boolean | Allow multiple selections |
+  </Expandable>
+</ParamField>
+
+### Scheduling Components
+
+<ParamField body="Scheduler" type="component">
+  Embeds a calendar scheduling widget (supports Calendly, Cal.com, HubSpot, SavvyCal, RevenueHero, and more). Requires a calendar URL.
+
+  <Expandable title="Content fields">
+    | Field | Type | Required | Description |
+    |-------|------|----------|-------------|
+    | `dataUrl` | string | Yes | The calendar scheduling URL. You can also use `url` or `calendarUrl` as aliases. |
+    | `message` | string | No | Message displayed above the calendar |
+    | `calendarType` | string | No | Calendar provider: `"Calendly"`, `"Cal"`, `"Hubspot"`, `"SavvyCal"`, `"RevenueHero"`, `"ReclaimAI"`, `"Clari"`, `"ChiliCal"` |
+    | `prefillEmail` | boolean | No | Auto-fill email from earlier form steps |
+  </Expandable>
+</ParamField>
+
+### Navigation Components
+
+<ParamField body="NextButton" type="component">
+  Button to advance to the next step.
+
+  <Expandable title="Content fields">
+    | Field | Type | Description |
+    |-------|------|-------------|
+    | `label` | string | Button text (alias for `buttonText`) |
+  </Expandable>
+</ParamField>
+
+### Display Components
+
+<ParamField body="Header" type="component">
+  A text header displayed at the top of a step.
+
+  <Expandable title="Content fields">
+    | Field | Type | Description |
+    |-------|------|-------------|
+    | `title` | string | The heading text |
+    | `subheading` | string | Optional subheading text below the title |
+  </Expandable>
+</ParamField>
+
+<ParamField body="Disclaimer" type="component">
+  A block of disclaimer or legal text.
+
+  <Expandable title="Content fields">
+    | Field | Type | Description |
+    |-------|------|-------------|
+    | `text` | string | The disclaimer text content |
+  </Expandable>
+</ParamField>
+
+### Other Components
+
+Additional component types are supported: `EmailForm`, `FileUploader`, `GraphicOptions`, `PasswordInput`, and more. These follow the same pattern — pass the `type` and relevant `content` fields.
+
+## Response
+
+<ResponseField name="success" type="boolean">
+  Whether the form was created successfully.
+</ResponseField>
+
+<ResponseField name="result" type="object">
+  <Expandable title="Result object properties">
+    <ResponseField name="form" type="object">
+      <Expandable title="Form object properties">
+        <ResponseField name="id" type="string">
+          Unique identifier for the generated form.
+        </ResponseField>
+        <ResponseField name="url" type="string">
+          The public URL path for the form (e.g., `/s/{formId}`).
+        </ResponseField>
+      </Expandable>
+    </ResponseField>
+  </Expandable>
+</ResponseField>
+
+#### Example Response
+
+```json 200 - Success
+{
+  "success": true,
+  "result": {
+    "form": {
+      "id": "cm5abc123def456",
+      "url": "/s/cm5abc123def456"
+    }
+  }
+}
+```
+
+#### Error Responses
+
+<CodeGroup>
+```json 400 - Invalid Request
+{
+  "message": "Invalid request body",
+  "errors": [
+    {
+      "message": "CalendlyScreen requires a calendar URL (via 'dataUrl', 'url', or 'calendarUrl')",
+      "path": ["steps", 0, "components", 1, "content"]
+    }
+  ]
+}
+```
+
+```json 404 - Source Form Not Found
+{
+  "message": "Source form not found"
+}
+```
+</CodeGroup>
+
+### Form with Scheduling
+
+Create a lead capture form with a scheduler step:
+
+<CodeGroup>
+```bash cURL
+curl -X POST 'https://forms.withsurface.com/api/v1/environments/{environmentId}/forms/generate' \
+  -H 'x-api-key: your-api-key-here' \
+  -H 'Content-Type: application/json' \
+  -d '{
+    "sourceFormId": "your-source-form-id",
+    "name": "Demo Booking Form",
+    "steps": [
+      {
+        "name": "Your Info",
+        "components": [
+          {
+            "type": "IdentityInfo",
+            "content": {
+              "fields": [
+                { "type": "text", "name": "firstName", "label": "First Name", "required": true },
+                { "type": "text", "name": "lastName", "label": "Last Name", "required": true },
+                { "type": "email", "name": "emailAddress", "label": "Work Email", "required": true },
+                { "type": "text", "name": "companyName", "label": "Company", "required": true }
+              ]
+            }
+          },
+          {
+            "type": "NextButton",
+            "content": { "label": "Book a Demo" }
+          }
+        ]
+      },
+      {
+        "name": "Schedule",
+        "components": [
+          {
+            "type": "CalendlyScreen",
+            "content": {
+              "dataUrl": "https://calendly.com/your-team/30min",
+              "message": "Pick a time that works for you"
+            }
+          }
+        ]
+      }
+    ]
+  }'
+```
+
+```typescript TypeScript
+const response = await fetch(
+  `https://forms.withsurface.com/api/v1/environments/${environmentId}/forms/generate`,
+  {
+    method: "POST",
+    headers: {
+      "x-api-key": "your-api-key-here",
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify({
+      sourceFormId: "your-source-form-id",
+      name: "Demo Booking Form",
+      steps: [
+        {
+          name: "Your Info",
+          components: [
+            {
+              type: "IdentityInfo",
+              content: {
+                fields: [
+                  { type: "text", name: "firstName", label: "First Name", required: true },
+                  { type: "text", name: "lastName", label: "Last Name", required: true },
+                  { type: "email", name: "emailAddress", label: "Work Email", required: true },
+                  { type: "text", name: "companyName", label: "Company", required: true },
+                ],
+              },
+            },
+            { type: "NextButton", content: { label: "Book a Demo" } },
+          ],
+        },
+        {
+          name: "Schedule",
+          components: [
+            {
+              type: "CalendlyScreen",
+              content: {
+                dataUrl: "https://calendly.com/your-team/30min",
+                message: "Pick a time that works for you",
+              },
+            },
+          ],
+        },
+      ],
+    }),
+  }
+);
+```
+</CodeGroup>
