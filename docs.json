@@ -38,6 +38,12 @@
             "pages": [
               "docs/api-reference/api-keys",
               {
+                "group": "Forms",
+                "pages": [
+                  "docs/api-reference/forms/generate-form"
+                ]
+              },
+              {
                 "group": "Responses",
                 "pages": [
                   "docs/api-reference/responses/get-all-responses",
