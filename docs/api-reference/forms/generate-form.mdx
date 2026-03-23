@@ -48,9 +48,9 @@ curl -X POST 'https://forms.withsurface.com/api/v1/environments/{environmentId}/
             "type": "IdentityInfo",
             "content": {
               "fields": [
-                { "type": "text", "name": "firstName", "label": "First Name", "required": true },
-                { "type": "text", "name": "lastName", "label": "Last Name", "required": true },
-                { "type": "email", "name": "emailAddress", "label": "Email", "required": true }
+                { "key": "firstName", "label": "First Name" },
+                { "key": "lastName", "label": "Last Name" },
+                { "key": "emailAddress", "label": "Email" }
               ]
             }
           },
@@ -100,9 +100,9 @@ const response = await fetch(
               type: "IdentityInfo",
               content: {
                 fields: [
-                  { type: "text", name: "firstName", label: "First Name", required: true },
-                  { type: "text", name: "lastName", label: "Last Name", required: true },
-                  { type: "email", name: "emailAddress", label: "Email", required: true },
+                  { key: "firstName", label: "First Name" },
+                  { key: "lastName", label: "Last Name" },
+                  { key: "emailAddress", label: "Email" },
                 ],
               },
             },
@@ -202,10 +202,13 @@ console.log(data.result.form); // { id: "...", url: "/s/..." }
     | Field | Type | Required | Description |
     |-------|------|----------|-------------|
     | `fields` | array | Yes | Array of field objects |
-    | `fields[].type` | string | Yes | Field type: `"text"` or `"email"` |
-    | `fields[].name` | string | Yes | Field identifier: `"firstName"`, `"lastName"`, `"emailAddress"`, `"companyName"`, `"phone"` |
+    | `fields[].key` | string | Yes | Field identifier. Valid keys: `"firstName"`, `"lastName"`, `"fullName"`, `"emailAddress"`, `"workEmailAddress"`, `"phoneNumber"`, `"companyName"`, `"numberOfEmployees"`, `"websiteUrl"`, `"title"`, `"streetAddress"`, `"aptSuiteEtc"`, `"city"`, `"state"`, `"country"`, `"zipCode"`, `"companyRevenue"`, `"profilePictureUrl"` |
     | `fields[].label` | string | Yes | Display label |
-    | `fields[].required` | boolean | No | Whether the field is required |
+    | `fields[].placeholder` | string | No | Placeholder text |
+    | `fields[].includeDialCode` | boolean | No | Include dial code selector (for phone fields) |
+    | `fields[].defaultDialCodeCountry` | string | No | Default country for dial code |
+    | `fields[].blockPersonalEmails` | boolean | No | Block personal email domains (for email fields) |
+    | `fields[].revealAfter` | string | No | Key of another field that must be filled before this one is shown |
   </Expandable>
 </ParamField>
 
@@ -369,10 +372,10 @@ curl -X POST 'https://forms.withsurface.com/api/v1/environments/{environmentId}/
             "type": "IdentityInfo",
             "content": {
               "fields": [
-                { "type": "text", "name": "firstName", "label": "First Name", "required": true },
-                { "type": "text", "name": "lastName", "label": "Last Name", "required": true },
-                { "type": "email", "name": "emailAddress", "label": "Work Email", "required": true },
-                { "type": "text", "name": "companyName", "label": "Company", "required": true }
+                { "key": "firstName", "label": "First Name" },
+                { "key": "lastName", "label": "Last Name" },
+                { "key": "emailAddress", "label": "Work Email" },
+                { "key": "companyName", "label": "Company" }
               ]
             }
           },
@@ -418,10 +421,10 @@ const response = await fetch(
               type: "IdentityInfo",
               content: {
                 fields: [
-                  { type: "text", name: "firstName", label: "First Name", required: true },
-                  { type: "text", name: "lastName", label: "Last Name", required: true },
-                  { type: "email", name: "emailAddress", label: "Work Email", required: true },
-                  { type: "text", name: "companyName", label: "Company", required: true },
+                  { key: "firstName", label: "First Name" },
+                  { key: "lastName", label: "Last Name" },
+                  { key: "emailAddress", label: "Work Email" },
+                  { key: "companyName", label: "Company" },
                 ],
               },
             },
