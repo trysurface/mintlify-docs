@@ -1,0 +1,77 @@
+---
+title: "MCP Server"
+description: "Connect any MCP-compatible AI assistant to Surface Forms and query your data with natural language"
+sidebarTitle: "Overview"
+og:title: "MCP Server | Surface Docs"
+twitter:title: "MCP Server | Surface Docs"
+og:description: "Connect any MCP-compatible AI assistant to Surface Forms and query your data with natural language"
+twitter:description: "Connect any MCP-compatible AI assistant to Surface Forms and query your data with natural language"
+og:image: "https://app.withsurface.com/api/v1/form/og?title=MCP%20Server"
+twitter:image: "https://app.withsurface.com/api/v1/form/og?title=MCP%20Server"
+---
+
+The Surface Forms MCP server lets you connect any [MCP-compatible](https://modelcontextprotocol.io/) AI assistant — Claude, Cursor, Windsurf, and more — to your Surface Forms data. Ask questions in natural language and get instant answers about your forms, responses, leads, analytics, workflows, and AI scores.
+
+<Info>
+  All **21 tools** exposed by the MCP server are **read-only**. Your data is never modified through MCP.
+</Info>
+
+## What Can You Do?
+
+<CardGroup cols={2}>
+  <Card title="Forms & Responses" icon="rectangle-list">
+    List forms, view configurations, search and filter responses, track completion status.
+  </Card>
+  <Card title="Leads" icon="user-check">
+    Browse qualified leads, filter by source, get counts broken down by source or funnel stage.
+  </Card>
+  <Card title="Analytics" icon="chart-line">
+    Completion rates, dropoff analysis, daily trends, landing page performance, UTM breakdowns, conversion funnels.
+  </Card>
+  <Card title="AI Scoring" icon="brain">
+    Top-scored leads, score distributions, form comparisons, full-text response search.
+  </Card>
+  <Card title="Workflows" icon="diagram-project">
+    List workflow runs, filter by status, inspect per-step execution details and errors.
+  </Card>
+  <Card title="Environment Overview" icon="gauge-high">
+    High-level summary of your environment — total forms, leads, responses, and workflows at a glance.
+  </Card>
+</CardGroup>
+
+## Prerequisites
+
+You need a **Surface Forms API key** to connect. The API key determines which environment the MCP server can access — every tool call is automatically scoped to that environment.
+
+<Steps>
+  <Step title="Create an API key">
+    Go to **Settings > API Keys** in your Surface dashboard and click **+ Add API Key**. Copy the key immediately — it won't be shown again.
+  </Step>
+  <Step title="Connect your AI assistant">
+    Follow the [setup guide](/docs/mcp-server/setup) for your specific client (Claude Desktop, Cursor, Claude Code, etc.).
+  </Step>
+  <Step title="Start asking questions">
+    Once connected, just ask your AI assistant about your Surface Forms data in plain English.
+  </Step>
+</Steps>
+
+## Example Prompts
+
+Here are some things you can ask once connected:
+
+- "Show me the latest 10 responses for my Contact Us form"
+- "How many leads did we get from website de-anonymization this month?"
+- "What's the completion rate for our pricing survey?"
+- "Which question has the highest dropoff in the onboarding form?"
+- "Give me the top 5 leads by AI score"
+- "Compare all my forms by completion rate"
+- "Show me the conversion funnel for the last 7 days"
+- "Which landing pages have the best form completion rate?"
+- "Find all responses containing 'enterprise'"
+- "Show me failed workflow runs from this week"
+- "What UTM campaigns are driving traffic to my demo request form?"
+- "How many leads came from each source in Q1?"
+
+<Card title="Full Tool Reference" icon="wrench" href="/docs/mcp-server/tools">
+  See all 21 available tools with their parameters and use cases.
+</Card>

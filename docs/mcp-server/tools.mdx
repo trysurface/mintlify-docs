@@ -1,0 +1,438 @@
+---
+title: "Tool Reference"
+description: "Complete reference for all 21 MCP tools available in the Surface Forms MCP server"
+sidebarTitle: "Tool Reference"
+og:title: "MCP Tool Reference | Surface Docs"
+twitter:title: "MCP Tool Reference | Surface Docs"
+og:description: "Complete reference for all 21 MCP tools available in the Surface Forms MCP server"
+twitter:description: "Complete reference for all 21 MCP tools available in the Surface Forms MCP server"
+og:image: "https://app.withsurface.com/api/v1/form/og?title=MCP%20Tool%20Reference"
+twitter:image: "https://app.withsurface.com/api/v1/form/og?title=MCP%20Tool%20Reference"
+---
+
+The Surface Forms MCP server exposes **21 read-only tools** organized into six categories. All tools are automatically scoped to your environment via your API key.
+
+## Forms
+
+### `list_forms`
+
+List all forms in your environment with response counts and pagination.
+
+<ParamField body="page" type="number">
+  Page number for pagination.
+</ParamField>
+<ParamField body="limit" type="number">
+  Number of forms to return per page.
+</ParamField>
+<ParamField body="search" type="string">
+  Search forms by name.
+</ParamField>
+<ParamField body="sortBy" type="string">
+  Sort by `"name"`, `"updatedAt"`, or `"createdAt"`.
+</ParamField>
+<ParamField body="sortOrder" type="string">
+  Sort direction: `"asc"` or `"desc"`.
+</ParamField>
+<ParamField body="dateRange" type="object">
+  Filter by date range with `from` and `to` fields. Response counts are scoped to this range.
+</ParamField>
+
+<Accordion title="Example use cases">
+  - List all my forms with response counts
+  - Search forms by name (e.g. "contact us")
+  - Get forms sorted by most recently updated
+  - See how many total/completed/partial responses a form has within a date range
+</Accordion>
+
+---
+
+### `get_form`
+
+Get a single form's full configuration, including all questions, styles, and settings.
+
+<ParamField body="formId" type="string" required>
+  The ID of the form to retrieve.
+</ParamField>
+
+---
+
+## Responses
+
+### `list_responses`
+
+List responses for a form with filtering, full-text search, and sorting.
+
+<ParamField body="formId" type="string" required>
+  The form to list responses for.
+</ParamField>
+<ParamField body="limit" type="number">
+  Number of responses to return.
+</ParamField>
+<ParamField body="finished" type="boolean">
+  Filter by completion status. `true` = completed, `false` = partial/abandoned.
+</ParamField>
+<ParamField body="dateRange" type="object">
+  Filter responses by date range (`from`, `to`).
+</ParamField>
+<ParamField body="filter" type="array">
+  Filter responses by answer values. Each filter has `type`, `filter`, and `operator` (e.g. `"contains"`, `"equals"`).
+</ParamField>
+<ParamField body="search" type="array">
+  Full-text search across response data. Each entry has `type` and `value`.
+</ParamField>
+<ParamField body="sort" type="array">
+  Sort by specific fields. Each entry has `field` and `direction`.
+</ParamField>
+
+<Accordion title="Example use cases">
+  - Get the latest 10 responses for a specific form
+  - Get only completed responses
+  - Filter responses by answer value (e.g. contains "enterprise")
+  - Get responses within a date range
+</Accordion>
+
+---
+
+### `get_response`
+
+Get a single response with all answer data, notes, tags, and associated person info.
+
+<ParamField body="responseId" type="string" required>
+  The ID of the response to retrieve.
+</ParamField>
+
+---
+
+### `search_responses`
+
+Full-text search across all response data in your environment.
+
+<ParamField body="searchTerm" type="string" required>
+  The text to search for across response data (email, name, answer values, etc.).
+</ParamField>
+<ParamField body="formId" type="string">
+  Optionally scope the search to a specific form.
+</ParamField>
+
+<Accordion title="Example use cases">
+  - Find all responses containing a specific email address
+  - Search for responses mentioning "enterprise"
+  - Find all responses from a specific company
+</Accordion>
+
+---
+
+## Leads
+
+### `list_leads`
+
+List qualified leads with their attributes (email, name, company) and scores.
+
+<ParamField body="page" type="number">
+  Page number for pagination.
+</ParamField>
+<ParamField body="limit" type="number">
+  Number of leads to return per page.
+</ParamField>
+<ParamField body="search" type="string">
+  Search leads by email, name, or company.
+</ParamField>
+<ParamField body="source" type="string">
+  Filter by lead source: `"surfaceForm"`, `"htmlForm"`, `"websiteDeAnon"`, or `"webhook"`.
+</ParamField>
+<ParamField body="dateRange" type="object">
+  Filter leads by creation date range (`from`, `to`).
+</ParamField>
+
+<Accordion title="Example use cases">
+  - List all qualified leads
+  - Search leads by email or company name
+  - Filter leads by source (e.g. only website de-anonymization leads)
+  - Get leads created in a specific date range
+</Accordion>
+
+---
+
+### `get_leads_count`
+
+Get total lead counts with optional breakdowns by source or funnel stage.
+
+<ParamField body="bySource" type="boolean">
+  Break down count by lead source (Surface Form, HTML Form, Website De-Anon, Webhook).
+</ParamField>
+<ParamField body="byEventType" type="boolean">
+  Break down count by funnel stage (visited, submitted, completed, meeting booked).
+</ParamField>
+<ParamField body="dateRange" type="object">
+  Scope counts to a date range (`from`, `to`).
+</ParamField>
+
+<Accordion title="Example use cases">
+  - Get total count of qualified leads
+  - Break down leads by source
+  - Break down leads by funnel stage
+  - Get lead counts in a date range broken down by source and event type
+</Accordion>
+
+---
+
+## Analytics
+
+### `get_form_analytics`
+
+Get completion rate and dropoff analysis for a form, including email open rates and top referrer URLs.
+
+<ParamField body="formId" type="string" required>
+  The form to analyze.
+</ParamField>
+<ParamField body="dateRange" type="object">
+  Scope analytics to a date range (`from`, `to`).
+</ParamField>
+
+<Accordion title="Example use cases">
+  - Get completion rate and dropoff analysis
+  - See which question has the highest dropoff
+  - Get email open rates for a form
+  - Get top referrer URLs
+</Accordion>
+
+---
+
+### `get_daily_form_stats`
+
+Get day-by-day response counts for a specific form.
+
+<ParamField body="formId" type="string" required>
+  The form to get daily stats for.
+</ParamField>
+<ParamField body="dateRange" type="object">
+  Scope to a date range (`from`, `to`).
+</ParamField>
+
+---
+
+### `get_daily_stats`
+
+Get daily environment-level metrics including visitors, leads, responses, and workflow runs.
+
+<ParamField body="dateRange" type="object">
+  Scope to a date range (`from`, `to`). Defaults to the last 30 days.
+</ParamField>
+
+---
+
+### `get_lead_source_analytics`
+
+Get landing page performance metrics — visitors, form starts, completions, meetings, and conversion rates. Automatically includes comparison with the previous period.
+
+<ParamField body="page" type="number">
+  Page number for pagination.
+</ParamField>
+<ParamField body="limit" type="number">
+  Number of landing pages to return.
+</ParamField>
+<ParamField body="search" type="string">
+  Search landing pages by URL.
+</ParamField>
+<ParamField body="urls" type="array">
+  Filter to specific URLs.
+</ParamField>
+<ParamField body="dateRange" type="object">
+  Scope analytics to a date range (`from`, `to`). Previous period comparison is included automatically.
+</ParamField>
+
+<Accordion title="Example use cases">
+  - See which landing pages have the best conversion rates
+  - Compare landing page performance with the previous period
+  - Search landing page analytics by URL
+</Accordion>
+
+---
+
+### `get_user_journey_analytics`
+
+Get UTM and traffic source breakdown for a form, including AI traffic sources (ChatGPT, Perplexity, etc.) and click IDs (gclid, fbclid).
+
+<ParamField body="formId" type="string" required>
+  The form to analyze.
+</ParamField>
+<ParamField body="dateRange" type="object">
+  Scope analytics to a date range (`from`, `to`).
+</ParamField>
+
+<Accordion title="Example use cases">
+  - Get UTM breakdown (source, medium, campaign) for a form
+  - See AI traffic sources (ChatGPT, Perplexity, etc.)
+  - See click IDs (gclid, fbclid) for ad attribution
+</Accordion>
+
+---
+
+### `get_conversion_funnel`
+
+Get per-URL conversion funnel breakdown: form starts, completed/partial, qualified/disqualified, meetings booked/not booked.
+
+<ParamField body="page" type="number">
+  Page number for pagination.
+</ParamField>
+<ParamField body="limit" type="number">
+  Number of URLs to return.
+</ParamField>
+<ParamField body="url" type="string">
+  Filter to a specific landing page URL.
+</ParamField>
+<ParamField body="dateRange" type="object">
+  Scope to a date range (`from`, `to`).
+</ParamField>
+
+<Accordion title="Example use cases">
+  - Get the full conversion funnel for the last 7 days
+  - Get conversion funnel for a specific landing page
+  - Compare funnel performance across different URLs
+</Accordion>
+
+---
+
+### `get_environment_overview`
+
+Get a high-level summary of your environment: total forms, leads, responses, and workflows.
+
+_No parameters required._
+
+---
+
+## AI Lead Scoring
+
+### `get_top_ai_scores`
+
+Get top responses/leads ranked by AI score.
+
+<ParamField body="limit" type="number">
+  Number of results to return.
+</ParamField>
+<ParamField body="order" type="string">
+  Sort order: `"desc"` for highest scores first, `"asc"` for lowest.
+</ParamField>
+<ParamField body="formId" type="string">
+  Scope to a specific form.
+</ParamField>
+<ParamField body="minScore" type="number">
+  Minimum AI score threshold.
+</ParamField>
+
+<Accordion title="Example use cases">
+  - Get the top 10 highest-scored leads
+  - Get the lowest-scored responses
+  - Get responses scoring above 80
+</Accordion>
+
+---
+
+### `get_ai_score_stats`
+
+Get AI score statistics including average, min, max, and distribution across buckets (0-19, 20-39, 40-59, 60-79, 80-100).
+
+<ParamField body="formId" type="string">
+  Scope statistics to a specific form.
+</ParamField>
+
+---
+
+### `get_responses_with_ai_scores`
+
+Get responses for a form enriched with their AI scores.
+
+<ParamField body="formId" type="string" required>
+  The form to get responses for.
+</ParamField>
+<ParamField body="sortBy" type="string">
+  Sort by `"score"` to rank by AI score.
+</ParamField>
+<ParamField body="finished" type="boolean">
+  Filter by completion status.
+</ParamField>
+
+---
+
+### `get_leads_with_ai_scores`
+
+Get leads ranked by their AI score.
+
+<ParamField body="sortBy" type="string">
+  Sort by `"score"` to rank by AI score.
+</ParamField>
+<ParamField body="order" type="string">
+  Sort direction: `"desc"` or `"asc"`.
+</ParamField>
+<ParamField body="minScore" type="number">
+  Minimum score threshold.
+</ParamField>
+<ParamField body="maxScore" type="number">
+  Maximum score threshold.
+</ParamField>
+
+<Accordion title="Example use cases">
+  - Get leads ranked by AI score (highest first)
+  - Get leads scoring between 50 and 80
+</Accordion>
+
+---
+
+### `compare_forms`
+
+Compare forms side-by-side by response count, completion rate, and average AI score.
+
+<ParamField body="formIds" type="array">
+  Array of form IDs to compare. Omit to compare all forms in the environment.
+</ParamField>
+
+<Accordion title="Example use cases">
+  - Compare all forms by completion rate and AI score
+  - Compare two specific forms side-by-side
+</Accordion>
+
+---
+
+## Workflows
+
+### `list_workflow_runs`
+
+List workflow runs with filtering by status, response, lead, or workflow.
+
+<ParamField body="page" type="number">
+  Page number for pagination.
+</ParamField>
+<ParamField body="limit" type="number">
+  Number of runs to return.
+</ParamField>
+<ParamField body="sortOrder" type="string">
+  Sort direction: `"asc"` or `"desc"`.
+</ParamField>
+<ParamField body="responseId" type="string">
+  Filter to runs triggered by a specific response.
+</ParamField>
+<ParamField body="leadId" type="string">
+  Filter to runs for a specific lead.
+</ParamField>
+<ParamField body="workflowId" type="string">
+  Filter to runs for a specific workflow.
+</ParamField>
+<ParamField body="success" type="boolean">
+  Filter by outcome: `true` for successful, `false` for failed runs.
+</ParamField>
+
+<Accordion title="Example use cases">
+  - List recent workflow runs
+  - Get only failed workflow runs
+  - Get runs triggered by a specific response or lead
+</Accordion>
+
+---
+
+### `get_workflow_run`
+
+Get full details of a workflow run including per-step task breakdown, payloads, errors, and timing.
+
+<ParamField body="runId" type="string" required>
+  The ID of the workflow run to retrieve.
+</ParamField>

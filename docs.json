@@ -54,6 +54,14 @@
             ]
           },
           {
+            "group": "MCP Server",
+            "pages": [
+              "docs/mcp-server/overview",
+              "docs/mcp-server/setup",
+              "docs/mcp-server/tools"
+            ]
+          },
+          {
             "group": "Events",
             "pages": [
               "docs/events/form-events",
