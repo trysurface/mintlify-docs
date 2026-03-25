@@ -1,0 +1,149 @@
+---
+title: "Setup"
+description: "Connect the Surface Forms MCP server to your AI assistant"
+sidebarTitle: "Setup"
+og:title: "MCP Server Setup | Surface Docs"
+twitter:title: "MCP Server Setup | Surface Docs"
+og:description: "Connect the Surface Forms MCP server to your AI assistant"
+twitter:description: "Connect the Surface Forms MCP server to your AI assistant"
+og:image: "https://app.withsurface.com/api/v1/form/og?title=MCP%20Server%20Setup"
+twitter:image: "https://app.withsurface.com/api/v1/form/og?title=MCP%20Server%20Setup"
+---
+
+Connect the Surface Forms MCP server to your AI assistant. All connections require your **Surface Forms API key**, which scopes every tool call to your environment.
+
+<Warning>
+  Don't have an API key yet? Create one in **Settings > API Keys** in your [Surface dashboard](https://app.withsurface.com). The key is only shown once — save it securely.
+</Warning>
+
+## Claude Desktop
+
+<Steps>
+  <Step title="Open MCP config">
+    In Claude Desktop, go to **Settings > Developer > Edit Config** to open your `claude_desktop_config.json`.
+  </Step>
+  <Step title="Add the server">
+    Add the following to your config file, replacing `<your-api-key>` with your actual API key:
+
+    ```json
+    {
+      "mcpServers": {
+        "surface-forms": {
+          "url": "https://app.withsurface.com/api/mcp",
+          "headers": { "Authorization": "Bearer <your-api-key>" }
+        }
+      }
+    }
+    ```
+  </Step>
+  <Step title="Verify connection">
+    Restart Claude Desktop and look for the MCP icon in the chat input to confirm the server is connected.
+  </Step>
+</Steps>
+
+## Cursor
+
+<Tabs>
+  <Tab title="Settings UI">
+    <Steps>
+      <Step title="Open MCP settings">
+        Go to **Cursor Settings > MCP** and click **Add new MCP server**.
+      </Step>
+      <Step title="Configure the server">
+        - **Type:** `HTTP`
+        - **Name:** `surface-forms`
+        - **URL:** `https://app.withsurface.com/api/mcp`
+        - **Headers:** `Authorization: Bearer <your-api-key>`
+      </Step>
+    </Steps>
+  </Tab>
+  <Tab title="Config file">
+    Add the following to your project's `.cursor/mcp.json`:
+
+    ```json
+    {
+      "mcpServers": {
+        "surface-forms": {
+          "url": "https://app.withsurface.com/api/mcp",
+          "headers": { "Authorization": "Bearer <your-api-key>" }
+        }
+      }
+    }
+    ```
+  </Tab>
+</Tabs>
+
+## Claude Code
+
+Run the following command in your terminal:
+
+```bash
+claude mcp add --transport http surface-forms https://app.withsurface.com/api/mcp \
+  --header "Authorization: Bearer <your-api-key>"
+```
+
+Verify the server is configured:
+
+```bash
+claude mcp list
+```
+
+## Windsurf
+
+<Steps>
+  <Step title="Open MCP config">
+    Go to **Windsurf Settings > Cascade > Model Context Protocol (MCP)** and click **Add Server** or edit your `~/.codeium/windsurf/mcp_config.json`.
+  </Step>
+  <Step title="Add the server">
+    ```json
+    {
+      "mcpServers": {
+        "surface-forms": {
+          "serverUrl": "https://app.withsurface.com/api/mcp",
+          "headers": { "Authorization": "Bearer <your-api-key>" }
+        }
+      }
+    }
+    ```
+  </Step>
+  <Step title="Verify connection">
+    Refresh the MCP panel and check that `surface-forms` shows as connected.
+  </Step>
+</Steps>
+
+## Other Editors
+
+Any editor that supports [Streamable HTTP](https://modelcontextprotocol.io/docs/concepts/transports#streamable-http) can connect to the Surface Forms MCP server. Use this configuration:
+
+```json
+{
+  "mcpServers": {
+    "surface-forms": {
+      "url": "https://app.withsurface.com/api/mcp",
+      "headers": { "Authorization": "Bearer <your-api-key>" }
+    }
+  }
+}
+```
+
+<Info>
+  The Surface Forms MCP server uses the **Streamable HTTP** transport — no local process or Docker container required. Just point your client to the URL with your API key.
+</Info>
+
+## Troubleshooting
+
+<AccordionGroup>
+  <Accordion title="Server not connecting">
+    - Double-check that your API key is correct and hasn't been revoked.
+    - Make sure the `Authorization` header uses the `Bearer` prefix.
+    - Confirm your editor supports the Streamable HTTP transport.
+  </Accordion>
+  <Accordion title="Tools not returning data">
+    - Your API key is scoped to a specific environment. Make sure the environment has forms, responses, or leads to query.
+    - All tools are read-only — there are no tools that create or modify data.
+  </Accordion>
+  <Accordion title="Rate limiting or timeouts">
+    - The MCP server is hosted on the same infrastructure as the Surface app. If you're experiencing timeouts, try again in a moment.
+    - For large datasets, use pagination parameters (`page`, `limit`) to fetch data in smaller chunks.
+  </Accordion>
+</AccordionGroup>
