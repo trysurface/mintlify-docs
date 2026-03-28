@@ -13,7 +13,7 @@ twitter:image: "https://app.withsurface.com/api/v1/form/og?title=MCP%20Server"
 The Surface Forms MCP server lets you connect any [MCP-compatible](https://modelcontextprotocol.io/) AI assistant — Claude, Cursor, Windsurf, and more — to your Surface Forms data. Ask questions in natural language and get instant answers about your forms, responses, leads, analytics, workflows, and AI scores.
 
 <Info>
-  All **21 tools** exposed by the MCP server are **read-only**. Your data is never modified through MCP.
+  The MCP server exposes **22 tools** — 21 read-only tools for querying data plus a `generate_form` tool for creating new forms from a source template.
 </Info>
 
 ## What Can You Do?
@@ -33,6 +33,9 @@ The Surface Forms MCP server lets you connect any [MCP-compatible](https://model
   </Card>
   <Card title="Workflows" icon="diagram-project">
     List workflow runs, filter by status, inspect per-step execution details and errors.
+  </Card>
+  <Card title="Form Generation" icon="wand-magic-sparkles">
+    Create new forms from a source template — define steps, components, and content, and the form is published instantly.
   </Card>
   <Card title="Environment Overview" icon="gauge-high">
     High-level summary of your environment — total forms, leads, responses, and workflows at a glance.
@@ -71,7 +74,9 @@ Here are some things you can ask once connected:
 - "Show me failed workflow runs from this week"
 - "What UTM campaigns are driving traffic to my demo request form?"
 - "How many leads came from each source in Q1?"
+- "Create a new demo booking form with name, email, company fields and a Calendly scheduler"
+- "Generate a feedback survey with a dropdown for department and a long text question"
 
 <Card title="Full Tool Reference" icon="wrench" href="/docs/mcp-server/tools">
-  See all 21 available tools with their parameters and use cases.
+  See all 22 available tools with their parameters and use cases.
 </Card>

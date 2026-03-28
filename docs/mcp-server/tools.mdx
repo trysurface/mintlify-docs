@@ -1,16 +1,16 @@
 ---
 title: "Tool Reference"
-description: "Complete reference for all 21 MCP tools available in the Surface Forms MCP server"
+description: "Complete reference for all 22 MCP tools available in the Surface Forms MCP server"
 sidebarTitle: "Tool Reference"
 og:title: "MCP Tool Reference | Surface Docs"
 twitter:title: "MCP Tool Reference | Surface Docs"
-og:description: "Complete reference for all 21 MCP tools available in the Surface Forms MCP server"
-twitter:description: "Complete reference for all 21 MCP tools available in the Surface Forms MCP server"
+og:description: "Complete reference for all 22 MCP tools available in the Surface Forms MCP server"
+twitter:description: "Complete reference for all 22 MCP tools available in the Surface Forms MCP server"
 og:image: "https://app.withsurface.com/api/v1/form/og?title=MCP%20Tool%20Reference"
 twitter:image: "https://app.withsurface.com/api/v1/form/og?title=MCP%20Tool%20Reference"
 ---
 
-The Surface Forms MCP server exposes **21 read-only tools** organized into six categories. All tools are automatically scoped to your environment via your API key.
+The Surface Forms MCP server exposes **22 tools** organized into six categories. All tools are automatically scoped to your environment via your API key.
 
 ## Forms
 
@@ -53,6 +53,59 @@ Get a single form's full configuration, including all questions, styles, and set
 <ParamField body="formId" type="string" required>
   The ID of the form to retrieve.
 </ParamField>
+
+---
+
+### `generate_form`
+
+Generate a new form from an existing source form used as a style template. The new form inherits all visual settings (fonts, colors, backgrounds, component styles) from the source form. The form is automatically published and ready to use.
+
+<Info>
+  This is the only mutation tool in the MCP server. Use `list_forms` first to find a suitable source form ID.
+</Info>
+
+<ParamField body="sourceFormId" type="string" required>
+  The ID of an existing form to use as a style template.
+</ParamField>
+<ParamField body="name" type="string" required>
+  Display name for the generated form.
+</ParamField>
+<ParamField body="steps" type="array" required>
+  Array of step objects (minimum 2). Each step represents a page/screen in the form.
+
+  <Expandable title="Step object properties">
+    <ParamField body="name" type="string" required>
+      Display name for the step.
+    </ParamField>
+    <ParamField body="components" type="array" required>
+      Array of component objects (minimum 1). Each component has a `type` and `content`.
+
+      **Supported component types:**
+
+      | Type | Description | Key content fields |
+      |------|-------------|--------------------|
+      | `ShortInput` | Single-line text input | `question` |
+      | `LongInput` | Multi-line text area | `question` |
+      | `IdentityInfo` | Name, email, company fields | `fields` (array of `{ key, label }`) |
+      | `Dropdown` | Dropdown select menu | `question`, `options` |
+      | `MultipleOptionsQuestion` | Single/multi-select choices | `question`, `choices`, `isMulti` |
+      | `CalendlyScreen` | Calendar scheduling widget | `dataUrl`, `message`, `calendarType` |
+      | `DynamicScheduler` | Routing scheduler | `defaultCalendar` |
+      | `NextButton` | Advance to next step | `label` |
+      | `Header` | Heading text | `title`, `subheading` |
+      | `Disclaimer` | Legal/disclaimer text | `text` |
+
+      See the [Generate Form API reference](/docs/api-reference/forms/generate-form#supported-component-types) for full content field details per component type.
+    </ParamField>
+  </Expandable>
+</ParamField>
+
+<Accordion title="Example use cases">
+  - Create a demo booking form with identity fields and a Calendly scheduler
+  - Generate a feedback survey with dropdowns and multiple choice questions
+  - Build a contact form with name, email, company, and a submit button
+  - Create a lead capture form styled like an existing form
+</Accordion>
 
 ---
 
