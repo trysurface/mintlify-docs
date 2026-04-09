@@ -1,0 +1,57 @@
+---
+title: "Claude OAuth Setup"
+description: "Connect Surface to Claude via OAuth using the Connectors feature — no API key required"
+sidebarTitle: "Claude OAuth Setup"
+og:title: "Claude OAuth Setup | Surface Docs"
+twitter:title: "Claude OAuth Setup | Surface Docs"
+og:description: "Connect Surface to Claude via OAuth using the Connectors feature — no API key required"
+twitter:description: "Connect Surface to Claude via OAuth using the Connectors feature — no API key required"
+og:image: "https://app.withsurface.com/api/v1/form/og?title=Claude%20OAuth%20Setup"
+twitter:image: "https://app.withsurface.com/api/v1/form/og?title=Claude%20OAuth%20Setup"
+---
+
+Claude supports connecting to MCP servers via OAuth through its **Connectors** feature. This lets you connect Surface to Claude without needing to manage API keys — just authenticate with your Surface account directly.
+
+## Setup
+
+<Steps>
+  <Step title="Open the Connectors page">
+    Go to [claude.ai/customize/connectors](https://claude.ai/customize/connectors). Click the **+** button at the top and choose **Add custom connector**.
+
+    <Frame>
+      <img src="/images/mcp-server/claude-oauth/connectors-page.png" alt="Claude Connectors page showing the Add custom connector option" />
+    </Frame>
+  </Step>
+  <Step title="Configure the connector">
+    In the modal that appears, fill in the following:
+
+    - **Name:** `Surface`
+    - **Remote MCP server URL:** `https://app.withsurface.com/mcp`
+
+    Then click **Add**.
+
+    <Frame>
+      <img src="/images/mcp-server/claude-oauth/add-custom-connector.png" alt="Add custom connector modal with Surface name and MCP URL filled in" />
+    </Frame>
+  </Step>
+  <Step title="Connect your account">
+    After adding the connector, click the **Connect** button to authenticate with your Surface account via OAuth.
+
+    <Frame>
+      <img src="/images/mcp-server/claude-oauth/click-connect.png" alt="Surface connector page with Connect button" />
+    </Frame>
+
+    Choose your environment and complete the connection. That's it — Surface is now available as a connector in Claude.
+  </Step>
+  <Step title="Start using Surface in Claude">
+    You can now toggle the Surface connector on in any Claude chat via the **+** menu and **Connectors**. Once enabled, Claude can use all Surface MCP tools to query your forms, responses, leads, and more.
+
+    <Frame>
+      <img src="/images/mcp-server/claude-oauth/use-in-chat.png" alt="Claude chat showing Surface connector enabled alongside other connectors" />
+    </Frame>
+  </Step>
+</Steps>
+
+<Info>
+  The OAuth connection is tied to your Surface account and environment. You don't need to manage or rotate API keys — Claude handles the authentication automatically.
+</Info>

@@ -58,6 +58,7 @@
             "pages": [
               "docs/mcp-server/overview",
               "docs/mcp-server/setup",
+              "docs/mcp-server/claude-oauth-setup",
               "docs/mcp-server/tools"
             ]
           },
