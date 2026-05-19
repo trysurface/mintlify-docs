@@ -1,4 +1,5 @@
 ---
+og:image: "https://app.withsurface.com/api/v1/form/og?title=Google%20Tag%20Manager%20Integration"
 title: "Google Tag Manager Integration"
 description: "A step-by-step guide to connect Surface Form events to Google Tag Manager (GTM)"
 sidebarTitle: "Google Tag Manager"
@@ -6,89 +7,152 @@ og:title: "Google Tag Manager Integration | Surface Docs"
 twitter:title: "Google Tag Manager Integration | Surface Docs"
 og:description: "A step-by-step guide to connect Surface Form events to Google Tag Manager (GTM)"
 twitter:description: "A step-by-step guide to connect Surface Form events to Google Tag Manager (GTM)"
-og:image: "https://app.withsurface.com/api/v1/form/og?title=Google%20Tag%20Manager%20Integration"
 twitter:image: "https://app.withsurface.com/api/v1/form/og?title=Google%20Tag%20Manager%20Integration"
 ---
 
-Surface Forms can push key events to your website's data layer, making it easy to track user interactions and conversions in Google Tag Manager (GTM).
+Surface Forms can push key events to your website's data layer, making it easy to track user interactions and conversions in Google Tag Manager (GTM) — including **per-step / per-screen** conversions you can wire to Google Ads, Meta Ads, LinkedIn, and any other platform.
 
 <Info>
-Learn more about Surface events in our [**events documentation**](/docs/events/form-events).
+  Learn more about Surface events in our [**events documentation**](/docs/events/form-events).
 </Info>
 
 ## Overview of Surface Form Events
 
 Surface Forms push three key events to the data layer:
 
-| **Event Name** | **When Fired** | Metadata |
+| **Event Name** | **When Fired** | **Metadata** |
 | --- | --- | --- |
-| **`SurfaceFormStarted`** | When the form is started | (None) |
-| **`SurfaceFormStepSubmitted`** | When a step is submitted (e.g., email entered) | `emailProvided`, `meetingBooked` , `url` and `urlParams`  |
-| **`SurfaceFormSubmitEvent`** | When the entire form is submitted | (None) |
+| **`SurfaceFormStarted`** | When the form is started | `formId`, `url`, `urlParams` |
+| **`SurfaceFormStepSubmitted`** | When a step is submitted (e.g., email entered) | `formId`, `stepId`, `emailProvided`, `meetingBooked`, `url`, `urlParams` |
+| **`SurfaceFormSubmitEvent`** | When the entire form is submitted | `url`, `urlParams` |
+
+### What each metadata field contains
+
+| **Variable** | **Type** | **What it contains** |
+| --- | --- | --- |
+| `formId` | string | The Surface form's unique ID. |
+| `stepId` | string | The **name of the step** the respondent just completed (matches the step name configured in the form editor). Use this to fire per-step conversions. |
+| `emailProvided` | boolean | `true` if that step captured a valid email; omitted otherwise. |
+| `meetingBooked` | boolean | `true` if a meeting was booked on that step (scheduler); omitted otherwise. |
+| `url` | string | The full landing URL where the form was loaded. |
+| `urlParams` | object | All query-string params as a key/value object — read individual params with dot notation, e.g. `urlParams.utm_source`. |
+
+<Info>
+  All fields are pushed at the top level of the dataLayer object, so a standard **Data Layer Variable** in GTM reads them directly. The only exception is `urlParams`, which is an object — use dot notation (e.g. `urlParams.utm_source`) in the _Data Layer Variable Name_ field.
+</Info>
 
 ## 1. Set Up Data Layer Variables in GTM
 
-To capture metadata from `SurfaceFormStepSubmitted`, create the following `Data Layer Variables`  in GTM:
+To capture metadata from these events, create the following **Data Layer Variables** in GTM:
 
 | **Variable Name** | **Variable Type** | **Data Layer Variable Name** |
 | --- | --- | --- |
-| dlv - emailProvided | Data Layer Variable | **`emailProvided`** |
-| dlv - meetingBooked | Data Layer Variable | **`meetingBooked`** |
-| dlv - urlParam | Data Layer Variable (Object) | `urlParam` |
+| dlv - formId | Data Layer Variable | `formId` |
+| dlv - stepId | Data Layer Variable | `stepId` |
+| dlv - emailProvided | Data Layer Variable | `emailProvided` |
+| dlv - meetingBooked | Data Layer Variable | `meetingBooked` |
 | dlv - url | Data Layer Variable | `url` |
+| dlv - urlParams | Data Layer Variable (Object) | `urlParams` |
+| dlv - utm\_source | Data Layer Variable | `urlParams.utm_source` |
 
 **Steps:**
 
 1. In GTM, go to **Variables**.
 2. Click **New** → Choose **Data Layer Variable**.
-    <Frame>
-    ![GTM Variables Setup](/images/gtm/gtm_12.png)
-    </Frame>
-3. Enter the exact name (e.g., **`dlv - emailProvided`**) and set the Data Layer Variable Name to **`emailProvided`**. Make sure to capitalize the p in `emailProvided` !
-    <Frame>
-    ![GTM Data Layer Variable Configuration](/images/gtm/gtm_13.png)
-    </Frame>
-4. Repeat for **`meetingBooked`, `url`**  and **`urlParams`.**
-    
-    <Info>
-    `urlParams` is an object, we need to use dot notation e.g. `{{ urlParams.medium }}` to get the data.
-    </Info>
-    <Frame>
-    ![GTM URL Parameters Configuration](/images/gtm/gtm_14.png)
-    </Frame>
+   <Frame>
+     ![GTM Variables Setup](/images/gtm/gtm_12.png)
+   </Frame>
+3. Enter the exact name (e.g., **`dlv - emailProvided`**) and set the Data Layer Variable Name to **`emailProvided`**. Make sure to capitalize the `P` in `emailProvided`!
+   <Frame>
+     ![GTM Data Layer Variable Configuration](/images/gtm/gtm_13.png)
+   </Frame>
+4. Repeat for **`formId`**, **`stepId`**, **`meetingBooked`**, **`url`** and **`urlParams`**.
+   <Info>
+     `urlParams` is an object — to read an individual param, create a separate variable with the dot-notation path, e.g. `urlParams.utm_source` or `{{ urlParams.medium }}`.
+   </Info>
+   <Frame>
+     ![GTM URL Parameters Configuration](/images/gtm/gtm_14.png)
+   </Frame>
 
 ## 2. Create Triggers Based on Events
 
-You can now setup triggers that can reference the variables we just created.
+Now create triggers that reference the variables above. Use the **standard triggers** for the common conversion points, and the **per-step triggers** to fire conversions for specific screens of your form.
+
+### Standard triggers
 
 | **Trigger Name** | **Trigger Type** | **Event Name** | **Additional Condition** |
 | --- | --- | --- | --- |
-| Trigger - Email Submitted | Custom Event | SurfaceFormStepSubmitted | dlv - emailProvided equals true |
-| Trigger - Meeting Booked | Custom Event | SurfaceFormStepSubmitted | dlv - meetingBooked equals true |
-| Trigger - URL | Custom Event | SurfaceFormStepSubmitted | Any |
-| Trigger - urlParam | Custom Event | SurfaceFormStepSubmitted | Any |
+| Trigger - Form Started | Custom Event | `SurfaceFormStarted` | None |
+| Trigger - Email Submitted | Custom Event | `SurfaceFormStepSubmitted` | `dlv - emailProvided` equals `true` |
+| Trigger - Meeting Booked | Custom Event | `SurfaceFormStepSubmitted` | `dlv - meetingBooked` equals `true` |
+| Trigger - URL | Custom Event | `SurfaceFormStepSubmitted` | Any |
+| Trigger - urlParam | Custom Event | `SurfaceFormStepSubmitted` | Any |
+| Trigger - Form Completed | Custom Event | `SurfaceFormSubmitEvent` | None |
 
 <Frame>
-![GTM Triggers Setup](/images/gtm/gtm_4.png)
+  ![GTM Triggers Setup](/images/gtm/gtm_4.png)
 </Frame>
 
-## 3. Set Up Google Ads Conversion Tags
+### Per-step triggers (fire different conversions for different screens)
 
-Finally, in order to send conversion data to your analytics platform or ads (Google, Meta, LinkedIn, etc) you must configure a new tag that references the triggers we just created. For example, here are the steps to setup a corresponding Google Ads Conversion Tag. This allows you to track different conversion points with the right conversion action in Google Ads.
+Because `SurfaceFormStepSubmitted` includes the step name in the `stepId` variable, you can wire a separate trigger to each step of your form and use it to fire different Google Ads / Meta / LinkedIn conversion tags per stage of the funnel.
+
+| **Trigger Name** | **Trigger Type** | **Event Name** | **Additional Condition** |
+| --- | --- | --- | --- |
+| Trigger - Screen 1 Done | Custom Event | `SurfaceFormStepSubmitted` | `dlv - stepId` equals `Contact details` |
+| Trigger - Screen 2 Done | Custom Event | `SurfaceFormStepSubmitted` | `dlv - stepId` equals `Company info` |
+| Trigger - Screen 3 Done | Custom Event | `SurfaceFormStepSubmitted` | `dlv - stepId` equals `Pick a slot` |
+
+**Steps:**
+
+1. In GTM, go to **Triggers** → **New** → **Custom Event**.
+2. Set the **Event name** to `SurfaceFormStepSubmitted`.
+3. Set **This trigger fires on** → **Some Custom Events**.
+4. Add the condition `dlv - stepId` **equals** `<your step name>`.
+   <Info>
+     The value to enter here is the **step name** as configured in the form editor (e.g. `Contact details`), not the internal step ID. Names must match exactly, including spacing and capitalization.
+   </Info>
+5. Save the trigger and repeat for each step you want to track as a separate conversion.
+
+## 3. Set Up Conversion Tags (Google Ads, Meta, LinkedIn, etc.)
+
+Finally, in order to send conversion data to your analytics platform or ads (Google, Meta, LinkedIn, etc.) you must configure a new tag that references the triggers we just created. This lets you track different conversion points with the right conversion action on each platform.
+
+### Example: Google Ads
 
 | **Tag Name** | **Conversion Action (in Ads)** | **Firing Trigger** |
 | --- | --- | --- |
 | GAds - Form Started | Form Started | Trigger - Form Started |
+| GAds - Screen 1 Done | Screen 1 Completed (Event A) | Trigger - Screen 1 Done |
+| GAds - Screen 2 Done | Screen 2 Completed (Event B) | Trigger - Screen 2 Done |
 | GAds - Email Submitted | Email Submitted | Trigger - Email Submitted |
 | GAds - Meeting Booked | Meeting Booked | Trigger - Meeting Booked |
 | GAds - Form Completed | Form Completed | Trigger - Form Completed |
 
 For more details on how to setup Google Ads Conversion Tags, please refer to our [**Google Ads Tracking Guide**](/docs/events/google-ads-tracking).
 
+### Example: Meta Ads
+
+For Meta Ads, create a **Custom HTML** tag that calls `fbq('track', '<EventName>', { ... })` and attach the step-specific trigger you created above:
+
+```html
+<script>
+  fbq('track', 'Screen1Completed', {
+    form_id: {{dlv - formId}},
+    step:    {{dlv - stepId}}
+  });
+</script>
+```
+
+Set its firing trigger to `Trigger - Screen 1 Done`, and repeat with a different event name for each stage.
+
 <Info>
-**Tip:** Make sure your Google Ads account has conversion actions that match these names or your chosen naming convention.
+  The same `SurfaceFormStarted`, `SurfaceFormStepSubmitted`, and `SurfaceFormCompleted` events are also dispatched to **Meta Pixel** and **GA4** natively if you've configured a Pixel ID or Measurement ID in form settings — so if you only need standard event names, you don't need a GTM tag at all. Use the GTM approach above when you want to fire **custom, per-step** conversion events to those platforms.
 </Info>
 
+<Info>
+  **Tip:** Make sure your Google Ads account has conversion actions that match these names or your chosen naming convention.
+</Info>
 
 ## Need Help?
 
