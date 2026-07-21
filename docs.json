@@ -3,11 +3,11 @@
   "theme": "mint",
   "name": "Docs",
   "colors": {
-    "primary": "#3D63E6",
-    "light": "#3D63E6",
-    "dark": "#3D63E6"
+    "primary": "#2a9bbb",
+    "light": "#a8ecff",
+    "dark": "#272727"
   },
-  "favicon": "/favicon.png",
+  "favicon": "/favicon.svg",
   "navigation": {
     "tabs": [
       {
@@ -302,8 +302,8 @@
     ]
   },
   "logo": {
-    "light": "/images/surface-logo.png",
-    "dark": "/images/surface-logo.png",
+    "light": "/images/surface-wordmark-light.svg",
+    "dark": "/images/surface-wordmark-dark.svg",
     "href": "https://www.withsurface.com"
   },
   "appearance": {
@@ -312,8 +312,8 @@
   },
   "background": {
     "color": {
-      "light": "#fcfcfc",
-      "dark": "#1A1A1A"
+      "light": "#fcfcfd",
+      "dark": "#151515"
     }
   },
   "navbar": {
